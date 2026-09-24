@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Design tokens
+   Monochrome palette, square geometry, 8px spacing grid.
+   Meaning is never carried by colour alone: statuses also differ by border
+   style and by label text, so the UI stays accessible in greyscale.
+   ========================================================================== */
+
+:root {
+  /* Surfaces and ink */
+  --bg: #f2f2ef;
+  --surface: #ffffff;
+  --surface-2: #f8f8f6;
+  --ink: #0b0b0b;
+  --ink-2: #2e2e2e;
+  --muted: #666663;
+  --faint: #9a9a96;
+  --line: #d6d6d1;
+  --line-strong: #0b0b0b;
+  --invert: #0b0b0b;
+  --invert-ink: #fafaf8;
+  --focus: #0b0b0b;
+  --overlay: rgba(11, 11, 11, 0.55);
+  --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(11, 11, 11, 0.06) 6px 7px);
+
+  /* Type */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+
+  /* Spacing (8px grid) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* Geometry */
+  --border: 1px solid var(--line);
+  --border-strong: 1px solid var(--line-strong);
+  --radius: 0;
+  --sidebar-w: 248px;
+  --header-h: 60px;
+  --content-max: 1280px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 140ms;
+  --t-mid: 240ms;
+  --t-slow: 420ms;
+
+  color-scheme: light;
+}
+
+/* Dark theme: follows the system unless the user picked a theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --surface-2: #1a1a1a;
+    --ink: #f2f2ef;
+    --ink-2: #d4d4d0;
+    --muted: #9c9c98;
+    --faint: #6b6b68;
+    --line: #2d2d2b;
+    --line-strong: #f2f2ef;
+    --invert: #f2f2ef;
+    --invert-ink: #0b0b0b;
+    --focus: #f2f2ef;
+    --overlay: rgba(0, 0, 0, 0.7);
+    --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(242, 242, 239, 0.07) 6px 7px);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d0d0d;
+  --surface: #141414;
+  --surface-2: #1a1a1a;
+  --ink: #f2f2ef;
+  --ink-2: #d4d4d0;
+  --muted: #9c9c98;
+  --faint: #6b6b68;
+  --line: #2d2d2b;
+  --line-strong: #f2f2ef;
+  --invert: #f2f2ef;
+  --invert-ink: #0b0b0b;
+  --focus: #f2f2ef;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(242, 242, 239, 0.07) 6px 7px);
+  color-scheme: dark;
+}
