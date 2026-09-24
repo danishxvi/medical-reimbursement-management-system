@@ -12,7 +12,7 @@ RUN mvn -q -B -DskipTests package
 # ---------------------------------------------------------------------
 # Runtime stage: JRE only, non root user, no build tools.
 # ---------------------------------------------------------------------
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 RUN addgroup -S mrms && adduser -S -G mrms -H -s /sbin/nologin mrms \
     && mkdir -p /app /data/storage && chown -R mrms:mrms /data
 WORKDIR /app
