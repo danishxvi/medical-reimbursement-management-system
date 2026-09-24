@@ -2,7 +2,7 @@
 # Build stage: compile and package the Spring Boot application.
 # Tests run in CI; the image build only packages.
 # ---------------------------------------------------------------------
-FROM maven:3.9-eclipse-temurin-21 AS build
+FROM maven:3-eclipse-temurin-26 AS build
 WORKDIR /src
 COPY pom.xml .
 RUN mvn -q -B dependency:go-offline
