@@ -1,10 +1,10 @@
 # Medical Reimbursement Management System (MRMS)
 
-A secure, transparent and accountable web portal that digitises the outpatient medical reimbursement process for employees of the **Directorate of Education, Government of NCT of Delhi**, from dispensary verification to payment.
-
-> Status: under active development. See the [roadmap](docs/10-roadmap.md).
+A secure, transparent and accountable web portal that digitises the outpatient medical reimbursement process for employees of the **Directorate of Education, Government of NCT of Delhi**, from the dispensary's non availability certificate to payment.
 
 **Author:** Danish Husain
+
+> Status: release 0.1, functional end to end. See the [roadmap](docs/10-roadmap.md) for what comes next.
 
 ---
 
@@ -16,21 +16,42 @@ Today a medical reimbursement claim is a paper file that moves by hand from the 
 
 | For | Capability |
 |-----|------------|
-| Employee | Login with Employee ID, pre filled claim form, upload prescriptions and bills (PDF / image), live tracking, amend and resubmit returned claims without losing queue position. |
-| Dispensary | **e-NAC**: pharmacist marks each prescribed item, Medical Officer countersigns. Every decision is attributed. |
-| Head of School | Strict first come first served verification queue, one click certification, automatic budget demand. |
-| PAO | Maker checker scrutiny (auditor then officer), item level admissibility, budget allocation and oldest first payment runs. |
-| Directorate | Dashboards, SLA breach monitoring, tamper evident audit trail. |
+| Employee | Sign in with Employee ID, pre filled claim form, upload prescriptions and bills (PDF or photo), live tracking with queue position, correct and resubmit a returned claim without losing its place. |
+| Dispensary | **e-NAC**: the pharmacist marks each prescribed item, the Medical Officer countersigns. Every decision carries a name and a time. |
+| Head of School | Strict first come first served queue, calculation sheet with DGEHS rates, certificate signed with a password, budget demand calculated from real claims. |
+| PAO | Maker checker scrutiny (auditor then a different officer), item level admission, allocations against sanction orders, oldest first payment runs. |
+| Directorate | Dashboards with service level breaches, account and master data administration, tamper evident audit trail with one click verification. |
 
-Details: [proposed solution](docs/02-proposed-solution.md).
+Details: [proposed solution](docs/02-proposed-solution.md) and [workflow](docs/05-workflow.md).
+
+## Highlights
+
+- **No picking, no parking.** Reviewers can only "take next", which hands over the oldest waiting record.
+- **Returned is not restarted.** A corrected claim keeps its original submission time and goes to the front of every queue.
+- **Money does not block checking.** Claims are verified and sanctioned any time; only payment waits for funds.
+- **Every decision is signed and recorded** in a hash chained, append only audit trail.
+- **Security by default:** Argon2id, lockout, single session, CSRF protection, strict CSP and headers, content based upload validation, AES-256-GCM encryption at rest, object level access checks. See [security design](docs/06-security.md).
 
 ## Architecture at a glance
 
-- **Backend:** Java 21, Spring Boot 4, modular monolith (Spring Modulith verified module boundaries), Spring Security, Spring Data JPA, Flyway.
-- **Frontend:** React, TypeScript, Vite, TanStack Query, React Router, Framer Motion.
-- **Database:** PostgreSQL in production, H2 (PostgreSQL mode) for zero setup local development.
+- **Backend:** Java 21, Spring Boot 4, modular monolith with Spring Modulith verified boundaries, Spring Security 7, JPA, Flyway.
+- **Frontend:** React 19, TypeScript, Vite, TanStack Query, React Router, React Hook Form, Motion; monochrome, boxy, animated design system with dark mode.
+- **Data:** PostgreSQL in production, H2 (PostgreSQL mode) for zero setup development.
+- **Delivery:** Docker Compose (non root, read only containers), GitHub Actions CI, CodeQL, Dependabot.
 
 See [architecture](docs/04-architecture.md).
+
+## Quick start
+
+```bash
+# API with demo data on http://localhost:8080
+cd backend && mvn spring-boot:run -Dspring-boot.run.profiles=dev
+
+# Web app on http://localhost:5173
+cd frontend && npm install && npm run dev
+```
+
+Demo accounts and a guided walk through are in the [setup guide](docs/12-setup.md).
 
 ## Documentation
 
@@ -47,12 +68,14 @@ See [architecture](docs/04-architecture.md).
 | 9 | [UI design system](docs/09-ui-design-system.md) |
 | 10 | [Roadmap](docs/10-roadmap.md) |
 | 11 | [Development log](docs/11-development-log.md) |
-| ADR | [Architecture decision records](docs/adr/) |
+| 12 | [Setup and deployment](docs/12-setup.md) |
+| 13 | [Paper form to system mapping](docs/13-form-mapping.md) |
+| ADR | [Architecture decision records](docs/adr/README.md) |
 
-## Getting started
+## Contributing and security
 
-Instructions are in [docs/12-setup.md](docs/12-setup.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
-## Security
+## Acknowledgements
 
-Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Built by Danish Husain from the day to day experience of school staff in Delhi. AI pair programming assistance was used during development for code suggestions, reviews and documentation drafts.
