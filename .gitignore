@@ -1,0 +1,54 @@
+# ---------- Secrets and environment ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+secrets/
+
+# ---------- Runtime data (never commit) ----------
+data/
+uploads/
+storage/
+*.mv.db
+*.trace.db
+logs/
+*.log
+
+# ---------- Backend (Maven / Java) ----------
+backend/target/
+!backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+hs_err_pid*
+replay_pid*
+
+# ---------- Frontend (Node / Vite) ----------
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# ---------- IDE and OS ----------
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+.settings/
+.project
+.classpath
+.factorypath
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Personal notes ----------
+notes/
+scratch/
