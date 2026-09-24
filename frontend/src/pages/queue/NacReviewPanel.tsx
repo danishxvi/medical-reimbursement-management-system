@@ -175,7 +175,7 @@ function OfficerPanel({ nac, onDone, extra }: { nac: Nac; onDone: (m: string) =>
         </>
       }
     >
-      <div className="tiles" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+      <div className="tiles" style={{ ['--cols-base' as string]: 3 }}>
         {counts.map(([d, n]) => (
           <div key={d} className="stat" style={{ minHeight: 96 }}>
             <span className="caps stat-label">{DECISION_LABELS[d]}</span>

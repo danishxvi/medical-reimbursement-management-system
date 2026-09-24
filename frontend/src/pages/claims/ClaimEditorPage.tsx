@@ -278,7 +278,9 @@ function Editor({ claim, profile, meta }: { claim: Claim | null; profile: Employ
       form.reset(getValues())
       queryClient.setQueryData(['claim', String(result.id)], result)
       queryClient.invalidateQueries({ queryKey: ['claims'] })
-      if (!claimId) navigate(`/claims/${result.id}/edit`, { replace: true })
+      // Point the address bar at the draft (so a reload reopens it) without a
+      // route change, which would remount the form and lose the current step
+      if (!claimId) window.history.replaceState(window.history.state, '', `/claims/${result.id}/edit`)
       if (!quiet) toast.ok('Draft saved')
       return result
     } catch (e) {

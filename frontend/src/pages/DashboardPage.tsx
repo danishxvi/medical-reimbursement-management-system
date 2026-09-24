@@ -174,7 +174,7 @@ function HowItWorks() {
   ]
   return (
     <Panel title="How your claim moves" kicker="No files, no carriers, no waiting in the dark">
-      <Stagger className="tiles grid-4" >
+      <Stagger className="tiles even">
         {steps.map(([n, t, d]) => (
           <div key={n} className="stat" style={{ minHeight: 150 }}>
             <span className="caps stat-label">{n}</span>

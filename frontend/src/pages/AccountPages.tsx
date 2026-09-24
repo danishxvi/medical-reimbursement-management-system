@@ -151,7 +151,7 @@ export function NotificationsPage() {
         actions={<Button onClick={() => readAll.mutate()} loading={readAll.isPending} disabled={!data?.some((n) => !n.read)}>Mark all as read</Button>}
       />
       {isLoading ? <PageSkeleton /> : !data || data.length === 0 ? <EmptyState title="You are all caught up" /> : (
-        <motion.div className="tiles" style={{ gridTemplateColumns: '1fr' }} variants={list} initial="initial" animate="animate">
+        <motion.div className="tiles" style={{ ['--cols-base' as string]: 1 }} variants={list} initial="initial" animate="animate">
           {data.map((n) => (
             <motion.button
               key={n.id}

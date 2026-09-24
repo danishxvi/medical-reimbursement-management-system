@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { NavLink, useLocation, useNavigate, useOutlet } from 'react-router'
 import { api } from '../../api/client'
@@ -102,6 +102,11 @@ export function AppShell() {
   const location = useLocation()
   const outlet = useOutlet()
   const [theme, setTheme] = useState<Theme>(effectiveTheme())
+
+  // Each new page starts at the top
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [location.pathname])
 
   const office = useQuery({ queryKey: ['my-office'], queryFn: () => api.get<Office>('/api/org/my-office'), staleTime: 300_000 })
   const unread = useQuery({

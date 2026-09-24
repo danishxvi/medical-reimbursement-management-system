@@ -275,7 +275,7 @@ export function ClaimDetails({ claim, documentBase }: { claim: Claim; documentBa
 /** Header strip with the three amounts of a claim. */
 export function ClaimAmounts({ claim }: { claim: Claim }) {
   return (
-    <div className="tiles" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
+    <div className="tiles even">
       {[
         ['Claimed', claim.claimedAmount],
         ['Restricted by school', claim.restrictedAmount],

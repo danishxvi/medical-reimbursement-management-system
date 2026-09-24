@@ -1,5 +1,5 @@
 import { animate, motion, useInView, useReducedMotion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { Children, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { item, list, page } from '../../lib/motion'
 
@@ -136,12 +136,17 @@ export function Stat({ label, value, format, foot, alert }: StatProps) {
   )
 }
 
-/** A row of stat tiles sharing borders. */
-export function StatGrid({ children, columns = 4 }: { children: ReactNode; columns?: number }) {
+/**
+ * A block of stat tiles sharing borders. Columns follow the tile count so
+ * every row is full: 2, 3 or 4 across; 6 tiles become 3 x 2.
+ */
+export function StatGrid({ children, columns }: { children: ReactNode; columns?: number }) {
+  const count = Children.count(children)
+  const cols = columns ?? (count === 6 ? 3 : Math.min(count, 4))
   return (
     <motion.div
-      className="tiles"
-      style={{ gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${columns >= 4 ? 200 : 240}px), 1fr))` }}
+      className={'tiles' + (cols % 2 === 0 ? ' even' : '')}
+      style={{ ['--cols-base' as string]: cols }}
       variants={list}
       initial="initial"
       animate="animate"

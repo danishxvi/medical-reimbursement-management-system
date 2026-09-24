@@ -62,6 +62,8 @@ function ClaimQueuePage() {
   const done = (message: string) => {
     toast.ok(message)
     setCurrent(null)
+    // Drop the finished claim at once so the stale copy never flashes back
+    queryClient.setQueryData<ClaimQueue>(['queue', 'claims'], (q) => (q ? { ...q, current: null } : q))
     queryClient.invalidateQueries({ queryKey: ['queue'] })
     queryClient.invalidateQueries({ queryKey: ['dashboard'] })
     queryClient.invalidateQueries({ queryKey: ['claims'] })
@@ -156,6 +158,7 @@ function NacQueuePage() {
   const done = (message: string) => {
     toast.ok(message)
     setCurrent(null)
+    queryClient.setQueryData<NacQueue>(['queue', 'nac'], (q) => (q ? { ...q, current: null } : q))
     queryClient.invalidateQueries({ queryKey: ['queue'] })
     queryClient.invalidateQueries({ queryKey: ['dashboard'] })
   }

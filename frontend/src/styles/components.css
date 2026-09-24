@@ -179,6 +179,7 @@
 }
 
 textarea.control {
+  display: block;
   min-height: 96px;
   resize: vertical;
 }
@@ -365,7 +366,8 @@ select.control {
 
 .stat-value {
   font-family: var(--font-mono);
-  font-size: var(--text-2xl);
+  font-size: clamp(1.25rem, 1rem + 1vw, var(--text-2xl));
+  overflow-wrap: anywhere;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   line-height: 1;
