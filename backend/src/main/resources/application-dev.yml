@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------
+# Local development profile. Runs without Docker using an H2 file
+# database in PostgreSQL mode and seeds demo data.
+# NEVER use this profile on a server: the values below are public.
+# ---------------------------------------------------------------------
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/mrms-dev;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password: ""
+
+server:
+  servlet:
+    session:
+      cookie:
+        # Plain http on localhost during development
+        secure: false
+
+mrms:
+  cors:
+    allowed-origins: http://localhost:5173
+  csrf:
+    secure-cookie: false
+  storage:
+    root: ./data/storage
+    # Development only key (public). Production reads MRMS_STORAGE_KEY.
+    encryption-key: ZGV2LW9ubHkta2V5LWRvLW5vdC11c2UtaW4tcHJvZCE=
+  demo:
+    seed: true
+
+logging:
+  level:
+    com.mrms: DEBUG

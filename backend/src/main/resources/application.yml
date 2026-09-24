@@ -1,0 +1,101 @@
+# ---------------------------------------------------------------------
+# Base configuration. These are the PRODUCTION defaults: secure by
+# default, every secret comes from the environment. Local development
+# uses the "dev" profile (application-dev.yml).
+# ---------------------------------------------------------------------
+spring:
+  application:
+    name: mrms-backend
+  datasource:
+    url: ${MRMS_DB_URL}
+    username: ${MRMS_DB_USERNAME}
+    password: ${MRMS_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  port: ${MRMS_PORT:8080}
+  shutdown: graceful
+  # Trust X-Forwarded-* only when running behind the reverse proxy
+  forward-headers-strategy: ${MRMS_FORWARD_HEADERS:none}
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+    include-exception: false
+  servlet:
+    session:
+      timeout: 15m
+      tracking-modes: cookie
+      cookie:
+        name: MRMS_SESSION
+        http-only: true
+        secure: true
+        same-site: strict
+        path: /
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: WARN
+
+mrms:
+  cors:
+    # Comma separated list. Empty means same origin only (recommended:
+    # serve the frontend and API from one domain through the proxy).
+    allowed-origins: ${MRMS_ALLOWED_ORIGINS:}
+  csrf:
+    secure-cookie: true
+  storage:
+    root: ${MRMS_STORAGE_ROOT:./storage}
+    # Base64 encoded 256 bit key for AES-GCM encryption of uploaded files
+    encryption-key: ${MRMS_STORAGE_KEY}
+    max-file-bytes: 5242880
+  security:
+    max-failed-logins: 5
+    lockout-minutes: 15
+    login-requests-per-minute: 10
+    api-requests-per-minute: 300
+    password-history: 5
+  sla:
+    hos-days: 3
+    pao-audit-days: 7
+    sanction-days: 3
+    pharmacist-days: 2
+    medical-officer-days: 2
+  claim:
+    # DGEHS: claim must be submitted within three months of treatment end
+    submission-window-days: 90
+    max-items: 50
+  bootstrap:
+    # Creates the first administrator if none exists. The account must
+    # change its password on first login.
+    admin-username: ${MRMS_ADMIN_USERNAME:}
+    admin-password: ${MRMS_ADMIN_PASSWORD:}
