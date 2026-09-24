@@ -1,0 +1,82 @@
+# ---------------------------------------------------------------------
+# Production like stack: PostgreSQL, API and web (nginx).
+#
+#   1. cp .env.example .env   and fill in every value
+#   2. docker compose up -d --build
+#   3. open http://localhost:8080 (put a TLS gateway in front on a server)
+#
+# Only the web container is published, and only on the loopback address.
+# The database and API are reachable from the internal network alone.
+# ---------------------------------------------------------------------
+name: mrms
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mrms
+      POSTGRES_USER: ${MRMS_DB_USERNAME:?set MRMS_DB_USERNAME in .env}
+      POSTGRES_PASSWORD: ${MRMS_DB_PASSWORD:?set MRMS_DB_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d mrms"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      MRMS_DB_URL: jdbc:postgresql://db:5432/mrms
+      MRMS_DB_USERNAME: ${MRMS_DB_USERNAME}
+      MRMS_DB_PASSWORD: ${MRMS_DB_PASSWORD}
+      MRMS_STORAGE_KEY: ${MRMS_STORAGE_KEY:?set MRMS_STORAGE_KEY in .env}
+      MRMS_STORAGE_ROOT: /data/storage
+      MRMS_ADMIN_USERNAME: ${MRMS_ADMIN_USERNAME:-}
+      MRMS_ADMIN_PASSWORD: ${MRMS_ADMIN_PASSWORD:-}
+      # nginx in front forwards the client address
+      MRMS_FORWARD_HEADERS: native
+    volumes:
+      - storage:/data/storage
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
+
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "127.0.0.1:${MRMS_WEB_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
+      - public
+
+volumes:
+  db-data:
+  storage:
+
+networks:
+  internal:
+    internal: true
+  public:

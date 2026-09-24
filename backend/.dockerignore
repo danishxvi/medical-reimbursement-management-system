@@ -1,0 +1,6 @@
+target/
+data/
+storage/
+*.log
+.idea/
+.vscode/
