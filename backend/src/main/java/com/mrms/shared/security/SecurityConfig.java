@@ -112,11 +112,14 @@ public class SecurityConfig {
                 new ConcurrentSessionControlAuthenticationStrategy(registry);
         concurrency.setMaximumSessions(1);
         concurrency.setExceptionIfMaximumExceeded(false);
+        // Issue the rotated CSRF token in the login response itself
+        CsrfAuthenticationStrategy csrf = new CsrfAuthenticationStrategy(csrfRepository);
+        csrf.setRequestHandler(new SpaCsrfTokenRequestHandler());
         return new CompositeSessionAuthenticationStrategy(List.of(
                 concurrency,
                 new ChangeSessionIdAuthenticationStrategy(),
                 new RegisterSessionAuthenticationStrategy(registry),
-                new CsrfAuthenticationStrategy(csrfRepository)));
+                csrf));
     }
 
     @Bean

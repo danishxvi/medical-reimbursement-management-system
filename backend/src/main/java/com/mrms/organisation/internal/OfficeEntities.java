@@ -15,7 +15,7 @@ final class OfficeEntities {
     private OfficeEntities() {
     }
 
-    @Entity
+    @Entity(name = "PayAccountsOffice")
     @Table(name = "pay_accounts_office")
     static class PayAccountsOffice extends Office {
 
@@ -30,7 +30,7 @@ final class OfficeEntities {
         }
     }
 
-    @Entity
+    @Entity(name = "Dispensary")
     @Table(name = "dispensary")
     static class Dispensary extends Office {
 
@@ -45,7 +45,7 @@ final class OfficeEntities {
         }
     }
 
-    @Entity
+    @Entity(name = "School")
     @Table(name = "school")
     static class School extends Office {
 
