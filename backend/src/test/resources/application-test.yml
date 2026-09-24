@@ -1,0 +1,17 @@
+# Test profile, used together with "dev" so the demo data is seeded.
+# In memory database and a throw away storage directory.
+spring:
+  datasource:
+    url: jdbc:h2:mem:mrms-test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+
+mrms:
+  storage:
+    root: ./target/test-storage
+  security:
+    # Generous limits so the rate limiter does not interfere with test flows
+    login-requests-per-minute: 1000
+    api-requests-per-minute: 10000
+
+logging:
+  level:
+    com.mrms: INFO

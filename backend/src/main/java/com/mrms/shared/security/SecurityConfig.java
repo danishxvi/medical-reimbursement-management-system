@@ -62,9 +62,13 @@ import java.util.Map;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    /**
+     * Microsecond precision clock: databases store microseconds, so values
+     * returned to clients always equal what was persisted.
+     */
     @Bean
     Clock clock() {
-        return Clock.systemUTC();
+        return new MicrosecondClock(Clock.systemUTC());
     }
 
     @Bean
@@ -150,6 +154,14 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        // Role rules by URL as a second line of defence (methods are also annotated).
+                        // They also stop request body validation from running for the wrong role.
+                        .requestMatchers(HttpMethod.POST, "/api/documents", "/api/nac", "/api/claims").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.PUT, "/api/claims/*").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.DELETE, "/api/claims/*").hasRole("EMPLOYEE")
+                        .requestMatchers("/api/profile/**").hasRole("EMPLOYEE")
+                        .requestMatchers("/api/budget/school/**").hasRole("HOS")
+                        .requestMatchers("/api/budget/pao/**").hasAnyRole("PAO_AUDITOR", "PAO_OFFICER")
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll())
                 .formLogin(form -> form.disable())

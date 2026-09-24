@@ -28,7 +28,9 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Aggregate root of a reimbursement claim.
@@ -240,8 +242,14 @@ class Claim {
         this.medicalAdvanceDetails = c.medicalAdvanceDetails();
         this.items.clear();
         this.items.addAll(c.items());
-        this.attachments.clear();
-        this.attachments.addAll(c.attachments());
+        // Reconcile instead of clear and re-add: Hibernate flushes inserts before
+        // deletes, which would trip the (claim, document) unique constraint
+        Set<UUID> wanted = c.attachments().stream().map(ClaimAttachment::getDocumentId)
+                .collect(Collectors.toSet());
+        this.attachments.removeIf(a -> !wanted.contains(a.getDocumentId()));
+        Set<UUID> present = this.attachments.stream().map(ClaimAttachment::getDocumentId)
+                .collect(Collectors.toSet());
+        c.attachments().stream().filter(a -> !present.contains(a.getDocumentId())).forEach(this.attachments::add);
         this.claimedAmount = sum(ClaimItem::getAmountClaimed);
         // Any earlier school or PAO figures no longer apply to changed content
         this.restrictedAmount = null;
