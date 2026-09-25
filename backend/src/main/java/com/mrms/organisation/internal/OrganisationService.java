@@ -175,7 +175,7 @@ class OrganisationService implements OrganisationDirectory, OrganisationAdmin {
         }
         // The Employee ID is also the login ID
         CreatedAccount account = accounts.create(new NewAccount(e.employeeCode(), e.fullName(), Role.EMPLOYEE,
-                e.email(), e.mobile(), e.schoolId(), null, null, e.initialPassword(), e.mustChangePassword()));
+                e.email(), e.mobile(), e.schoolId(), null, null, null, e.initialPassword(), e.mustChangePassword()));
 
         Instant now = clock.instant();
         EmployeeProfile profile = new EmployeeProfile(account.id(), account.username(), now);

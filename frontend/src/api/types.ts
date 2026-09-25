@@ -604,6 +604,7 @@ export interface AccountSummary {
   schoolId: number | null
   dispensaryId: number | null
   paoId: number | null
+  zone: string | null
   enabled: boolean
   locked: boolean
   lastLoginAt: string | null

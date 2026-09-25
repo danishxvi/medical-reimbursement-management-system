@@ -31,4 +31,9 @@ public interface Accounts {
     void confirmPassword(String rawPassword);
 
     long countActive(Role role);
+
+    boolean usernameExists(String username);
+
+    /** Active Zonal Oversight officers of an education zone. */
+    List<Long> activeOversightIds(String zone);
 }

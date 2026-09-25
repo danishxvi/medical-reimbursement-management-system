@@ -53,7 +53,14 @@ class DemoDataSeeder implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) {
-        if (!props.demo().seed() || directory.countSchools() > 0) {
+        if (!props.demo().seed()) {
+            return;
+        }
+        if (directory.countSchools() > 0) {
+            // Demo databases created by an earlier release get the accounts added since
+            if (!accounts.usernameExists("DDE06")) {
+                official("DDE06", "Alok Srivastava", Role.OVERSIGHT, null, null, null, "Zone 6");
+            }
             return;
         }
         Long pao = admin.createPao(new NewOffice("PAO-D13", "Pay and Accounts Office No. 13 (Demo)",
@@ -68,6 +75,7 @@ class DemoDataSeeder implements ApplicationRunner {
         official("ADMIN", "System Administrator", Role.ADMIN, null, null, null);
         official("HOS9900001", "Sunita Sharma", Role.HOS, school1, null, null);
         official("HOS9900002", "Farah Khan", Role.HOS, school2, null, null);
+        official("DDE06", "Alok Srivastava", Role.OVERSIGHT, null, null, null, "Zone 6");
         official("PHARM01", "Vikas Gupta", Role.PHARMACIST, null, dispensary, null);
         official("MO01", "Dr. Neha Singh", Role.MEDICAL_OFFICER, null, dispensary, null);
         official("AUD01", "Manoj Tiwari", Role.PAO_AUDITOR, null, null, pao);
@@ -88,8 +96,13 @@ class DemoDataSeeder implements ApplicationRunner {
     }
 
     private void official(String username, String name, Role role, Long school, Long dispensary, Long pao) {
+        official(username, name, role, school, dispensary, pao, null);
+    }
+
+    private void official(String username, String name, Role role, Long school, Long dispensary, Long pao,
+                          String zone) {
         accounts.create(new NewAccount(username, name, role, username.toLowerCase() + "@demo.invalid", null,
-                school, dispensary, pao, DEMO_PASSWORD, false));
+                school, dispensary, pao, zone, DEMO_PASSWORD, false));
     }
 
     private static NewEmployee employee(String code, String name, Long school, String designation, String level,

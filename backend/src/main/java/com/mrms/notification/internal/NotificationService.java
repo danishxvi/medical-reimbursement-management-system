@@ -2,7 +2,9 @@ package com.mrms.notification.internal;
 
 import com.mrms.claim.ClaimStatusChanged;
 import com.mrms.enac.NacStatusChanged;
+import com.mrms.escalation.SlaAlert;
 import com.mrms.identity.Accounts;
+import com.mrms.shared.config.MrmsProperties;
 import com.mrms.shared.domain.Role;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Limit;
@@ -37,12 +39,19 @@ interface NotificationRepository extends JpaRepository<Notification, Long> {
 class NotificationService {
 
     private final NotificationRepository repository;
+    private final OutboundMessageRepository outbox;
+    private final MessageChannels channels;
     private final Accounts accounts;
+    private final MrmsProperties props;
     private final Clock clock;
 
-    NotificationService(NotificationRepository repository, Accounts accounts, Clock clock) {
+    NotificationService(NotificationRepository repository, OutboundMessageRepository outbox, MessageChannels channels,
+                        Accounts accounts, MrmsProperties props, Clock clock) {
         this.repository = repository;
+        this.outbox = outbox;
+        this.channels = channels;
         this.accounts = accounts;
+        this.props = props;
         this.clock = clock;
     }
 
@@ -57,7 +66,7 @@ class NotificationService {
                 sendToOffice(Role.HOS, e.schoolId(), "New claim to verify",
                         ref + " is waiting in your queue.", "/queue");
             }
-            case RETURNED_BY_HOS, RETURNED_BY_PAO -> send(e.employeeUserId(), ref + " returned for correction",
+            case RETURNED_BY_HOS, RETURNED_BY_PAO -> alert(e.employeeUserId(), ref + " returned for correction",
                     "Please correct and resubmit. It keeps its place in the queue." + remarks, link);
             case PENDING_PAO_AUDIT -> {
                 if (e.from() == com.mrms.claim.ClaimStatus.PENDING_HOS) {
@@ -74,11 +83,11 @@ class NotificationService {
             }
             case PENDING_SANCTION -> sendToOffice(Role.PAO_OFFICER, e.paoId(), "Claim awaiting sanction",
                     ref + " has been scrutinised and is waiting for sanction.", "/queue");
-            case SANCTIONED -> send(e.employeeUserId(), ref + " sanctioned",
+            case SANCTIONED -> alert(e.employeeUserId(), ref + " sanctioned",
                     "Your claim is sanctioned. It will be paid, oldest first, as soon as funds are available.", link);
-            case PAID -> send(e.employeeUserId(), ref + " paid",
+            case PAID -> alert(e.employeeUserId(), ref + " paid",
                     "The admitted amount will be credited with your salary." + remarks, link);
-            case REJECTED -> send(e.employeeUserId(), ref + " rejected",
+            case REJECTED -> alert(e.employeeUserId(), ref + " rejected",
                     "Reason: " + (e.remarks() == null ? "not recorded" : e.remarks()), link);
             default -> {
                 // Drafts and withdrawals need no message
@@ -103,10 +112,42 @@ class NotificationService {
             case PENDING_MEDICAL_OFFICER -> sendToOffice(Role.MEDICAL_OFFICER, e.dispensaryId(),
                     "Certificate awaiting countersignature", "A verified prescription is waiting in your queue.",
                     "/queue");
-            case ISSUED -> send(e.employeeUserId(), "e-NAC issued",
+            case ISSUED -> alert(e.employeeUserId(), "e-NAC issued",
                     "Certificate " + e.nacNumber() + " is issued. Items marked not available can now be claimed.", link);
-            case RETURNED -> send(e.employeeUserId(), "Prescription returned by dispensary",
+            case RETURNED -> alert(e.employeeUserId(), "Prescription returned by dispensary",
                     "Please correct and resubmit." + remarks, link);
+        }
+    }
+
+    /** Time limit steps and reminders from the zonal office. */
+    @EventListener
+    void on(SlaAlert e) {
+        String ref = e.reference() == null ? "A record" : e.reference();
+        String stage = e.stageLabel() == null ? "its current stage" : e.stageLabel().toLowerCase(java.util.Locale.ROOT);
+        String employeeLink = ("CLAIM".equals(e.subjectType()) ? "/claims/" : "/nac/") + e.subjectId();
+        switch (e.level()) {
+            case "REMINDER" -> e.recipients().forEach(id -> alert(id, "Time limit approaching: " + ref,
+                    ref + " is " + stage + " and should be completed within " + e.slaDays()
+                            + " days. It is near its limit.", "/queue"));
+            case "BREACH" -> {
+                e.recipients().forEach(id -> alert(id, "Time limit passed: " + ref,
+                        ref + " has passed its " + e.slaDays() + " day limit (" + stage + "). The delay is recorded."
+                                + (e.released() ? " It was put back in the queue so a colleague can take it." : ""),
+                        "/queue"));
+                if (e.employeeUserId() != null) {
+                    alert(e.employeeUserId(), ref + " is taking longer than it should",
+                            "It has passed the " + e.slaDays() + " day limit (" + stage
+                                    + "). The office has been reminded and the delay is recorded.", employeeLink);
+                }
+            }
+            case "ESCALATED" -> e.recipients().forEach(id -> alert(id, "Escalated: " + ref,
+                    ref + " has waited more than twice its " + e.slaDays() + " day limit (" + stage + ").",
+                    "/oversight"));
+            case "NUDGE" -> e.recipients().forEach(id -> alert(id, "Reminder from the zonal office: " + ref,
+                    ref + " is past its time limit (" + stage + "). Please complete it.", "/queue"));
+            default -> {
+                // unknown level: nothing to send
+            }
         }
     }
 
@@ -116,6 +157,36 @@ class NotificationService {
 
     private void send(Long userId, String title, String message, String link) {
         repository.save(new Notification(userId, title, message, link, clock.instant()));
+    }
+
+    /**
+     * In the portal, and by e-mail and SMS where the user has them on record
+     * and the channel is enabled. E-mail and SMS carry the title only (a
+     * claim number and what happened), never remarks or health details: the
+     * user signs in to read more.
+     */
+    private void alert(Long userId, String title, String message, String link) {
+        send(userId, title, message, link);
+        if (!channels.emailEnabled() && !channels.smsEnabled()) {
+            return;
+        }
+        accounts.find(userId).ifPresent(a -> {
+            Instant now = clock.instant();
+            String portal = props.notifications().portalUrl();
+            if (channels.emailEnabled() && a.email() != null && !a.email().isBlank()) {
+                String body = "Dear " + a.fullName() + ",\n\n" + title + ".\n\nSign in to MRMS to see the details"
+                        + (portal.isBlank() ? "." : ": " + portal + link) + "\n\n"
+                        + "This is an automatic message from the Medical Reimbursement Management System. "
+                        + "Please do not reply.";
+                outbox.save(new OutboundMessage(OutboundMessage.Channel.EMAIL, userId, a.email(), "MRMS: " + title,
+                        body, now));
+            }
+            if (channels.smsEnabled() && a.mobile() != null && !a.mobile().isBlank()) {
+                String sms = "MRMS: " + title + ". Sign in to MRMS for details.";
+                outbox.save(new OutboundMessage(OutboundMessage.Channel.SMS, userId, a.mobile(), title,
+                        sms.length() > 300 ? sms.substring(0, 300) : sms, now));
+            }
+        });
     }
 
     // ------------------------------------------------------------------

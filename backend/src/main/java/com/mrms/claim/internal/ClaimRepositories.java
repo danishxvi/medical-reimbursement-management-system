@@ -17,6 +17,8 @@ interface ClaimRepository extends JpaRepository<Claim, Long> {
 
     List<Claim> findByEmployeeUserIdOrderByCreatedAtDesc(Long employeeUserId);
 
+    List<Claim> findByStatusIn(java.util.Collection<ClaimStatus> statuses);
+
     // ---------------- Queues (seniority order) ----------------
 
     List<Claim> findBySchoolIdAndStatusOrderByFirstSubmittedAtAscIdAsc(Long schoolId, ClaimStatus status);

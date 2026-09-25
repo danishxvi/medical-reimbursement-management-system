@@ -19,7 +19,9 @@ public record MrmsProperties(
         Demo demo,
         Documents documents,
         Antivirus antivirus,
-        Esign esign) {
+        Esign esign,
+        Jobs jobs,
+        Notify notifications) {
 
     public record Cors(List<String> allowedOrigins) {
     }
@@ -39,12 +41,29 @@ public record MrmsProperties(
     }
 
     /** Service level targets in days for each queue. */
+    /**
+     * Time limits in days for each queue, and when the watch acts on them.
+     *
+     * @param reminderPercent  share of the limit after which the officials are reminded (default 80)
+     * @param escalationFactor multiple of the limit after which it goes to the zonal office (default 2)
+     */
     public record Sla(
             int hosDays,
             int paoAuditDays,
             int sanctionDays,
             int pharmacistDays,
-            int medicalOfficerDays) {
+            int medicalOfficerDays,
+            int reminderPercent,
+            int escalationFactor) {
+
+        public Sla {
+            if (reminderPercent <= 0 || reminderPercent >= 100) {
+                reminderPercent = 80;
+            }
+            if (escalationFactor < 2) {
+                escalationFactor = 2;
+            }
+        }
     }
 
     public record Claim(int submissionWindowDays, int maxItems) {
@@ -89,6 +108,40 @@ public record MrmsProperties(
     public Esign esign() {
         return esign == null ? new Esign("password", null, null, null, null, "eSignRequest", "eSignResponse", null, null,
                 null, null, null, false, 10) : esign;
+    }
+
+    /** Background jobs (time limit watch, message sending). Off in tests, which run them by hand. */
+    public record Jobs(boolean enabled) {
+    }
+
+    /**
+     * E-mail and SMS delivery. Each channel's mode is off, log (development:
+     * written to the log only) or smtp / http.
+     *
+     * @param portalUrl address of the portal, used in message links
+     */
+    public record Notify(String portalUrl, Email email, Sms sms) {
+
+        public record Email(String mode, String from) {
+        }
+
+        /**
+         * @param urlTemplate gateway address with {mobile}, {message} and {templateId} placeholders
+         * @param templateId  DLT registered template id (required for SMS in India)
+         */
+        public record Sms(String mode, String urlTemplate, String templateId) {
+        }
+    }
+
+    public Jobs jobs() {
+        return jobs == null ? new Jobs(true) : jobs;
+    }
+
+    public Notify notifications() {
+        Notify n = notifications == null ? new Notify(null, null, null) : notifications;
+        return new Notify(n.portalUrl() == null ? "" : n.portalUrl(),
+                n.email() == null ? new Notify.Email("off", null) : n.email(),
+                n.sms() == null ? new Notify.Sms("off", null, null) : n.sms());
     }
 
     public Documents documents() {

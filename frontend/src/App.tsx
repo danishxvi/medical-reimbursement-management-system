@@ -28,6 +28,7 @@ const AuditPage = lazy(() => import('./pages/admin/AdminPages').then((m) => ({ d
 const ProfilePage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.ProfilePage })))
 const NotificationsPage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.NotificationsPage })))
 const RatesPage = lazy(() => import('./pages/admin/RatesPage'))
+const OversightPage = lazy(() => import('./pages/oversight/OversightPage'))
 const EsignCompletePage = lazy(() => import('./pages/help/EsignCompletePage'))
 const EsignLaunchPage = lazy(() => import('./pages/help/EsignLaunchPage'))
 const GuidePage = lazy(() => import('./pages/help/GuidePage'))
@@ -108,6 +109,7 @@ export const router = createBrowserRouter([
           { path: 'admin/organisation', element: only(['ADMIN'], <OrganisationPage />) },
           { path: 'admin/audit', element: only(['ADMIN'], <AuditPage />) },
           { path: 'admin/rates', element: only(['ADMIN'], <RatesPage />) },
+          { path: 'oversight', element: only(['OVERSIGHT', 'ADMIN'], <OversightPage />) },
           { path: '*', element: <S><NotFoundPage /></S> },
         ],
       },

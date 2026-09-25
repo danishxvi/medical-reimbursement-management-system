@@ -154,6 +154,16 @@ class NacRequest {
         this.updatedAt = now;
     }
 
+    /** Time limit passed while held: back to the queue so a colleague can take it. */
+    boolean releaseOverdue(NacStatus stage, Instant stageEntered, Instant now) {
+        if (status != stage || assignedTo == null || stageEnteredAt == null || !stageEnteredAt.equals(stageEntered)) {
+            return false;
+        }
+        this.assignedTo = null;
+        this.updatedAt = now;
+        return true;
+    }
+
     /** Pharmacist has marked every item: forward to the Medical Officer. */
     void completePharmacistReview(Long pharmacistUserId, String remarks, Instant now) {
         require(status == NacStatus.PENDING_PHARMACIST, "This request is not with the pharmacist");

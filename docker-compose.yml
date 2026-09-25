@@ -71,6 +71,16 @@ services:
       MRMS_AV_HOST: clamav
       MRMS_AV_PORT: "3310"
       MRMS_PUBLIC_BASE_URL: ${MRMS_PUBLIC_BASE_URL:-}
+      # E-mail and SMS (off by default); see docs/16-deadlines-and-notifications.md
+      MRMS_MAIL_MODE: ${MRMS_MAIL_MODE:-off}
+      MRMS_MAIL_FROM: ${MRMS_MAIL_FROM:-}
+      SPRING_MAIL_HOST: ${SPRING_MAIL_HOST:-}
+      SPRING_MAIL_PORT: ${SPRING_MAIL_PORT:-587}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME:-}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD:-}
+      MRMS_SMS_MODE: ${MRMS_SMS_MODE:-off}
+      MRMS_SMS_URL_TEMPLATE: ${MRMS_SMS_URL_TEMPLATE:-}
+      MRMS_SMS_TEMPLATE_ID: ${MRMS_SMS_TEMPLATE_ID:-}
       # Signing: password (default) or esign; eSign needs the ASP registration values below
       MRMS_SIGNING_MODE: ${MRMS_SIGNING_MODE:-password}
       MRMS_ESP_NAME: ${MRMS_ESP_NAME:-}

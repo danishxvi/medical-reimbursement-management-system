@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Link, useNavigate } from 'react-router'
+import { Link, Navigate, useNavigate } from 'react-router'
 import { api } from '../api/client'
 import type { ClaimSnapshot, ClaimStatus, ClaimSummary, Dashboard, NacSummary } from '../api/types'
 import { useMe } from '../auth/AuthContext'
@@ -32,6 +32,9 @@ function firstName(fullName: string): string {
 export default function DashboardPage() {
   const me = useMe()
   const { data, isLoading } = useQuery({ queryKey: ['dashboard'], queryFn: () => api.get<Dashboard>('/api/dashboard') })
+
+  // The oversight officer's home is the time limit screen
+  if (me.role === 'OVERSIGHT') return <Navigate to="/oversight" replace />
 
   if (isLoading || !data) {
     return (
@@ -66,6 +69,7 @@ const DESCRIPTIONS: Record<string, string> = {
   PAO_AUDITOR: 'Scrutinise forwarded claims item by item and recommend them for sanction.',
   PAO_OFFICER: 'Sanction scrutinised claims, record budget allocations and release payments oldest first.',
   ADMIN: 'Manage accounts and master data, and watch service levels across the system.',
+  OVERSIGHT: 'Follow up claims and certificates that miss their time limits in your zone.',
 }
 
 function DashboardActions({ role }: { role: string }) {

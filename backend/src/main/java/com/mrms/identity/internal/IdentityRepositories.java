@@ -33,6 +33,9 @@ interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
     @Query("select u.id from UserAccount u where u.role = :role and u.enabled = true")
     List<Long> findActiveIds(@Param("role") Role role);
 
+    @Query("select u.id from UserAccount u where u.role = :role and u.enabled = true and u.zone = :zone")
+    List<Long> findActiveIdsInZone(@Param("role") Role role, @Param("zone") String zone);
+
     @Query("""
             select u from UserAccount u
             where (:role is null or u.role = :role)

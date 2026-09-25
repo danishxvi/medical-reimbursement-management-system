@@ -87,14 +87,14 @@ function navFor(role: Role): NavGroup[] {
             { to: '/admin/employees', label: 'Employees', icon: <Icon.User /> },
             { to: '/admin/organisation', label: 'Offices and schools', icon: <Icon.Building /> },
             { to: '/admin/rates', label: 'DGEHS rate lists', icon: <Icon.Rupee /> },
+            { to: '/oversight', label: 'Time limits', icon: <Icon.Clock /> },
             { to: '/admin/audit', label: 'Audit trail', icon: <Icon.Audit /> },
           ],
         },
       ]
     case 'OVERSIGHT':
       return [
-        { title: 'Overview', items: [home] },
-        { title: 'Oversight', items: [{ to: '/oversight', label: 'Escalations', icon: <Icon.Clock /> }] },
+        { title: 'Oversight', items: [{ to: '/oversight', label: 'Time limits', icon: <Icon.Clock /> }] },
         { title: 'Account', items: [alerts] },
       ]
   }

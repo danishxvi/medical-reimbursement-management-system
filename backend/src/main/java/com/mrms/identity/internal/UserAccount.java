@@ -50,6 +50,9 @@ class UserAccount {
     @Column(name = "pao_id")
     private Long paoId;
 
+    /** Education zone, set only for the Zonal Oversight role. */
+    private String zone;
+
     @Column(nullable = false)
     private boolean enabled;
 
@@ -87,7 +90,7 @@ class UserAccount {
     }
 
     UserAccount(String username, String passwordHash, Role role, String fullName, String email, String mobile,
-                Long schoolId, Long dispensaryId, Long paoId, boolean mustChangePassword, Instant now) {
+                Long schoolId, Long dispensaryId, Long paoId, String zone, boolean mustChangePassword, Instant now) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.role = role;
@@ -97,6 +100,7 @@ class UserAccount {
         this.schoolId = schoolId;
         this.dispensaryId = dispensaryId;
         this.paoId = paoId;
+        this.zone = zone;
         this.enabled = true;
         this.mustChangePassword = mustChangePassword;
         this.passwordChangedAt = now;
@@ -164,7 +168,7 @@ class UserAccount {
     }
 
     AccountSummary toSummary(Instant now) {
-        return new AccountSummary(id, username, fullName, role, email, mobile, schoolId, dispensaryId, paoId,
+        return new AccountSummary(id, username, fullName, role, email, mobile, schoolId, dispensaryId, paoId, zone,
                 enabled, isLocked(now), lastLoginAt);
     }
 

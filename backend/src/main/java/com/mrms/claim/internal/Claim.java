@@ -312,6 +312,16 @@ class Claim {
         this.updatedAt = now;
     }
 
+    /** Time limit passed while held: back to the queue so a colleague can take it. */
+    boolean releaseOverdue(ClaimStatus stage, Instant stageEntered, Instant now) {
+        if (status != stage || assignedTo == null || stageEnteredAt == null || !stageEnteredAt.equals(stageEntered)) {
+            return false;
+        }
+        this.assignedTo = null;
+        this.updatedAt = now;
+        return true;
+    }
+
     // ------------------------------------------------------------------
     // Head of School
     // ------------------------------------------------------------------

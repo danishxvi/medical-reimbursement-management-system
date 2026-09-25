@@ -59,7 +59,7 @@ class UserAdminController {
                     "Employees are added from the Employees screen so that their service profile is created");
         }
         return accounts.create(new NewAccount(body.username(), body.fullName(), body.role(), body.email(),
-                body.mobile(), body.schoolId(), body.dispensaryId(), body.paoId(), null, true));
+                body.mobile(), body.schoolId(), body.dispensaryId(), body.paoId(), body.zone(), null, true));
     }
 
     @PostMapping("/{id}/reset-password")
@@ -93,6 +93,7 @@ class UserAdminController {
             @Pattern(regexp = "^$|^[6-9][0-9]{9}$", message = "Enter a 10 digit mobile number") String mobile,
             Long schoolId,
             Long dispensaryId,
-            Long paoId) {
+            Long paoId,
+            @Size(max = 80) String zone) {
     }
 }

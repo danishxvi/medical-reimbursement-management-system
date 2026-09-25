@@ -193,6 +193,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/profile/**").hasRole("EMPLOYEE")
                         .requestMatchers("/api/budget/school/**").hasRole("HOS")
                         .requestMatchers("/api/budget/pao/**").hasAnyRole("PAO_AUDITOR", "PAO_OFFICER")
+                        .requestMatchers("/api/oversight/**").hasAnyRole("OVERSIGHT", "ADMIN")
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll())
                 .formLogin(form -> form.disable())

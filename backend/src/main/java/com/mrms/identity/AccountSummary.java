@@ -15,6 +15,7 @@ public record AccountSummary(
         Long schoolId,
         Long dispensaryId,
         Long paoId,
+        String zone,
         boolean enabled,
         boolean locked,
         Instant lastLoginAt) {

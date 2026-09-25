@@ -71,6 +71,12 @@
             <artifactId>spring-boot-starter-session-jdbc</artifactId>
         </dependency>
 
+        <!-- E-mail notifications (SMTP), used only when configured -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <!-- Printable claim PDF -->
         <dependency>
             <groupId>com.github.librepdf</groupId>

@@ -254,8 +254,8 @@ const OVERSIGHT: Guide = {
     {
       title: 'Escalations',
       icon: 'clock',
-      body: ['See every overdue item in your zone with who holds it and for how long. Send a reminder in one click; each reminder is recorded.'],
-      where: 'Menu: Oversight, Escalations',
+      body: ['See every overdue item in your zone with who holds it and for how long. Send a reminder in one click; each reminder is recorded, at most one an hour per record.'],
+      where: 'Menu: Oversight, Time limits',
     },
     {
       title: 'Performance',

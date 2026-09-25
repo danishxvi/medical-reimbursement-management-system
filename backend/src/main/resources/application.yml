@@ -67,6 +67,10 @@ management:
   endpoint:
     health:
       show-details: never
+  health:
+    # Mail delivery problems show in the outbox (retries, FAILED), not as the whole application being down
+    mail:
+      enabled: false
 
 logging:
   level:
@@ -97,6 +101,24 @@ mrms:
     sanction-days: 3
     pharmacist-days: 2
     medical-officer-days: 2
+    # Remind at 80% of a limit, escalate to the zonal office at twice the limit
+    reminder-percent: 80
+    escalation-factor: 2
+    check-interval: PT15M
+  jobs:
+    enabled: true
+  notifications:
+    portal-url: ${MRMS_PUBLIC_BASE_URL:}
+    dispatch-interval: PT30S
+    # off, log or smtp. For smtp also set SPRING_MAIL_HOST, SPRING_MAIL_PORT, SPRING_MAIL_USERNAME, SPRING_MAIL_PASSWORD
+    email:
+      mode: ${MRMS_MAIL_MODE:off}
+      from: ${MRMS_MAIL_FROM:}
+    # off, log or http. The template takes {mobile}, {message} and {templateId} (DLT template id)
+    sms:
+      mode: ${MRMS_SMS_MODE:off}
+      url-template: ${MRMS_SMS_URL_TEMPLATE:}
+      template-id: ${MRMS_SMS_TEMPLATE_ID:}
   claim:
     # DGEHS: claim must be submitted within three months of treatment end
     submission-window-days: 90

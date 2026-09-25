@@ -27,6 +27,12 @@ mrms:
     encryption-key: ZGV2LW9ubHkta2V5LWRvLW5vdC11c2UtaW4tcHJvZCE=
   demo:
     seed: true
+  notifications:
+    # Messages are written to the log instead of being sent
+    email:
+      mode: log
+    sms:
+      mode: log
   esign:
     # Aadhaar eSign against the built in simulator (OTP 123456). Set MRMS_SIGNING_MODE=password to sign with passwords.
     mode: ${MRMS_SIGNING_MODE:esign}

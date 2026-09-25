@@ -94,6 +94,7 @@ export function UsersPage() {
     u.schoolId ? offices.schools.find((s) => s.id === u.schoolId)?.name
       : u.dispensaryId ? offices.dispensaries.find((d) => d.id === u.dispensaryId)?.name
         : u.paoId ? offices.paos.find((p) => p.id === u.paoId)?.name
+          : u.zone ? u.zone
           : 'Directorate'
 
   return (
@@ -165,8 +166,11 @@ export function UsersPage() {
 function CreateOfficial({ open, onClose, offices, onCreated }: { open: boolean; onClose: () => void; offices: ReturnType<typeof useOffices>; onCreated: (a: CreatedAccount) => void }) {
   const { register, watch, handleSubmit, reset } = useForm({ defaultValues: { username: '', fullName: '', role: 'HOS' as Role, email: '', mobile: '', officeId: '' } })
   const role = watch('role')
-  const scope = role === 'HOS' ? 'school' : role === 'PHARMACIST' || role === 'MEDICAL_OFFICER' ? 'dispensary' : role === 'ADMIN' ? null : 'pao'
+  const scope =
+    role === 'HOS' ? 'school' : role === 'PHARMACIST' || role === 'MEDICAL_OFFICER' ? 'dispensary' : role === 'ADMIN' ? null : role === 'OVERSIGHT' ? 'zone' : 'pao'
   const options = scope === 'school' ? offices.schools : scope === 'dispensary' ? offices.dispensaries : scope === 'pao' ? offices.paos : []
+  // Zones are those used by the schools on record
+  const zones = [...new Set(offices.schools.map((s) => s.zone).filter((z): z is string => !!z))].sort()
   const create = useMutation({
     mutationFn: (v: { username: string; fullName: string; role: Role; email: string; mobile: string; officeId: string }) =>
       api.post<CreatedAccount>('/api/admin/users', {
@@ -174,6 +178,7 @@ function CreateOfficial({ open, onClose, offices, onCreated }: { open: boolean; 
         schoolId: scope === 'school' ? Number(v.officeId) : null,
         dispensaryId: scope === 'dispensary' ? Number(v.officeId) : null,
         paoId: scope === 'pao' ? Number(v.officeId) : null,
+        zone: scope === 'zone' ? v.officeId : null,
       }),
     onSuccess: (a) => { reset(); onCreated(a) },
   })
@@ -181,7 +186,8 @@ function CreateOfficial({ open, onClose, offices, onCreated }: { open: boolean; 
     <Modal open={open} title="New official account" onClose={onClose} footer={<><Button onClick={onClose}>Cancel</Button><Button variant="primary" loading={create.isPending} onClick={handleSubmit((v) => create.mutate(v))}>Create</Button></>}>
       <form className="grid grid-2" onSubmit={(e) => e.preventDefault()}>
         <SelectField label="Role" {...register('role')} options={(Object.keys(ROLE_LABELS) as Role[]).filter((r) => r !== 'EMPLOYEE').map((r) => ({ value: r, label: ROLE_LABELS[r] }))} />
-        {scope && <SelectField label={scope === 'school' ? 'School' : scope === 'dispensary' ? 'Dispensary' : 'PAO'} {...register('officeId', { required: true })} placeholder="Select" options={options.map((o) => ({ value: String(o.id), label: `${o.name} (${o.code})` }))} />}
+        {scope === 'zone' && <SelectField label="Zone" {...register('officeId', { required: true })} placeholder="Select" options={zones.map((z) => ({ value: z, label: z }))} />}
+        {scope && scope !== 'zone' && <SelectField label={scope === 'school' ? 'School' : scope === 'dispensary' ? 'Dispensary' : 'PAO'} {...register('officeId', { required: true })} placeholder="Select" options={options.map((o) => ({ value: String(o.id), label: `${o.name} (${o.code})` }))} />}
         <TextField label="Login ID" required maxLength={40} {...register('username', { required: true })} />
         <TextField label="Full name" required maxLength={120} {...register('fullName', { required: true })} />
         <TextField label="E-mail" type="email" maxLength={150} {...register('email')} />

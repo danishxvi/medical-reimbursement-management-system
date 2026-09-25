@@ -13,7 +13,9 @@ public enum Role {
     MEDICAL_OFFICER("Medical Officer", OfficeScope.DISPENSARY),
     PAO_AUDITOR("PAO Auditor", OfficeScope.PAO),
     PAO_OFFICER("PAO Officer", OfficeScope.PAO),
-    ADMIN("Administrator", OfficeScope.NONE);
+    ADMIN("Administrator", OfficeScope.NONE),
+    /** Deputy Director of Education for a zone: follows up delays, sees status and dates, never documents. */
+    OVERSIGHT("Zonal Oversight Officer", OfficeScope.ZONE);
 
     private final String label;
     private final OfficeScope scope;
@@ -36,5 +38,5 @@ public enum Role {
         return "ROLE_" + name();
     }
 
-    public enum OfficeScope { SCHOOL, DISPENSARY, PAO, NONE }
+    public enum OfficeScope { SCHOOL, DISPENSARY, PAO, ZONE, NONE }
 }

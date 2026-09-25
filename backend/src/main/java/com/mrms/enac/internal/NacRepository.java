@@ -15,6 +15,8 @@ interface NacRepository extends JpaRepository<NacRequest, Long> {
 
     List<NacRequest> findByEmployeeUserIdOrderByCreatedAtDesc(Long employeeUserId);
 
+    List<NacRequest> findByStatusIn(Collection<NacStatus> statuses);
+
     /** The whole queue of a stage, oldest first (seniority order). */
     List<NacRequest> findByDispensaryIdAndStatusOrderByQueueSinceAscIdAsc(Long dispensaryId, NacStatus status);
 

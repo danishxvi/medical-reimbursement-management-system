@@ -159,7 +159,8 @@ class AccountService implements Accounts {
         String password = cmd.initialPassword() != null ? cmd.initialPassword() : policy.generateTemporary();
         UserAccount account = new UserAccount(username, encoder.encode(password), cmd.role(), cmd.fullName().trim(),
                 blankToNull(cmd.email()), blankToNull(cmd.mobile()),
-                cmd.schoolId(), cmd.dispensaryId(), cmd.paoId(), cmd.mustChangePassword(), clock.instant());
+                cmd.schoolId(), cmd.dispensaryId(), cmd.paoId(), blankToNull(cmd.zone()), cmd.mustChangePassword(),
+                clock.instant());
         accounts.save(account);
         audit.record("ACCOUNT_CREATED", "USER", account.getId(), "Role " + cmd.role() + ", login " + username);
         return new CreatedAccount(account.getId(), username, cmd.initialPassword() == null ? password : null);
@@ -171,6 +172,8 @@ class AccountService implements Accounts {
             case SCHOOL -> cmd.schoolId() != null && cmd.dispensaryId() == null && cmd.paoId() == null;
             case DISPENSARY -> cmd.dispensaryId() != null && cmd.schoolId() == null && cmd.paoId() == null;
             case PAO -> cmd.paoId() != null && cmd.schoolId() == null && cmd.dispensaryId() == null;
+            case ZONE -> cmd.zone() != null && !cmd.zone().isBlank()
+                    && cmd.schoolId() == null && cmd.dispensaryId() == null && cmd.paoId() == null;
             case NONE -> cmd.schoolId() == null && cmd.dispensaryId() == null && cmd.paoId() == null;
         };
         if (!ok) {
@@ -202,8 +205,20 @@ class AccountService implements Accounts {
             case SCHOOL -> accounts.findActiveIdsInSchool(role, officeId);
             case DISPENSARY -> accounts.findActiveIdsInDispensary(role, officeId);
             case PAO -> accounts.findActiveIdsInPao(role, officeId);
-            case NONE -> accounts.findActiveIds(role);
+            case ZONE, NONE -> accounts.findActiveIds(role);
         };
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean usernameExists(String username) {
+        return accounts.existsByUsernameIgnoreCase(normalise(username));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Long> activeOversightIds(String zone) {
+        return zone == null || zone.isBlank() ? List.of() : accounts.findActiveIdsInZone(Role.OVERSIGHT, zone);
     }
 
     /**

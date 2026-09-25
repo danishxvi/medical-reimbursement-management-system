@@ -45,7 +45,7 @@ class AdminBootstrap implements ApplicationRunner {
                     + PasswordPolicy.MIN_LENGTH + " characters");
         }
         accounts.create(new NewAccount(cfg.adminUsername(), "System Administrator", Role.ADMIN,
-                null, null, null, null, null, cfg.adminPassword(), true));
+                null, null, null, null, null, null, cfg.adminPassword(), true));
         log.info("Initial administrator account created; password change is required at first login.");
     }
 
