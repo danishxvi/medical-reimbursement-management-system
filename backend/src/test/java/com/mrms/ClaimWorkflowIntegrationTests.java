@@ -217,7 +217,25 @@ class ClaimWorkflowIntegrationTests {
         // The employee was told at each step
         employee.get("/api/notifications").andExpect(jsonPath("$[0].title", containsString("paid")));
 
-        // ---------------- 6. Audit chain is intact ----------------
+        // ---------------- 6. Printable claim ----------------
+        MvcResult pdf = employee.get("/api/claims/" + claimId + "/pdf")
+                .andExpect(status().isOk())
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .contentType("application/pdf"))
+                .andReturn();
+        org.openpdf.text.pdf.PdfReader reader = new org.openpdf.text.pdf.PdfReader(pdf.getResponse().getContentAsByteArray());
+        StringBuilder text = new StringBuilder();
+        org.openpdf.text.pdf.parser.PdfTextExtractor extractor = new org.openpdf.text.pdf.parser.PdfTextExtractor(reader);
+        for (int page = 1; page <= reader.getNumberOfPages(); page++) {
+            text.append(extractor.getTextFromPage(page)).append(System.lineSeparator());
+        }
+        org.assertj.core.api.Assertions.assertThat(text.toString())
+                .contains("Annexure I", "Annexure II", "Calculation sheet", "Certificate by Head of School",
+                        "Index of attached documents", "Record fingerprint");
+        // Anyone outside the claim's offices cannot print it either
+        otherHos.get("/api/claims/" + claimId + "/pdf").andExpect(status().isNotFound());
+
+        // ---------------- 7. Audit chain is intact ----------------
         Api admin = Api.login(mvc, "ADMIN");
         admin.get("/api/admin/audit/verify").andExpect(jsonPath("$.valid").value(true));
         // Administrators get aggregates, never individual medical claims

@@ -195,6 +195,23 @@ class ClaimSupport {
                 blankToNull(remarks)));
     }
 
+    /**
+     * Signatures on the claim for the printed copy. Signing actions are
+     * confirmed with the signer's password (step up) unless Aadhaar eSign
+     * is configured; either way the name and time come from the timeline.
+     */
+    List<ClaimPdf.SignatureLine> signatureLines(Claim claim) {
+        Map<String, String> purposes = Map.of(
+                "FORWARDED_BY_HOS", "Head of School certificate",
+                "SANCTIONED", "Sanction",
+                "REJECTED", "Rejection");
+        return timeline.findByClaimIdOrderByOccurredAtAscIdAsc(claim.getId()).stream()
+                .filter(e -> purposes.containsKey(e.getAction()))
+                .map(e -> new ClaimPdf.SignatureLine(purposes.get(e.getAction()), e.getActorName(),
+                        "Password confirmation", e.getOccurredAt(), e.getActorRole()))
+                .toList();
+    }
+
     /** Audit only entry for actions that do not change the status (take, release). */
     void auditOnly(Claim claim, String action) {
         audit.record("CLAIM_" + action, "CLAIM", claim.getId(), claim.getClaimNumber());

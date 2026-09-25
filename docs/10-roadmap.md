@@ -25,7 +25,7 @@
 
 - [ ] Aadhaar based e-Sign (or DSC) for the HoS certificate, MO countersignature and sanction, replacing password confirmation
 - [ ] SMS and e-mail notifications (NIC SMS gateway), including SLA breach alerts to the next level
-- [ ] Printable PDF of the complete claim (Annexure I, Annexure II, calculation sheet, undertaking, HoS certificate) for records
+- [x] Printable PDF of the complete claim (Annexure I, Annexure II, calculation sheet, undertaking, HoS certificate, PAO decision, history, document index with SHA-256)
 - [x] DGEHS rate master so the calculation sheet is pre filled with approved rates ([rate list](14-rate-list.md))
 - [ ] Escalation: claims past SLA move to the Zonal or District Deputy Director's view
 - [ ] Employee grievance and dispute of an e-NAC item decision

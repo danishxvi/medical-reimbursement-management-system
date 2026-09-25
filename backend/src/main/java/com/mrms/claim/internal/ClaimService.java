@@ -115,6 +115,26 @@ class ClaimService {
         return support.view(claim, allowedActions(CurrentUser.get(), claim));
     }
 
+    /** The complete claim as a printable PDF, for anyone who may see the claim. */
+    @Transactional
+    PrintedClaim pdf(Long id) {
+        Claim claim = support.visibleClaim(id);
+        ClaimView view = support.view(claim, List.of());
+        String fingerprint = ClaimFingerprint.of(view);
+        Map<UUID, DocumentMeta> metas = documents.metas(view.documentNames().keySet()).stream()
+                .collect(Collectors.toMap(DocumentMeta::id, Function.identity()));
+        byte[] pdf = ClaimPdf.render(new ClaimPdf.Input(view, claim.getUndertakingAcceptedAt(),
+                ClaimTexts.UNDERTAKING, ClaimTexts.HOS_CERTIFICATE, metas, support.signatureLines(claim),
+                fingerprint, support.now(), CurrentUser.get().fullName()));
+        support.auditOnly(claim, "PDF_DOWNLOADED");
+        String name = (claim.getClaimNumber() == null ? "DRAFT-" + claim.getId() : claim.getClaimNumber().replace('/', '-'))
+                + ".pdf";
+        return new PrintedClaim(name, pdf);
+    }
+
+    record PrintedClaim(String fileName, byte[] content) {
+    }
+
     @Transactional
     NamedContent document(Long claimId, UUID documentId) {
         Claim claim = support.visibleClaim(claimId);

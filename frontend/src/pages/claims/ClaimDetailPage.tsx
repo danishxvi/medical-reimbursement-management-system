@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { api } from '../../api/client'
+import { api, openDocument } from '../../api/client'
 import type { Claim } from '../../api/types'
 import { ClaimAmounts, ClaimDetails, ClaimTracker } from '../../components/claim/ClaimParts'
 import { Button } from '../../components/ui/Button'
@@ -18,6 +18,7 @@ export default function ClaimDetailPage() {
   const toast = useToast()
   const queryClient = useQueryClient()
   const [confirm, setConfirm] = useState<'WITHDRAW' | 'DELETE' | null>(null)
+  const [printing, setPrinting] = useState(false)
 
   const { data: claim, isLoading, error } = useQuery({
     queryKey: ['claim', id],
@@ -72,6 +73,18 @@ export default function ClaimDetailPage() {
           <>
             <Button icon={<Icon.Back />} onClick={() => navigate(-1)}>
               Back
+            </Button>
+            <Button
+              icon={<Icon.Download />}
+              loading={printing}
+              onClick={() => {
+                setPrinting(true)
+                openDocument(`/api/claims/${claim.id}/pdf`, (claim.claimNumber ?? 'DRAFT-' + claim.id).replace(/\//g, '-') + '.pdf', true)
+                  .catch((e) => toast.error(e instanceof Error ? e.message : 'Could not create the PDF'))
+                  .finally(() => setPrinting(false))
+              }}
+            >
+              Download PDF
             </Button>
             {can('DELETE') && (
               <Button variant="danger" icon={<Icon.Trash />} onClick={() => setConfirm('DELETE')}>

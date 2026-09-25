@@ -17,7 +17,10 @@ import com.mrms.claim.internal.ClaimDtos.SubmitRequest;
 import com.mrms.shared.domain.Role;
 import com.mrms.shared.security.CurrentUser;
 import jakarta.validation.Valid;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -103,6 +106,20 @@ class ClaimController {
     @PreAuthorize("hasAnyRole('EMPLOYEE','HOS','PAO_AUDITOR','PAO_OFFICER')")
     ClaimView get(@PathVariable Long id) {
         return claims.get(id);
+    }
+
+    /** The complete claim as a printable PDF (forms, calculation sheet, certificates, document index). */
+    @GetMapping("/{id}/pdf")
+    @PreAuthorize("hasAnyRole('EMPLOYEE','HOS','PAO_AUDITOR','PAO_OFFICER')")
+    ResponseEntity<byte[]> pdf(@PathVariable Long id) {
+        ClaimService.PrintedClaim printed = claims.pdf(id);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, ContentDisposition.attachment()
+                        .filename(printed.fileName()).build().toString())
+                .header("Content-Security-Policy", "default-src 'none'; sandbox")
+                .header(HttpHeaders.CACHE_CONTROL, "no-store")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(printed.content());
     }
 
     @GetMapping("/{id}/documents/{documentId}")
