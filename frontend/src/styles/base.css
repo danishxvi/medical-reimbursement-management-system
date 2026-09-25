@@ -6,7 +6,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  border-radius: var(--radius);
 }
 
 html {
@@ -66,8 +65,8 @@ textarea {
 }
 
 ::selection {
-  background: var(--invert);
-  color: var(--invert-ink);
+  background: var(--accent);
+  color: #1c140d;
 }
 
 :focus-visible {

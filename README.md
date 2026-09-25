@@ -35,7 +35,7 @@ Details: [proposed solution](docs/02-proposed-solution.md) and [workflow](docs/0
 ## Architecture at a glance
 
 - **Backend:** Java 21, Spring Boot 4, modular monolith with Spring Modulith verified boundaries, Spring Security 7, JPA, Flyway.
-- **Frontend:** React 19, TypeScript, Vite, TanStack Query, React Router, React Hook Form, Motion; monochrome, boxy, animated design system with dark mode.
+- **Frontend:** React 19, TypeScript, Vite, TanStack Query, React Router, React Hook Form, Motion; saffron and white design system with rounded boxes and animation on every element.
 - **Data:** PostgreSQL in production, H2 (PostgreSQL mode) for zero setup development.
 - **Delivery:** Docker Compose (non root, read only containers), GitHub Actions CI, CodeQL, Dependabot.
 

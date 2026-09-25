@@ -1,5 +1,6 @@
 /* ==========================================================================
    Application shell and grids
+   Rounded boxes on a warm white page, deep saffron for the active state.
    ========================================================================== */
 
 .shell {
@@ -19,19 +20,26 @@
   align-items: center;
   gap: var(--s-3);
   padding: 0 var(--s-4);
-  background: var(--invert);
-  color: var(--invert-ink);
-  border-bottom: 1px solid var(--invert);
+  background: linear-gradient(135deg, var(--line-strong), var(--invert) 70%);
+  color: #ffffff;
   text-decoration: none;
 }
 
 .brand-mark {
-  width: 28px;
-  height: 28px;
-  border: 1px solid currentColor;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--invert);
   display: grid;
   place-items: center;
   flex: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-mid) var(--ease-out);
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(90deg);
 }
 
 .brand-mark svg {
@@ -50,7 +58,7 @@
   display: block;
   font-size: 10px;
   letter-spacing: 0.06em;
-  opacity: 0.7;
+  opacity: 0.85;
   text-transform: uppercase;
 }
 
@@ -86,31 +94,31 @@
 
 .header-actions {
   display: flex;
-  align-items: stretch;
-  height: 100%;
+  align-items: center;
+  gap: var(--s-2);
   flex: none;
-}
-
-.header-actions > * {
-  border-left: var(--border);
 }
 
 .icon-btn {
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: var(--header-h);
-  height: 100%;
+  width: 40px;
+  height: 40px;
   background: transparent;
-  border: 0;
+  border: var(--border);
+  border-radius: var(--radius-md);
   cursor: pointer;
   color: var(--ink);
-  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
 }
 
 .icon-btn:hover {
   background: var(--invert);
+  border-color: var(--invert);
   color: var(--invert-ink);
+  transform: translateY(-1px);
 }
 
 .icon-btn svg {
@@ -120,8 +128,9 @@
 
 .icon-btn .dot {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: -6px;
+  right: -6px;
+  border-radius: var(--radius-pill);
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
@@ -138,15 +147,18 @@
   display: flex;
   align-items: center;
   gap: var(--s-3);
-  padding: 0 var(--s-4);
+  padding: 0 var(--s-2);
 }
 
 .user-chip .avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
-  border: var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--invert);
+  font-weight: 600;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
 }
@@ -168,7 +180,7 @@
   grid-area: nav;
   background: var(--surface);
   border-right: var(--border);
-  padding: var(--s-4) 0;
+  padding: var(--s-4) var(--s-3);
   position: sticky;
   top: var(--header-h);
   height: calc(100vh - var(--header-h));
@@ -176,7 +188,7 @@
 }
 
 .nav-section {
-  padding: var(--s-3) var(--s-5) var(--s-2);
+  padding: var(--s-3) var(--s-3) var(--s-2);
   color: var(--muted);
 }
 
@@ -185,16 +197,20 @@
   display: flex;
   align-items: center;
   gap: var(--s-3);
-  padding: 10px var(--s-5);
+  padding: 10px var(--s-3);
+  margin-bottom: 2px;
+  border-radius: var(--radius-md);
   color: var(--ink-2);
   text-decoration: none;
   font-size: var(--text-sm);
-  transition: color var(--t-fast) var(--ease), padding-left var(--t-mid) var(--ease);
+  transition: color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease),
+    padding-left var(--t-mid) var(--ease);
 }
 
 .nav-link:hover {
   color: var(--ink);
-  padding-left: calc(var(--s-5) + 4px);
+  background: var(--surface-2);
+  padding-left: calc(var(--s-3) + 4px);
 }
 
 .nav-link svg {
@@ -210,7 +226,9 @@
 .nav-link .nav-active-bg {
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: var(--invert);
+  box-shadow: var(--shadow-md);
   z-index: 0;
 }
 
@@ -222,8 +240,9 @@
 
 .nav-footer {
   margin-top: var(--s-5);
-  padding: var(--s-4) var(--s-5);
-  border-top: var(--border);
+  padding: var(--s-4);
+  border-radius: var(--radius);
+  background: var(--surface-2);
   font-size: var(--text-xs);
   color: var(--muted);
 }
@@ -245,9 +264,28 @@
   grid-template-columns: 1fr auto;
   align-items: end;
   gap: var(--s-4);
+  position: relative;
   padding-bottom: var(--s-5);
   margin-bottom: var(--s-6);
-  border-bottom: var(--border-strong);
+  border-bottom: var(--border);
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 72px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  animation: accent-grow var(--t-slow) var(--ease-out) both;
+}
+
+@keyframes accent-grow {
+  from {
+    width: 0;
+  }
 }
 
 .page-header .eyebrow {
@@ -317,22 +355,21 @@
   flex-wrap: wrap;
 }
 
-/* Tiles that share borders, forming one boxy block */
-/* Tiles share 1px borders by letting the dark container show through a
-   1px gap. The column count is chosen from the number of tiles (see
-   StatGrid) so rows are always complete and no empty cell shows. */
+/* Tiles: equal rounded cards. The column count is chosen from the number
+   of tiles (see StatGrid) so rows are always complete and symmetric. */
 .tiles {
   /* Components set --cols-base inline; media queries override --cols */
   --cols: var(--cols-base, 4);
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  border: var(--border-strong);
-  background: var(--line-strong);
-  gap: 1px;
+  gap: var(--s-4);
 }
 
 .tiles > * {
   background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
 .span-2 {
@@ -351,8 +388,8 @@
 }
 
 .auth-side {
-  background: var(--invert);
-  color: var(--invert-ink);
+  background: linear-gradient(160deg, var(--line-strong) 0%, var(--invert) 55%, var(--invert-hover) 100%);
+  color: #ffffff;
   padding: var(--s-7);
   display: flex;
   flex-direction: column;
@@ -364,7 +401,7 @@
 .auth-side .grid-art {
   position: absolute;
   inset: 0;
-  --grid-line: color-mix(in srgb, var(--invert-ink) 8%, transparent);
+  --grid-line: rgba(255, 255, 255, 0.08);
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
@@ -381,15 +418,20 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: color-mix(in srgb, var(--invert-ink) 22%, transparent);
-  border: 1px solid color-mix(in srgb, var(--invert-ink) 22%, transparent);
-  /* always 4 cells in 2 x 2, so the gap technique is safe here */
+  gap: var(--s-3);
 }
 
 .auth-side .points > div {
-  background: var(--invert);
   padding: var(--s-4);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transition: background-color var(--t-mid) var(--ease), transform var(--t-mid) var(--ease-out);
+}
+
+.auth-side .points > div:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .auth-side .points strong {
@@ -400,7 +442,7 @@
 
 .auth-side .points span {
   font-size: var(--text-xs);
-  opacity: 0.75;
+  opacity: 0.9;
 }
 
 .auth-main {
@@ -449,7 +491,8 @@
     display: flex;
     overflow-x: auto;
     scrollbar-width: none;
-    padding: 0;
+    gap: var(--s-1);
+    padding: var(--s-2) var(--s-3);
     border-right: 0;
     border-bottom: var(--border);
   }
@@ -465,20 +508,26 @@
   }
 
   .header {
-    padding: 0 0 0 var(--s-4);
+    padding: 0 var(--s-3) 0 var(--s-4);
+  }
+
+  .header-actions {
+    gap: var(--s-1);
   }
 
   .icon-btn {
-    width: 48px;
+    width: 36px;
+    height: 36px;
   }
 
   .nav-link {
     white-space: nowrap;
-    padding: 12px var(--s-4);
+    margin-bottom: 0;
+    padding: 8px var(--s-3);
   }
 
   .nav-link:hover {
-    padding-left: var(--s-4);
+    padding-left: var(--s-3);
   }
 
   .main {
@@ -490,7 +539,7 @@
   }
 
   .auth-page {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .auth-side {
@@ -498,7 +547,7 @@
   }
 
   .page-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .page-actions {
@@ -514,7 +563,8 @@
   .grid-2,
   .grid-3,
   .grid-4 {
-    grid-template-columns: 1fr;
+    /* minmax(0, ...) lets wide tables scroll inside their box instead of widening the page */
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .span-2 {

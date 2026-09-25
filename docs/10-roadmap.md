@@ -18,7 +18,7 @@
 - [x] Hash chained, append only audit trail with verification
 - [x] Global input sanitisation of every JSON string (control and direction characters refused, NFC normalisation)
 - [x] Role dashboards, in app notifications
-- [x] Monochrome, animated, responsive React UI with dark mode
+- [x] Saffron and white, animated, responsive React UI with rounded boxes
 - [x] CI (tests, lint, build, dependency audit, CodeQL), Dependabot, Docker Compose deployment
 
 ## Release 0.2: fit for a pilot

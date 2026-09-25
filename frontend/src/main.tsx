@@ -15,9 +15,6 @@ import './styles/components.css'
 import { ApiError } from './api/client'
 import { router } from './App'
 import { ToastProvider } from './components/ui/Toast'
-import { applyTheme, storedTheme } from './lib/theme'
-
-applyTheme(storedTheme())
 
 const queryClient = new QueryClient({
   defaultOptions: {

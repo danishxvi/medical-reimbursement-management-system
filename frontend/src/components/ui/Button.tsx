@@ -10,7 +10,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode
 }
 
-/** Square button with a fill that sweeps in on hover (see components.css). */
+/** Rounded button with a saffron fill that sweeps in on hover (see components.css). */
 export function Button({ variant = 'default', size = 'md', block, loading, icon, children, className, disabled, ...rest }: Props) {
   const classes = [
     'btn',

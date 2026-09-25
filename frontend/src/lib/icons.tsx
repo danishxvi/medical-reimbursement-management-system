@@ -1,4 +1,4 @@
-/* Minimal square line icons drawn inline (no icon font, no external requests). */
+/* Minimal line icons with rounded ends, drawn inline (no icon font, no external requests). */
 import type { ReactNode, SVGProps } from 'react'
 
 type IconProps = SVGProps<SVGSVGElement>
@@ -10,8 +10,8 @@ function Svg(props: IconProps & { children: ReactNode }) {
       fill="none"
       stroke="currentColor"
       strokeWidth={1.6}
-      strokeLinecap="square"
-      strokeLinejoin="miter"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
       {...props}
     />
@@ -93,17 +93,6 @@ export const Icon = {
   Logout: (p: IconProps) => (
     <Svg {...p}>
       <path d="M14 4H4v16h10M10 12h10M17 8l4 4-4 4" />
-    </Svg>
-  ),
-  Sun: (p: IconProps) => (
-    <Svg {...p}>
-      <rect x="8" y="8" width="8" height="8" />
-      <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />
-    </Svg>
-  ),
-  Moon: (p: IconProps) => (
-    <Svg {...p}>
-      <path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10z" />
     </Svg>
   ),
   Arrow: (p: IconProps) => (

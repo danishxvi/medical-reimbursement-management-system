@@ -159,9 +159,9 @@ export function NotificationsPage() {
               variants={item}
               onClick={() => open(n)}
               className="stat"
-              style={{ minHeight: 0, textAlign: 'left', border: 0, cursor: 'pointer', display: 'grid', gridTemplateColumns: '12px 1fr auto', gap: 16, alignItems: 'start', font: 'inherit' }}
+              style={{ minHeight: 0, textAlign: 'left', cursor: 'pointer', display: 'grid', gridTemplateColumns: '12px 1fr auto', gap: 16, alignItems: 'start', font: 'inherit' }}
             >
-              <span style={{ width: 10, height: 10, marginTop: 6, background: n.read ? 'transparent' : 'currentColor', border: '1px solid currentColor' }} aria-label={n.read ? 'Read' : 'Unread'} />
+              <span style={{ width: 10, height: 10, marginTop: 6, borderRadius: '50%', background: n.read ? 'transparent' : 'currentColor', border: '1px solid currentColor' }} aria-label={n.read ? 'Read' : 'Unread'} />
               <span>
                 <strong style={{ display: 'block' }}>{n.title}</strong>
                 <span className="stat-foot" style={{ fontSize: 'var(--text-sm)' }}>{n.message}</span>

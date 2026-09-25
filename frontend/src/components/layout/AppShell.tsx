@@ -8,8 +8,6 @@ import type { Office, Role } from '../../api/types'
 import { useMe, useAuth } from '../../auth/AuthContext'
 import { initials } from '../../lib/format'
 import { Icon } from '../../lib/icons'
-import { effectiveTheme, saveTheme } from '../../lib/theme'
-import type { Theme } from '../../lib/theme'
 
 interface NavItem {
   to: string
@@ -101,7 +99,6 @@ export function AppShell() {
   const navigate = useNavigate()
   const location = useLocation()
   const outlet = useOutlet()
-  const [theme, setTheme] = useState<Theme>(effectiveTheme())
 
   // Each new page starts at the top
   useEffect(() => {
@@ -115,12 +112,6 @@ export function AppShell() {
     refetchInterval: 60_000,
   })
   const count = unread.data?.count ?? 0
-
-  const toggleTheme = () => {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark'
-    saveTheme(next)
-    setTheme(next)
-  }
 
   return (
     <div className="shell">
@@ -155,11 +146,6 @@ export function AppShell() {
                 </motion.span>
               )}
             </AnimatePresence>
-          </button>
-          <button className="icon-btn" type="button" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Use light theme' : 'Use dark theme'}>
-            <motion.span key={theme} initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} style={{ display: 'grid' }}>
-              {theme === 'dark' ? <Icon.Sun /> : <Icon.Moon />}
-            </motion.span>
           </button>
           <div className="user-chip">
             <span className="avatar" aria-hidden="true">

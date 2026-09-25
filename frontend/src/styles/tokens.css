@@ -1,26 +1,38 @@
 /* ==========================================================================
    Design tokens
-   Monochrome palette, square geometry, 8px spacing grid.
+   One theme only: saffron and white, rounded boxes, 8px spacing grid.
+
+   Two saffrons are used on purpose:
+   - --invert (deep saffron) carries white text and meets WCAG AA (4.6:1);
+   - --accent (bright saffron, #FF9933) is decorative only: focus rings,
+     progress fills, highlights, never small text on white.
    Meaning is never carried by colour alone: statuses also differ by border
-   style and by label text, so the UI stays accessible in greyscale.
+   style and by label text.
    ========================================================================== */
 
 :root {
   /* Surfaces and ink */
-  --bg: #f2f2ef;
+  --bg: #fff7ee;
   --surface: #ffffff;
-  --surface-2: #f8f8f6;
-  --ink: #0b0b0b;
-  --ink-2: #2e2e2e;
-  --muted: #666663;
-  --faint: #9a9a96;
-  --line: #d6d6d1;
-  --line-strong: #0b0b0b;
-  --invert: #0b0b0b;
-  --invert-ink: #fafaf8;
-  --focus: #0b0b0b;
-  --overlay: rgba(11, 11, 11, 0.55);
-  --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(11, 11, 11, 0.06) 6px 7px);
+  --surface-2: #fff4e8;
+  --ink: #2b1d12;
+  --ink-2: #4a3423;
+  --muted: #735a45;
+  --faint: #b39479;
+  --line: #f1dcc6;
+  --line-strong: #e07b00;
+  --invert: #c25400;
+  --invert-hover: #a94700;
+  --invert-ink: #ffffff;
+  --accent: #ff9933;
+  --accent-soft: #ffe9d2;
+  --ring: rgba(255, 153, 51, 0.35);
+  --focus: #c25400;
+  --overlay: rgba(43, 29, 18, 0.5);
+  --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(255, 153, 51, 0.16) 6px 7px);
+  --shadow-sm: 0 1px 2px rgba(120, 60, 0, 0.06), 0 1px 1px rgba(120, 60, 0, 0.04);
+  --shadow-md: 0 12px 32px -14px rgba(120, 60, 0, 0.28);
+  --shadow-lg: 0 24px 56px -20px rgba(120, 60, 0, 0.4);
 
   /* Type */
   --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -43,12 +55,16 @@
   --s-7: 48px;
   --s-8: 64px;
 
-  /* Geometry */
+  /* Geometry: every box has rounded corners, sized by its scale */
   --border: 1px solid var(--line);
   --border-strong: 1px solid var(--line-strong);
-  --radius: 0;
+  --radius: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --radius-xs: 4px;
+  --radius-pill: 999px;
   --sidebar-w: 248px;
-  --header-h: 60px;
+  --header-h: 64px;
   --content-max: 1280px;
 
   /* Motion */
@@ -59,43 +75,4 @@
   --t-slow: 420ms;
 
   color-scheme: light;
-}
-
-/* Dark theme: follows the system unless the user picked a theme */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #0d0d0d;
-    --surface: #141414;
-    --surface-2: #1a1a1a;
-    --ink: #f2f2ef;
-    --ink-2: #d4d4d0;
-    --muted: #9c9c98;
-    --faint: #6b6b68;
-    --line: #2d2d2b;
-    --line-strong: #f2f2ef;
-    --invert: #f2f2ef;
-    --invert-ink: #0b0b0b;
-    --focus: #f2f2ef;
-    --overlay: rgba(0, 0, 0, 0.7);
-    --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(242, 242, 239, 0.07) 6px 7px);
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme='dark'] {
-  --bg: #0d0d0d;
-  --surface: #141414;
-  --surface-2: #1a1a1a;
-  --ink: #f2f2ef;
-  --ink-2: #d4d4d0;
-  --muted: #9c9c98;
-  --faint: #6b6b68;
-  --line: #2d2d2b;
-  --line-strong: #f2f2ef;
-  --invert: #f2f2ef;
-  --invert-ink: #0b0b0b;
-  --focus: #f2f2ef;
-  --overlay: rgba(0, 0, 0, 0.7);
-  --stripe: repeating-linear-gradient(135deg, transparent 0 6px, rgba(242, 242, 239, 0.07) 6px 7px);
-  color-scheme: dark;
 }

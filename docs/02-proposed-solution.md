@@ -57,7 +57,7 @@ flowchart LR
 6. **Draft auto save** so an employee can prepare a claim over several sessions.
 7. **Dashboards per role** with counts, ageing and SLA breaches, and a Directorate view across all schools.
 8. **Security by default** (see [06-security.md](06-security.md)): server side sessions, CSRF protection, Argon2id password hashing, account lockout, rate limiting, strict upload validation, object level authorisation and security headers.
-9. **Accessibility and usability.** Keyboard friendly, high contrast monochrome theme, reduced motion support, plain language labels and inline help.
+9. **Accessibility and usability.** Keyboard friendly, a single high contrast saffron and white theme, reduced motion support, plain language labels and inline help.
 
 ## 2.4 Features planned for later releases
 

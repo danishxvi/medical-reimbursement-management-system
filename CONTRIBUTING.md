@@ -21,6 +21,6 @@ Maintainer: Danish Husain
 
 - Java: 4 space indentation, constructor injection, package private classes inside `internal`, records for DTOs.
 - TypeScript: strict mode, function components, no `any`.
-- UI: use the components in `frontend/src/components/ui` and the tokens in `styles/tokens.css`; keep the monochrome, square visual language; every new element gets a subtle animation that respects reduced motion.
+- UI: use the components in `frontend/src/components/ui` and the tokens in `styles/tokens.css`; keep the saffron and white, rounded box visual language (one theme only); every new element gets a subtle animation that respects reduced motion.
 - Text: plain language; avoid long dashes, use commas, colons or brackets instead.
 - Commits: imperative subject line under 72 characters, body explaining why.

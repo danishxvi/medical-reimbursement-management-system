@@ -2,7 +2,7 @@
 
 **Author:** Danish Husain
 **Status:** living document, updated at the end of every development session
-**Last updated:** 2026-09-25 (release 0.1 plus input sanitisation)
+**Last updated:** 2026-09-25 (release 0.1, input sanitisation, saffron and white theme)
 
 This is the single entry point to the project. It records what is being built, why, the decisions that shape it and where everything lives, so that work can resume after any break without rediscovering context. The detailed documents in [`docs/`](docs) expand on each section; this file links to them and must stay consistent with them.
 
@@ -104,7 +104,7 @@ Argon2id passwords with policy, history and forced first change; lockout and per
 
 ## 8. User interface
 
-Monochrome, minimal, boxy (square corners, shared borders) and symmetric (equal column grids, complete tile rows). Every element has a short animation that switches off under reduced motion. Separate dashboards for each role, dark mode, responsive to phone width, fonts bundled locally. Full system: [UI design system](docs/09-ui-design-system.md).
+A single saffron and white theme: white boxes with rounded edges on a warm white page, deep saffron for active and primary elements. Minimal and symmetric (equal column grids, complete tile rows). Every element has a short animation that switches off under reduced motion. Separate dashboards for each role, responsive to phone width, fonts bundled locally. Full system: [UI design system](docs/09-ui-design-system.md).
 
 ## 9. Conventions
 
@@ -163,6 +163,7 @@ Monochrome, minimal, boxy (square corners, shared borders) and symmetric (equal 
 | 2026-09-24 | Problem statement, proposed solution, backend foundation, e-NAC, claims, budget |
 | 2026-09-25 | Frontend, deployment, CI, full documentation, release 0.1 |
 | 2026-09-25 | Global input sanitisation (ADR 0009), this design document |
+| 2026-09-25 | Saffron and white single theme with rounded boxes; dark mode removed |
 
 ## Acknowledgements
 

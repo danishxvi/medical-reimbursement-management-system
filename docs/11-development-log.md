@@ -32,3 +32,4 @@ Work followed this order:
 | 2026-09-25 | React frontend for all roles |
 | 2026-09-25 | Browser walk through fixes, deployment files, CI, documentation |
 | 2026-09-25 | Global input sanitisation, central design document |
+| 2026-09-25 | Visual refresh: saffron and white single theme, rounded boxes |

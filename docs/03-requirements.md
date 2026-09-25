@@ -95,7 +95,7 @@ Requirement ids are stable and are referenced from tests, commits and the roadma
 | NFR-03 | Integrity | Every action is written to a tamper evident, append only audit trail. |
 | NFR-04 | Availability | First release runs one API instance with sessions in memory; a shared session store for several instances is on the roadmap. Daily database backups with point in time recovery (deployment guide). |
 | NFR-05 | Performance | Target: common pages respond within 1 second at 200 concurrent users on a single instance. |
-| NFR-06 | Usability | Works on phones and desktops; plain language; keyboard accessible; honours reduced motion; WCAG 2.1 AA contrast (monochrome palette). |
+| NFR-06 | Usability | Works on phones and desktops; plain language; keyboard accessible; honours reduced motion; WCAG 2.1 AA contrast (saffron and white palette). |
 | NFR-07 | Maintainability | Modular monolith with verified module boundaries; automated tests in CI. |
 | NFR-08 | Portability | Runs on PostgreSQL in production and on H2 for local development without Docker. |
 | NFR-09 | Auditability | Rules (SLA days, submission window) are configuration, not code. |

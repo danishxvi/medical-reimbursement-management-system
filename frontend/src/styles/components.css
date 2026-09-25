@@ -13,6 +13,7 @@
   min-height: 40px;
   padding: 0 var(--s-4);
   border: var(--border-strong);
+  border-radius: var(--radius-md);
   background: var(--surface);
   color: var(--ink);
   font-size: var(--text-sm);
@@ -23,7 +24,9 @@
   isolation: isolate;
   text-decoration: none;
   white-space: nowrap;
-  transition: color var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
+  box-shadow: var(--shadow-sm);
+  transition: color var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease),
+    box-shadow var(--t-mid) var(--ease), transform var(--t-fast) var(--ease);
 }
 
 .btn::before {
@@ -43,10 +46,14 @@
 
 .btn:hover:not(:disabled) {
   color: var(--invert-ink);
+  border-color: var(--invert);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .btn:active:not(:disabled) {
   transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn:disabled {
@@ -61,20 +68,23 @@
 
 .btn-primary {
   background: var(--invert);
+  border-color: var(--invert);
   color: var(--invert-ink);
 }
 
 .btn-primary::before {
-  background: var(--surface);
+  background: var(--invert-hover);
 }
 
 .btn-primary:hover:not(:disabled) {
-  color: var(--ink);
+  color: var(--invert-ink);
+  border-color: var(--invert-hover);
 }
 
 .btn-ghost {
   border-color: transparent;
   background: transparent;
+  box-shadow: none;
 }
 
 .btn-danger {
@@ -99,6 +109,7 @@
   height: 14px;
   border: 2px solid currentColor;
   border-right-color: transparent;
+  border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
 
@@ -141,8 +152,10 @@
   padding: 9px var(--s-3);
   background: var(--surface);
   border: var(--border);
+  border-radius: var(--radius-md);
   outline: none;
-  transition: border-color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease);
+  transition: border-color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease),
+    box-shadow var(--t-mid) var(--ease-out);
 }
 
 .control:hover {
@@ -151,31 +164,13 @@
 
 .control:focus {
   border-color: var(--line-strong);
+  box-shadow: 0 0 0 4px var(--ring);
 }
 
 .control:disabled,
 .control[readonly] {
   background: var(--surface-2);
   color: var(--muted);
-}
-
-/* Animated underline that grows on focus */
-.control-wrap::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--line-strong);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--t-mid) var(--ease-out);
-  pointer-events: none;
-}
-
-.control-wrap:focus-within::after {
-  transform: scaleX(1);
 }
 
 textarea.control {
@@ -201,9 +196,9 @@ select.control {
 
 .field-error {
   font-size: var(--text-xs);
-  color: var(--ink);
+  color: var(--invert-hover);
   padding-left: var(--s-2);
-  border-left: 2px solid var(--ink);
+  border-left: 3px solid var(--accent);
 }
 
 .field.has-error .control {
@@ -226,17 +221,19 @@ select.control {
   height: 18px;
   margin: 2px 0 0;
   border: var(--border-strong);
+  border-radius: var(--radius-xs);
   background: var(--surface);
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background-color var(--t-fast) var(--ease);
+  transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
 
 .check input::after {
   content: '';
   width: 8px;
   height: 8px;
+  border-radius: 2px;
   background: var(--invert-ink);
   transform: scale(0);
   transition: transform var(--t-fast) var(--ease-out);
@@ -244,6 +241,7 @@ select.control {
 
 .check input:checked {
   background: var(--invert);
+  border-color: var(--invert);
 }
 
 .check input:checked::after {
@@ -256,6 +254,8 @@ select.control {
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   border: var(--border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .segmented label {
@@ -294,6 +294,9 @@ select.control {
 .panel {
   background: var(--surface);
   border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: clip;
 }
 
 .panel-strong {
@@ -346,12 +349,16 @@ select.control {
   justify-content: space-between;
   gap: var(--s-3);
   overflow: hidden;
-  transition: background-color var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
+  border-radius: var(--radius);
+  transition: background-color var(--t-mid) var(--ease), color var(--t-mid) var(--ease),
+    transform var(--t-mid) var(--ease-out), box-shadow var(--t-mid) var(--ease);
 }
 
 .stat:hover {
   background: var(--invert);
   color: var(--invert-ink);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .stat:hover .stat-label,
@@ -451,6 +458,7 @@ select.control {
   gap: 6px;
   padding: 3px 8px;
   border: var(--border-strong);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.04em;
@@ -462,6 +470,7 @@ select.control {
   content: '';
   width: 6px;
   height: 6px;
+  border-radius: 50%;
   background: currentColor;
 }
 
@@ -514,6 +523,8 @@ select.control {
   display: inline-block;
   padding: 1px 6px;
   border: var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--ink-2);
@@ -526,12 +537,14 @@ select.control {
   gap: var(--s-4);
   padding: var(--s-4);
   border: var(--border);
+  border-radius: var(--radius);
   background: var(--surface);
 }
 
 .callout::before {
   content: '';
-  background: var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
 }
 
 .callout strong {
@@ -570,8 +583,9 @@ select.control {
   max-height: calc(100vh - 32px);
   overflow-y: auto;
   background: var(--surface);
-  border: var(--border-strong);
-  box-shadow: 8px 8px 0 0 var(--line-strong);
+  border: var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .modal-wide {
@@ -598,8 +612,9 @@ select.control {
   background: var(--invert);
   color: var(--invert-ink);
   border: 1px solid var(--invert);
+  border-radius: var(--radius-md);
   font-size: var(--text-sm);
-  box-shadow: 4px 4px 0 0 var(--line);
+  box-shadow: var(--shadow-md);
 }
 
 .toast.error {
@@ -649,6 +664,7 @@ select.control {
   width: 24px;
   height: 24px;
   border: var(--border-strong);
+  border-radius: 50%;
   background: var(--surface);
   display: grid;
   place-items: center;
@@ -658,7 +674,9 @@ select.control {
 
 .timeline li.current .marker {
   background: var(--invert);
+  border-color: var(--invert);
   color: var(--invert-ink);
+  box-shadow: 0 0 0 4px var(--ring);
 }
 
 .timeline .when {
@@ -669,7 +687,8 @@ select.control {
 .timeline .remark {
   margin-top: var(--s-2);
   padding: var(--s-2) var(--s-3);
-  border-left: 2px solid var(--line-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   background: var(--surface-2);
   font-size: var(--text-sm);
 }
@@ -678,7 +697,7 @@ select.control {
 .tracker {
   display: grid;
   grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr));
-  border: var(--border-strong);
+  gap: var(--s-2);
 }
 
 .tracker-step {
@@ -691,10 +710,9 @@ select.control {
   gap: var(--s-2);
   font-size: var(--text-xs);
   overflow: hidden;
-}
-
-.tracker-step + .tracker-step {
-  border-left: var(--border-strong);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
 }
 
 .tracker-step .idx {
@@ -739,7 +757,7 @@ select.control {
 .steps {
   display: grid;
   grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
-  border: var(--border-strong);
+  gap: var(--s-2);
   margin-bottom: var(--s-5);
 }
 
@@ -750,15 +768,17 @@ select.control {
   gap: var(--s-3);
   padding: var(--s-3) var(--s-4);
   background: var(--surface);
-  border: 0;
+  border: var(--border);
+  border-radius: var(--radius-md);
   text-align: left;
   cursor: pointer;
   font-size: var(--text-sm);
   overflow: hidden;
+  transition: border-color var(--t-fast) var(--ease);
 }
 
-.step + .step {
-  border-left: var(--border-strong);
+.step:hover {
+  border-color: var(--line-strong);
 }
 
 .step .n {
@@ -767,6 +787,7 @@ select.control {
   display: grid;
   place-items: center;
   border: 1px solid currentColor;
+  border-radius: 50%;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   flex: none;
@@ -796,16 +817,18 @@ select.control {
   gap: var(--s-2);
   min-height: 112px;
   padding: var(--s-4);
-  border: 1px dashed var(--line-strong);
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius);
   background: var(--surface);
   text-align: center;
   cursor: pointer;
-  transition: background-color var(--t-mid) var(--ease);
+  transition: background-color var(--t-mid) var(--ease), transform var(--t-mid) var(--ease-out);
 }
 
 .upload:hover,
 .upload.dragging {
-  background-image: var(--stripe);
+  background-color: var(--accent-soft);
+  transform: scale(1.01);
 }
 
 .upload input {
@@ -822,6 +845,7 @@ select.control {
   gap: var(--s-3);
   padding: var(--s-2) var(--s-3);
   border: var(--border);
+  border-radius: var(--radius-md);
   background: var(--surface);
   font-size: var(--text-sm);
   min-width: 0;
@@ -837,8 +861,9 @@ select.control {
 .dl {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: var(--border);
-  border-left: var(--border);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
   margin: 0;
 }
 
@@ -846,6 +871,7 @@ select.control {
   padding: var(--s-3) var(--s-4);
   border-right: var(--border);
   border-bottom: var(--border);
+  margin: 0 -1px -1px 0;
   min-width: 0;
 }
 
@@ -875,8 +901,9 @@ select.control {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: var(--border);
-  border-left: var(--border);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .checklist li {
@@ -887,6 +914,7 @@ select.control {
   padding: var(--s-2) var(--s-3);
   border-right: var(--border);
   border-bottom: var(--border);
+  margin: 0 -1px -1px 0;
   font-size: var(--text-sm);
 }
 
@@ -894,6 +922,7 @@ select.control {
   width: 20px;
   height: 20px;
   border: var(--border-strong);
+  border-radius: var(--radius-xs);
   display: grid;
   place-items: center;
   font-family: var(--font-mono);
@@ -902,6 +931,7 @@ select.control {
 
 .checklist li.ok .box {
   background: var(--invert);
+  border-color: var(--invert);
   color: var(--invert-ink);
 }
 
@@ -916,23 +946,26 @@ select.control {
   gap: var(--s-3);
   padding: var(--s-7) var(--s-5);
   text-align: center;
-  border: 1px dashed var(--line);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius);
   color: var(--muted);
 }
 
 .empty .glyph {
   width: 48px;
   height: 48px;
-  border: var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
   display: grid;
   place-items: center;
-  color: var(--ink);
+  color: var(--invert);
 }
 
 .skeleton {
   position: relative;
   overflow: hidden;
   background: var(--surface-2);
+  border-radius: var(--radius-sm);
   min-height: 16px;
 }
 
@@ -954,7 +987,7 @@ select.control {
 /* ---------- Tabs ---------- */
 .tabs {
   display: flex;
-  border-bottom: var(--border-strong);
+  border-bottom: var(--border);
   margin-bottom: var(--s-5);
   overflow-x: auto;
 }
@@ -986,11 +1019,13 @@ select.control {
   right: 0;
   bottom: -1px;
   height: 3px;
-  background: var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
 }
 
 /* ---------- Queue position block ---------- */
 .big-number {
+  color: var(--invert);
   font-family: var(--font-mono);
   font-size: var(--text-3xl);
   line-height: 1;
@@ -1038,29 +1073,16 @@ select.control {
   }
 
   .tracker {
-    grid-template-columns: 1fr;
-  }
-
-  .tracker-step + .tracker-step {
-    border-left: 0;
-    border-top: var(--border-strong);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .step:nth-child(3) {
-    border-left: 0;
-  }
-
-  .step:nth-child(n + 3) {
-    border-top: var(--border-strong);
-  }
-
   .dl,
   .dl-3,
   .checklist {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
