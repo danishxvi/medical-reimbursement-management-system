@@ -30,8 +30,9 @@
 - [ ] Escalation: claims past SLA move to the Zonal or District Deputy Director's view
 - [ ] Employee grievance and dispute of an e-NAC item decision
 - [ ] Bulk import of schools and employees from existing HR data (CSV)
-- [ ] Antivirus scanning of uploads (ClamAV) and PDF re rendering
-- [ ] Shared session store (Spring Session JDBC) to run several API instances
+- [x] Antivirus scanning of uploads (ClamAV)
+- [ ] PDF re rendering of uploads
+- [x] Shared session store (Spring Session JDBC) to run several API instances
 - [ ] Data retention rules and privacy notice under the DPDP Act, 2023
 
 ## Release 0.3: integration

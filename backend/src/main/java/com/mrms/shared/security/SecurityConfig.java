@@ -3,6 +3,7 @@ package com.mrms.shared.security;
 import com.mrms.shared.config.MrmsProperties;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -12,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +33,11 @@ import org.springframework.security.web.csrf.CsrfException;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.header.writers.StaticHeadersWriter;
-import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.session.FindByIndexNameSessionRepository;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
+import org.springframework.session.Session;
+import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -48,7 +52,8 @@ import java.util.Map;
  *
  * <ul>
  *   <li>Server side sessions in an HttpOnly, Secure, SameSite=Strict cookie
- *       (no tokens in browser storage, sessions can be revoked instantly).</li>
+ *       (no tokens in browser storage, sessions can be revoked instantly),
+ *       stored in the database so several API instances can share them.</li>
  *   <li>CSRF protection with the double submit cookie pattern.</li>
  *   <li>One active session per account; a new login ends the older one.</li>
  *   <li>Argon2id password hashing behind a delegating encoder so the
@@ -61,6 +66,8 @@ import java.util.Map;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+
+    public static final String SESSION_COOKIE = "MRMS_SESSION";
 
     /**
      * Microsecond precision clock: databases store microseconds, so values
@@ -78,15 +85,32 @@ public class SecurityConfig {
         return new DelegatingPasswordEncoder("argon2", Map.of("argon2", argon2));
     }
 
+    /**
+     * Sessions live in the database (Spring Session JDBC), indexed by
+     * principal name, so "one session per account" and forced sign outs work
+     * across every API instance.
+     */
     @Bean
-    SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
+    SessionRegistry sessionRegistry(FindByIndexNameSessionRepository<? extends Session> sessions) {
+        return new SpringSessionBackedSessionRegistry<>(sessions);
     }
 
-    /** Lets the session registry learn when sessions expire or are invalidated. */
+    /**
+     * The session cookie, defined explicitly so its security attributes can
+     * never silently fall back to defaults: HttpOnly (no script access),
+     * Secure (HTTPS only, off only in the dev profile) and SameSite=Strict
+     * (never sent on cross site requests).
+     */
     @Bean
-    HttpSessionEventPublisher httpSessionEventPublisher() {
-        return new HttpSessionEventPublisher();
+    CookieSerializer sessionCookieSerializer(
+            @Value("${server.servlet.session.cookie.secure:true}") boolean secure) {
+        DefaultCookieSerializer serializer = new DefaultCookieSerializer();
+        serializer.setCookieName(SESSION_COOKIE);
+        serializer.setCookiePath("/");
+        serializer.setUseHttpOnlyCookie(true);
+        serializer.setUseSecureCookie(secure);
+        serializer.setSameSite("Strict");
+        return serializer;
     }
 
     @Bean
@@ -171,7 +195,7 @@ public class SecurityConfig {
                 .logout(logout -> {
                     logout.logoutUrl("/api/auth/logout")
                             .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
-                            .deleteCookies("MRMS_SESSION")
+                            .deleteCookies(SESSION_COOKIE)
                             .invalidateHttpSession(true)
                             .clearAuthentication(true);
                     logoutHandlers.orderedStream().forEach(logout::addLogoutHandler);

@@ -30,6 +30,7 @@ MRMS handles health information and government money. Security is designed in at
 ## 6.3 Sessions and CSRF
 
 - Session cookie `MRMS_SESSION`: `HttpOnly`, `Secure`, `SameSite=Strict`, path `/`, 15 minute idle timeout. No tokens are kept in browser storage.
+- Sessions are stored in the database (Spring Session JDBC), so every API instance shares them and a forced sign out takes effect everywhere. The cookie attributes and timeout are set explicitly and checked by tests ([ADR 0010](adr/0010-shared-session-store.md)).
 - On login the session id is rotated, the CSRF token is rotated, and any other session of the same account is ended.
 - Changing a password or being disabled ends all other sessions of the account.
 - CSRF protection uses the double submit pattern: the `XSRF-TOKEN` cookie must be echoed in the `X-XSRF-TOKEN` header on every state changing request, including login.
@@ -102,7 +103,7 @@ The web server (nginx) sends a strict CSP for the application: scripts, styles, 
 ## 6.12 Operational recommendations
 
 - Terminate TLS 1.2+ at the gateway with HSTS preload; enable a WAF with OWASP core rules.
-- Give the application database role only `SELECT, INSERT, UPDATE` on business tables and `SELECT, INSERT` on `audit_entry`.
+- Give the application database role only `SELECT, INSERT, UPDATE` on business tables, `SELECT, INSERT` on `audit_entry`, and `SELECT, INSERT, UPDATE, DELETE` on the two `spring_session` tables.
 - Back up the database and the encrypted storage together; keep the storage key in a secrets manager or HSM, separate from backups.
 - Ship application logs and audit events to a SIEM; alert on `LOGIN_BLOCKED`, `STEP_UP_FAILED` and chain verification failures.
 - Conduct a CERT-In empanelled security audit before production use, as required for government applications.

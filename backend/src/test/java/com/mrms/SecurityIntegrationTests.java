@@ -113,4 +113,24 @@ class SecurityIntegrationTests {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("UNSAFE_TEXT"));
     }
+
+    @Autowired
+    private org.springframework.jdbc.core.JdbcTemplate jdbc;
+
+    @Test
+    void sessionIsStoredInTheDatabaseBehindAHardenedCookie() throws Exception {
+        var result = mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"username\":\"AUD01\",\"password\":\"" + Api.DEMO_PASSWORD + "\"}"))
+                .andExpect(status().isOk())
+                .andReturn();
+        String cookie = result.getResponse().getHeaders("Set-Cookie").stream()
+                .filter(h -> h.startsWith("MRMS_SESSION=")).findFirst().orElseThrow();
+        org.assertj.core.api.Assertions.assertThat(cookie)
+                .contains("HttpOnly").contains("SameSite=Strict").contains("Path=/");
+
+        // Shared store: the session row exists, is indexed by login ID and idles out after 15 minutes
+        Integer timeout = jdbc.queryForObject(
+                "select max(max_inactive_interval) from spring_session where principal_name = 'AUD01'", Integer.class);
+        org.assertj.core.api.Assertions.assertThat(timeout).isEqualTo(900);
+    }
 }

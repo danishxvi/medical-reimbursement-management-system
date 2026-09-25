@@ -321,15 +321,21 @@ class AccountService implements Accounts {
 
     /** Ends every live session of the account (used after reset, disable, lockout). */
     void expireSessions(Long userId) {
-        sessionRegistry.getAllSessions(MrmsPrincipal.key(userId), false)
-                .forEach(SessionInformation::expireNow);
+        sessionsOf(userId).forEach(SessionInformation::expireNow);
     }
 
     /** Ends the account's other sessions, keeping the current one. */
     void expireOtherSessions(Long userId, String currentSessionId) {
-        sessionRegistry.getAllSessions(MrmsPrincipal.key(userId), false).stream()
+        sessionsOf(userId).stream()
                 .filter(s -> !s.getSessionId().equals(currentSessionId))
                 .forEach(SessionInformation::expireNow);
+    }
+
+    /** Sessions are indexed by principal name, which is the login ID. */
+    private List<SessionInformation> sessionsOf(Long userId) {
+        return accounts.findById(userId)
+                .map(a -> sessionRegistry.getAllSessions(a.getUsername(), false))
+                .orElse(List.of());
     }
 
     private static String normalise(String username) {

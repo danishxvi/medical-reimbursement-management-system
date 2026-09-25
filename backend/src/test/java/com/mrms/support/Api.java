@@ -2,7 +2,7 @@ package com.mrms.support;
 
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpSession;
+import jakarta.servlet.http.Cookie;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -16,17 +16,19 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Small test client: logs in through the real login endpoint and keeps the
- * resulting session, so tests exercise the same security path as the browser.
+ * Small test client: logs in through the real login endpoint and sends the
+ * session cookie it receives, exactly like a browser. Sessions live in the
+ * database (Spring Session), so the cookie is the only link to them.
  */
 public final class Api {
 
     public static final String DEMO_PASSWORD = "Demo@Pass2026";
+    public static final String SESSION_COOKIE = "MRMS_SESSION";
 
     private final MockMvc mvc;
-    private final MockHttpSession session;
+    private final Cookie session;
 
-    private Api(MockMvc mvc, MockHttpSession session) {
+    private Api(MockMvc mvc, Cookie session) {
         this.mvc = mvc;
         this.session = session;
     }
@@ -37,25 +39,34 @@ public final class Api {
                         .content("{\"username\":\"" + username + "\",\"password\":\"" + DEMO_PASSWORD + "\"}"))
                 .andExpect(status().isOk())
                 .andReturn();
-        return new Api(mvc, (MockHttpSession) result.getRequest().getSession(false));
+        return new Api(mvc, sessionCookie(result));
+    }
+
+    /** The session cookie set by a response (Spring Session writes it as a Set-Cookie header). */
+    static Cookie sessionCookie(MvcResult result) {
+        return result.getResponse().getHeaders("Set-Cookie").stream()
+                .filter(h -> h.startsWith(SESSION_COOKIE + "="))
+                .map(h -> new Cookie(SESSION_COOKIE, h.substring(SESSION_COOKIE.length() + 1, h.indexOf(';'))))
+                .reduce((first, second) -> second)
+                .orElseThrow(() -> new IllegalStateException("No session cookie in the login response"));
     }
 
     public ResultActions get(String url) throws Exception {
-        return mvc.perform(MockMvcRequestBuilders.get(url).session(session));
+        return mvc.perform(MockMvcRequestBuilders.get(url).cookie(session));
     }
 
     public ResultActions post(String url, String json) throws Exception {
-        return mvc.perform(MockMvcRequestBuilders.post(url).session(session).with(csrf())
+        return mvc.perform(MockMvcRequestBuilders.post(url).cookie(session).with(csrf())
                 .contentType(MediaType.APPLICATION_JSON).content(json == null ? "{}" : json));
     }
 
     public ResultActions put(String url, String json) throws Exception {
-        return mvc.perform(MockMvcRequestBuilders.put(url).session(session).with(csrf())
+        return mvc.perform(MockMvcRequestBuilders.put(url).cookie(session).with(csrf())
                 .contentType(MediaType.APPLICATION_JSON).content(json));
     }
 
     public ResultActions delete(String url) throws Exception {
-        return mvc.perform(MockMvcRequestBuilders.delete(url).session(session).with(csrf()));
+        return mvc.perform(MockMvcRequestBuilders.delete(url).cookie(session).with(csrf()));
     }
 
     /** Uploads a small valid PDF (unique per marker) and returns its document id. */
@@ -65,7 +76,7 @@ public final class Api {
         MvcResult result = mvc.perform(MockMvcRequestBuilders.multipart("/api/documents")
                         .file(new MockMultipartFile("file", name, "application/pdf", pdf))
                         .param("category", category)
-                        .session(session).with(csrf()))
+                        .cookie(session).with(csrf()))
                 .andExpect(status().isCreated())
                 .andReturn();
         return read(result, "$.id");
@@ -74,7 +85,7 @@ public final class Api {
     /** Attaches this user's session to any request built by a test. */
     public RequestPostProcessor auth() {
         return request -> {
-            request.setSession(session);
+            request.setCookies(session);
             return request;
         };
     }

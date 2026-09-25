@@ -31,6 +31,12 @@ spring:
   threads:
     virtual:
       enabled: true
+  session:
+    # Idle timeout, set explicitly: Spring Session does not inherit server.servlet.session.timeout
+    timeout: 15m
+    # Tables are created by Flyway (db/vendor/*/V5__shared_sessions.sql)
+    jdbc:
+      initialize-schema: never
 
 server:
   port: ${MRMS_PORT:8080}

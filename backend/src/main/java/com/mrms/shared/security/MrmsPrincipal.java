@@ -46,9 +46,9 @@ public record MrmsPrincipal(
     }
 
     /**
-     * Identity is the account id only. The session registry keys sessions
-     * by principal, so a principal must stay "equal" after, for example,
-     * the password change flag flips.
+     * Identity is the account id only, so a principal stays "equal" after,
+     * for example, the password change flag flips. (The session store
+     * indexes sessions by {@link #getName()}, the login ID.)
      */
     @Override
     public boolean equals(Object other) {
@@ -58,10 +58,5 @@ public record MrmsPrincipal(
     @Override
     public int hashCode() {
         return userId == null ? 0 : userId.hashCode();
-    }
-
-    /** Lookup key for the session registry. */
-    public static MrmsPrincipal key(Long userId) {
-        return new MrmsPrincipal(userId, null, null, null, null, null, null, false);
     }
 }
