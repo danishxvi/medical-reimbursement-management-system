@@ -29,6 +29,9 @@ class StoredDocument {
     @Column(nullable = false)
     private DocumentCategory category;
 
+    @Column(name = "standard_name", nullable = false)
+    private String standardName;
+
     @Column(name = "original_name", nullable = false)
     private String originalName;
 
@@ -47,15 +50,29 @@ class StoredDocument {
     @Column(name = "uploaded_at", nullable = false)
     private Instant uploadedAt;
 
+    @Column(name = "scan_status", nullable = false)
+    private String scanStatus;
+
+    @Column(name = "scan_engine")
+    private String scanEngine;
+
+    @Column(name = "scanned_at")
+    private Instant scannedAt;
+
     protected StoredDocument() {
     }
 
-    StoredDocument(UUID id, Long ownerUserId, DocumentCategory category, String originalName, String contentType,
-                   long sizeBytes, String sha256, String storageKey, Instant uploadedAt) {
+    StoredDocument(UUID id, Long ownerUserId, DocumentCategory category, String standardName, String originalName,
+                   String contentType, long sizeBytes, String sha256, String storageKey, Instant uploadedAt,
+                   VirusScanner.Result scan) {
         this.id = id;
         this.ownerUserId = ownerUserId;
         this.category = category;
+        this.standardName = standardName;
         this.originalName = originalName;
+        this.scanStatus = scan.status().name();
+        this.scanEngine = scan.engine();
+        this.scannedAt = scan.scannedAt();
         this.contentType = contentType;
         this.sizeBytes = sizeBytes;
         this.sha256 = sha256;
@@ -68,6 +85,7 @@ class StoredDocument {
     }
 
     DocumentMeta toMeta() {
-        return new DocumentMeta(id, ownerUserId, category, originalName, contentType, sizeBytes, sha256, uploadedAt);
+        return new DocumentMeta(id, ownerUserId, category, standardName, originalName, contentType, sizeBytes, sha256,
+                uploadedAt, scanStatus);
     }
 }

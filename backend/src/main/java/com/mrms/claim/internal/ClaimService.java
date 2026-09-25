@@ -116,12 +116,22 @@ class ClaimService {
     }
 
     @Transactional
-    DocumentStore.DocumentContent document(Long claimId, UUID documentId) {
+    NamedContent document(Long claimId, UUID documentId) {
         Claim claim = support.visibleClaim(claimId);
         if (!support.documentIdsOf(claim).contains(documentId)) {
             throw new NotFoundException("Document");
         }
-        return documents.read(documentId);
+        String name = support.documentNames(claim).get(documentId);
+        DocumentStore.DocumentContent content = documents.read(documentId);
+        return new NamedContent(content, name == null ? content.meta().standardName() : name);
+    }
+
+    /** A claim document together with its standard name inside the claim. */
+    record NamedContent(DocumentStore.DocumentContent content, String fileName) {
+
+        org.springframework.http.ResponseEntity<byte[]> toResponse() {
+            return content.toResponse(fileName);
+        }
     }
 
     // ==================================================================

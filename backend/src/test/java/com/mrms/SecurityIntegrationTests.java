@@ -101,7 +101,7 @@ class SecurityIntegrationTests {
                         .file(new org.springframework.mock.web.MockMultipartFile("file", "bill.pdf",
                                 "application/pdf", "MZ this is not a pdf".getBytes()))
                         .param("category", "BILL")
-                        .session(employee.session()).with(csrf()))
+                        .with(employee.auth()).with(csrf()))
                 .andExpect(status().isUnprocessableContent())
                 .andExpect(jsonPath("$.code").value("UNSUPPORTED_FILE"));
     }

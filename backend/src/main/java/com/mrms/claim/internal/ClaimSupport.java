@@ -118,6 +118,36 @@ class ClaimSupport {
         return ids;
     }
 
+    /**
+     * Standard name of every document of a claim, numbered per type in a
+     * stable order: bills by line, then attachments, then e-NAC prescriptions.
+     */
+    Map<UUID, String> documentNames(Claim claim, Map<UUID, DocumentMeta> metas) {
+        Map<UUID, String> names = new LinkedHashMap<>();
+        Map<DocumentCategory, Integer> counters = new java.util.EnumMap<>(DocumentCategory.class);
+        List<UUID> ordered = new ArrayList<>();
+        claim.getItems().stream().sorted(java.util.Comparator.comparingInt(ClaimItem::getLineNo))
+                .forEach(i -> ordered.add(i.getBillDocumentId()));
+        claim.getAttachments().forEach(a -> ordered.add(a.getDocumentId()));
+        List<Long> nacItemIds = claim.getItems().stream().map(ClaimItem::getNacItemId).filter(Objects::nonNull).toList();
+        nac.items(nacItemIds).forEach(r -> ordered.add(r.prescriptionDocumentId()));
+        for (UUID id : ordered) {
+            DocumentMeta meta = metas.get(id);
+            if (meta == null || names.containsKey(id)) {
+                continue;
+            }
+            int seq = counters.merge(meta.category(), 1, Integer::sum);
+            names.put(id, documents.claimFileName(claim.getClaimNumber(), meta.category(), seq, meta.contentType()));
+        }
+        return names;
+    }
+
+    Map<UUID, String> documentNames(Claim claim) {
+        Map<UUID, DocumentMeta> metas = documents.metas(documentIdsOf(claim)).stream()
+                .collect(Collectors.toMap(DocumentMeta::id, Function.identity()));
+        return documentNames(claim, metas);
+    }
+
     // ------------------------------------------------------------------
     // SLA
     // ------------------------------------------------------------------
@@ -188,10 +218,7 @@ class ClaimSupport {
         Map<Long, String> names = accounts.fullNames(people);
 
         // Documents and e-NAC links in two batched lookups
-        Set<UUID> docIds = new HashSet<>();
-        c.getItems().forEach(i -> docIds.add(i.getBillDocumentId()));
-        c.getAttachments().forEach(a -> docIds.add(a.getDocumentId()));
-        Map<UUID, DocumentMeta> docs = documents.metas(docIds).stream()
+        Map<UUID, DocumentMeta> docs = documents.metas(documentIdsOf(c)).stream()
                 .collect(Collectors.toMap(DocumentMeta::id, Function.identity()));
         Map<Long, NacItemRef> nacItems = nac.items(c.getItems().stream().map(ClaimItem::getNacItemId)
                         .filter(Objects::nonNull).toList()).stream()
@@ -233,7 +260,7 @@ class ClaimSupport {
                 name(names, c.getHosCertifiedBy()), c.getHosCertifiedAt(),
                 name(names, c.getAuditedBy()), c.getAuditedAt(), c.getAuditRecommendation(),
                 name(names, c.getSanctionedBy()), c.getSanctionedAt(), c.getPaidAt(), c.getPaymentBatchRef(),
-                c.getRejectionReason(), allowedActions);
+                c.getRejectionReason(), documentNames(c, docs), allowedActions);
     }
 
     /** Annexure II table: amount per category, split into OPD and indoor. */

@@ -95,34 +95,42 @@ interface ChipProps {
   doc: DocumentMeta
   /** Download URL; defaults to the owner endpoint. */
   href?: string
+  /** Name to show and save as (for example the name inside a claim); defaults to the standard name. */
+  name?: string
   onRemove?: () => void
 }
 
 /** A stored document with view and download actions. */
-export function DocumentChip({ doc, href, onRemove }: ChipProps) {
+export function DocumentChip({ doc, href, name, onRemove }: ChipProps) {
   const toast = useToast()
   const url = href ?? `/api/documents/${doc.id}/content`
+  const label = name ?? doc.standardName
   const open = (download: boolean) =>
-    openDocument(url, doc.originalName, download).catch((e) => toast.error(e instanceof Error ? e.message : 'Could not open'))
+    openDocument(url, label, download).catch((e) => toast.error(e instanceof Error ? e.message : 'Could not open'))
   return (
     <AnimatePresence>
       <motion.div className="file-chip" variants={pop} initial="initial" animate="animate" exit="exit">
         <span className="row" style={{ minWidth: 0, flexWrap: 'nowrap' }}>
           <Icon.File width={16} height={16} />
-          <span className="name" title={doc.originalName}>
-            {doc.originalName}
+          <span className="name" title={'Uploaded as ' + doc.originalName}>
+            {label}
           </span>
+          {doc.scanStatus === 'CLEAN' && (
+            <span className="scan-ok" title="Scanned for viruses: clean" aria-label="Virus scan clean">
+              <Icon.Shield width={12} height={12} />
+            </span>
+          )}
           <span className="caps muted">{fileSize(doc.sizeBytes)}</span>
         </span>
         <span className="row" style={{ flexWrap: 'nowrap', gap: 4 }}>
-          <button type="button" className="btn btn-ghost btn-sm" onClick={() => open(false)} aria-label={'View ' + doc.originalName}>
+          <button type="button" className="btn btn-ghost btn-sm" onClick={() => open(false)} aria-label={'View ' + label}>
             <Icon.Eye />
           </button>
-          <button type="button" className="btn btn-ghost btn-sm" onClick={() => open(true)} aria-label={'Download ' + doc.originalName}>
+          <button type="button" className="btn btn-ghost btn-sm" onClick={() => open(true)} aria-label={'Download ' + label}>
             <Icon.Download />
           </button>
           {onRemove && (
-            <button type="button" className="btn btn-ghost btn-sm" onClick={onRemove} aria-label={'Remove ' + doc.originalName}>
+            <button type="button" className="btn btn-ghost btn-sm" onClick={onRemove} aria-label={'Remove ' + label}>
               <Icon.X />
             </button>
           )}

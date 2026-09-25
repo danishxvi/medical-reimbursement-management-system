@@ -141,11 +141,15 @@ export interface DocumentMeta {
   id: string
   ownerUserId: number
   category: DocumentCategory
+  /** Name given by MRMS at upload, for example EMP1001_BILL_20260925_01.pdf */
+  standardName: string
+  /** The uploader's own file name, kept for reference */
   originalName: string
   contentType: string
   sizeBytes: number
   sha256: string
   uploadedAt: string
+  scanStatus: 'CLEAN' | 'NOT_SCANNED'
 }
 
 // ---------------- e-NAC ----------------
@@ -351,6 +355,8 @@ export interface Claim {
   paidAt: string | null
   paymentBatchRef: string | null
   rejectionReason: string | null
+  /** Standard name of each document inside this claim, by document id */
+  documentNames: Record<string, string>
   allowedActions: ClaimAction[]
 }
 

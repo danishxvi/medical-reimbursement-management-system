@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Production like stack: PostgreSQL, API and web (nginx).
+# Production like stack: PostgreSQL, ClamAV, API and web (nginx).
 #
 #   1. cp .env.example .env   and fill in every value
 #   2. docker compose up -d --build
@@ -30,11 +30,33 @@ services:
     networks:
       - internal
 
+  # Virus scanner for every upload. Loading the signature database takes a
+  # few minutes on first start and needs about 2 GB of memory. freshclam in
+  # the same container keeps signatures current through the "updates" network.
+  clamav:
+    image: clamav/clamav:1.4
+    restart: unless-stopped
+    volumes:
+      - clamav-db:/var/lib/clamav
+    healthcheck:
+      test: ["CMD", "clamdcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 300s
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
+      - updates
+
   backend:
     build: ./backend
     restart: unless-stopped
     depends_on:
       db:
+        condition: service_healthy
+      clamav:
         condition: service_healthy
     environment:
       MRMS_DB_URL: jdbc:postgresql://db:5432/mrms
@@ -46,6 +68,8 @@ services:
       MRMS_ADMIN_PASSWORD: ${MRMS_ADMIN_PASSWORD:-}
       # nginx in front forwards the client address
       MRMS_FORWARD_HEADERS: native
+      MRMS_AV_HOST: clamav
+      MRMS_AV_PORT: "3310"
     volumes:
       - storage:/data/storage
     read_only: true
@@ -75,8 +99,11 @@ services:
 volumes:
   db-data:
   storage:
+  clamav-db:
 
 networks:
   internal:
     internal: true
   public:
+  # Outbound only, for virus signature updates
+  updates:

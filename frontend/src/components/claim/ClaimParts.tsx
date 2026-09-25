@@ -186,7 +186,7 @@ export function ClaimDetails({ claim, documentBase }: { claim: Claim; documentBa
             {
               key: 'doc',
               header: 'Bill',
-              render: (i) => (i.billDocument ? <DocumentChip doc={i.billDocument} href={base + i.billDocument.id} /> : '-'),
+              render: (i) => (i.billDocument ? <DocumentChip doc={i.billDocument} href={base + i.billDocument.id} name={claim.documentNames[i.billDocument.id]} /> : '-'),
             },
           ]}
           footer={
@@ -212,7 +212,7 @@ export function ClaimDetails({ claim, documentBase }: { claim: Claim; documentBa
                     <div className="caps muted" style={{ marginBottom: 4 }}>
                       {a.category.replace(/_/g, ' ')}
                     </div>
-                    <DocumentChip doc={a.document} href={base + a.document.id} />
+                    <DocumentChip doc={a.document} href={base + a.document.id} name={claim.documentNames[a.document.id]} />
                   </div>
                 ),
             )}
@@ -221,7 +221,7 @@ export function ClaimDetails({ claim, documentBase }: { claim: Claim; documentBa
                 <div className="caps muted" style={{ marginBottom: 4 }}>
                   Prescription for e-NAC {p.nacNumber}
                 </div>
-                <button type="button" className="file-chip btn-ghost" style={{ width: '100%', cursor: 'pointer' }} onClick={() => openDocument(base + docId, 'prescription.pdf').catch(() => undefined)}>
+                <button type="button" className="file-chip btn-ghost" style={{ width: '100%', cursor: 'pointer' }} onClick={() => openDocument(base + docId, claim.documentNames[docId] ?? 'prescription.pdf').catch(() => undefined)}>
                   <span className="row">
                     <Icon.File width={16} height={16} /> Prescription dated {formatDate(p.date)}
                   </span>

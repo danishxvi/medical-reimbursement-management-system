@@ -27,6 +27,12 @@ mrms:
     encryption-key: ZGV2LW9ubHkta2V5LWRvLW5vdC11c2UtaW4tcHJvZCE=
   demo:
     seed: true
+  antivirus:
+    # No ClamAV needed for local development; files are marked NOT_SCANNED.
+    # To test scanning: docker run -p 3310:3310 clamav/clamav and set mode: clamd, host: localhost
+    mode: ${MRMS_AV_MODE:disabled}
+    host: ${MRMS_AV_HOST:localhost}
+    allow-disabled: true
 
 logging:
   level:

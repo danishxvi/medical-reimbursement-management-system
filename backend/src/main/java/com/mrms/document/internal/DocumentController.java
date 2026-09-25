@@ -41,7 +41,8 @@ class DocumentController {
     @ResponseStatus(HttpStatus.CREATED)
     DocumentMeta upload(@RequestParam("file") MultipartFile file,
                         @RequestParam("category") DocumentCategory category) throws IOException {
-        return store.store(CurrentUser.id(), category, file.getOriginalFilename(), file.getBytes());
+        return store.store(CurrentUser.id(), CurrentUser.get().username(), category, file.getOriginalFilename(),
+                file.getBytes());
     }
 
     @GetMapping("/{id}")

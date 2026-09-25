@@ -61,10 +61,12 @@ Reviewers can act only on the record assigned to them through the queue.
 
 1. Size limit 5 MB (enforced by the servlet container and again by the service).
 2. Type is detected from the first bytes (PDF, JPEG, PNG); anything else is rejected, and the file name extension must agree.
-3. PDFs containing `/JavaScript`, `/JS`, `/Launch`, `/EmbeddedFile(s)`, `/RichMedia`, `/XFA`, `/SubmitForm`, `/ImportData` or `/GoToE` are rejected, including names hidden with `#xx` escapes. Content inside compressed object streams is not visible to this check, so production deployments should add an antivirus scan (for example ClamAV) at the gateway.
-4. Files are stored under random server generated names, sharded into directories, and encrypted with **AES-256-GCM**. The storage name is bound as associated data, so a file moved or renamed on disk fails to decrypt.
-5. Downloads are always `Content-Disposition: attachment` with `X-Content-Type-Options: nosniff` and `Content-Security-Policy: default-src 'none'; sandbox`.
-6. Every view of a document is recorded in the audit trail.
+3. PDFs containing `/JavaScript`, `/JS`, `/Launch`, `/EmbeddedFile(s)`, `/RichMedia`, `/XFA`, `/SubmitForm`, `/ImportData` or `/GoToE` are rejected, including names hidden with `#xx` escapes. Content inside compressed object streams is not visible to this check; the virus scan below covers it.
+4. **Every upload is scanned by ClamAV** before anything is written. The file is streamed to the ClamAV daemon in memory (INSTREAM); an infected file is refused with `MALWARE_DETECTED`, never stored, and the attempt is audited. If the scanner is unreachable, uploads are refused (`SCANNER_UNAVAILABLE`, fail closed) rather than accepted unscanned. Scanning can be switched off only in the development profile, where files are marked `NOT_SCANNED`. The scan result and engine are stored with each document.
+5. **Standard names.** Each upload gets a standard name, by default `EMPLOYEEID_CATEGORY_YYYYMMDD_NN` (for example `EMP1001_BILL_20260925_01.pdf`); inside a claim, documents are named after the claim (`MR-9900001-2026-27-000001_BILL_01.pdf`). The patterns are configurable (`MRMS_DOC_UPLOAD_PATTERN`, `MRMS_DOC_CLAIM_PATTERN`) but can only contain letters, digits, separators and known tokens, so a name can never form a path. The uploader's own file name is kept only for reference.
+6. Files are stored under random server generated names, sharded into directories, and encrypted with **AES-256-GCM**. The storage name is bound as associated data, so a file moved or renamed on disk fails to decrypt.
+7. Downloads are always `Content-Disposition: attachment` with `X-Content-Type-Options: nosniff` and `Content-Security-Policy: default-src 'none'; sandbox`.
+8. Every view of a document is recorded in the audit trail.
 
 ## 6.7 Audit trail
 

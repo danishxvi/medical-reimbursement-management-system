@@ -95,6 +95,19 @@ mrms:
     # DGEHS: claim must be submitted within three months of treatment end
     submission-window-days: 90
     max-items: 50
+  documents:
+    # Standard names given to uploads. Tokens: {owner} {claim} {category} {date} {seq}
+    upload-pattern: ${MRMS_DOC_UPLOAD_PATTERN:{owner}_{category}_{date}_{seq}}
+    claim-pattern: ${MRMS_DOC_CLAIM_PATTERN:{claim}_{category}_{seq}}
+  antivirus:
+    # Every upload is scanned by ClamAV before it is stored
+    mode: ${MRMS_AV_MODE:clamd}
+    host: ${MRMS_AV_HOST:clamav}
+    port: ${MRMS_AV_PORT:3310}
+    timeout-millis: 20000
+    # Refuse uploads while the scanner is unreachable
+    fail-closed: true
+    allow-disabled: false
   bootstrap:
     # Creates the first administrator if none exists. The account must
     # change its password on first login.

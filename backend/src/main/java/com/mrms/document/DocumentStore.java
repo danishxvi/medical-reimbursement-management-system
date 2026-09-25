@@ -15,10 +15,19 @@ import java.util.UUID;
 public interface DocumentStore {
 
     /**
-     * Validates (type by content, size, active PDF content), encrypts and
-     * stores a file for its owner.
+     * Validates (type by content, size, active PDF content), scans for
+     * viruses, gives the file its standard name, encrypts and stores it.
+     *
+     * @param ownerCode Employee ID of the owner, used in the standard name
      */
-    DocumentMeta store(Long ownerUserId, DocumentCategory category, String originalName, byte[] content);
+    DocumentMeta store(Long ownerUserId, String ownerCode, DocumentCategory category, String originalName,
+                       byte[] content);
+
+    /**
+     * Standard name of a document inside a claim, for example
+     * MR-9900001-2026-27-000001_BILL_01.pdf.
+     */
+    String claimFileName(String claimNumber, DocumentCategory category, int seq, String contentType);
 
     Optional<DocumentMeta> meta(UUID id);
 
@@ -38,8 +47,13 @@ public interface DocumentStore {
          * executing an uploaded file.
          */
         public ResponseEntity<byte[]> toResponse() {
+            return toResponse(meta.standardName());
+        }
+
+        /** Same, with a name chosen by the caller (for example the document's name inside a claim). */
+        public ResponseEntity<byte[]> toResponse(String fileName) {
             ContentDisposition disposition = ContentDisposition.attachment()
-                    .filename(meta.originalName(), StandardCharsets.UTF_8)
+                    .filename(fileName, StandardCharsets.UTF_8)
                     .build();
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, disposition.toString())

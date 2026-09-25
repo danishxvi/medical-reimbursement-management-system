@@ -214,6 +214,7 @@ final class ClaimDtos {
             Instant paidAt,
             String paymentBatchRef,
             String rejectionReason,
+            Map<UUID, String> documentNames,
             List<String> allowedActions) {
     }
 

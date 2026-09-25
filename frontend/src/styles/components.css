@@ -1304,3 +1304,14 @@ select.control {
     padding: var(--s-5) var(--s-4) var(--s-7);
   }
 }
+
+.scan-ok {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--invert);
+}

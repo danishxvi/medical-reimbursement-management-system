@@ -16,7 +16,9 @@ public record MrmsProperties(
         Sla sla,
         Claim claim,
         Bootstrap bootstrap,
-        Demo demo) {
+        Demo demo,
+        Documents documents,
+        Antivirus antivirus) {
 
     public record Cors(List<String> allowedOrigins) {
     }
@@ -51,6 +53,27 @@ public record MrmsProperties(
     }
 
     public record Demo(boolean seed) {
+    }
+
+    /** Standard file name patterns, see DocumentNaming for the tokens. */
+    public record Documents(String uploadPattern, String claimPattern) {
+    }
+
+    /**
+     * Virus scanning of uploads. mode: clamd (default) or disabled, which
+     * is only accepted together with allowDisabled (local development).
+     * With failClosed an upload is refused while the scanner is unreachable.
+     */
+    public record Antivirus(String mode, String host, int port, int timeoutMillis, boolean failClosed,
+                            boolean allowDisabled) {
+    }
+
+    public Documents documents() {
+        return documents == null ? new Documents(null, null) : documents;
+    }
+
+    public Antivirus antivirus() {
+        return antivirus == null ? new Antivirus("clamd", "localhost", 3310, 10_000, true, false) : antivirus;
     }
 
     public Demo demo() {

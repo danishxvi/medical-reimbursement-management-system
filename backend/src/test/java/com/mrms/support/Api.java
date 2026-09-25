@@ -7,6 +7,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.nio.charset.StandardCharsets;
@@ -70,8 +71,12 @@ public final class Api {
         return read(result, "$.id");
     }
 
-    public MockHttpSession session() {
-        return session;
+    /** Attaches this user's session to any request built by a test. */
+    public RequestPostProcessor auth() {
+        return request -> {
+            request.setSession(session);
+            return request;
+        };
     }
 
     public static String read(MvcResult result, String path) throws Exception {
