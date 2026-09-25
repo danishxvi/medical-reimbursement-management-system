@@ -4,6 +4,7 @@ import com.mrms.audit.AuditTrail;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -13,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Proves the audit trail is tamper evident: editing any stored row breaks
  * verification at exactly that row.
  */
+// Fresh context and database for this class: queues are shared state, and tests must not depend on order
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @SpringBootTest
 @ActiveProfiles({"dev", "test"})
 class AuditChainTests {

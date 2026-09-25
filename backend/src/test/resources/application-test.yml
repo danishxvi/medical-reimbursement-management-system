@@ -2,9 +2,13 @@
 # In memory database and a throw away storage directory.
 spring:
   datasource:
-    url: jdbc:h2:mem:mrms-test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    # A new database for every test context, so test classes never see each other's data
+    url: jdbc:h2:mem:mrms-test-${random.uuid};MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
 
 mrms:
+  jobs:
+    # Tests run the time limit watch and the message sender by hand, at chosen times
+    enabled: false
   esign:
     # Tests sign with passwords unless a test switches eSign on (see EsignIntegrationTests)
     mode: password

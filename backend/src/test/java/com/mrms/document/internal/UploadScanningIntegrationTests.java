@@ -4,6 +4,7 @@ import com.mrms.support.Api;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Upload path with a scanner that flags a marker string, standing in for
  * ClamAV: infected files are refused, clean ones get a standard name.
  */
+// Fresh context and database for this class: queues are shared state, and tests must not depend on order
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles({"dev", "test"})
@@ -49,7 +52,7 @@ class UploadScanningIntegrationTests {
 
     @Test
     void infectedUploadIsRefusedAndCleanUploadIsRenamed() throws Exception {
-        Api employee = Api.login(mvc, "EMP2001");
+        Api employee = Api.login(mvc, "EMP1002");
 
         mvc.perform(multipart("/api/documents")
                         .file(pdf("my scan (final).pdf", MARKER))
@@ -63,7 +66,7 @@ class UploadScanningIntegrationTests {
                         .param("category", "BILL")
                         .with(employee.auth()).with(csrf()))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.standardName").value(matchesPattern("EMP2001_BILL_\\d{8}_\\d{2}\\.pdf")))
+                .andExpect(jsonPath("$.standardName").value(matchesPattern("EMP1002_BILL_\\d{8}_\\d{2}\\.pdf")))
                 .andExpect(jsonPath("$.originalName").value("my scan (final).pdf"))
                 .andExpect(jsonPath("$.scanStatus").value("CLEAN"));
     }

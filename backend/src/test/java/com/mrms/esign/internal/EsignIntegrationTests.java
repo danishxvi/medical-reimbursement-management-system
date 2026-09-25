@@ -4,6 +4,7 @@ import com.mrms.support.Api;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
@@ -25,6 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * reused, cannot be applied to changed content, and that a forged response
  * is refused.
  */
+// Fresh context and database for this class: queues are shared state, and tests must not depend on order
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @SpringBootTest(properties = {"mrms.esign.mode=esign", "mrms.esign.simulator=true",
         "mrms.esign.esp-url=http://localhost/api/dev/esp/sign", "mrms.esign.public-base-url=http://localhost",
         "mrms.esign.asp-id=MRMS-TEST"})
@@ -102,13 +105,20 @@ class EsignIntegrationTests {
                          "items":[{"itemName":"Tab. Amlodipine 5","itemType":"MEDICINE","quantity":"30 tablets"}]}
                         """.formatted(LocalDate.now().minusDays(2), rx))
                 .andExpect(status().isCreated()).andReturn();
-        String nacId = Api.read(nac, "$.id");
         Api pharmacist = Api.login(mvc, "PHARM01");
+        // Queues are first come, first served: the pharmacist gets the oldest waiting request,
+        // which may be one left by another test, so work with whatever is handed out
         MvcResult taken = pharmacist.post("/api/nac/queue/take-next", null).andExpect(status().isOk()).andReturn();
-        String item = Api.read(taken, "$.items[0].id");
-        pharmacist.post("/api/nac/" + Api.read(taken, "$.id") + "/pharmacist-review",
-                        "{\"decisions\":[{\"itemId\":" + item + ",\"decision\":\"NOT_AVAILABLE\"}]}")
+        String nacId = Api.read(taken, "$.id");
+        StringBuilder decisions = new StringBuilder();
+        int items = Integer.parseInt(Api.read(taken, "$.items.length()"));
+        for (int i = 0; i < items; i++) {
+            decisions.append(i == 0 ? "" : ",").append("{\"itemId\":").append(Api.read(taken, "$.items[" + i + "].id"))
+                    .append(",\"decision\":\"NOT_AVAILABLE\"}");
+        }
+        pharmacist.post("/api/nac/" + nacId + "/pharmacist-review", "{\"decisions\":[" + decisions + "]}")
                 .andExpect(status().isOk());
+        assertThat(Api.read(nac, "$.id")).isNotNull();
         return nacId;
     }
 
