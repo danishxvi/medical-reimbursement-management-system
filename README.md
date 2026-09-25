@@ -4,6 +4,8 @@ A secure, transparent and accountable web portal that digitises the outpatient m
 
 **Author:** Danish Husain
 
+> **Noncommercial use only.** This repository is public for study and review. Any commercial use, or any use that earns money, is prohibited. See [LICENSE](LICENSE) (PolyForm Noncommercial 1.0.0) and [DISCLAIMER.md](DISCLAIMER.md). MRMS is not an official Government of NCT of Delhi product.
+
 > Status: release 0.1, functional end to end. Start with the **[design document](DESIGN.md)**, the single entry point to the project; see the [roadmap](docs/10-roadmap.md) for what comes next.
 
 ---
@@ -72,6 +74,10 @@ Demo accounts and a guided walk through are in the [setup guide](docs/12-setup.m
 | 12 | [Setup and deployment](docs/12-setup.md) |
 | 13 | [Paper form to system mapping](docs/13-form-mapping.md) |
 | ADR | [Architecture decision records](docs/adr/README.md) |
+
+## Licence
+
+PolyForm Noncommercial License 1.0.0: free for noncommercial use, commercial use prohibited. See [LICENSE](LICENSE) and [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Contributing and security
 

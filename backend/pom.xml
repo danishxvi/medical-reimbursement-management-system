@@ -16,6 +16,14 @@
     <name>mrms-backend</name>
     <description>Medical Reimbursement Management System API (modular monolith)</description>
 
+    <licenses>
+        <license>
+            <name>PolyForm Noncommercial License 1.0.0</name>
+            <url>https://polyformproject.org/licenses/noncommercial/1.0.0/</url>
+            <comments>Commercial use prohibited. See LICENSE and DISCLAIMER.md.</comments>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <name>Danish Husain</name>
