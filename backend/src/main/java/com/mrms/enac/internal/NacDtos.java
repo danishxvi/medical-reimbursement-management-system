@@ -61,8 +61,10 @@ final class NacDtos {
     record RemarksRequest(@NotBlank @Size(max = 500) String remarks) {
     }
 
+    /** Sign with the password or a completed Aadhaar eSign transaction, depending on the portal's mode. */
     record CountersignRequest(
-            @NotBlank @Size(max = 128) String password,
+            @Size(max = 128) String password,
+            @Size(max = 80) String esignTxn,
             @Size(max = 500) String remarks) {
     }
 

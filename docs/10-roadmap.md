@@ -23,7 +23,7 @@
 
 ## Release 0.2: fit for a pilot
 
-- [ ] Aadhaar based e-Sign (or DSC) for the HoS certificate, MO countersignature and sanction, replacing password confirmation
+- [x] Aadhaar eSign for the HoS certificate, MO countersignature, sanction, rejection and payment release, with signatures bound to the exact content ([signing](15-esign.md)); live use needs the ASP registration
 - [ ] SMS and e-mail notifications (NIC SMS gateway), including SLA breach alerts to the next level
 - [x] Printable PDF of the complete claim (Annexure I, Annexure II, calculation sheet, undertaking, HoS certificate, PAO decision, history, document index with SHA-256)
 - [x] DGEHS rate master so the calculation sheet is pre filled with approved rates ([rate list](14-rate-list.md))

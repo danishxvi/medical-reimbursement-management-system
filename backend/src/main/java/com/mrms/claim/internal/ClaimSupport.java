@@ -15,6 +15,7 @@ import com.mrms.document.DocumentCategory;
 import com.mrms.document.DocumentMeta;
 import com.mrms.document.DocumentStore;
 import com.mrms.enac.NacItemRef;
+import com.mrms.esign.Signatures;
 import com.mrms.enac.NacLookup;
 import com.mrms.identity.Accounts;
 import com.mrms.organisation.OrganisationDirectory;
@@ -62,13 +63,14 @@ class ClaimSupport {
     private final Accounts accounts;
     private final AuditTrail audit;
     private final RateLookup rates;
+    private final Signatures signatures;
     private final ApplicationEventPublisher events;
     private final MrmsProperties props;
     private final Clock clock;
 
     ClaimSupport(ClaimRepository claims, ClaimEventRepository timeline, DocumentStore documents, NacLookup nac,
                  OrganisationDirectory organisation, Accounts accounts, AuditTrail audit, RateLookup rates,
-                 ApplicationEventPublisher events, MrmsProperties props, Clock clock) {
+                 Signatures signatures, ApplicationEventPublisher events, MrmsProperties props, Clock clock) {
         this.claims = claims;
         this.timeline = timeline;
         this.documents = documents;
@@ -77,6 +79,7 @@ class ClaimSupport {
         this.accounts = accounts;
         this.audit = audit;
         this.rates = rates;
+        this.signatures = signatures;
         this.events = events;
         this.props = props;
         this.clock = clock;
@@ -201,15 +204,28 @@ class ClaimSupport {
      * is configured; either way the name and time come from the timeline.
      */
     List<ClaimPdf.SignatureLine> signatureLines(Claim claim) {
-        Map<String, String> purposes = Map.of(
+        Map<String, String> byAction = Map.of(
                 "FORWARDED_BY_HOS", "Head of School certificate",
                 "SANCTIONED", "Sanction",
                 "REJECTED", "Rejection");
-        return timeline.findByClaimIdOrderByOccurredAtAscIdAsc(claim.getId()).stream()
-                .filter(e -> purposes.containsKey(e.getAction()))
-                .map(e -> new ClaimPdf.SignatureLine(purposes.get(e.getAction()), e.getActorName(),
-                        "Password confirmation", e.getOccurredAt(), e.getActorRole()))
+        Map<String, String> byPurpose = Map.of(
+                "CLAIM_HOS_CERTIFY", "Head of School certificate",
+                "CLAIM_SANCTION", "Sanction",
+                "CLAIM_REJECT", "Rejection");
+        List<ClaimPdf.SignatureLine> eSigned = signatures.forSubject("CLAIM", claim.getId().toString()).stream()
+                .map(e -> new ClaimPdf.SignatureLine(byPurpose.getOrDefault(e.purpose(), e.purpose()), e.signerName(),
+                        e.method(), e.signedAt(), "Certificate " + e.certificateSerial() + ", " + e.certificateIssuer()
+                        + ". Signed content SHA-256 " + e.digest()))
                 .toList();
+        List<String> covered = eSigned.stream().map(ClaimPdf.SignatureLine::purpose).toList();
+        List<ClaimPdf.SignatureLine> lines = new ArrayList<>(eSigned);
+        timeline.findByClaimIdOrderByOccurredAtAscIdAsc(claim.getId()).stream()
+                .filter(e -> byAction.containsKey(e.getAction()) && !covered.contains(byAction.get(e.getAction())))
+                .map(e -> new ClaimPdf.SignatureLine(byAction.get(e.getAction()), e.getActorName(),
+                        "Password confirmation", e.getOccurredAt(), e.getActorRole()))
+                .forEach(lines::add);
+        lines.sort(java.util.Comparator.comparing(ClaimPdf.SignatureLine::signedAt));
+        return lines;
     }
 
     /** Audit only entry for actions that do not change the status (take, release). */

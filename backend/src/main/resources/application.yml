@@ -114,6 +114,23 @@ mrms:
     # Refuse uploads while the scanner is unreachable
     fail-closed: true
     allow-disabled: false
+  esign:
+    # password (step up with the account password) or esign (Aadhaar eSign through a licensed ESP).
+    # eSign needs the Directorate's ASP registration: ASP id, keystore and the ESP's certificates.
+    mode: ${MRMS_SIGNING_MODE:password}
+    provider-name: ${MRMS_ESP_NAME:}
+    asp-id: ${MRMS_ESP_ASP_ID:}
+    esp-url: ${MRMS_ESP_URL:}
+    public-base-url: ${MRMS_PUBLIC_BASE_URL:}
+    request-field: ${MRMS_ESP_REQUEST_FIELD:eSignRequest}
+    response-field: ${MRMS_ESP_RESPONSE_FIELD:eSignResponse}
+    asp-keystore: ${MRMS_ESP_ASP_KEYSTORE:}
+    asp-keystore-password: ${MRMS_ESP_ASP_KEYSTORE_PASSWORD:}
+    asp-key-alias: ${MRMS_ESP_ASP_KEY_ALIAS:asp}
+    esp-certificates: ${MRMS_ESP_CERTIFICATES:}
+    trusted-cas: ${MRMS_ESP_TRUSTED_CAS:}
+    simulator: false
+    transaction-minutes: 10
   bootstrap:
     # Creates the first administrator if none exists. The account must
     # change its password on first login.

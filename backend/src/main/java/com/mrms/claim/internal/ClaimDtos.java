@@ -94,7 +94,8 @@ final class ClaimDtos {
             @NotEmpty List<@Valid Restriction> items,
             RateBasis rateBasis,
             @AssertTrue(message = "Confirm the certificate to forward the claim") boolean certificateAccepted,
-            @NotBlank @Size(max = 128) String password,
+            @Size(max = 128) String password,
+            @Size(max = 80) String esignTxn,
             @Size(max = 1000) String remarks) {
     }
 
@@ -115,13 +116,16 @@ final class ClaimDtos {
             @Size(max = 1000) String remarks) {
     }
 
+    /** Sign with the password or a completed Aadhaar eSign transaction, depending on the portal's mode. */
     record SanctionRequest(
-            @NotBlank @Size(max = 128) String password,
+            @Size(max = 128) String password,
+            @Size(max = 80) String esignTxn,
             @Size(max = 1000) String remarks) {
     }
 
     record RejectRequest(
-            @NotBlank @Size(max = 128) String password,
+            @Size(max = 128) String password,
+            @Size(max = 80) String esignTxn,
             @NotBlank @Size(max = 1000) String reason) {
     }
 

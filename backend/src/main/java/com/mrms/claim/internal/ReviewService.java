@@ -10,6 +10,8 @@ import com.mrms.claim.internal.ClaimDtos.QueueView;
 import com.mrms.claim.internal.ClaimDtos.Restriction;
 import com.mrms.claim.internal.ClaimDtos.ReturnRequest;
 import com.mrms.claim.internal.ClaimEnums.Recommendation;
+import com.mrms.esign.SignableAction;
+import com.mrms.esign.Signatures;
 import com.mrms.identity.Accounts;
 import com.mrms.organisation.OrganisationDirectory;
 import com.mrms.rates.RateBasis;
@@ -45,13 +47,81 @@ class ReviewService {
     private final ClaimSupport support;
     private final Accounts accounts;
     private final OrganisationDirectory organisation;
+    private final Signatures signatures;
 
     ReviewService(ClaimRepository claims, ClaimSupport support, Accounts accounts,
-                  OrganisationDirectory organisation) {
+                  OrganisationDirectory organisation, Signatures signatures) {
         this.claims = claims;
         this.support = support;
         this.accounts = accounts;
         this.organisation = organisation;
+        this.signatures = signatures;
+    }
+
+    // ==================================================================
+    // Signing: what exactly each signature covers
+    // ==================================================================
+
+    static final String HOS_CERTIFY = "CLAIM_HOS_CERTIFY";
+    static final String SANCTION = "CLAIM_SANCTION";
+    static final String REJECT = "CLAIM_REJECT";
+
+    /**
+     * The HoS certificate covers the claim as it stands, the rate basis,
+     * every restriction and remark entered on the calculation sheet, and
+     * the certificate text itself.
+     */
+    private String hosDigest(Claim claim, HosForwardRequest body) {
+        StringBuilder s = new StringBuilder(HOS_CERTIFY).append('|')
+                .append(ClaimFingerprint.of(support.view(claim, List.of())))
+                .append("|basis=").append(body.rateBasis() != null ? body.rateBasis() : claim.suggestedRateBasis());
+        body.items().stream().sorted(java.util.Comparator.comparing(Restriction::itemId))
+                .forEach(r -> s.append("|item=").append(r.itemId()).append(',').append(plain(r.dgehsRate()))
+                        .append(',').append(plain(r.amountRestricted())).append(',').append(nz(r.remarks())));
+        s.append("|remarks=").append(nz(body.remarks()))
+                .append("|certificate=").append(String.join("\n", ClaimTexts.HOS_CERTIFICATE));
+        return ClaimFingerprint.sha256(s.toString());
+    }
+
+    private String decisionDigest(String purpose, Claim claim, String text) {
+        return ClaimFingerprint.sha256(purpose + '|' + ClaimFingerprint.of(support.view(claim, List.of()))
+                + "|text=" + nz(text));
+    }
+
+    /** Called before an eSign starts: may this user sign, and what will they sign. */
+    @Transactional(readOnly = true)
+    SignableAction.Signable describeHosCertify(Long id, HosForwardRequest body) {
+        MrmsPrincipal me = requireRole(Role.HOS);
+        Claim claim = heldClaim(id, me, ClaimStatus.PENDING_HOS);
+        BigDecimal total = body.items().stream().map(Restriction::amountRestricted)
+                .filter(java.util.Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return new SignableAction.Signable(hosDigest(claim, body),
+                "Head of School certificate for claim " + claim.getClaimNumber() + ", restricted total Rs. " + total);
+    }
+
+    @Transactional(readOnly = true)
+    SignableAction.Signable describeDecision(String purpose, Long id, String text) {
+        MrmsPrincipal me = requireRole(Role.PAO_OFFICER);
+        Claim claim = heldClaim(id, me, ClaimStatus.PENDING_SANCTION);
+        String what = SANCTION.equals(purpose) ? "Sanction of claim " + claim.getClaimNumber() + ", Rs. "
+                + claim.getAdmittedAmount() : "Rejection of claim " + claim.getClaimNumber();
+        return new SignableAction.Signable(decisionDigest(purpose, claim, text), what);
+    }
+
+    private Claim heldClaim(Long id, MrmsPrincipal me, ClaimStatus stage) {
+        Claim claim = scopedClaim(id, me);
+        if (claim.getStatus() != stage || !me.userId().equals(claim.getAssignedTo())) {
+            throw new BusinessRuleException("NOT_ASSIGNED", "Take this claim from your queue before signing");
+        }
+        return claim;
+    }
+
+    private static String plain(BigDecimal value) {
+        return value == null ? "null" : value.stripTrailingZeros().toPlainString();
+    }
+
+    private static String nz(String value) {
+        return value == null ? "" : value;
     }
 
     // ==================================================================
@@ -123,8 +193,10 @@ class ReviewService {
     @Transactional
     ClaimView hosForward(Long id, HosForwardRequest body) {
         MrmsPrincipal me = requireRole(Role.HOS);
-        accounts.confirmPassword(body.password());
         Claim claim = scopedClaim(id, me);
+        // Signed before anything changes, over the content being certified
+        signatures.confirm(new Signatures.StepUp(body.password(), body.esignTxn()), HOS_CERTIFY, "CLAIM",
+                id.toString(), hosDigest(claim, body));
 
         RateBasis basis = body.rateBasis() != null ? body.rateBasis() : claim.suggestedRateBasis();
         String ward = organisation.profileOf(claim.getEmployeeUserId())
@@ -215,10 +287,10 @@ class ReviewService {
     // ==================================================================
 
     @Transactional
-    ClaimView sanction(Long id, String password, String remarks) {
+    ClaimView sanction(Long id, Signatures.StepUp stepUp, String remarks) {
         MrmsPrincipal me = requireRole(Role.PAO_OFFICER);
-        accounts.confirmPassword(password);
         Claim claim = scopedClaim(id, me);
+        signatures.confirm(stepUp, SANCTION, "CLAIM", id.toString(), decisionDigest(SANCTION, claim, remarks));
         ClaimStatus from = claim.sanction(me.userId(), support.now());
         claims.saveAndFlush(claim);
         support.recordTransition(claim, "SANCTIONED", from, remarks, null);
@@ -236,10 +308,10 @@ class ReviewService {
     }
 
     @Transactional
-    ClaimView reject(Long id, String password, String reason) {
+    ClaimView reject(Long id, Signatures.StepUp stepUp, String reason) {
         MrmsPrincipal me = requireRole(Role.PAO_OFFICER);
-        accounts.confirmPassword(password);
         Claim claim = scopedClaim(id, me);
+        signatures.confirm(stepUp, REJECT, "CLAIM", id.toString(), decisionDigest(REJECT, claim, reason));
         ClaimStatus from = claim.reject(me.userId(), reason.trim(), support.now());
         claims.saveAndFlush(claim);
         support.recordTransition(claim, "REJECTED", from, reason, null);

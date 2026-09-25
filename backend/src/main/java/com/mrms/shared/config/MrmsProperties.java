@@ -18,7 +18,8 @@ public record MrmsProperties(
         Bootstrap bootstrap,
         Demo demo,
         Documents documents,
-        Antivirus antivirus) {
+        Antivirus antivirus,
+        Esign esign) {
 
     public record Cors(List<String> allowedOrigins) {
     }
@@ -66,6 +67,28 @@ public record MrmsProperties(
      */
     public record Antivirus(String mode, String host, int port, int timeoutMillis, boolean failClosed,
                             boolean allowDisabled) {
+    }
+
+    /**
+     * Signing of legally significant actions. mode: password (default) or
+     * esign. For esign the Directorate's ASP registration supplies the ASP
+     * id, keystore and the ESP's certificates; "simulator" replaces the ESP
+     * with a built in one (development and tests only).
+     *
+     * @param publicBaseUrl        address users reach the portal at, used for the ESP's return URL
+     * @param requestField         form field that carries the request XML to the ESP
+     * @param responseField        form field that carries the response XML back
+     * @param transactionMinutes   how long a started or completed signature stays usable
+     */
+    public record Esign(String mode, String providerName, String aspId, String espUrl, String publicBaseUrl,
+                        String requestField, String responseField, String aspKeystore, String aspKeystorePassword,
+                        String aspKeyAlias, String espCertificates, String trustedCas, boolean simulator,
+                        int transactionMinutes) {
+    }
+
+    public Esign esign() {
+        return esign == null ? new Esign("password", null, null, null, null, "eSignRequest", "eSignResponse", null, null,
+                null, null, null, false, 10) : esign;
     }
 
     public Documents documents() {

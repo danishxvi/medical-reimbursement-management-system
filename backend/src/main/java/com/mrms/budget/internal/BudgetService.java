@@ -1,5 +1,7 @@
 package com.mrms.budget.internal;
 
+import com.mrms.esign.SignableAction;
+import com.mrms.esign.Signatures;
 import com.mrms.audit.AuditTrail;
 import com.mrms.budget.BudgetQueries;
 import com.mrms.budget.internal.BudgetEntities.BudgetAllocation;
@@ -41,11 +43,12 @@ class BudgetService implements BudgetQueries {
     private final OrganisationDirectory organisation;
     private final Accounts accounts;
     private final AuditTrail audit;
+    private final Signatures signatures;
     private final Clock clock;
 
     BudgetService(AllocationRepository allocations, DemandRepository demands, PaymentBatchRepository batches,
                   ClaimPayments claims, OrganisationDirectory organisation, Accounts accounts, AuditTrail audit,
-                  Clock clock) {
+                  Signatures signatures, Clock clock) {
         this.allocations = allocations;
         this.demands = demands;
         this.batches = batches;
@@ -53,6 +56,7 @@ class BudgetService implements BudgetQueries {
         this.organisation = organisation;
         this.accounts = accounts;
         this.audit = audit;
+        this.signatures = signatures;
         this.clock = clock;
     }
 
@@ -184,13 +188,46 @@ class BudgetService implements BudgetQueries {
      * claim can never overtake an older one.
      */
     @Transactional
-    BatchView runPayments(Long schoolId, String password) {
+    BatchView runPayments(Long schoolId, Signatures.StepUp stepUp) {
         MrmsPrincipal me = requireRole(Role.PAO_OFFICER);
-        accounts.confirmPassword(password);
         SchoolRef school = schoolOfMyPao(me, schoolId);
         String fy = FinancialYear.current();
-        BigDecimal balance = position(schoolId, fy).balance();
+        PaymentPlan plan = plan(schoolId, fy);
+        if (plan.claimIds().isEmpty()) {
+            throw new BusinessRuleException("INSUFFICIENT_BALANCE",
+                    "The balance does not cover the oldest sanctioned claim. Record an allocation first");
+        }
+        // The signature covers exactly these claims and this total
+        signatures.confirm(stepUp, PAYMENT_RUN, "SCHOOL", schoolId.toString(), plan.digest(schoolId, fy));
+        List<Long> toPay = plan.claimIds();
+        BigDecimal total = plan.total();
+        String ref = "PB/" + school.code() + "/" + fy + "/" + String.format("%05d", batches.nextNumber());
+        Instant now = clock.instant();
+        batches.save(new PaymentBatch(ref, schoolId, fy, total, toPay.size(), me.userId(), now));
+        claims.markPaid(toPay, ref);
+        audit.record("PAYMENT_BATCH_CREATED", "SCHOOL", schoolId, ref + " total " + total + " claims " + toPay.size());
+        return new BatchView(ref, fy, total, toPay.size(), now);
+    }
 
+    static final String PAYMENT_RUN = "PAYMENT_RUN";
+
+    /** Claims the next run would pay: oldest first, stopping at the first the balance cannot cover. */
+    record PaymentPlan(List<Long> claimIds, BigDecimal total) {
+
+        String digest(Long schoolId, String fy) {
+            String text = PAYMENT_RUN + "|" + schoolId + "|" + fy + "|" + claimIds + "|"
+                    + total.stripTrailingZeros().toPlainString();
+            try {
+                return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256")
+                        .digest(text.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+            } catch (java.security.NoSuchAlgorithmException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    }
+
+    private PaymentPlan plan(Long schoolId, String fy) {
+        BigDecimal balance = position(schoolId, fy).balance();
         List<Long> toPay = new ArrayList<>();
         BigDecimal total = BigDecimal.ZERO;
         for (PayableClaim claim : claims.sanctionedAwaitingPayment(schoolId)) {
@@ -200,16 +237,21 @@ class BudgetService implements BudgetQueries {
             total = total.add(claim.admittedAmount());
             toPay.add(claim.claimId());
         }
-        if (toPay.isEmpty()) {
+        return new PaymentPlan(toPay, total);
+    }
+
+    @Transactional(readOnly = true)
+    SignableAction.Signable describePaymentRun(Long schoolId) {
+        MrmsPrincipal me = requireRole(Role.PAO_OFFICER);
+        SchoolRef school = schoolOfMyPao(me, schoolId);
+        String fy = FinancialYear.current();
+        PaymentPlan plan = plan(schoolId, fy);
+        if (plan.claimIds().isEmpty()) {
             throw new BusinessRuleException("INSUFFICIENT_BALANCE",
                     "The balance does not cover the oldest sanctioned claim. Record an allocation first");
         }
-        String ref = "PB/" + school.code() + "/" + fy + "/" + String.format("%05d", batches.nextNumber());
-        Instant now = clock.instant();
-        batches.save(new PaymentBatch(ref, schoolId, fy, total, toPay.size(), me.userId(), now));
-        claims.markPaid(toPay, ref);
-        audit.record("PAYMENT_BATCH_CREATED", "SCHOOL", schoolId, ref + " total " + total + " claims " + toPay.size());
-        return new BatchView(ref, fy, total, toPay.size(), now);
+        return new SignableAction.Signable(plan.digest(schoolId, fy), "Payment run for " + school.name() + ": "
+                + plan.claimIds().size() + " claims, Rs. " + plan.total());
     }
 
     // ==================================================================

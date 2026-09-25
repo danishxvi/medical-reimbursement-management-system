@@ -5,6 +5,10 @@ spring:
     url: jdbc:h2:mem:mrms-test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
 
 mrms:
+  esign:
+    # Tests sign with passwords unless a test switches eSign on (see EsignIntegrationTests)
+    mode: password
+    simulator: false
   storage:
     root: ./target/test-storage
   security:

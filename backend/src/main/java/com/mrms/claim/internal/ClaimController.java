@@ -14,6 +14,7 @@ import com.mrms.claim.internal.ClaimDtos.RemarksRequest;
 import com.mrms.claim.internal.ClaimDtos.ReturnRequest;
 import com.mrms.claim.internal.ClaimDtos.SanctionRequest;
 import com.mrms.claim.internal.ClaimDtos.SubmitRequest;
+import com.mrms.esign.Signatures;
 import com.mrms.shared.domain.Role;
 import com.mrms.shared.security.CurrentUser;
 import jakarta.validation.Valid;
@@ -177,7 +178,7 @@ class ClaimController {
     @PostMapping("/{id}/sanction")
     @PreAuthorize("hasRole('PAO_OFFICER')")
     ClaimView sanction(@PathVariable Long id, @Valid @RequestBody SanctionRequest body) {
-        return reviews.sanction(id, body.password(), body.remarks());
+        return reviews.sanction(id, new Signatures.StepUp(body.password(), body.esignTxn()), body.remarks());
     }
 
     @PostMapping("/{id}/send-back")
@@ -189,6 +190,6 @@ class ClaimController {
     @PostMapping("/{id}/reject")
     @PreAuthorize("hasRole('PAO_OFFICER')")
     ClaimView reject(@PathVariable Long id, @Valid @RequestBody RejectRequest body) {
-        return reviews.reject(id, body.password(), body.reason());
+        return reviews.reject(id, new Signatures.StepUp(body.password(), body.esignTxn()), body.reason());
     }
 }

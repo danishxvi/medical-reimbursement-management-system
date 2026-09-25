@@ -162,7 +162,10 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsSource(props)))
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(csrfRepository)
-                        .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler()))
+                        .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
+                        // Cross site form posts from the eSign provider: authenticated by the provider's
+                        // XML signature and a single use transaction id instead (see EsignController)
+                        .ignoringRequestMatchers("/api/esign/callback", "/api/dev/esp/**"))
                 .securityContext(ctx -> ctx.securityContextRepository(contextRepository))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
@@ -178,6 +181,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/legal/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/esign/callback").permitAll()
+                        // The simulated eSign provider exists only in dev and test with the simulator switched on
+                        .requestMatchers("/api/dev/esp/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         // Role rules by URL as a second line of defence (methods are also annotated).
                         // They also stop request body validation from running for the wrong role.
@@ -236,6 +242,15 @@ public class SecurityConfig {
 
     private static CorsConfigurationSource corsSource(MrmsProperties props) {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // The eSign provider returns the user with a cross site form post (a navigation, not a script
+        // request). Origin checks do not apply; the provider's signature authenticates the response.
+        // Registered first so the stricter /api/** rule below never rejects it.
+        CorsConfiguration esignReturn = new CorsConfiguration();
+        esignReturn.setAllowedOriginPatterns(List.of("*"));
+        esignReturn.setAllowedMethods(List.of("POST"));
+        esignReturn.setAllowCredentials(false);
+        source.registerCorsConfiguration("/api/esign/callback", esignReturn);
+        source.registerCorsConfiguration("/api/dev/esp/**", esignReturn);
         List<String> origins = props.cors() == null ? List.of() : props.cors().allowedOrigins();
         if (origins != null && !origins.isEmpty()) {
             CorsConfiguration config = new CorsConfiguration();

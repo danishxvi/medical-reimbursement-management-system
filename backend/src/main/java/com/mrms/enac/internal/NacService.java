@@ -1,5 +1,7 @@
 package com.mrms.enac.internal;
 
+import com.mrms.esign.SignableAction;
+import com.mrms.esign.Signatures;
 import com.mrms.audit.AuditTrail;
 import com.mrms.document.DocumentCategory;
 import com.mrms.document.DocumentMeta;
@@ -63,18 +65,20 @@ class NacService implements NacLookup {
     private final OrganisationDirectory organisation;
     private final Accounts accounts;
     private final AuditTrail audit;
+    private final Signatures signatures;
     private final ApplicationEventPublisher events;
     private final MrmsProperties props;
     private final Clock clock;
 
     NacService(NacRepository repository, DocumentStore documents, OrganisationDirectory organisation,
-               Accounts accounts, AuditTrail audit, ApplicationEventPublisher events, MrmsProperties props,
-               Clock clock) {
+               Accounts accounts, AuditTrail audit, Signatures signatures, ApplicationEventPublisher events,
+               MrmsProperties props, Clock clock) {
         this.repository = repository;
         this.documents = documents;
         this.organisation = organisation;
         this.accounts = accounts;
         this.audit = audit;
+        this.signatures = signatures;
         this.events = events;
         this.props = props;
         this.clock = clock;
@@ -211,11 +215,11 @@ class NacService implements NacLookup {
     }
 
     @Transactional
-    NacView countersign(Long id, String password, String remarks) {
+    NacView countersign(Long id, Signatures.StepUp stepUp, String remarks) {
         MrmsPrincipal me = requireRole(Role.MEDICAL_OFFICER);
-        // Legally significant: confirm identity before signing
-        accounts.confirmPassword(password);
         NacRequest request = dispensaryRequest(id, me);
+        // Legally significant: signed over the decisions being countersigned
+        signatures.confirm(stepUp, COUNTERSIGN, "NAC", id.toString(), countersignDigest(request, remarks));
         String dispensaryCode = organisation.dispensary(me.dispensaryId()).map(OfficeRef::code).orElse("NA");
         String number = "NAC/" + dispensaryCode + "/" + FinancialYear.current() + "/"
                 + String.format("%06d", repository.nextNumber());
@@ -223,6 +227,39 @@ class NacService implements NacLookup {
         audit.record("NAC_ISSUED", "NAC", id, number + "; " + decisionSummary(request));
         publish(request, remarks);
         return view(request);
+    }
+
+    static final String COUNTERSIGN = "NAC_COUNTERSIGN";
+
+    /** The countersignature covers the prescription, every item decision with its maker, and the remarks. */
+    private String countersignDigest(NacRequest r, String remarks) {
+        StringBuilder s = new StringBuilder(COUNTERSIGN).append('|').append(r.getId()).append('|')
+                .append(r.getEmployeeUserId()).append('|').append(r.getPatientName()).append('|')
+                .append(r.getPrescriptionDate()).append('|').append(r.getPrescriptionDocumentId()).append('|')
+                .append(r.getPharmacistId());
+        r.getItems().stream().sorted(java.util.Comparator.comparing(NacItem::getLineNo))
+                .forEach(i -> s.append("|item=").append(i.getId()).append(',').append(i.getItemName()).append(',')
+                        .append(i.getQuantity()).append(',').append(i.getDecision()).append(',')
+                        .append(i.getDecisionReason()).append(',').append(i.getDecidedBy()));
+        s.append("|remarks=").append(remarks == null ? "" : remarks);
+        try {
+            return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256")
+                    .digest(s.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    SignableAction.Signable describeCountersign(Long id, String remarks) {
+        MrmsPrincipal me = requireRole(Role.MEDICAL_OFFICER);
+        NacRequest request = dispensaryRequest(id, me);
+        if (request.getStatus() != NacStatus.PENDING_MEDICAL_OFFICER || !me.userId().equals(request.getAssignedTo())) {
+            throw new BusinessRuleException("NOT_ASSIGNED", "Take this certificate from your queue before signing");
+        }
+        return new SignableAction.Signable(countersignDigest(request, remarks),
+                "Countersignature of e-NAC for " + request.getPatientName() + ", prescription dated "
+                        + request.getPrescriptionDate());
     }
 
     @Transactional

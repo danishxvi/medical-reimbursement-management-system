@@ -103,7 +103,8 @@ class NacController {
     @PostMapping("/{id}/countersign")
     @PreAuthorize("hasRole('MEDICAL_OFFICER')")
     NacView countersign(@PathVariable Long id, @Valid @RequestBody CountersignRequest body) {
-        return service.countersign(id, body.password(), body.remarks());
+        return service.countersign(id, new com.mrms.esign.Signatures.StepUp(body.password(), body.esignTxn()),
+                body.remarks());
     }
 
     @PostMapping("/{id}/send-back")

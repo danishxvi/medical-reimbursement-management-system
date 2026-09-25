@@ -12,6 +12,8 @@ RUN npm run build
 # Runtime stage: unprivileged nginx serving the app and proxying /api.
 # ---------------------------------------------------------------------
 FROM nginxinc/nginx-unprivileged:1.29-alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Rendered to /etc/nginx/conf.d/default.conf at start up (envsubst on defined variables only)
+ENV MRMS_ESP_ORIGIN=""
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 COPY --from=build /src/dist /usr/share/nginx/html
 EXPOSE 8080

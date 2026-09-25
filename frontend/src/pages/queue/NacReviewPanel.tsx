@@ -7,7 +7,8 @@ import { Callout, ErrorCallout } from '../../components/ui/Feedback'
 import { TextAreaField } from '../../components/ui/Form'
 import { Panel } from '../../components/ui/Layout'
 import { Modal } from '../../components/ui/Modal'
-import { PasswordConfirm } from '../../components/ui/PasswordConfirm'
+import { SignConfirm } from '../../components/ui/SignConfirm'
+import type { StepUp } from '../../components/ui/SignConfirm'
 import { DECISION_LABELS, formatDate } from '../../lib/format'
 import { Icon } from '../../lib/icons'
 
@@ -143,8 +144,9 @@ function OfficerPanel({ nac, onDone, extra }: { nac: Nac; onDone: (m: string) =>
   const [text, setText] = useState('')
   const counts = DECISIONS.map((d) => [d, nac.items.filter((i) => i.decision === d).length] as const)
 
+  const signBody = { remarks: text || null }
   const sign = useMutation({
-    mutationFn: (password: string) => api.post<Nac>(`/api/nac/${nac.id}/countersign`, { password, remarks: text || null }),
+    mutationFn: (stepUp: StepUp) => api.post<Nac>(`/api/nac/${nac.id}/countersign`, { ...signBody, ...stepUp }),
     onSuccess: (n) => {
       setSigning(false)
       onDone(`Certificate ${n.nacNumber} issued`)
@@ -189,11 +191,21 @@ function OfficerPanel({ nac, onDone, extra }: { nac: Nac; onDone: (m: string) =>
           {nac.pharmacistRemarks}
         </p>
       )}
-      <PasswordConfirm open={signing} title="Countersign the e-NAC" confirmLabel="Countersign" busy={sign.isPending} onCancel={() => setSigning(false)} onConfirm={(p) => sign.mutate(p)}>
+      <SignConfirm
+        open={signing}
+        title="Countersign the e-NAC"
+        confirmLabel="Countersign"
+        busy={sign.isPending}
+        onCancel={() => setSigning(false)}
+        onConfirm={(stepUp) => sign.mutate(stepUp)}
+        purpose="NAC_COUNTERSIGN"
+        subjectId={nac.id}
+        payload={signBody}
+      >
         <p>You confirm the pharmacist's decisions for all {nac.items.length} items. Your name will appear on the certificate.</p>
         <TextAreaField label="Remarks (optional)" value={text} maxLength={500} onChange={(e) => setText(e.target.value)} />
         {sign.error && <ErrorCallout error={sign.error} />}
-      </PasswordConfirm>
+      </SignConfirm>
       <Modal
         open={sendingBack}
         title="Send back to the pharmacist"

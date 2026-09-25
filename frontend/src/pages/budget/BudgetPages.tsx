@@ -10,7 +10,8 @@ import { Badge, Callout, EmptyState, ErrorCallout, PageSkeleton } from '../../co
 import { TextField } from '../../components/ui/Form'
 import { Page, PageHeader, Panel, Stat, StatGrid } from '../../components/ui/Layout'
 import { Modal } from '../../components/ui/Modal'
-import { PasswordConfirm } from '../../components/ui/PasswordConfirm'
+import { SignConfirm } from '../../components/ui/SignConfirm'
+import type { StepUp } from '../../components/ui/SignConfirm'
 import { useToast } from '../../components/ui/Toast'
 import { formatDate, formatDateTime, formatMoney } from '../../lib/format'
 import { Icon } from '../../lib/icons'
@@ -253,7 +254,7 @@ export function PaoSchoolBudgetPage() {
     },
   })
   const pay = useMutation({
-    mutationFn: (password: string) => api.post<PaymentBatch>(`/api/budget/pao/schools/${schoolId}/pay`, { password }),
+    mutationFn: (stepUp: StepUp) => api.post<PaymentBatch>(`/api/budget/pao/schools/${schoolId}/pay`, stepUp),
     onSuccess: (b) => {
       toast.ok(`Batch ${b.batchRef}: ${b.claimCount} claims paid, ${formatMoney(b.totalAmount)}`)
       setPaying(false)
@@ -362,12 +363,22 @@ export function PaoSchoolBudgetPage() {
         </div>
       </Modal>
 
-      <PasswordConfirm open={paying} title="Release payment" confirmLabel="Pay now" busy={pay.isPending} onCancel={() => setPaying(false)} onConfirm={(p) => pay.mutate(p)}>
+      <SignConfirm
+        open={paying}
+        title="Release payment"
+        confirmLabel="Pay now"
+        busy={pay.isPending}
+        onCancel={() => setPaying(false)}
+        onConfirm={(stepUp) => pay.mutate(stepUp)}
+        purpose="PAYMENT_RUN"
+        subjectId={schoolId ?? ''}
+        payload={{}}
+      >
         <p>
           {preview.size} claim{preview.size === 1 ? '' : 's'} totalling <strong>{formatMoney(running)}</strong> will be marked paid under one batch, oldest first.
         </p>
         {pay.error && <ErrorCallout error={pay.error} />}
-      </PasswordConfirm>
+      </SignConfirm>
     </Page>
   )
 }

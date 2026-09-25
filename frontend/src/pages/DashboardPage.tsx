@@ -22,6 +22,13 @@ function greeting(): string {
   return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening'
 }
 
+/** First name for the greeting, skipping honorifics such as Dr. or Smt. */
+function firstName(fullName: string): string {
+  const parts = fullName.split(/\s+/).filter(Boolean)
+  const name = parts.find((p) => !/^(dr|mr|mrs|ms|shri|smt|sh|km|kumari)\.?$/i.test(p))
+  return name ?? parts[0] ?? ''
+}
+
 export default function DashboardPage() {
   const me = useMe()
   const { data, isLoading } = useQuery({ queryKey: ['dashboard'], queryFn: () => api.get<Dashboard>('/api/dashboard') })
@@ -38,7 +45,7 @@ export default function DashboardPage() {
     <Page>
       <PageHeader
         eyebrow={`${ROLE_LABELS[me.role]} · Financial year ${data.financialYear}`}
-        title={`${greeting()}, ${me.fullName.split(' ')[0]}`}
+        title={`${greeting()}, ${firstName(me.fullName)}`}
         description={DESCRIPTIONS[me.role]}
         actions={<DashboardActions role={me.role} />}
       />
@@ -249,7 +256,7 @@ function DispensaryDashboard({ data, officer }: { data: Dashboard; officer: bool
       <Callout title="Accountability">
         <p>
           Each item decision is stored with your name and time and is visible to the employee, the school and the PAO.
-          {officer ? ' Countersigning needs your password, like a signature.' : ' Items marked not admissible need a reason.'}
+          {officer ? ' Countersigning is a signature: you confirm it with your password or Aadhaar eSign.' : ' Items marked not admissible need a reason.'}
         </p>
       </Callout>
     </div>

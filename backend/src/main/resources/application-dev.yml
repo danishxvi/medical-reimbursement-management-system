@@ -27,6 +27,14 @@ mrms:
     encryption-key: ZGV2LW9ubHkta2V5LWRvLW5vdC11c2UtaW4tcHJvZCE=
   demo:
     seed: true
+  esign:
+    # Aadhaar eSign against the built in simulator (OTP 123456). Set MRMS_SIGNING_MODE=password to sign with passwords.
+    mode: ${MRMS_SIGNING_MODE:esign}
+    provider-name: Simulated eSign provider
+    asp-id: MRMS-DEV
+    esp-url: http://localhost:5173/api/dev/esp/sign
+    public-base-url: http://localhost:5173
+    simulator: true
   antivirus:
     # No ClamAV needed for local development; files are marked NOT_SCANNED.
     # To test scanning: docker run -p 3310:3310 clamav/clamav and set mode: clamd, host: localhost

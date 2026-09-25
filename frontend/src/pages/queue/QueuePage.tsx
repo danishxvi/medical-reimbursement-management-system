@@ -188,7 +188,7 @@ function NacQueuePage() {
         title="Prescription queue"
         description={
           officer
-            ? 'Check the pharmacist\'s decisions, then countersign with your password or send the certificate back to the same pharmacist.'
+            ? 'Check the pharmacist\'s decisions, then countersign (password or Aadhaar eSign) or send the certificate back to the same pharmacist.'
             : 'Mark every prescribed item. Your name and the time are recorded against each decision.'
         }
         actions={

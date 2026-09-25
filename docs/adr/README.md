@@ -14,5 +14,6 @@ Each record explains one significant decision: the context, the choice, and what
 | [0008](0008-portable-schema.md) | One portable schema for PostgreSQL and H2 | Accepted |
 | [0009](0009-input-sanitisation.md) | Refuse unsafe text at the input boundary, escape at the output | Accepted |
 | [0010](0010-shared-session-store.md) | Store sessions in the database, shared by every API instance | Accepted |
+| [0011](0011-signed-digests.md) | Signatures cover a digest of the exact action, with Aadhaar eSign as a mode | Accepted |
 
 Author: Danish Husain

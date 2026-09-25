@@ -8,7 +8,8 @@ import { Badge, Callout, ErrorCallout } from '../../components/ui/Feedback'
 import { Checkbox, Segmented, SelectField, TextAreaField } from '../../components/ui/Form'
 import { Panel } from '../../components/ui/Layout'
 import { Modal } from '../../components/ui/Modal'
-import { PasswordConfirm } from '../../components/ui/PasswordConfirm'
+import { SignConfirm } from '../../components/ui/SignConfirm'
+import type { StepUp } from '../../components/ui/SignConfirm'
 import { formatMoney } from '../../lib/format'
 import { Icon } from '../../lib/icons'
 
@@ -82,20 +83,20 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
   const [signing, setSigning] = useState(false)
   const [remarks, setRemarks] = useState('')
 
+  // The signature covers exactly this body
+  const body = {
+    rateBasis: basis,
+    items: rows.map((r) => ({
+      itemId: r.itemId,
+      dgehsRate: r.dgehsRate ? Number(r.dgehsRate) : null,
+      amountRestricted: Number(r.amountRestricted),
+      remarks: r.remarks || null,
+    })),
+    certificateAccepted: accepted,
+    remarks: remarks || null,
+  }
   const forward = useMutation({
-    mutationFn: (password: string) =>
-      api.post<Claim>(`/api/claims/${claim.id}/forward`, {
-        rateBasis: basis,
-        items: rows.map((r) => ({
-          itemId: r.itemId,
-          dgehsRate: r.dgehsRate ? Number(r.dgehsRate) : null,
-          amountRestricted: Number(r.amountRestricted),
-          remarks: r.remarks || null,
-        })),
-        certificateAccepted: accepted,
-        password,
-        remarks: remarks || null,
-      }),
+    mutationFn: (stepUp: StepUp) => api.post<Claim>(`/api/claims/${claim.id}/forward`, { ...body, ...stepUp }),
     onSuccess: (c) => {
       setSigning(false)
       onDone(`${c.claimNumber} verified and forwarded to the PAO`)
@@ -234,18 +235,22 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
         <TextAreaField label="Remarks for the PAO (optional)" value={remarks} maxLength={1000} onChange={(e) => setRemarks(e.target.value)} />
         {forward.error && <ErrorCallout error={forward.error} />}
       </div>
-      <PasswordConfirm
+      <SignConfirm
         open={signing}
         title="Sign the certificate"
         confirmLabel="Certify and forward"
         busy={forward.isPending}
         onCancel={() => setSigning(false)}
-        onConfirm={(p) => forward.mutate(p)}
+        onConfirm={(stepUp) => forward.mutate(stepUp)}
+        purpose="CLAIM_HOS_CERTIFY"
+        subjectId={claim.id}
+        payload={body}
       >
         <p>
           You are certifying claim <strong className="mono">{claim.claimNumber}</strong> for {formatMoney(total)}.
         </p>
-      </PasswordConfirm>
+        {forward.error && <ErrorCallout error={forward.error} />}
+      </SignConfirm>
     </Panel>
   )
 }
@@ -371,10 +376,12 @@ function SanctionSheet({ claim, onDone, extra }: { claim: Claim; onDone: (m: str
   const [mode, setMode] = useState<'SANCTION' | 'REJECT' | 'SEND_BACK' | null>(null)
   const [text, setText] = useState('')
 
+  const sanctionBody = { remarks: text || null }
+  const rejectBody = { reason: text }
   const act = useMutation({
-    mutationFn: ({ password }: { password?: string }) => {
-      if (mode === 'SANCTION') return api.post<Claim>(`/api/claims/${claim.id}/sanction`, { password, remarks: text || null })
-      if (mode === 'REJECT') return api.post<Claim>(`/api/claims/${claim.id}/reject`, { password, reason: text })
+    mutationFn: (stepUp: StepUp) => {
+      if (mode === 'SANCTION') return api.post<Claim>(`/api/claims/${claim.id}/sanction`, { ...sanctionBody, ...stepUp })
+      if (mode === 'REJECT') return api.post<Claim>(`/api/claims/${claim.id}/reject`, { ...rejectBody, ...stepUp })
       return api.post<Claim>(`/api/claims/${claim.id}/send-back`, { remarks: text })
     },
     onSuccess: (c) => {
@@ -417,31 +424,38 @@ function SanctionSheet({ claim, onDone, extra }: { claim: Claim; onDone: (m: str
         </div>
       </div>
 
-      <PasswordConfirm
+      <SignConfirm
         open={mode === 'SANCTION'}
         title="Sanction this claim"
         confirmLabel="Sanction"
         busy={act.isPending}
         onCancel={() => setMode(null)}
-        onConfirm={(password) => act.mutate({ password })}
+        onConfirm={(stepUp) => act.mutate(stepUp)}
+        purpose="CLAIM_SANCTION"
+        subjectId={claim.id}
+        payload={sanctionBody}
       >
         <p>
           Sanction <strong>{formatMoney(claim.admittedAmount)}</strong> for claim <span className="mono">{claim.claimNumber}</span>. It will be paid oldest first when funds are available.
         </p>
         {act.error && <ErrorCallout error={act.error} />}
-      </PasswordConfirm>
+      </SignConfirm>
 
-      <PasswordConfirm
+      <SignConfirm
         open={mode === 'REJECT'}
         title="Reject this claim"
         confirmLabel="Reject claim"
         busy={act.isPending}
         onCancel={() => setMode(null)}
-        onConfirm={(password) => (text.trim() ? act.mutate({ password }) : undefined)}
+        onConfirm={(stepUp) => act.mutate(stepUp)}
+        purpose="CLAIM_REJECT"
+        subjectId={claim.id}
+        payload={rejectBody}
+        ready={text.trim().length > 0}
       >
         <TextAreaField label="Reason (shown to the employee)" required value={text} maxLength={1000} onChange={(e) => setText(e.target.value)} />
         {act.error && <ErrorCallout error={act.error} />}
-      </PasswordConfirm>
+      </SignConfirm>
 
       <Modal
         open={mode === 'SEND_BACK'}

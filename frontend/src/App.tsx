@@ -28,6 +28,8 @@ const AuditPage = lazy(() => import('./pages/admin/AdminPages').then((m) => ({ d
 const ProfilePage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.ProfilePage })))
 const NotificationsPage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.NotificationsPage })))
 const RatesPage = lazy(() => import('./pages/admin/RatesPage'))
+const EsignCompletePage = lazy(() => import('./pages/help/EsignCompletePage'))
+const EsignLaunchPage = lazy(() => import('./pages/help/EsignLaunchPage'))
 const GuidePage = lazy(() => import('./pages/help/GuidePage'))
 const PrivacyNoticePage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PrivacyNoticePage })))
 const PublicPrivacyPage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PublicPrivacyPage })))
@@ -72,6 +74,8 @@ export const router = createBrowserRouter([
     children: [
       { path: '/login', element: <S><LoginPage /></S> },
       { path: '/privacy', element: <S><PublicPrivacyPage /></S> },
+      { path: '/esign/complete', element: <S><EsignCompletePage /></S> },
+      { path: '/esign/launch', element: <S><EsignLaunchPage /></S> },
       { path: '/change-password', element: <RequireAuth><S><ChangePasswordPage /></S></RequireAuth> },
       { path: '/welcome/privacy', element: <RequireAuth><S><AcceptPrivacyPage /></S></RequireAuth> },
       {

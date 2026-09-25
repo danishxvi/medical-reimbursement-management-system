@@ -25,7 +25,7 @@ MRMS handles health information and government money. Security is designed in at
 - **Policy:** at least 12 characters with upper case, lower case, digit and symbol; must not contain the login ID; must not be a common password; must differ from the last 5 passwords.
 - **Temporary passwords** are generated randomly when an account is created or reset, shown once to the administrator, and must be changed at first sign in (the API blocks everything else until then).
 - **Lockout:** 5 failed attempts lock the account for 15 minutes. Locked, disabled and unknown accounts produce exactly the same response, and a dummy hash is checked for unknown users so response time does not reveal valid IDs.
-- **Step up confirmation:** certifying (HoS), countersigning (MO), sanctioning, rejecting and releasing payments (PAO officer) require the password again. A wrong password counts towards lockout.
+- **Signing:** certifying (HoS), countersigning (MO), sanctioning, rejecting and releasing payments (PAO officer) are signed, either by re-entering the password (a wrong password counts towards lockout) or with Aadhaar eSign. Each signature covers a digest of exactly the content approved and is used once ([signing](15-esign.md)).
 
 ## 6.3 Sessions and CSRF
 

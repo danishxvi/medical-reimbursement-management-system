@@ -83,7 +83,7 @@ class BudgetController {
     @PostMapping("/pao/schools/{schoolId}/pay")
     @PreAuthorize("hasRole('PAO_OFFICER')")
     BudgetService.BatchView pay(@PathVariable Long schoolId, @Valid @RequestBody PaymentRequest body) {
-        return service.runPayments(schoolId, body.password());
+        return service.runPayments(schoolId, new com.mrms.esign.Signatures.StepUp(body.password(), body.esignTxn()));
     }
 
     record AllocationRequest(
@@ -93,6 +93,7 @@ class BudgetController {
             @Size(max = 7) String financialYear) {
     }
 
-    record PaymentRequest(@NotBlank @Size(max = 128) String password) {
+    /** Sign with the password or a completed Aadhaar eSign transaction, depending on the portal's mode. */
+    record PaymentRequest(@Size(max = 128) String password, @Size(max = 80) String esignTxn) {
     }
 }

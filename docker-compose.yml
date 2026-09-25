@@ -70,6 +70,16 @@ services:
       MRMS_FORWARD_HEADERS: native
       MRMS_AV_HOST: clamav
       MRMS_AV_PORT: "3310"
+      MRMS_PUBLIC_BASE_URL: ${MRMS_PUBLIC_BASE_URL:-}
+      # Signing: password (default) or esign; eSign needs the ASP registration values below
+      MRMS_SIGNING_MODE: ${MRMS_SIGNING_MODE:-password}
+      MRMS_ESP_NAME: ${MRMS_ESP_NAME:-}
+      MRMS_ESP_ASP_ID: ${MRMS_ESP_ASP_ID:-}
+      MRMS_ESP_URL: ${MRMS_ESP_URL:-}
+      MRMS_ESP_ASP_KEYSTORE: ${MRMS_ESP_ASP_KEYSTORE:-}
+      MRMS_ESP_ASP_KEYSTORE_PASSWORD: ${MRMS_ESP_ASP_KEYSTORE_PASSWORD:-}
+      MRMS_ESP_CERTIFICATES: ${MRMS_ESP_CERTIFICATES:-}
+      MRMS_ESP_TRUSTED_CAS: ${MRMS_ESP_TRUSTED_CAS:-}
     volumes:
       - storage:/data/storage
     read_only: true
@@ -87,9 +97,14 @@ services:
       - backend
     ports:
       - "127.0.0.1:${MRMS_WEB_PORT:-8080}:8080"
+    environment:
+      # Origin of the eSign provider (for example https://esign.example.gov.in); empty when eSign is off
+      MRMS_ESP_ORIGIN: ${MRMS_ESP_ORIGIN:-}
     read_only: true
     tmpfs:
       - /tmp
+      # nginx writes its rendered configuration here at start up
+      - /etc/nginx/conf.d
     security_opt:
       - no-new-privileges:true
     networks:
