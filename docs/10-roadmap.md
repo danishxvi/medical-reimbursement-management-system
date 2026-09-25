@@ -20,6 +20,7 @@
 - [x] Role dashboards, in app notifications
 - [x] Saffron and white, animated, responsive React UI with rounded boxes
 - [x] CI (tests, lint, build, dependency audit, CodeQL), Dependabot, Docker Compose deployment
+- [x] Frontend unit and component tests (Vitest) and end to end journeys (Playwright) in CI
 
 ## Release 0.2: fit for a pilot
 

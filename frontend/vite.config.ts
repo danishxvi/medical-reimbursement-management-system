@@ -10,7 +10,8 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     proxy: {
-      '/api': { target: 'http://localhost:8080', changeOrigin: false },
+      // MRMS_API lets the end to end tests point at their own backend
+      '/api': { target: process.env.MRMS_API ?? 'http://localhost:8080', changeOrigin: false },
     },
   },
   build: {

@@ -76,6 +76,7 @@ Demo accounts and a guided walk through are in the [setup guide](docs/12-setup.m
 | 14 | [DGEHS rate list](docs/14-rate-list.md) |
 | 15 | [Signing and Aadhaar eSign](docs/15-esign.md) |
 | 16 | [Deadlines and notifications](docs/16-deadlines-and-notifications.md) |
+| 17 | [Testing](docs/17-testing.md) |
 | ADR | [Architecture decision records](docs/adr/README.md) |
 
 ## Licence

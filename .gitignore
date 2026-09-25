@@ -52,3 +52,7 @@ desktop.ini
 # ---------- Personal notes ----------
 notes/
 scratch/
+
+# Playwright output
+frontend/test-results/
+frontend/playwright-report/

@@ -14,7 +14,7 @@ Maintainer: Danish Husain
 
 1. Create a branch from `main`.
 2. Make the change with tests.
-3. Run `mvn verify` in `backend` and `npm run lint && npm run build` in `frontend`.
+3. Run `mvn verify` in `backend`, and `npm run lint && npm test && npm run build` in `frontend`. For changes to a user journey, also run `npm run e2e` (see [testing](docs/17-testing.md)).
 4. Open a pull request describing the problem, the change and how it was tested. CI must be green.
 
 ## Style
