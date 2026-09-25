@@ -9,6 +9,8 @@ import com.mrms.claim.internal.ClaimEnums.TreatmentType;
 import com.mrms.document.DocumentCategory;
 import com.mrms.document.DocumentMeta;
 import com.mrms.enac.NacTypes.Decision;
+import com.mrms.rates.RateBasis;
+import com.mrms.rates.RateLookup;
 import com.mrms.organisation.OrganisationViews.EmployeeProfileView;
 import com.mrms.shared.domain.Relation;
 import jakarta.validation.Valid;
@@ -90,6 +92,7 @@ final class ClaimDtos {
 
     record HosForwardRequest(
             @NotEmpty List<@Valid Restriction> items,
+            RateBasis rateBasis,
             @AssertTrue(message = "Confirm the certificate to forward the claim") boolean certificateAccepted,
             @NotBlank @Size(max = 128) String password,
             @Size(max = 1000) String remarks) {
@@ -146,12 +149,14 @@ final class ClaimDtos {
             BigDecimal dgehsRate,
             BigDecimal amountRestricted,
             String hosRemarks,
+            String rateReference,
             BigDecimal amountAdmitted,
             String disallowReason,
             Long nacItemId,
             boolean legacyNac,
             NacLink nac,
-            DocumentMeta billDocument) {
+            DocumentMeta billDocument,
+            Map<RateBasis, RateLookup.RateQuote> rates) {
     }
 
     record AttachmentView(DocumentCategory category, DocumentMeta document) {
@@ -214,6 +219,9 @@ final class ClaimDtos {
             Instant paidAt,
             String paymentBatchRef,
             String rejectionReason,
+            RateBasis rateBasis,
+            RateBasis suggestedRateBasis,
+            List<Option> rateBases,
             Map<UUID, String> documentNames,
             List<String> allowedActions) {
     }

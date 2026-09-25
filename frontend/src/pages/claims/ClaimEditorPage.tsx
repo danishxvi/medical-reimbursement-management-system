@@ -19,6 +19,7 @@ import type {
 import { Button } from '../../components/ui/Button'
 import { DataTable } from '../../components/ui/DataTable'
 import { Callout, ErrorCallout, PageSkeleton } from '../../components/ui/Feedback'
+import { RateCodeField } from '../../components/claim/RateCodeField'
 import { DocumentChip, FileUpload } from '../../components/ui/Files'
 import { Checkbox, Segmented, SelectField, TextAreaField, TextField } from '../../components/ui/Form'
 import { Details, Page, PageHeader, Panel } from '../../components/ui/Layout'
@@ -562,7 +563,18 @@ function Editor({ claim, profile, meta }: { claim: Claim | null; profile: Employ
                             error={err?.amountClaimed?.message}
                           />
                           <TextField label="Chemist / lab / hospital" required maxLength={150} {...register(`items.${index}.vendorName`, { required: 'Required' })} error={err?.vendorName?.message} />
-                          <TextField label="DGEHS code" hint="If printed on the bill" maxLength={30} {...register(`items.${index}.dgehsCode`)} />
+                          {it?.category !== 'MEDICINE' && (
+                            <RateCodeField
+                              value={it?.dgehsCode ?? ''}
+                              billDate={it?.billDate || undefined}
+                              onChange={(code) => setValue(`items.${index}.dgehsCode`, code, { shouldDirty: true })}
+                              onPick={(hit) => {
+                                if (!getValues(`items.${index}.description`)) {
+                                  setValue(`items.${index}.description`, hit.name.slice(0, 200), { shouldDirty: true, shouldValidate: true })
+                                }
+                              }}
+                            />
+                          )}
                           {it?.category === 'MEDICINE' && (
                             <SelectField
                               label="Linked e-NAC item"

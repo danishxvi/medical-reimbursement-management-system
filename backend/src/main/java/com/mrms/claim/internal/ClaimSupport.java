@@ -18,6 +18,8 @@ import com.mrms.enac.NacItemRef;
 import com.mrms.enac.NacLookup;
 import com.mrms.identity.Accounts;
 import com.mrms.organisation.OrganisationDirectory;
+import com.mrms.rates.RateBasis;
+import com.mrms.rates.RateLookup;
 import com.mrms.shared.config.MrmsProperties;
 import com.mrms.shared.security.CurrentUser;
 import com.mrms.shared.security.MrmsPrincipal;
@@ -38,6 +40,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
@@ -58,12 +61,13 @@ class ClaimSupport {
     private final OrganisationDirectory organisation;
     private final Accounts accounts;
     private final AuditTrail audit;
+    private final RateLookup rates;
     private final ApplicationEventPublisher events;
     private final MrmsProperties props;
     private final Clock clock;
 
     ClaimSupport(ClaimRepository claims, ClaimEventRepository timeline, DocumentStore documents, NacLookup nac,
-                 OrganisationDirectory organisation, Accounts accounts, AuditTrail audit,
+                 OrganisationDirectory organisation, Accounts accounts, AuditTrail audit, RateLookup rates,
                  ApplicationEventPublisher events, MrmsProperties props, Clock clock) {
         this.claims = claims;
         this.timeline = timeline;
@@ -72,6 +76,7 @@ class ClaimSupport {
         this.organisation = organisation;
         this.accounts = accounts;
         this.audit = audit;
+        this.rates = rates;
         this.events = events;
         this.props = props;
         this.clock = clock;
@@ -226,6 +231,10 @@ class ClaimSupport {
         Map<Long, String> dispensaryNames = organisation.dispensaryNames(nacItems.values().stream()
                 .map(NacItemRef::dispensaryId).collect(Collectors.toSet()));
 
+        var profile = organisation.profileOf(c.getEmployeeUserId()).orElse(null);
+        String ward = profile == null ? null : profile.wardEntitlement();
+        boolean indoor = c.getTreatmentType() == ClaimEnums.TreatmentType.INDOOR;
+
         List<ItemView> items = c.getItems().stream().map(i -> {
             NacItemRef ref = i.getNacItemId() == null ? null : nacItems.get(i.getNacItemId());
             NacLink link = ref == null ? null : new NacLink(ref.nacRequestId(), ref.nacNumber(), ref.itemName(),
@@ -233,8 +242,9 @@ class ClaimSupport {
                     ref.prescriptionDate());
             return new ItemView(i.getId(), i.getLineNo(), i.getCategory(), i.getDescription(), i.getBillNumber(),
                     i.getBillDate(), i.getVendorName(), i.getDgehsCode(), i.getAmountClaimed(), i.getDgehsRate(),
-                    i.getAmountRestricted(), i.getHosRemarks(), i.getAmountAdmitted(), i.getDisallowReason(),
-                    i.getNacItemId(), i.isLegacyNac(), link, docs.get(i.getBillDocumentId()));
+                    i.getAmountRestricted(), i.getHosRemarks(), i.getRateReference(), i.getAmountAdmitted(),
+                    i.getDisallowReason(), i.getNacItemId(), i.isLegacyNac(), link, docs.get(i.getBillDocumentId()),
+                    quotes(i, ward, indoor));
         }).toList();
 
         List<AttachmentView> attachments = c.getAttachments().stream()
@@ -246,7 +256,7 @@ class ClaimSupport {
                 .toList();
 
         return new ClaimView(c.getId(), c.getClaimNumber(), c.getStatus(), c.getStatus().label(),
-                organisation.profileOf(c.getEmployeeUserId()).orElse(null),
+                profile,
                 c.getPatientName(), c.getPatientRelation(), c.getDependentId(), c.getIllnessDescription(),
                 c.getTreatmentType(), c.getTreatmentFrom(), c.getTreatmentTo(), c.getAdmissionDate(),
                 c.getDischargeDate(), c.getHospitalName(), c.getHospitalAddress(), c.getHospitalType(),
@@ -260,7 +270,28 @@ class ClaimSupport {
                 name(names, c.getHosCertifiedBy()), c.getHosCertifiedAt(),
                 name(names, c.getAuditedBy()), c.getAuditedAt(), c.getAuditRecommendation(),
                 name(names, c.getSanctionedBy()), c.getSanctionedAt(), c.getPaidAt(), c.getPaymentBatchRef(),
-                c.getRejectionReason(), documentNames(c, docs), allowedActions);
+                c.getRejectionReason(), c.getRateBasis(), c.suggestedRateBasis(), RATE_BASES,
+                documentNames(c, docs), allowedActions);
+    }
+
+    private static final List<ClaimDtos.Option> RATE_BASES = java.util.Arrays.stream(RateBasis.values())
+            .map(b -> new ClaimDtos.Option(b.name(), b.label())).toList();
+
+    /** Applicable rate of an item under every rate column, so the school can switch basis instantly. */
+    Map<RateBasis, RateLookup.RateQuote> quotes(ClaimItem item, String ward, boolean indoor) {
+        if (item.getDgehsCode() == null || item.getDgehsCode().isBlank()) {
+            return Map.of();
+        }
+        Map<RateBasis, RateLookup.RateQuote> result = new java.util.EnumMap<>(RateBasis.class);
+        for (RateBasis basis : List.of(RateBasis.NABH, RateBasis.NON_NABH, RateBasis.SUPER_SPECIALITY)) {
+            rates.quote(item.getDgehsCode(), item.getBillDate(), basis, ward, indoor)
+                    .ifPresent(q -> result.put(basis, q));
+        }
+        return result;
+    }
+
+    Optional<RateLookup.RateQuote> quote(ClaimItem item, RateBasis basis, String ward, boolean indoor) {
+        return rates.quote(item.getDgehsCode(), item.getBillDate(), basis, ward, indoor);
     }
 
     /** Annexure II table: amount per category, split into OPD and indoor. */

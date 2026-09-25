@@ -1,0 +1,2006 @@
+# CGHS rates for treatment at healthcare organisations, Tier I (X) cities, semi private ward.
+# Source: Office Memorandum F.No.5-16/CGHS(HQ)/HEC/2024(PartI) dated 03.10.2025, Annexure I (A),
+#         effective 13.10.2025, as published by the Directorate General of Health Services, Delhi:
+#         https://dgehs.delhi.gov.in/sites/default/files/inline-files/cghs_rate.pdf
+# Source file SHA-256: 964b42f58eb0852d93293a658a183cceaafae33ba30a892979262c21695b9746
+# Extracted 2026-09-25: 1998 rows, serial numbers 1 to 1998 without gaps, every rate cross checked
+# against the source text. Delhi is a Tier I (X) city. Rates in rupees.
+sr,code,name,speciality,non_nabh,nabh,super_speciality
+1,CN001,Consultation OPD,Consultation,350,350,350
+2,CN002,Consultation for Inpatients,Consultation,350,350,350
+3,CN003,Consultation OPD - Super speciality/Psychiatry,Consultation,700,700,700
+4,LB001,"Urine Routine- pH, Specific Gravity, Sugar, Protein and Microscopy",Laboratory Investigation,85,100,100
+5,LB002,Urine Microalbumin,Laboratory Investigation,207,243,243
+6,LB003,Stool Routine and Microscopy,Laboratory Investigation,68,80,80
+7,LB004,Stool for Occult Blood,Laboratory Investigation,85,100,100
+8,LB005,Post Coital Smear Examination,Laboratory Investigation,340,400,400
+9,LB006,Semen Analysis (Automated/Manual),Laboratory Investigation,213,250,250
+10,LB007,Haemoglobin (Hb),Laboratory Investigation,43,50,50
+11,LB008,Total Leucocytic Count (TLC),Laboratory Investigation,43,50,50
+12,LB009,Differential Leucocytic Count (DLC),Laboratory Investigation,85,100,100
+13,LB010,Erythrocyte Sedimentation Rate (ESR),Laboratory Investigation,85,100,100
+14,LB011,"Total Red Cell count with MCV,MCH,MCHC,DRW",Laboratory Investigation,43,50,50
+15,LB012,"Complete Haemogram/CBC, Hb, RBC Count and Indices, TLC, DLC, Platelet, ESR, Peripheral Smear Examination)",Laboratory Investigation,255,300,300
+16,LB013,Platelet Count,Laboratory Investigation,85,100,100
+17,LB014,Reticulocyte Count,Laboratory Investigation,85,100,100
+18,LB015,Absolute Eosinophil Count (AEC),Laboratory Investigation,85,100,100
+19,LB016,Packed Cell Volume (PCV),Laboratory Investigation,43,50,50
+20,LB017,Peripheral Smear Examination,Laboratory Investigation,85,100,100
+21,LB018,Smear for Malaria/Filaria Parasite,Laboratory Investigation,85,100,100
+22,LB019,Bleeding Time,Laboratory Investigation,43,50,50
+23,LB020,Clotting Time,Laboratory Investigation,43,50,50
+24,LB021,Osmotic Fragility Test,Laboratory Investigation,255,300,300
+25,LB022,Bone Marrow Smear Examination,Laboratory Investigation,298,350,350
+26,LB023,Bone Marrow Smear Examination with Iron Stain,Laboratory Investigation,680,800,800
+27,LB024,Bone Marrow Smear Examination and Cytochemistry,Laboratory Investigation,10200,12000,12000
+28,LB025,Activated Partial Thromboplastin Time (APTT),Laboratory Investigation,247,290,290
+29,LB026,Rapid Test for Malaria (Card Test)/QBC Malaria Test,Laboratory Investigation,85,100,100
+30,LB027,"Bleeding Disorder Panel- PT, APTT, Thrombin Time Fibrinogen, D-Dimer/ Fibrinogen Degradation Products (FDP)",Laboratory Investigation,680,800,800
+31,LB028,Factor Assays-Factor VIII,Laboratory Investigation,1275,1500,1500
+32,LB029,Factor Assays-Factor IX,Laboratory Investigation,1275,1500,1500
+33,LB030,Platelet Function Tests,Laboratory Investigation,1075,1265,1265
+34,LB031,"Tests for Hypercoagulable States- Protein C, Protein S, Antithrombin",Laboratory Investigation,2873,3380,3380
+35,LB032,Tests for Lupus Anticoagulant,Laboratory Investigation,1105,1300,1300
+36,LB033,"Tests for Antiphospholipid Antibody IgG, IgM (for Cardiolipin and B2 Glycoprotein 1)",Laboratory Investigation,850,1000,1000
+37,LB034,Thalassemia Studies (Red Cell Indices and Hb HPLC),Laboratory Investigation,850,1000,1000
+38,LB035,Tests for Sickling / Hb HPLC),Laboratory Investigation,850,1000,1000
+39,LB036,Blood Group & Rh Type,Laboratory Investigation,77,90,90
+40,LB037,Cross Match,Laboratory Investigation,170,200,200
+41,LB038,Coomb's Test - Direct,Laboratory Investigation,170,200,200
+42,LB039,Coomb's Test - Indirect,Laboratory Investigation,213,250,250
+43,LB040,3 Cell Panel- Antibody Screening for Pregnant Female,Laboratory Investigation,893,1050,1050
+44,LB041,11 Cells Panel for Antibody Identification,Laboratory Investigation,1942,2285,2285
+45,LB042,Hepatitis B Surface Antigen (HBsAg),Laboratory Investigation,255,300,300
+46,LB043,Hepatitis C Virus (HCV),Laboratory Investigation,425,500,500
+47,LB044,Human Immunodeficiency Virus- HIV I and II,Laboratory Investigation,327,385,385
+48,LB045,Venereal Disease Research Laboratory Test (VDRL),Laboratory Investigation,85,100,100
+49,LB046,Rh Antibody Titre,Laboratory Investigation,255,300,300
+50,LB047,CGHS rates for Platelet Concentrate Test,Laboratory Investigation,850,1000,1000
+51,LB048,Routine - H & E,Laboratory Investigation,463,545,545
+52,LB049,Special Stain,Laboratory Investigation,170,200,200
+53,LB050,Histopathology Examination (HPE) - Frozen Section,Laboratory Investigation,1275,1500,1500
+54,LB051,Histopathology Examination (HPE) - Paraffin Section,Laboratory Investigation,425,500,500
+55,LB052,Pap Smear,Laboratory Investigation,340,400,400
+56,LB053,Body Fluid for Malignant cells,Laboratory Investigation,298,350,350
+57,LB054,"Paroxysmal Nocturnal Haemoglobinuria (PNH) Panel- CD55, CD59",Laboratory Investigation,1275,1500,1500
+58,LB055,Blood Glucose Random / Blood Glucose Fasting /Blood Glucose PP,Laboratory Investigation,34,40,40
+59,LB056,"24 Hrs Urine for Proteins, Sodium, Creatinine",Laboratory Investigation,255,300,300
+60,LB057,Blood Urea Nitrogen (BUN) / Urea,Laboratory Investigation,85,100,100
+61,LB058,Serum Creatinine,Laboratory Investigation,85,100,100
+62,LB059,Urine Bile Pigment and Salt,Laboratory Investigation,60,70,70
+63,LB060,Urine Urobilinogen,Laboratory Investigation,60,70,70
+64,LB061,Urine Ketones,Laboratory Investigation,60,70,70
+65,LB062,Urine Occult Blood,Laboratory Investigation,60,70,70
+66,LB063,Urine Total Proteins,Laboratory Investigation,60,70,70
+67,LB064,Rheumatoid Factor / Rh Factor Test,Laboratory Investigation,638,750,750
+68,LB065,Bence Jones Protein,Laboratory Investigation,85,100,100
+69,LB066,Serum Uric Acid,Laboratory Investigation,128,150,150
+70,LB067,Serum Bilirubin total & direct,Laboratory Investigation,128,150,150
+71,LB068,Serum Iron,Laboratory Investigation,213,250,250
+72,LB069,C-Reactive Protein (CRP),Laboratory Investigation,213,250,250
+73,LB070,C-Reactive Protein (CRP) Quantitative,Laboratory Investigation,255,300,300
+74,LB071,"Body Fluid (CSF/Ascitic Fluid etc.) Sugar, Protein etc.",Laboratory Investigation,255,300,300
+75,LB072,Albumin,Laboratory Investigation,43,50,50
+76,LB073,Creatinine Clearance,Laboratory Investigation,170,200,200
+77,LB074,Serum Cholesterol,Laboratory Investigation,128,150,150
+78,LB075,Total Iron Binding Capacity (TIBC),Laboratory Investigation,255,300,300
+79,LB076,Glucose (Fasting & PP),Laboratory Investigation,68,80,80
+80,LB077,Serum Calcium -Total,Laboratory Investigation,128,150,150
+81,LB078,Serum Calcium - Ionic,Laboratory Investigation,510,600,600
+82,LB079,Serum Phosphorus,Laboratory Investigation,128,150,150
+83,LB080,Total Protein Albumin/Globulin Ratio (A/G Ratio),Laboratory Investigation,60,70,70
+84,LB081,Immunoglobulin G (IgG),Laboratory Investigation,340,400,400
+85,LB082,Immunoglobulin M(IgM),Laboratory Investigation,340,400,400
+86,LB083,Immunoglobulin A(IgA),Laboratory Investigation,340,400,400
+87,LB084,Antinuclear Antibody (ANA),Laboratory Investigation,557,655,655
+88,LB085,Anti-double stranded DNA (anti-dsDNA),Laboratory Investigation,680,800,800
+89,LB086,Serum Glutamic Pyruvic Transaminase (SGPT) / Alanine Aminotransferase (ALT),Laboratory Investigation,85,100,100
+90,LB087,Serum Glutamic Oxaloacetic Transaminase (SGOT) /Aspartate Aminotransferase (AST),Laboratory Investigation,85,100,100
+91,LB088,Serum Amylase,Laboratory Investigation,255,300,300
+92,LB089,Serum Lipase,Laboratory Investigation,340,400,400
+93,LB090,Serum Lactate,Laboratory Investigation,425,500,500
+94,LB091,Serum Magnesium,Laboratory Investigation,255,300,300
+95,LB092,Serum Sodium,Laboratory Investigation,102,120,120
+96,LB093,Serum Potassium,Laboratory Investigation,102,120,120
+97,LB094,Chloride,Laboratory Investigation,128,150,150
+98,LB095,Serum Bicarbonate,Laboratory Investigation,170,200,200
+99,LB096,Serum Ammonia,Laboratory Investigation,570,670,670
+100,LB097,"Anaemia Profile (Hb, Serum Iron, TIBC, Ferritin, Transferrin Saturation,Stool Occult Blood, CBC, Reticulocyte Count)",Laboratory Investigation,1122,1320,1320
+101,LB098,Serum Testosterone,Laboratory Investigation,340,400,400
+102,LB099,Imprint Smear from Endoscopy,Laboratory Investigation,850,1000,1000
+103,LB100,Triglycerides,Laboratory Investigation,128,150,150
+104,LB101,Glucose Tolerance Test (GTT),Laboratory Investigation,255,300,300
+105,LB102,"Triple Marker Test (AFP,HCG,UE3)",Laboratory Investigation,1275,1500,1500
+106,LB103,Creatine Phosphokinase (CPK)/Creatine Kinase (CK),Laboratory Investigation,196,230,230
+107,LB104,Foetal Haemoglobin (HbF),Laboratory Investigation,425,500,500
+108,LB105,Prothrombin Time (PT)/ International normalized ratio (INR),Laboratory Investigation,213,250,250
+109,LB106,Lactate dehydrogenase (LDH),Laboratory Investigation,187,220,220
+110,LB107,Alkaline Phosphatase,Laboratory Investigation,128,150,150
+111,LB108,Acid Phosphatase,Laboratory Investigation,128,150,150
+112,LB109,CPK MB/CK MB,Laboratory Investigation,306,360,360
+113,LB110,CK MB Mass/CPK MB Mass,Laboratory Investigation,306,360,360
+114,LB111,Troponin I,Laboratory Investigation,595,700,700
+115,LB112,Troponin T,Laboratory Investigation,595,700,700
+116,LB113,Glucose-6-Phosphate Dehydrogenase (G6PD),Laboratory Investigation,255,300,300
+117,LB114,Lithium,Laboratory Investigation,298,350,350
+118,LB115,Dilantin (Phenytoin),Laboratory Investigation,510,600,600
+119,LB116,Carbamazepine.,Laboratory Investigation,595,700,700
+120,LB117,Cyclosporine,Laboratory Investigation,2125,2500,2500
+121,LB118,Valproic acid.,Laboratory Investigation,510,600,600
+122,LB119,Blood gas analysis / Arterial Blood Gas (ABG),Laboratory Investigation,476,560,560
+123,LB120,Blood gas analysis / Arterial Blood Gas (ABG) with electrolytes,Laboratory Investigation,680,800,800
+124,LB121,Urine Pregnancy Test(UPT),Laboratory Investigation,85,100,100
+125,LB122,Glycosylated Haemoglobin (HbA1c),Laboratory Investigation,255,300,300
+126,LB123,"Kidney Function Test (KFT)- (Sr.Creatinine,Blood Urea,BUN,Sr.Uric Acid,Sr.Sodium,Sr.Potassium,Urine R/E)",Laboratory Investigation,425,500,500
+127,LB124,Liver Function Test (LFT),Laboratory Investigation,425,500,500
+128,LB125,"Lipid Profile (Total cholesterol ,Triglycerides, LDL, HDL,VLDL)",Laboratory Investigation,417,490,490
+129,LB126,Serum Ferritin,Laboratory Investigation,298,350,350
+130,LB127,Vitamin B12 Assay.,Laboratory Investigation,510,600,600
+131,LB128,Folic Acid Assay.,Laboratory Investigation,553,650,650
+132,LB129,"Extended Lipid Profile. (Total cholesterol, LDL,HDL, Triglycerides Apo A1, Apo B,Lp (a) )",Laboratory Investigation,850,1000,1000
+133,LB130,Apolipoprotein A1 (ApoA1),Laboratory Investigation,340,400,400
+134,LB131,Apolipoprotein B (Apo B),Laboratory Investigation,340,400,400
+135,LB132,Lipoprotein A / Lp A,Laboratory Investigation,340,400,400
+136,LB133,"CD 3,4 and 8 Counts",Laboratory Investigation,1054,1240,1240
+137,LB134,"CD 3,4 and 8 Percentage",Laboratory Investigation,1284,1510,1510
+138,LB135,Low Density Lipoprotein (LDL),Laboratory Investigation,128,150,150
+139,LB136,Homocysteine,Laboratory Investigation,553,650,650
+140,LB137,Serum Electrophoresis,Laboratory Investigation,595,700,700
+141,LB138,Fibrinogen,Laboratory Investigation,425,500,500
+142,LB139,Gamma-Glutamyl Transpeptidase (GGTP),Laboratory Investigation,128,150,150
+143,LB140,Fructosamine,Laboratory Investigation,425,500,500
+144,LB141,Beta 2 microglobulin (B2M) /2 microglobulin,Laboratory Investigation,510,600,600
+145,LB142,Prostate Specific Antigen (PSA)- Total,Laboratory Investigation,404,475,475
+146,LB143,Prostate-Specific Antigen (PSA) - Free,Laboratory Investigation,680,800,800
+147,LB144,Alpha Fetoprotein (AFP),Laboratory Investigation,468,550,550
+148,LB145,Human Chorionic Gonadotropin (HCG)/ Beta HCG,Laboratory Investigation,383,450,450
+149,LB146,Cancer Antigen 125 (CA 125),Laboratory Investigation,680,800,800
+150,LB147,Cancer Antigen 19.9 (CA 19.9),Laboratory Investigation,680,800,800
+151,LB148,Cancer Antigen 15.3 (CA 15.3),Laboratory Investigation,680,800,800
+152,LB149,Vanillylmandelic Acid (VMA),Laboratory Investigation,1360,1600,1600
+153,LB150,Calcitonin,Laboratory Investigation,1020,1200,1200
+154,LB151,Carcinoembryonic Antigen (CEA),Laboratory Investigation,510,600,600
+155,LB152,Direct Immunofluorescence (Skin and Kidney Disease etc),Laboratory Investigation,1020,1200,1200
+156,LB153,Indirect (anti ds DNA Anti Smith ANCA),Laboratory Investigation,1020,1200,1200
+157,LB154,Calcidiol / 25-hydroxycholecalciferol / Vitamin D3 assay (Vit D3),Laboratory Investigation,850,1000,1000
+158,LB155,Serum Protein electrophoresis with immunofixation electrophoresis (IFE),Laboratory Investigation,595,700,700
+159,LB156,Anti-Cyclic Citrullinated Peptide (Anti CCP),Laboratory Investigation,765,900,900
+160,LB157,Anti-tissue Transglutaminase antibody (Anti TTG Antibody) / Tissue Transglutaminase IgA (tTg-IgA),Laboratory Investigation,680,800,800
+161,LB158,Serum Erythropoietin,Laboratory Investigation,1020,1200,1200
+162,LB159,Adrenocorticotropic Hormone (ACTH),Laboratory Investigation,1020,1200,1200
+163,LB160,"T3, T4, TSH -Thyroid Function Test (TFT)",Laboratory Investigation,383,450,450
+164,LB161,Thyroid stimulating hormone (TSH),Laboratory Investigation,170,200,200
+165,LB162,Luteinizing hormone (LH),Laboratory Investigation,340,400,400
+166,LB163,Follicle stimulating hormone (FSH),Laboratory Investigation,340,400,400
+167,LB164,Prolactin,Laboratory Investigation,340,400,400
+168,LB165,Cortisol,Laboratory Investigation,468,550,550
+169,LB166,PTH(Parathormone),Laboratory Investigation,850,1000,1000
+170,LB167,C-Peptide (Connecting Peptide),Laboratory Investigation,638,750,750
+171,LB168,Insulin,Laboratory Investigation,425,500,500
+172,LB169,Progesterone,Laboratory Investigation,340,400,400
+173,LB170,17 Hydroxyprogesterone (17 OH Progesterone),Laboratory Investigation,638,750,750
+174,LB171,Dehydroepiandrosterone sulfate (DHEAS),Laboratory Investigation,850,1000,1000
+175,LB172,Androstenedione,Laboratory Investigation,850,1000,1000
+176,LB173,Growth Hormone,Laboratory Investigation,510,600,600
+177,LB174,Thyroid peroxidase antibody (TPO),Laboratory Investigation,595,700,700
+178,LB175,Thyroglobulin.,Laboratory Investigation,595,700,700
+179,LB176,Hydatid Serology,Laboratory Investigation,697,820,820
+180,LB177,Anti Sperm Antibodies.,Laboratory Investigation,765,900,900
+181,LB178,Hepatitis B Virus (HBV) DNA Qualitative,Laboratory Investigation,2125,2500,2500
+182,LB179,Hepatitis B Virus (HBV) DNA Quantitative.,Laboratory Investigation,2975,3500,3500
+183,LB180,Hepatitis C Virus (HCV) RNA Qualitative.,Laboratory Investigation,2550,3000,3000
+184,LB181,Human papillomavirus (HPV) Serology,Laboratory Investigation,1360,1600,1600
+185,LB182,Rota Virus serology,Laboratory Investigation,340,400,400
+186,LB183,Mantoux Test,Laboratory Investigation,170,200,200
+187,LB184,ADA( Adenosine deaminase),Laboratory Investigation,553,650,650
+188,LB185,GeneXpert Test (Tuberculosis),Laboratory Investigation,880,1035,1035
+189,LB186,QuantiFERON TB Gold,Laboratory Investigation,2125,2500,2500
+190,LB187,PCR for Tuberculosis (TB),Laboratory Investigation,1020,1200,1200
+191,LB188,PCR for Human immunodeficiency virus (HIV),Laboratory Investigation,1530,1800,1800
+192,LB189,Chlamydia antigen,Laboratory Investigation,850,1000,1000
+193,LB190,Chlamydia antibody,Laboratory Investigation,723,850,850
+194,LB191,Brucella serology,Laboratory Investigation,383,450,450
+195,LB192,Influenza A serology,Laboratory Investigation,850,1000,1000
+196,LB193,Acetylcholine receptor (AChR) antibody titre,Laboratory Investigation,3825,4500,4500
+197,LB194,Anti muscle specific receptor tyrosine kinase (Anti MuSK) antibody titre,Laboratory Investigation,5695,6700,6700
+198,LB195,Serum Copper,Laboratory Investigation,553,650,650
+199,LB196,Serum Ceruloplasmin,Laboratory Investigation,553,650,650
+200,LB197,Urinary copper,Laboratory Investigation,714,840,840
+201,LB198,Serum phenobarbitone level,Laboratory Investigation,510,600,600
+202,LB199,Coagulation profile,Laboratory Investigation,638,750,750
+203,LB200,D-Dimer,Laboratory Investigation,425,500,500
+204,LB201,"CSF/Any Body Fluid for Basic studies including cell count, protein, sugar, gram stain, India Ink preparation and smear for AFB",Laboratory Investigation,298,350,350
+205,LB202,PCR for Herpes simplex,Laboratory Investigation,1190,1400,1400
+206,LB203,Bacterial culture and sensitivity - Aerobic,Laboratory Investigation,391,460,460
+207,LB204,Bacterial culture and sensitivity - Anaerobic,Laboratory Investigation,595,700,700
+208,LB205,Mycobacterial culture and sensitivity,Laboratory Investigation,468,550,550
+209,LB206,Fungal culture,Laboratory Investigation,421,495,495
+210,LB207,Anti measles antibody titre (with serum antibody titre),Laboratory Investigation,1020,1200,1200
+211,LB208,Viral culture,Laboratory Investigation,510,600,600
+212,LB209,"Antibody titre (Herpes simplex, cytomegalovirus, flavivirus, zoster varicella virus)",Laboratory Investigation,1785,2100,2100
+213,LB210,Oligoclonal bands (OCBs),Laboratory Investigation,1913,2250,2250
+214,LB211,Myelin basic protein (MBP),Laboratory Investigation,2975,3500,3500
+215,LB212,Cryptococcal antigen,Laboratory Investigation,1275,1500,1500
+216,LB213,D Xylose test,Laboratory Investigation,935,1100,1100
+217,LB214,Faecal / Faecal fat test/ faecal chymotrypsin/ faecal elastase,Laboratory Investigation,850,1000,1000
+218,LB215,H pylori serology for Coeliac disease /Celiac disease,Laboratory Investigation,1020,1200,1200
+219,LB216,HBV genotyping,Laboratory Investigation,2444,2875,2875
+220,LB217,HCV genotyping,Laboratory Investigation,4765,5606,5606
+221,LB218,Urinary Vanillylmandelic Acid (VMA),Laboratory Investigation,1857,2185,2185
+222,LB219,Urinary metanephrine/Normetanephrine,Laboratory Investigation,2465,2900,2900
+223,LB220,Urinary free catecholamine,Laboratory Investigation,2125,2500,2500
+224,LB221,Serum aldosterone,Laboratory Investigation,1530,1800,1800
+225,LB222,24 Hr urinary aldosterone,Laboratory Investigation,1275,1500,1500
+226,LB223,Plasma renin activity,Laboratory Investigation,1360,1600,1600
+227,LB224,Serum aldosterone/renin ratio,Laboratory Investigation,1275,1500,1500
+228,LB225,Osmolality urine,Laboratory Investigation,383,450,450
+229,LB226,Osmolality serum,Laboratory Investigation,383,450,450
+230,LB227,Urinary sodium,Laboratory Investigation,128,150,150
+231,LB228,Urinary Chloride,Laboratory Investigation,128,150,150
+232,LB229,Urinary potassium,Laboratory Investigation,128,150,150
+233,LB230,Urinary calcium,Laboratory Investigation,128,150,150
+234,LB231,Thyroid binding globulin,Laboratory Investigation,935,1100,1100
+235,LB232,24-hour urinary free cortisol,Laboratory Investigation,638,750,750
+236,LB233,Islet cell antibody,Laboratory Investigation,1020,1200,1200
+237,LB234,Glutamic Acid Decarboxylase Autoantibodies test (GAD antibodies),Laboratory Investigation,1700,2000,2000
+238,LB235,Insulin associated antibody,Laboratory Investigation,833,980,980
+239,LB236,Insulin-like growth factor-1 (IGF-1),Laboratory Investigation,1870,2200,2200
+240,LB237,Insulin-like growth factor binding protein 3 (IGF- BP3),Laboratory Investigation,1955,2300,2300
+241,LB238,Sex hormone binding globulin,Laboratory Investigation,1309,1540,1540
+242,LB239,Estradiol (E2),Laboratory Investigation,340,400,400
+243,LB240,Thyroglobulin antibody,Laboratory Investigation,595,700,700
+244,LB241,"Kappa Lambda Light Chains, Free, Serum/ Serum free light chains (SFLC)",Laboratory Investigation,3421,4025,4025
+245,LB242,Serum IgE Level,Laboratory Investigation,323,380,380
+246,LB243,N-terminal pro BNP (NT-pro BNP / Brain natriuretic peptide (BNP),Laboratory Investigation,1760,2070,2070
+247,LB244,HCV RNA Quantitative,Laboratory Investigation,1568,1845,1845
+248,LB245,Tacrolimus Level,Laboratory Investigation,2248,2645,2645
+249,LB246,"Protein Creatinine Ratio (PCR), Urine / Albumin Creatinine Ratio (ACR), Urine",Laboratory Investigation,129,152,152
+250,LB247,HLA B27 (PCR),Laboratory Investigation,489,575,575
+251,LB248,Procalcitonin,Laboratory Investigation,1760,2070,2070
+252,LB249,TORCH Test,Laboratory Investigation,1095,1288,1288
+253,LB250,Anti -Smooth Muscle Antibody Test (ASMA),Laboratory Investigation,1241,1460,1460
+254,LB251,C ANCA-IFA,Laboratory Investigation,1275,1500,1500
+255,LB252,P ANCA-IFA,Laboratory Investigation,1275,1500,1500
+256,LB253,Angiotensin converting enzyme (ACE),Laboratory Investigation,850,1000,1000
+257,LB254,Extractable Nuclear Antigens (ENA) - Quantitative,Laboratory Investigation,3910,4600,4600
+258,LB255,Chromogranin A,Laboratory Investigation,4250,5000,5000
+259,LB256,Faecal calprotectin,Laboratory Investigation,2321,2730,2730
+260,LB257,C3-COMPLEMENT,Laboratory Investigation,553,650,650
+261,LB258,C4-COMPLEMENT,Laboratory Investigation,553,650,650
+262,LB259,H1N1 (RT-PCR),Laboratory Investigation,921,1084,1084
+263,LB260,Anti HEV IgM,Laboratory Investigation,850,1000,1000
+264,LB261,Anti HAV IgM,Laboratory Investigation,638,750,750
+265,LB262,HBsAg Quantitative,Laboratory Investigation,553,650,650
+266,LB263,Typhidot IgM,Laboratory Investigation,340,400,400
+267,LB264,Hepatitis B Core Antibody (HBcAb) Level (Hepatitis B Core IgM Antibody),Laboratory Investigation,408,480,480
+268,LB265,Hepatitis B surface antibody (anti HBs),Laboratory Investigation,553,650,650
+269,LB266,Free Triiodothyronine (FT3),Laboratory Investigation,106,125,125
+270,LB267,Free Thyroxine (FT4),Laboratory Investigation,106,125,125
+271,LB268,Widal Test,Laboratory Investigation,60,70,70
+272,LB269,Dengue NS1 Ag,Laboratory Investigation,340,400,400
+273,LB270,Dengue IgM and Ig G,Laboratory Investigation,680,800,800
+274,LB271,Interleukin 6 (IL 6),Laboratory Investigation,1360,1600,1600
+275,LB272,Covid Antibody Test,Laboratory Investigation,595,700,700
+276,LB273,Cryoglobulins,Laboratory Investigation,850,1000,1000
+277,LB274,Cytogenetics,Laboratory Investigation,4250,5000,5000
+278,LB275,Plasma Free Normetanephrine,Laboratory Investigation,1955,2300,2300
+279,LB276,Plasma Metanephrines,Laboratory Investigation,1955,2300,2300
+280,LB277,PLA2 receptor antibody quantitative,Laboratory Investigation,3570,4200,4200
+281,LB278,Allergic Bronchopulmonary Aspergillosis (ABPA) Panel,Laboratory Investigation,2465,2900,2900
+282,LB279,Allergy Food Screening Panel,Laboratory Investigation,5100,6000,6000
+283,LB280,AMA (Anti Mitochondrial Antibody),Laboratory Investigation,850,1000,1000
+284,LB281,AMH (Anti- Mullerian Hormone),Laboratory Investigation,850,1000,1000
+285,LB282,ANA BLOT,Laboratory Investigation,2550,3000,3000
+286,LB283,ANA Profile,Laboratory Investigation,2550,3000,3000
+287,LB284,Anti GBM (Glomerular Basement Membrane) Antibody,Laboratory Investigation,1275,1500,1500
+288,LB285,Anti LKM (Liver Kidney Microsome) Ab,Laboratory Investigation,1275,1500,1500
+289,LB286,Anti Parietal Cell Antibodies,Laboratory Investigation,1700,2000,2000
+290,LB287,Anti Intrinsic Factor Antibodies,Laboratory Investigation,1700,2000,2000
+291,LB288,ASO Titre /ASLO Titre,Laboratory Investigation,459,540,540
+292,LB289,Aspergillus Fumigatus Specific IgE,Laboratory Investigation,1318,1550,1550
+293,LB290,Autoimmune Encephalitis Panel,Laboratory Investigation,14450,17000,17000
+294,LB291,Autoimmune Hepatitis Profile,Laboratory Investigation,2516,2960,2960
+295,LB292,Beta-D-Glucan Assay,Laboratory Investigation,12750,15000,15000
+296,LB293,C1 Esterase inhibitor (Quantitative ),Laboratory Investigation,2040,2400,2400
+297,LB294,CMV Quantitative (Viral load) Test,Laboratory Investigation,1955,2300,2300
+298,LB295,"Double Marker (Beta-hCG,PAPP-A)",Laboratory Investigation,1700,2000,2000
+299,LB296,"Quadruple test (AFP,HCG,UE3,Inhibin A)",Laboratory Investigation,2040,2400,2400
+300,LB297,HBeAb (Hepatitis B envelope Antibody),Laboratory Investigation,306,360,360
+301,LB298,HBeAg (Hepatitis B envelope Antigen),Laboratory Investigation,306,360,360
+302,LB299,HIAA 24 Hours Urinary,Laboratory Investigation,1955,2300,2300
+303,LB300,HIV Viral Load by PCR,Laboratory Investigation,4250,5000,5000
+304,LB301,HSV 1 & 2 IgG,Laboratory Investigation,697,820,820
+305,LB302,Hypersensitive Pneumonitis Panel,Laboratory Investigation,6120,7200,7200
+306,LB303,IgG4,Laboratory Investigation,1700,2000,2000
+307,LB304,Inhibin A,Laboratory Investigation,765,900,900
+308,LB305,Inhibin B,Laboratory Investigation,1615,1900,1900
+309,LB306,Scrub Typhus IgM,Laboratory Investigation,1360,1600,1600
+310,LB307,Interferon Gamma Release Assay (IGRA),Laboratory Investigation,2550,3000,3000
+311,LB308,KOH Mount,Laboratory Investigation,128,150,150
+312,LB309,Serum AMA M2 (IFA Method),Laboratory Investigation,1700,2000,2000
+313,LB310,Serum Gastrin,Laboratory Investigation,1020,1200,1200
+314,LB311,Serum Haptoglobin Levels,Laboratory Investigation,850,1000,1000
+315,LB312,Skin Prick Test for Allergy,Laboratory Investigation,1530,1800,1800
+316,LB313,Myositis Profile (Up to 16 Antigens),Laboratory Investigation,6800,8000,8000
+317,LB314,Paraneoplastic Panel,Laboratory Investigation,8500,10000,10000
+318,LB315,TSH Receptor Antibody,Laboratory Investigation,1020,1200,1200
+319,LB316,Anti-Nuclear Antibodies - IFA,Laboratory Investigation,1360,1600,1600
+320,LB317,Autoimmune Liver Diseases Profile,Laboratory Investigation,4250,5000,5000
+321,LB318,Citrate Urine 24 Hour,Laboratory Investigation,978,1150,1150
+322,LB319,Comprehensive Allergy Panel,Laboratory Investigation,5950,7000,7000
+323,LB320,Comprehensive Myeloma Protein Panel,Laboratory Investigation,5950,7000,7000
+324,LB321,DCP (DES Gamma-Carboxy- Prothrombin),Laboratory Investigation,2848,3350,3350
+325,LB322,Desmoglein (DSG) 1 And 3 Antibody,Laboratory Investigation,4590,5400,5400
+326,LB323,Galactomannan,Laboratory Investigation,2644,3110,3110
+327,LB324,SCL 70 Antibody,Laboratory Investigation,1428,1680,1680
+328,LB325,Serum Chromogranin A,Laboratory Investigation,3230,3800,3800
+329,LB326,SSA- Antibody Ro Serum Test,Laboratory Investigation,1233,1450,1450
+330,LB327,SSB- Antibody La Serum Test,Laboratory Investigation,1233,1450,1450
+331,LB328,Stool for Clostridium difficile Toxin,Laboratory Investigation,2414,2840,2840
+332,LB329,TPHA,Laboratory Investigation,340,400,400
+333,LB330,UGT1A1 Gene Analysis,Laboratory Investigation,5100,6000,6000
+334,LB331,Urine For Myoglobin,Laboratory Investigation,468,550,550
+335,LB332,Leptospira Ig M,Laboratory Investigation,850,1000,1000
+336,LB333,Chikungunya Ig M,Laboratory Investigation,850,1000,1000
+337,LB334,Weil Felix Agglutination Test,Laboratory Investigation,425,500,500
+338,LB335,Continuous Glucose Monitoring for 2 Weeks,Laboratory Investigation,3400,4000,4000
+339,RI001,2D echocardiography,Radiological Investigation,1254,1475,1475
+340,RI002,Fetal Echo,Radiological Investigation,1360,1600,1600
+341,RI003,2D Transoesophageal Echocardiography (TEE),Radiological Investigation,1403,1650,1650
+342,RI004,3D Transoesophageal Echocardiography (TEE),Radiological Investigation,1403,1650,1650
+343,RI005,Stress Echo- exercise,Radiological Investigation,2040,2400,2400
+344,RI006,Stress Echo- pharmacological / D Stress Echo,Radiological Investigation,2550,3000,3000
+345,RI007,Stress Myocardial Perfusion Imaging (MPI)- exercise,Radiological Investigation,7820,9200,9200
+346,RI008,Stress Myocardial Perfusion Imaging (MPI) - pharmacological,Radiological Investigation,7820,9200,9200
+347,RI009,CT Coronary Angiography including Calcium Score Test,Radiological Investigation,7820,9200,9200
+348,RI010,Cardiac CT scan,Radiological Investigation,5525,6500,6500
+349,RI011,MRI Cardiac,Radiological Investigation,6800,8000,8000
+350,RI012,Stress Cardiac MRI,Radiological Investigation,7820,9200,9200
+351,RI013,Cardiac PET,Radiological Investigation,7820,9200,9200
+352,RI014,USG Transvaginal sonography (TVS for Follicular monitoring /aspiration) /TVS for follicular monitoring/pelvic pathology/ET measurement,Radiological Investigation,850,1000,1000
+353,RI015,"Growth scan (including BPP, AFI, Doppler)",Radiological Investigation,1700,2000,2000
+354,RI016,1st trimester scan-dating scan/NT scan/Early pregnancy scan,Radiological Investigation,595,700,700
+355,RI017,USG Colour Doppler Pregnancy / Fetal Doppler/Umbilical Doppler/Uterine Vessel Doppler,Radiological Investigation,1424,1675,1675
+356,RI018,Biophysical score / Biophysical profile test (BPP test),Radiological Investigation,1275,1500,1500
+357,RI019,USG Obstetrics for Anomalies scan,Radiological Investigation,1700,2000,2000
+358,RI020,USG Whole Abdomen Including Pelvis and post Void urine,Radiological Investigation,680,800,800
+359,RI021,"Pelvic USG (gynae, infertility, prostate , KUB with post- void residual (PVR) etc ).",Radiological Investigation,425,500,500
+360,RI022,"USG Small parts (scrotum, thyroid, parathyroid etc)",Radiological Investigation,655,770,770
+361,RI023,"USG Large Parts (Joints/Chest,...etc)",Radiological Investigation,680,800,800
+362,RI024,USG Neonatal spine,Radiological Investigation,850,1000,1000
+363,RI025,USG Breast including relevant Lymph nodes- Bilateral/Unilateral,Radiological Investigation,680,800,800
+364,RI026,USG Hysterosalpingography (HSG),Radiological Investigation,2040,2400,2400
+365,RI027,Fibroscan Liver,Radiological Investigation,978,1150,1150
+366,RI028,Carotid Doppler Bilateral,Radiological Investigation,850,1000,1000
+367,RI029,Arterial Colour Doppler Bilateral,Radiological Investigation,850,1000,1000
+368,RI030,Venous Colour Doppler Bilateral,Radiological Investigation,850,1000,1000
+369,RI031,"Colour Doppler, renal arteries/any other organ",Radiological Investigation,850,1000,1000
+370,RI032,X Ray Abdomen AP Supine or Erect (One film),Radiological Investigation,213,250,250
+371,RI033,X Ray Abdomen Lateral view (one film),Radiological Investigation,179,210,210
+372,RI034,X Ray Chest PA /AP/ Oblique view (one film),Radiological Investigation,196,230,230
+373,RI035,X Ray Chest Lateral (one film),Radiological Investigation,196,230,230
+374,RI036,"X Ray Mastoids: Towne view, oblique views (3 films)",Radiological Investigation,425,500,500
+375,RI037,"X Ray Extremities (Hand/Leg/Feet/Finger/Toe) bones & Joints (Hip/ Knee/Ankle / shoulder/ Wrist / fingers/Toes, etc) AP & Lateral views (standing or weight bearing)(Two films)",Radiological Investigation,323,380,380
+376,RI038,X Ray Pelvis AP (one film),Radiological Investigation,170,200,200
+377,RI039,X Ray Temporomandibular (TM) Joints (one film),Radiological Investigation,213,250,250
+378,RI040,X Ray Abdomen & Pelvis for KUB,Radiological Investigation,200,235,235
+379,RI041,"X Ray Skull AP & Lateral (2 films)/ Extra oral radiographs - All skull views, TMJ, Lateral oblique [Dental]",Radiological Investigation,340,400,400
+380,RI042,X Ray Spine AP & Lateral (2 films),Radiological Investigation,340,400,400
+381,RI043,X Ray Paranasal sinuses (PNS) view (1 film),Radiological Investigation,170,200,200
+382,RI044,Barium Swallow,Radiological Investigation,1020,1200,1200
+383,RI045,Barium Upper GI study,Radiological Investigation,1275,1500,1500
+384,RI046,Barium Upper GI study (Double contrast),Radiological Investigation,1700,2000,2000
+385,RI047,Barium Meal follow through,Radiological Investigation,1700,2000,2000
+386,RI048,Barium Enema (Single contrast/double contrast),Radiological Investigation,1700,2000,2000
+387,RI049,Small bowel enteroclysis,Radiological Investigation,1700,2000,2000
+388,RI050,General:Fistulography / Sinography/Sialography/Dacrocystography/ T-Tube cholangiogram/Nephrostogram,Radiological Investigation,1080,1270,1270
+389,RI051,Intravenous Pyelography (IVP),Radiological Investigation,1403,1650,1650
+390,RI052,Micturating Cystourethrography (MCU),Radiological Investigation,952,1120,1120
+391,RI053,Retrograde Urethrography (RGU),Radiological Investigation,952,1120,1120
+392,RI054,Contrast Hystero-Salpingography (HSG),Radiological Investigation,1700,2000,2000
+393,RI055,X ray Arthrography,Radiological Investigation,1700,2000,2000
+394,RI056,Ortho Scanogram,Radiological Investigation,1437,1690,1690
+395,RI057,Cephalography,Radiological Investigation,298,350,350
+396,RI058,Myelography,Radiological Investigation,2125,2500,2500
+397,RI059,Diagnostic Digital Subtraction Angiography (DSA) cerebral vessels,Radiological Investigation,11390,13400,13400
+398,RI060,X Ray Mammography - Bilateral/Unilateral,Radiological Investigation,1169,1375,1375
+399,RI061,MRI Mammography,Radiological Investigation,4250,5000,5000
+400,RI062,CT Scan Head/ Brain-Without Contrast / NCCT Head/Brain,Radiological Investigation,880,1035,1035
+401,RI063,CT Scan Head / Brain- with Contrast -including CT angiography,Radiological Investigation,1870,2200,2200
+402,RI064,CT Scan Chest - without contrast (for lungs),Radiological Investigation,1700,2000,2000
+403,RI065,High Resolution computed Tomography (HRCT Chest),Radiological Investigation,1700,2000,2000
+404,RI066,Contrast Enhanced Computed Tomograpy (CECT) Chest (Including CD),Radiological Investigation,2444,2875,2875
+405,RI067,CT Scan Lower Abdomen (incl. Pelvis) With Contrast/ CT KUB with Contrast,Radiological Investigation,3825,4500,4500
+406,RI068,CT Scan Lower Abdomen (Incl. Pelvis) Without Contrast / CT KUB without Contrast,Radiological Investigation,2975,3500,3500
+407,RI069,CT Scan Whole Abdomen Without Contrast,Radiological Investigation,2933,3450,3450
+408,RI070,CT Scan Whole Abdomen With Contrast,Radiological Investigation,4399,5175,5175
+409,RI071,Triple Phase CT abdomen,Radiological Investigation,4399,5175,5175
+410,RI072,CT Urography,Radiological Investigation,3825,4500,4500
+411,RI073,CT Scan Angiography Chest,Radiological Investigation,4399,5175,5175
+412,RI074,CT Scan Angiography Abdomen,Radiological Investigation,4399,5175,5175
+413,RI075,CT Angiography Entire Aorta ( CT Aortogram),Radiological Investigation,8500,10000,10000
+414,RI076,CT Scan Enteroclysis,Radiological Investigation,5865,6900,6900
+415,RI077,CT Scan Neck - Without Contrast,Radiological Investigation,2125,2500,2500
+416,RI078,CT Scan Neck - With Contrast,Radiological Investigation,2975,3500,3500
+417,RI079,CT Angio-Neck Vessels,Radiological Investigation,5100,6000,6000
+418,RI080,CT Scan Orbits - Without Contrast,Radiological Investigation,1870,2200,2200
+419,RI081,CT Scan Orbits - With Contrast,Radiological Investigation,2720,3200,3200
+420,RI082,CT Scan of Para Nasal Sinuses (CT PNS)- Without Contrast,Radiological Investigation,1955,2300,2300
+421,RI083,CT Scan of Para Nasal Sinuses (CT PNS)- With Contrast,Radiological Investigation,2805,3300,3300
+422,RI084,"CT Scan Spine (Cervical, Dorsal, Lumbar,Sacral)-without Contrast",Radiological Investigation,2380,2800,2800
+423,RI085,CT Scan Temporal bone - without contrast,Radiological Investigation,2125,2500,2500
+424,RI086,CT Scan / Cone Beam CT (CBCT) Dental,Radiological Investigation,1275,1500,1500
+425,RI087,CT Scan Limbs -Without Contrast,Radiological Investigation,2380,2800,2800
+426,RI088,CT Scan Limbs -With Contrast including CT angiography,Radiological Investigation,4930,5800,5800
+427,RI089,MRI Head / Brain - Without Contrast,Radiological Investigation,2338,2750,2750
+428,RI090,MRI Head / Brain- With Contrast,Radiological Investigation,4250,5000,5000
+429,RI091,MRI Orbits - Without Contrast,Radiological Investigation,1590,1870,1870
+430,RI092,MRI Orbits - With Contrast,Radiological Investigation,4250,5000,5000
+431,RI093,MRI Nasopharynx and PNS - Without Contrast,Radiological Investigation,2975,3500,3500
+432,RI094,MRI Nasopharynx and PNS - With Contrast,Radiological Investigation,4250,5000,5000
+433,RI095,MR for Salivary Glands with Sialography/Maxillofacial MRI,Radiological Investigation,4250,5000,5000
+434,RI096,MRI Neck - Without Contrast,Radiological Investigation,2975,3500,3500
+435,RI097,MRI Neck- with contrast,Radiological Investigation,4888,5750,5750
+436,RI098,MRI Shoulder - Without contrast,Radiological Investigation,2975,3500,3500
+437,RI099,MRI Shoulder - With contrast,Radiological Investigation,4250,5000,5000
+438,RI100,MRI shoulder both Joints - Without contrast,Radiological Investigation,3400,4000,4000
+439,RI101,MRI Shoulder both joints - With contrast,Radiological Investigation,5100,6000,6000
+440,RI102,MRI Wrist Single joint - Without contrast,Radiological Investigation,2805,3300,3300
+441,RI103,MRI Wrist Single joint - With contrast,Radiological Investigation,4250,5000,5000
+442,RI104,MRI Wrist both joints - Without contrast,Radiological Investigation,3400,4000,4000
+443,RI105,MRI Wrist Both joints - With contrast,Radiological Investigation,4888,5750,5750
+444,RI106,MRI knee Single joint - Without contrast,Radiological Investigation,2550,3000,3000
+445,RI107,MRI knee Single joint - With contrast,Radiological Investigation,4888,5750,5750
+446,RI108,MRI knee both joints - Without contrast,Radiological Investigation,3400,4000,4000
+447,RI109,MRI knee both joints - With contrast,Radiological Investigation,4888,5750,5750
+448,RI110,MRI Ankle Single joint - Without contrast,Radiological Investigation,2975,3500,3500
+449,RI111,MRI Ankle single joint - With contrast,Radiological Investigation,4250,5000,5000
+450,RI112,MRI Ankle both joints - With contrast,Radiological Investigation,5525,6500,6500
+451,RI113,MRI Ankle both joints - Without contrast,Radiological Investigation,2975,3500,3500
+452,RI114,MRI Hip - With contrast,Radiological Investigation,4250,5000,5000
+453,RI115,MRI Hip - without contrast,Radiological Investigation,2975,3500,3500
+454,RI116,MRI Pelvis - Without Contrast,Radiological Investigation,2975,3500,3500
+455,RI117,MRI Pelvis - with contrast,Radiological Investigation,4888,5750,5750
+456,RI118,MRI Extremities - With contrast,Radiological Investigation,4888,5750,5750
+457,RI119,MRI Extremities - Without contrast,Radiological Investigation,2975,3500,3500
+458,RI120,MRI Temporomandibular - B/L - With contrast / MRI TMJ (Double Joint) with contrast,Radiological Investigation,4250,5000,5000
+459,RI121,MRI Temporomandibular - B/L - Without contrast / MRI -TMJ(Double Joint) without contrast,Radiological Investigation,2975,3500,3500
+460,RI122,MR Temporal Bone/ Inner ear with contrast,Radiological Investigation,4250,5000,5000
+461,RI123,MRI Temporal Bone/ Inner ear without contrast,Radiological Investigation,2975,3500,3500
+462,RI124,MRI Abdomen - Without Contrast,Radiological Investigation,2975,3500,3500
+463,RI125,MRI Abdomen - With Contrast,Radiological Investigation,4888,5750,5750
+464,RI126,MRI-Prostate (Multi-parametric) (Including CD),Radiological Investigation,5865,6900,6900
+465,RI127,MRI Breast - With Contrast,Radiological Investigation,4250,5000,5000
+466,RI128,MRI Breast - Without Contrast,Radiological Investigation,2975,3500,3500
+467,RI129,MRI whole Spine Screening- Without Contrast,Radiological Investigation,1700,2000,2000
+468,RI130,MRI Chest - Without Contrast,Radiological Investigation,2975,3500,3500
+469,RI131,MRI Chest - With Contrast,Radiological Investigation,4250,5000,5000
+470,RI132,MRI Whole spine - Without Contrast,Radiological Investigation,3740,4400,4400
+471,RI133,MRI Cervical/ Cervico Dorsal Spine - With Contrast,Radiological Investigation,4250,5000,5000
+472,RI134,MRI Dorsal/ Dorso Lumbar Spine - Without Contrast,Radiological Investigation,2975,3500,3500
+473,RI135,MRI Dorsal/ Dorso Lumbar Spine - With Contrast,Radiological Investigation,4250,5000,5000
+474,RI136,MRI Lumbar/ Lumbo-Sacral Spine - Without Contrast,Radiological Investigation,2975,3500,3500
+475,RI137,MRI Lumbar/ Lumbo-Sacral Spine - With Contrast,Radiological Investigation,4888,5750,5750
+476,RI138,Whole body MRI (For oncological workup),Radiological Investigation,7820,9200,9200
+477,RI139,MR cholecysto-pancreatography (MRCP),Radiological Investigation,7225,8500,8500
+478,RI140,MRI Angiography - with contrast,Radiological Investigation,4888,5750,5750
+479,RI141,MR Enteroclysis,Radiological Investigation,4250,5000,5000
+480,RI142,MRI DEFECOGRAPHY,Radiological Investigation,5950,7000,7000
+481,RI143,MRI FISTULOGRAM,Radiological Investigation,3825,4500,4500
+482,RI144,MRI SPECTROSCOPY,Radiological Investigation,2550,3000,3000
+483,RI145,Dexa Scan Bone Densitometry - Two sites,Radiological Investigation,1700,2000,2000
+484,RI146,"Dexa Scan Bone Densitometry - Three sites (Spine, Hip &extremity)",Radiological Investigation,2125,2500,2500
+485,RI147,Dexa Scan Bone Densitometry Whole body,Radiological Investigation,2550,3000,3000
+486,PI001,Pulmonary Function Test (PFT) / (Spirometry with Diffusing Capacity of the Lungs for Carbon monoxide (DLCO),Pulmonology Investigation,425,500,500
+487,PI002,Lung Ventilation & Perfusion Scan (V/Q Scan),Pulmonology Investigation,5100,6000,6000
+488,PI003,Lung Perfusion Scan,Pulmonology Investigation,4250,5000,5000
+489,PI004,6 Minute Walk Test,Pulmonology Investigation,425,500,500
+490,PI005,FeNO Breathing Test,Pulmonology Investigation,612,720,720
+491,PP001,Endo bronchial Ultrasound (EBUS) -Trans bronchial needle aspiration (TBNA) - Excluding the cost of Needle,Pulmonology Procedure,17000,20000,20000
+492,PP002,Video Bronchoscopy with BAL,Pulmonology Procedure,9350,11000,11000
+493,NM001,Whole Body Bone Scan with SPECT.,Nuclear Medicine Investigation,4250,5000,5000
+494,NM002,Three phase whole body Bone Scan,Nuclear Medicine Investigation,5100,6000,6000
+495,NM003,Brain Perfusion SPECT Scan with Technetium 99m radiopharmaceuticals.,Nuclear Medicine Investigation,11390,13400,13400
+496,NM004,Radionuclide Cisternography for CSF leak,Nuclear Medicine Investigation,5780,6800,6800
+497,NM005,Renal Cortical Scintigraphy with Technetium 99m Dimercaptosuccinic acid (DMSA)/DTPA,Nuclear Medicine Investigation,3400,4000,4000
+498,NM006,Dynamic Renography.,Nuclear Medicine Investigation,3400,4000,4000
+499,NM007,Dynamic Renography with Diuretic.,Nuclear Medicine Investigation,3400,4000,4000
+500,NM008,Dynamic Renography with Captopril,Nuclear Medicine Investigation,5780,6800,6800
+501,NM009,Testicular Scan with Technetium 99m Pertechnetate,Nuclear Medicine Investigation,1445,1700,1700
+502,NM010,Thyroid Uptake measurements with 131-Iodine.,Nuclear Medicine Investigation,2125,2500,2500
+503,NM011,Thyroid Scan with Technetium 99m Pertechnetate,Nuclear Medicine Investigation,1615,1900,1900
+504,NM012,Iodine-131 Whole Body Scan,Nuclear Medicine Investigation,11390,13400,13400
+505,NM013,Whole Body Scan with MIBG,Nuclear Medicine Investigation,11390,13400,13400
+506,NM014,Parathyroid Scan,Nuclear Medicine Investigation,6218,7315,7315
+507,NM015,Scintimammography.,Nuclear Medicine Investigation,5100,6000,6000
+508,NM016,Indium labelled octreotide Scan,Nuclear Medicine Investigation,61200,72000,72000
+509,NM017,FDG Whole body PET CT Scan,Nuclear Medicine Investigation,12219,14375,14375
+510,NM018,Brain / Heart FDG PET CT Scan,Nuclear Medicine Investigation,12219,14375,14375
+511,NM019,Gallium-68 Peptide PET / CT imaging for Neuroendocrine Tumour,Nuclear Medicine Investigation,12219,14375,14375
+512,NM020,PSMA PET CT Scan,Nuclear Medicine Investigation,12750,15000,15000
+513,NM021,F-DOPA PET-CT scan,Nuclear Medicine Investigation,12750,15000,15000
+514,BY001,Skin Biopsy,Biopsies,1063,1250,1250
+515,BY002,Punch/Wedge biopsy,Biopsies,2550,3000,3000
+516,BY003,Excision Biopsy of Ulcers,Biopsies,4250,5000,5000
+517,BY004,Excision Biopsy of Superficial Lumps,Biopsies,7820,9200,9200
+518,BY005,Incision Biopsy of Growths/Ulcers,Biopsies,4250,5000,5000
+519,BY006,Bone Marrow Aspiration and Biopsy,Biopsies,7225,8500,8500
+520,BY007,Scalene Node Biopsy,Biopsies,7820,9200,9200
+521,BY008,Liver Biopsy,Biopsies,7225,8500,8500
+522,BY009,Muscle Biopsy,Biopsies,2125,2500,2500
+523,BY010,Trucut Needle Biopsy- (excluding the cost of Needle/Biopsy Gun if used),Biopsies,3273,3850,3850
+524,RP001,USG Guided Intervention- Diagnostic,Interventional Radiological Procedure,850,1000,1000
+525,RP002,USG Guided Intervention -Therapeutic,Interventional Radiological Procedure,1700,2000,2000
+526,RP003,USG Guided Intervention - Specialized Procedures excluding cost of Catheter or biopsy gun,Interventional Radiological Procedure,2550,3000,3000
+527,RP004,CT Guided biopsy including all the consumables,Interventional Radiology Procedure,7820,9200,9200
+528,RP005,CT Guided Intervention -Percutaneous catheter drainage/tube placement excluding the cost of tube /catheter,Interventional Radiological Procedure,2975,3500,3500
+529,RP006,Percutaneous transhepatic cholangiography (PTC),Interventional Radiological Procedure,1530,1800,1800
+530,RP007,Transarterial Chemoembolization (TACE),Interventional Radiological Procedure,45050,53000,53000
+531,CA001,"A, B, DR Molecular Typing PCR - SSP",Oncology Investigations,8768,10315,10315
+532,CA002,"ABL Kinase Domain Mutation for Chronic Myeloid leukemia (TKI Resistance, Imatinib Resistance",Oncology Investigations,6885,8100,8100
+533,CA003,"ABL Kinase Domain Mutation for Ph Positive Acute Lymphoblastic leukemia (TKI Resistance, I",Oncology Investigations,6885,8100,8100
+534,CA004,Acute Leukemia karyotyping,Oncology Investigations,4713,5545,5545
+535,CA005,Acute Leukemia mutation detection (per gene)ASXL1 /c-KIT/DNMT3A/ IDH1 and IDH2 /K RAS and N RAS mutation detection,Oncology Investigations,4582,5390,5390
+536,CA006,Acute Leukemia RUNX1 mutation detection,Oncology Investigations,4582,5390,5390
+537,CA007,Acute Leukemia TET2 mutation detection,Oncology Investigations,19567,23020,23020
+538,CA008,Acute Leukemia TP53 mutation detection,Oncology Investigations,19567,23020,23020
+539,CA009,Acute Lymphoblastic leukemia karyotyping,Oncology Investigations,4713,5545,5545
+540,CA010,Acute Lymphoblastic Leukemia Mutation Detection,Oncology Investigations,9384,11040,11040
+541,CA011,Acute Lymphoblastic Leukemia Transcript Identification,Oncology Investigations,2567,3020,3020
+542,CA012,Acute Myeloid Leukemia (AML) Panel,Oncology Investigations,11365,13370,13370
+543,CA013,ALK -1,Oncology Investigations,3987,4690,4690
+544,CA014,ALK rearrangement: 2p23,Oncology Investigations,3987,4690,4690
+545,CA015,B-cell Acute Lymphoblastic Leukemia (B-ALL) Panel,Oncology Investigations,9835,11570,11570
+546,CA016,BCL3 rearrangement 19q13.3 / BCL6 rearrangement: 3q27,Oncology Investigations,2962,3485,3485
+547,CA017,BCOR alteration,Oncology Investigations,5143,6050,6050
+548,CA018,"BCR/ABL (Ph) duplication, trisomy 8, trisomy 21, TP53 deletion",Oncology Investigations,5181,6095,6095
+549,CA019,BCR/ABL Ph: t(9;22),Oncology Investigations,2962,3485,3485
+550,CA020,BCR-ABL by PCR-Quantitative,Oncology Investigations,3400,4000,4000
+551,CA021,BRAF,Oncology Investigations,7650,9000,9000
+552,CA022,BRCA1 & BRCA2,Oncology Investigations,17000,20000,20000
+553,CA023,C3d Single Allele Antibody for HLA Class I (C3dLSA Class I) /C3d Single Allele Antibody for HLA Class II (C3dLSA Class II),Oncology Investigations,14875,17500,17500
+554,CA024,CAN ASSIST,Oncology Investigations,42500,50000,50000
+555,CA025,CCND1/IgH: t(11;14),Oncology Investigations,3987,4690,4690
+556,CA026,CD 19 and CD 20,Oncology Investigations,1275,1500,1500
+557,CA027,Cell line karyotyping,Oncology Investigations,9435,11100,11100
+558,CA028,Chimerism Analysis,Oncology Investigations,1309,1540,1540
+559,CA029,Chromosomal breakage (fragility) studies in Fanconi's Anemia/Aplastic Anemia,Oncology Investigations,4713,5545,5545
+560,CA030,Chronic Lymphocytic Leukemia (CLL) Panel,Oncology Investigations,9835,11570,11570
+561,CA031,"Chronic Lymphocytic Leukemia Comprehensive Mutation Profile (IGVH Gene Mutation & Usage, T",Oncology Investigations,28322,33320,33320
+562,CA032,Chronic Lymphocytic Leukemia IGVH Mutation Detection,Oncology Investigations,5398,6350,6350
+563,CA033,Chronic Lymphoproliferative disorder IGVH Mutation Detection,Oncology Investigations,5398,6350,6350
+564,CA034,Chronic Lymphoproliferative disorder NOTCH1 mutation / NOTCH2 mutation,Oncology Investigations,4582,5390,5390
+565,CA035,Chronic Lymphoproliferative disorder SF3B1 mutation,Oncology Investigations,4582,5390,5390
+566,CA036,Chronic Lymphoproliferative disorder TP53 mutation,Oncology Investigations,19567,23020,23020
+567,CA037,CLINICAL EXOME SEQUENCING,Oncology Investigations,12750,15000,15000
+568,CA038,CLL PANEL FISH,Oncology Investigations,8500,10000,10000
+569,CA039,CML Blast Crisis karyotyping,Oncology Investigations,4713,5545,5545
+570,CA040,Combined High Sensitivity JAK2 V617F and Exon12 Mutation Detection,Oncology Investigations,5806,6830,6830
+571,CA041,Comprehensive Molecular Testing,Oncology Investigations,16422,19320,19320
+572,CA042,Comprehensive Next Generation sequencing assay for Hematolymphoid malignancies,Oncology Investigations,22950,27000,27000
+573,CA043,Constitutional karyotyping,Oncology Investigations,4713,5545,5545
+574,CA044,Custom Sequencing Assay,Oncology Investigations,9384,11040,11040
+575,CA045,DICER1 Mutation,Oncology Investigations,3298,3880,3880
+576,CA046,Donor Specific Antibodies (DSA),Oncology Investigations,6800,8000,8000
+577,CA047,EGFR Mutation DETECTION,Oncology Investigations,8075,9500,9500
+578,CA048,EGFR Resistance Mutation (T790m Mutation Analysis),Oncology Investigations,6800,8000,8000
+579,CA049,ER PR Her2 Neu,Oncology Investigations,2678,3150,3150
+580,CA050,"ER/PR/Her2neu, Ki67",Oncology Investigations,4250,5000,5000
+581,CA051,Extended Immune subset for Post Allogenic Stem Cell Transplant Monitoring,Oncology Investigations,4250,5000,5000
+582,CA052,Factor V Leiden Mutation Detection,Oncology Investigations,5610,6600,6600
+583,CA053,FISH for 1p33/TAL1 deletion,Oncology Investigations,4233,4980,4980
+584,CA054,FISH FOR HER2 Neu,Oncology Investigations,8500,10000,10000
+585,CA055,FISH for t(10;11)(p12;q14)/MLLT10(AF10)/PICALM,Oncology Investigations,4233,4980,4980
+586,CA056,FISH for t(11;19)(q23;p13.1)/KMT2A/ELL,Oncology Investigations,4233,4980,4980
+587,CA057,FISH for t(5;11)(q35;p15.5) NUP98/NSD1,Oncology Investigations,4233,4980,4980
+588,CA058,FISH for t(6;14)(p21;q32) IGH/CCND3,Oncology Investigations,4233,4980,4980
+589,CA059,FISH on Bone marrow Smear( 1 marker),Oncology Investigations,2962,3485,3485
+590,CA060,FISH on bone marrow smear( 2 markers),Oncology Investigations,4654,5475,5475
+591,CA061,FISH on FFPE - Block /Slide (2 markers),Oncology Investigations,4046,4760,4760
+592,CA062,FISH PANEL FOR MYELOMA,Oncology Investigations,11900,14000,14000
+593,CA063,FISH Test for C19MC amplification,Oncology Investigations,10838,12750,12750
+594,CA064,FISH test for CDKN2A,Oncology Investigations,6333,7450,7450
+595,CA065,FISH test for CEN 10 loss - on Tissue,Oncology Investigations,3528,4150,4150
+596,CA066,FISH test for ETV6 break-apart analysis - On Tissue,Oncology Investigations,5925,6970,6970
+597,CA067,FISH test for MAML2 break-apart analysis - On Tissue,Oncology Investigations,6086,7160,7160
+598,CA068,Fluorescent PCR + fragment length analysis per Amplicon,Oncology Investigations,298,350,350
+599,CA069,GeneCORE Somatic 161 Gene Panel (NGS),Oncology Investigations,25500,30000,30000
+600,CA070,Hairy Cell Leukemia Mutation (BRAF V600E) Detection,Oncology Investigations,2967,3490,3490
+601,CA071,Hematolymphoid Malignancy At Diagnosis- Cancer Cytogenetics Testing,Oncology Investigations,14548,17115,17115
+602,CA072,Hematolymphoid Malignancy Follow-up- Cancer Cytogenetics Testing,Oncology Investigations,12750,15000,15000
+603,CA073,Hereditary Cancer Panel,Oncology Investigations,10200,12000,12000
+604,CA074,High Sensitivity JAK2 Mutation Detection (V617F),Oncology Investigations,3919,4610,4610
+605,CA075,Histone Mutation Detection Assay,Oncology Investigations,7884,9275,9275
+606,CA076,"HLA C, DQB Molecular Typing PCR - SSP",Oncology Investigations,6265,7370,7370
+607,CA077,HLA Disease Association Next Generation Sequencing HLA-A/B/DRB1/G,Oncology Investigations,3995,4700,4700
+608,CA078,HLA Disease Association Sequence based Typing HLA A/B/DRB1,Oncology Investigations,4080,4800,4800
+609,CA079,HLA Drug Hypersensitivity Next Generation Sequencing HLA-A/B/DRB1 HLA- A/B/DRB1/G,Oncology Investigations,3995,4700,4700
+610,CA080,HLA Drug Hypersensitivity Typing HLA-A/B/DRB1,Oncology Investigations,4080,4800,4800
+611,CA081,HLA Loss Chimerism,Oncology Investigations,10200,12000,12000
+612,CA082,"HLA-A, B, C, DRB1, DQB1, DPB1 (Sequence Based Typing - SBT)",Oncology Investigations,12750,15000,15000
+613,CA083,"HLA-A, B, DRB1 (Sequence Based Typing - SBT)",Oncology Investigations,8500,10000,10000
+614,CA084,"HLA-A, B, DRB1(Sequence Specific Oligonucleotide - SSO)",Oncology Investigations,6630,7800,7800
+615,CA085,"HLA-C, DQB1(Sequence Specific Oligonucleotide - SSO)",Oncology Investigations,4420,5200,5200
+616,CA086,HRR Gene Test,Oncology Investigations,26350,31000,31000
+617,CA087,"IGH Characterization IGH/CCND1:t(11;14), IGH/BCL2:t(14;18),BCL6(3q27), MYC(8q24) (4markers",Oncology Investigations,4505,5300,5300
+618,CA088,IgH/BCL2 :t(14;18),Oncology Investigations,3987,4690,4690
+619,CA089,IGHV Gene Mutation,Oncology Investigations,6375,7500,7500
+620,CA090,Interphase FISH test for Chr. 1 copy number variations,Oncology Investigations,9095,10700,10700
+621,CA091,IRFA/DUSP22 gene rearrangement by FISH,Oncology Investigations,13243,15580,15580
+622,CA092,JAK2 Exon 12 Mutation Detection,Oncology Investigations,3919,4610,4610
+623,CA093,"JAK2V617 MUTATION, WITH REFLEX TO JAK2 EX-12,CALR EX-9 MUTATION AND MPL W515, S505 MUTATION",Oncology Investigations,9775,11500,11500
+624,CA094,KI67,Oncology Investigations,1105,1300,1300
+625,CA095,KIR Typing,Oncology Investigations,4930,5800,5800
+626,CA096,KMT2A Characterization for AML,Oncology Investigations,6711,7895,7895
+627,CA097,KMT2A Characterization for B-ALL,Oncology Investigations,5181,6095,6095
+628,CA098,KRAS + NRAS + BRAF + Mutation Profile,Oncology Investigations,11730,13800,13800
+629,CA099,"Lineage specific Chimerism - B Cell, T Cell and NK Cells",Oncology Investigations,6120,7200,7200
+630,CA100,Liquid Biopsy (Onco),Oncology Investigations,25500,30000,30000
+631,CA101,Lung Basic Panel By NGS,Oncology Investigations,25500,30000,30000
+632,CA102,Lymphoma Panel,Oncology Investigations,5925,6970,6970
+633,CA103,Lymphoplasmacytic Leukemia / Waldenstroms Macroglobulinemia Mutation (MYD88 L265P) Detection,Oncology Investigations,2967,3490,3490
+634,CA104,MDS Panel,Oncology Investigations,5925,6970,6970
+635,CA105,MECOM (EVI1) rearrangement: inv(3)(q21.3q26.2)/t(3;3),Oncology Investigations,3987,4690,4690
+636,CA106,MGMT PCR,Oncology Investigations,6919,8140,8140
+637,CA107,Miscellaneous Profile I(1 marker),Oncology Investigations,2962,3485,3485
+638,CA108,Miscellaneous profile II(2 markers),Oncology Investigations,4654,5475,5475
+639,CA109,MLPA per gene,Oncology Investigations,3400,4000,4000
+640,CA110,Monosomy 5/deletion 5q,Oncology Investigations,2962,3485,3485
+641,CA111,Monosomy 7/deletion 7q,Oncology Investigations,2962,3485,3485
+642,CA112,MPN (Myelo Proliferative Neoplasm)PANEL,Oncology Investigations,10200,12000,12000
+643,CA113,MSI ( Micro Satellite Instability) and MMR (Mis Match Repair),Oncology Investigations,5525,6500,6500
+644,CA114,Multigene NGS Germline Panel,Oncology Investigations,15300,18000,18000
+645,CA115,Multiple Myeloma (MM) Panel,Oncology Investigations,12640,14870,14870
+646,CA116,Multiple Myeloma High Risk Markers (4 Markers),Oncology Investigations,4505,5300,5300
+647,CA117,Multiple Myeloma Screening Panel,Oncology Investigations,6800,8000,8000
+648,CA118,MYD88 L265 Mutation Detection Test,Oncology Investigations,5746,6760,6760
+649,CA119,Myelodysplastic Syndromes karyotyping,Oncology Investigations,4713,5545,5545
+650,CA120,Next generation RNA sequencing assay for Chimeric Trancript in Hematolymphod malignancies,Oncology Investigations,14450,17000,17000
+651,CA121,Next Generation sequencing assay for Minimal residual disease(MRD) for NPM mutated AML,Oncology Investigations,22950,27000,27000
+652,CA122,NGS HLA Typing,Oncology Investigations,8500,10000,10000
+653,CA123,NGS Platform-extended Panel >50 gene,Oncology Investigations,30600,36000,36000
+654,CA124,NGS Platform-limited Panel(10 Genes),Oncology Investigations,15300,18000,18000
+655,CA125,NRAS (Neuroblastoma RAS ) Gene,Oncology Investigations,2975,3500,3500
+656,CA126,Panel Reactive Antibodies (PRA) class I,Oncology Investigations,2550,3000,3000
+657,CA127,Panel Reactive Antibodies (PRA) class II,Oncology Investigations,2550,3000,3000
+658,CA128,PCR + Sanger Sequencing per Amplicon,Oncology Investigations,723,850,850
+659,CA129,"PDGFRA (4q12), PDGFRB (5q33), FGFR1 (8p11.2) rearrangement",Oncology Investigations,5181,6095,6095
+660,CA130,PDGFRA rearrangement: 4q12,Oncology Investigations,3987,4690,4690
+661,CA131,PDGFRB rearrangement: 5q33,Oncology Investigations,3987,4690,4690
+662,CA132,PDL 1,Oncology Investigations,4250,5000,5000
+663,CA133,PDL-1-28-8 (FDA Approved),Oncology Investigations,6375,7500,7500
+664,CA134,Ph: t(9;22) karyotyping,Oncology Investigations,3362,3955,3955
+665,CA135,Ph-like ALL Panel (4 Markers),Oncology Investigations,4505,5300,5300
+666,CA136,PIK3CA GENE MUTATION,Oncology Investigations,4590,5400,5400
+667,CA137,PIK3CA Mutation Testing,Oncology Investigations,4845,5700,5700
+668,CA138,Ploidy analysis,Oncology Investigations,3362,3955,3955
+669,CA139,"PML-RARA t(15;17), variants",Oncology Investigations,4450,5235,5235
+670,CA140,PRA Screen,Oncology Investigations,2550,3000,3000
+671,CA141,PTPRT: Deletion 20q,Oncology Investigations,3987,4690,4690
+672,CA142,RARA Variant - ZBTB16 / RARA : t(11;17) (1 marker),Oncology Investigations,2576,3030,3030
+673,CA143,RHOA Mutation Detection Assay,Oncology Investigations,5925,6970,6970
+674,CA144,ROS 1,Oncology Investigations,8262,9720,9720
+675,CA145,RQ PCR based assay for MRD monitoring of Acute Leukaemia,Oncology Investigations,8075,9500,9500
+676,CA146,RQ-PCR BCR-ABL (P210),Oncology Investigations,9316,10960,10960
+677,CA147,RQ-PCR PML-RARA,Oncology Investigations,9316,10960,10960
+678,CA148,"RT-PCR Multiplex, Acute Leukaemia Panel",Oncology Investigations,6205,7300,7300
+679,CA149,"RT-PCR Multiplex, BCR-ABL (P190, P210)",Oncology Investigations,5398,6350,6350
+680,CA150,"RT-PCR Nested, IGH Chain Gene Rearrangement /TCR Gene Rearrangement",Oncology Investigations,3919,4610,4610
+681,CA151,Single Antigen Class I,Oncology Investigations,11050,13000,13000
+682,CA152,Single Antigen Class II,Oncology Investigations,11050,13000,13000
+683,CA153,Slide / Images for Second Opinion- Cancer Cytogenetics,Oncology Investigations,782,920,920
+684,CA154,STR Panel studies,Oncology Investigations,3783,4450,4450
+685,CA155,Surface Marker Complete Panel,Oncology Investigations,10340,12165,12165
+686,CA156,Surface Marker Individual,Oncology Investigations,1615,1900,1900
+687,CA157,t(1;22) and Trisomy 21 in Acute Megakaryoblastic Leukemia (AML -M7) (2 Markers),Oncology Investigations,4046,4760,4760
+688,CA158,T-cell Acute Lymphoblastic Leukemia (T-ALL) Panel,Oncology Investigations,12895,15170,15170
+689,CA159,TCR-A rearrangement: 14q11,Oncology Investigations,3987,4690,4690
+690,CA160,TERT Promoter Mutation Assay,Oncology Investigations,4934,5805,5805
+691,CA161,TFE-3 FISH,Oncology Investigations,10268,12080,12080
+692,CA162,TPMT (Thiopurine Methyl Transferase) Genotyping,Oncology Investigations,4335,5100,5100
+693,CA163,Trisomy 12,Oncology Investigations,2061,2425,2425
+694,CA164,Trisomy 21,Oncology Investigations,2061,2425,2425
+695,CA165,"Trisomy 4, 10 & 17",Oncology Investigations,2962,3485,3485
+696,CA166,Trisomy 8,Oncology Investigations,2061,2425,2425
+697,CA167,V Beta Repertoire Analysis by Flow Cytometry for T-Cell Clonality,Oncology Investigations,10340,12165,12165
+698,CA168,XX/XY (Chimerism Studies) in Sex mismatch Bone Marrow Transplantation (BMT),Oncology Investigations,2061,2425,2425
+699,CT001,Single drug Chemotherapy,Chemotherapy,1445,1700,1700
+700,CT002,Multiple drugs Chemotherapy/Targeted therapy/Immunotherapy,Chemotherapy,1955,2300,2300
+701,CT003,Neoadjuvant Chemotherapy,Chemotherapy,2295,2700,2700
+702,CT004,Adjuvant Chemotherapy,Chemotherapy,1870,2200,2200
+703,CT005,Concurrent-chemoradiation,Chemotherapy,1615,1900,1900
+704,CT006,Intravesical Instillation of BCG excluding the cost of BCG,Chemotherapy,2550,3000,3000
+705,RT001,Level 1- Brachytherapy (Eye Plaque or SIVA or CVS per insertion or application),Radiotherapy,5950,7000,8050
+706,RT002,"Level 2- Brachytherapy (Simple ICA with Xray based 2D planning, ILRT, Endobilliary BCT)",Radiotherapy,8500,10000,11500
+707,RT003,"Level 3- Brachytherapy (Surface Mould, Radical Interstitial BCT, Intraoperative Template or interstitial brachytherapy catheter insertion)",Radiotherapy,21250,25000,28750
+708,RT004,Level 4- Brachytherapy (ICA with CT based Planning),Radiotherapy,25500,30000,34500
+709,RT005,Level 5- Brachytherapy (Complex ICA with interstitial with CT or MR based planning),Radiotherapy,34000,40000,46000
+710,RT006,Level 1- Radiation Therapy (1-10 fractions on Cobalt),Radiotherapy,12750,15000,17250
+711,RT007,Level 2- Radiation Therapy (More than 10 fractions on Cobalt OR Upto 10 fractions on LA clinical (without CT or TPS planning) without IGRT OR Hemibody palliative RT (1-2 fractions weekly)),Radiotherapy,23800,28000,32200
+712,RT008,Level 3- Radiation Therapy (LA 3D with conventional fractionation of 2-5 Gy OR Weekly hypofractionation of >5 Gy with 3D CRT plan in 1-2 fractions. No IGRT allowed.),Radiotherapy,42500,50000,57500
+713,RT009,Level 4- Radiation therapy (LA 3D with IGRT conventional fractionation of 2- 5 Gy OR Weekly hypofractionation >5 Gy with 3D CRT plan in 1-2 fractions. with IGRT),Radiotherapy,53550,63000,72450
+714,RT010,Level 5- Radiation Therapy (LA IMRT/ Rapid Arc/VMAT with < 5Gy per fraction and <10 IGRT (CBCT or MVCT or EPID) OR Cobalt Radical with LA boost including electron boost OR TSET OR TBI),Radiotherapy,127500,150000,172500
+715,RT011,Level 6- Radiation Therapy (LA 4D/DE or DIBH with 3D CRT/ IMRT/ Rapid Arc/VMAT with >10 IGRT (CBCT or MVCT or EPID) OR LA IMRT/ Rapid Arc/VMAT with <5Gy per fraction and >10 IGRT (CBCT or MVCT or EPID) OR Adaptive RT OR CSI OR Multisite,Radiotherapy,153000,180000,207000
+716,IT001,CGHS rates for treatment outside one FOV or one plan OR SBRT OR SRS OR SRT dose >5Gy)) (per fraction Radiosynovectomy with Yttrium,Radio-Isotope Therapy,21250,25000,28750
+717,IT002,131-Iodine Therapy 51-100mCi,Radio-Isotope Therapy,12172,14320,16468
+718,IT003,131-Iodine Therapy >100mCi,Radio-Isotope Therapy,16809,19775,22741
+719,IT004,Samarium-153 therapy for metastatic bone pain palliation,Radio-Isotope Therapy,17043,20050,23058
+720,IT005,131-Iodine Therapy <15mCi,Radio-Isotope Therapy,6299,7410,8522
+721,IT006,131-Iodine Therapy 15-50mCi,Radio-Isotope Therapy,9486,11160,12834
+722,IT007,Phosphorus-32 therapy for metastatic bone pain palliation,Radio-Isotope Therapy,12040,14165,16290
+723,PT001,Cervical Traction (per session),Physiotherapy,255,300,300
+724,PT002,Lumbar Traction (per session),Physiotherapy,255,300,300
+725,PT003,Exercises /Post Natal Exercises/Prenatal Exercises/Therapeutic Exercises/Orthopaedic Rehabilitation (Joint Replacement/Post Surgery)/Hand Rehab (per session),Physiotherapy,255,300,300
+726,PT004,Chest Physiotherapy/ Breathing Exercise &Postural Drainage per Session/Post Covid Rehabilitation /Pulmonary Rehabilitation/Cardiac Rehabilitation (per session),Physiotherapy,255,300,300
+727,PT005,Ultra Sonic Therapy /Short Wave Diathermy / Microwave/ Long Wave Diathermy /Infrared/IFT) (per session),Physiotherapy,255,300,300
+728,PT006,Electrical Muscle Stimulation/Cryotherapy/TENS (per session),Physiotherapy,340,400,400
+729,PT007,Hot Pack/ Cold Pack/Wax Bath/Moist Heat (per session),Physiotherapy,255,300,300
+730,PT008,Shock Wave Therapy/Matrix Rhythm Therapy/Laser/PEMF -Pulse Electro Magnetic Therapy (per session),Physiotherapy,340,400,400
+731,PT009,Gait Assessment (per session),Physiotherapy,510,600,600
+732,PT010,Gait Training (per session),Physiotherapy,255,300,300
+733,PT011,Tilt Training/Neuro-Rehab Basic (per session),Physiotherapy,255,300,300
+734,PT012,Neuro Rehabilitation Advanced (per session),Physiotherapy,680,800,800
+735,PT013,Paediatric Rehabilitation (per session),Physiotherapy,255,300,300
+736,BT001,Speech Therapy per session of at least 40 minutes,Behavioural Therapy,340,400,400
+737,BT002,Occupational Therapy per session of at least 40 minutes,Behavioural therapy,340,400,400
+738,BT003,Applied Behaviour Analysis based behaviour therapy (ABA based Behaviour therapy) per session of at least 40 minutes,Behavioural therapy,340,400,400
+739,BT004,Special education per session of at least 40 minutes,Behavioural therapy,340,400,400
+740,BT005,Biofeedback per session,Behavioural therapy,2550,3000,3000
+741,DI001,Intraoral Periapical (IOPA) Radiograph X-ray/RVG(Single Film),Dental Investigation,170,200,200
+742,DI002,Intraoral Occlusal/Bite Wing X-Ray,Dental Investigation,255,300,300
+743,DI003,Digital OPG with X ray film/ CD,Dental Investigation,425,500,500
+744,DI004,Biopsy of Oral tissue- Soft,Dental Biopsy,1020,1200,1200
+745,DI005,"Biopsy of Oral tissue - Hard (bone, tooth)",Dental Biopsy,1700,2000,2000
+746,DP001,Abscess - Drainage-Dental,Dental Procedure,1275,1500,1500
+747,DP002,Scaling,Dental Procedure,850,1000,1000
+748,DP003,Curettage and Root Planning - Per Tooth,Dental Procedure,298,350,350
+749,DP004,Curettage and Root Planning - Per Arch,Dental Procedure,1700,2000,2000
+750,DP005,Gingivoplasty - Per Quadrant,Dental Procedure,850,1000,1000
+751,DP006,Gingivectomy - Per Quadrant,Dental Procedure,1020,1200,1200
+752,DP007,Flap Surgery- Per Tooth,Dental Procedure,383,450,450
+753,DP008,Flap Surgery- Per Quadrant,Dental Procedure,1700,2000,2000
+754,DP009,Flap Surgery and Bone Graft per quadrant,Dental Procedure,2550,3000,3000
+755,DP010,Extraction - Normal Tooth,Dental Procedure,340,400,400
+756,DP011,Complicated Extraction per tooth under LA,Dental Procedure,680,800,800
+757,DP012,Extraction Impacted - Soft tissue/ 3rd Molar/wisdom tooth extraction,Dental Procedure,1700,2000,2000
+758,DP013,"Multiple Extraction and Treatment Procedures for Special Children, Patients with Systemic Diseases, Patient with Special Needs Which Requires Admission and Treatment Under GA",Dental Procedure,5100,6000,6000
+759,DP014,Extraction - Orthodontic Extraction,Dental Procedure,638,750,750
+760,DP015,Operculectomy- Pericoronal flap excision,Dental Procedure,1700,2000,2000
+761,DP016,Extraction Impacted - Bony,Dental Procedure,4250,5000,5000
+762,DP017,Alveoloplasty - Per Tooth,Dental Procedure,255,300,300
+763,DP018,Alveoloplasty - Per Quadrant,Dental Procedure,1020,1200,1200
+764,DP019,Frenectomy,Dental Procedure,2125,2500,2500
+765,DP020,Excision of hyperplastic tissue - per arch,Dental Procedure,1020,1200,1200
+766,DP021,Surgical Augmentation/Alveolectomy per Arch,Dental Procedure,2975,3500,3500
+767,DP022,Bone replacement graft for ridge preservation - per site,Dental Procedure,1700,2000,2000
+768,DP023,"Minor oral surgery, cyst, granuloma, residual infection, mucocele, epulis under LA",Dental Procedure,1700,2000,2000
+769,DP024,Application of Desensitizing Medicament,Dental Procedure,425,500,500
+770,DP025,Fluoride Application for Children,Dental Procedure,850,1000,1000
+771,DP026,Temporary restoration,Dental Procedure,128,150,150
+772,DP027,Glass ionomer Cement Restoration,Dental Procedure,510,600,600
+773,DP028,Composite - Occlusal Pit/Class I,Dental Procedure,425,500,500
+774,DP029,Composite -Class I with buccal extension/Class II Class III/Class IV/Class VI/Diastema Closure/MOD,Dental Procedure,850,1000,1000
+775,DP030,RCT-Single Rooted tooth,Dental Procedure,1700,2000,2000
+776,DP031,RCT Multiple root and/ canal tooth,Dental Procedure,2550,3000,3000
+777,DP032,Re-RCT - Anterior,Dental Procedure,2125,2500,2500
+778,DP033,Re-RCT - Posterior,Dental Procedure,2550,3000,3000
+779,DP034,Medication -intracanal medicament (only lesion cases),Dental Procedure,425,500,500
+780,DP035,Apicectomy-Single tooth,Dental Procedure,1700,2000,2000
+781,DP036,Apicectomy-Multiple tooth,Dental Procedure,2550,3000,3000
+782,DP037,Apexification with any bio-compatible material,Dental Procedure,1700,2000,2000
+783,DP038,Root end resection and Retro grade filling,Dental Procedure,2550,3000,3000
+784,DP039,Surgical - Apicectomy/ Periapical surgery without bone grafting,Dental Procedure,595,700,700
+785,DP040,"Tissue Conditioning, Maxillary/Mandibular",Dental Procedure,255,300,300
+786,DP041,Core build-up/ Post and Core - Custom made /Inlay/onlay,Dental Procedure,1275,1500,1500
+787,DP042,Crown lengthening - Per Tooth,Dental Procedure,425,500,500
+788,DP043,Crown - PMMA Crown,Dental Procedure,850,1000,1000
+789,DP044,Crown - All Metal-Nickel Free,Dental Procedure,1700,2000,2000
+790,DP045,Crown - Metal with Ceramic Facing,Dental Procedure,2550,3000,3000
+791,DP046,Crown - Recementation,Dental Procedure,510,600,600
+792,DP047,Crown - Removal,Dental Procedure,425,500,500
+793,DP048,Odontoplasty /Enameloplasty,Dental Procedure,425,500,500
+794,DP049,Pulpectomy (Anterior Tooth),Dental Procedure,1700,2000,2000
+795,DP050,Pulpectomy (Posterior Tooth),Dental Procedure,2550,3000,3000
+796,DP051,Pulpotomy,Dental Procedure,850,1000,1000
+797,DP052,Veneer - Ceramic paediatric,Dental Procedure,2550,3000,3000
+798,DP053,Interceptive Orthodontic Treatment of the Primary Dentition/Transition Dentition,Dental Procedure,5950,7000,7000
+799,DP054,Limited Orthodontic Treatment of the Primary Dentition,Dental Procedure,4250,5000,5000
+800,DP055,Occlusion Analysis/Adjustment/Occlusal Equilibration,Dental Procedure,425,500,500
+801,DP056,Tooth Splinting -General,Dental Procedure,1275,1500,1500
+802,DP057,Splinting - Periodontally weak teeth,Dental Procedure,1530,1800,1800
+803,DP058,Night Guard,Dental Procedure,1700,2000,2000
+804,DP059,Bridge/ Fixed Partial denture (per missing/ extracted tooth) metal crown,Dental Procedure,1700,2000,2000
+805,DP060,Bridge/ Fixed Partial denture (per missing/ extracted tooth) metal crown with Ceramic facing,Dental Procedure,2550,3000,3000
+806,DP061,Removable Partial Denture - Flexible Per Arch,Dental Procedure,6375,7500,7500
+807,DP062,Removable Partial Denture - Cast Metal Up to 3 Teeth,Dental Procedure,3400,4000,4000
+808,DP063,Removable Partial Denture - Cast Metal (additional Per tooth),Dental Procedure,255,300,300
+809,DP064,Removable Partial Denture - Acrylic Up to 3 teeth,Dental Procedure,1700,2000,2000
+810,DP065,Removable Partial Denture - Tooth Addition (per tooth),Dental Procedure,255,300,300
+811,DP066,Add Clasp to existing Partial Denture,Dental Procedure,425,500,500
+812,DP067,Add Tooth to existing Partial Denture,Dental Procedure,340,400,400
+813,DP068,Tooth Supported Overdenture Per Arch,Dental Procedure,6375,7500,7500
+814,DP069,Complete Denture - Per Arch,Dental Procedure,8500,10000,10000
+815,DP070,Removable orthodontic appliance / Post Orthodontic R O A -per arch,Dental Procedure,2125,2500,2500
+816,DP071,Fixed orthodontic per arch,Dental Procedure,12750,15000,15000
+817,DP072,Space Maintainers - Fixed,Dental Procedure,3400,4000,4000
+818,DP073,Minor Treatment to Control Habits-Removable Appliance Therapy,Dental Procedure,2125,2500,2500
+819,DP074,Minor Treatment to Control Habits-Fixed Appliance Therapy,Dental Procedure,3400,4000,4000
+820,DP075,Functional orthodontic appliance,Dental Procedure,5100,6000,6000
+821,DP076,Feeding appliance for Cleft Palate,Dental Procedure,4250,5000,5000
+822,DP077,Expansion plate,Dental Procedure,5525,6500,6500
+823,DP078,Maxillofacial Prosthesis -Sal/auricular/orbital/Nasal/Palatal/facial lost/ Speech Aid,Dental Procedure,5950,7000,7000
+824,DP079,Obturator Prosthesis - Surgical/Definitive/Modification,Dental Procedure,4250,5000,5000
+825,DP080,Removal of - Lateral Exostosis/Torus Mandibularis/Torus Palatines/Surgical reduction of Osseous Tuberosity,Dental Procedure,2550,3000,3000
+826,DP081,Sialolithotomy/Sialodocotomy/ Closure of Salivary Fistula,Dental Procedure,1700,2000,2000
+827,DP082,Excision of Salivary gland,Dental Procedure,12750,15000,15000
+828,DP083,Release of fibrous bands & grafting in (OSMF) treatment under GA,Dental Procedure,17000,20000,20000
+829,DP084,Facial Space Abscess,Dental Procedure,4250,5000,5000
+830,DP085,Partial Ostectomy / sequestrectomy for removal of non-vital bone,Dental Procedure,1700,2000,2000
+831,DP086,Alveolus - Closed Reduction stabilization of Teeth,Dental Procedure,3400,4000,4000
+832,DP087,Alveolus - Open Reduction stabilization of Teeth,Dental Procedure,5100,6000,6000
+833,DP088,Arch bar fixation,Dental Procedure,4250,5000,5000
+834,DP089,Oroantral Fistula closure,Dental Procedure,4250,5000,5000
+835,DP090,"Osseous, Oste periosteal, or Cartilage graft of the Mandible or Maxilla - autogenous or non-autogenous bone graft",Dental Procedure,2550,3000,3000
+836,DP091,Osteoplasty - for Orthognathic deformities/ Mandibular Rami/ Body of Mandible,Dental Procedure,25500,30000,30000
+837,DP092,Maxilla - Closed Reduction,Dental Procedure,5100,6000,6000
+838,DP093,Maxilla - Open Reduction,Dental Procedure,8500,10000,10000
+839,DP094,Mandible - Closed Reduction,Dental Procedure,5100,6000,6000
+840,DP095,Mandible - Open Reduction,Dental Procedure,8500,10000,10000
+841,DP096,Cyst of Maxilla/mandible by enucleation/excision/marsupialization upto 4 cms under LA,Dental Procedure,4250,5000,5000
+842,DP097,Cyst of Maxilla/mandible by enucleation/excision/marsupialization more than 4 cms under LA,Dental Procedure,5100,6000,6000
+843,DP098,Cyst of Maxilla/mandible by enucleation/excision/marsupialization more than 4 cms under GA and admission,Dental Procedure,21250,25000,25000
+844,DP099,Temporomandibular(TM) joint ankylosis- under GA/Open /Closed Reduction,Dental Procedure,17000,20000,20000
+845,DP100,Segmental / Hemi Mandibulectomy with graft,Dental Procedure,21250,25000,25000
+846,DP101,Segmental /Hemi Mandibulectomy without graft,Dental Procedure,17000,20000,20000
+847,DP102,Sub-Total mandibulectomy with graft,Dental Procedure,29750,35000,35000
+848,DP103,Sub-Total mandibulectomy without graft,Dental Procedure,25500,30000,30000
+849,DP104,Maxillectomy/Mandibulectomy- Total with graft,Dental Procedure,29750,35000,35000
+850,DP105,Maxillectomy/Mandibulectomy- Total without graft,Dental Procedure,25500,30000,30000
+851,DP106,Maxillectomy- partial with graft,Dental Procedure,21250,25000,25000
+852,DP107,Maxillectomy- partial without graft,Dental Procedure,17000,20000,20000
+853,DP108,Malar and/or Zygomatic arch - Closed Reduction,Dental Procedure,5100,6000,6000
+854,DP109,Malar and/or Zygomatic arch - Open Reduction,Dental Procedure,8500,10000,10000
+855,DP110,Distraction osteogenesis of mandible or maxilla under GA,Dental Procedure,25500,30000,30000
+856,DP111,Facial bones - Complicated Reduction with fixation,Dental Procedure,38250,45000,45000
+857,OI001,Refraction with auto refraction - Both Eyes,Ophthalmology Investigation,170,200,200
+858,OI002,Indirect Ophthalmoscopy (Fundoscopy) - Both Eyes,Ophthalmology Investigation,255,300,300
+859,OI003,Orthoptic check-up- with synoptophore- Both Eyes,Ophthalmology Investigation,170,200,200
+860,OI004,Lees' charting or Hess' charting- Both Eyes,Ophthalmology Investigation,255,300,300
+861,OI005,Perimetry (Visual Field Testing) -Goldman- Both Eyes,Ophthalmology Investigation,425,500,500
+862,OI006,Perimetry /Humphrey Visual Field (HVF ) test- Automated- Both Eyes,Ophthalmology Investigation,680,800,800
+863,OI007,Fluorescein angiography for fundus or iris- Both Eyes,Ophthalmology Investigation,1700,2000,2000
+864,OI008,Indocyanine green angiography - Both Eyes,Ophthalmology Investigation,1700,2000,2000
+865,OI009,"Ultrasound A- Scan/optical biometry[lenstar, IOL master] - Both Eyes",Ophthalmology Investigation,850,1000,1000
+866,OI010,Ultrasound B- Scan - Both Eyes,Ophthalmology Investigation,425,500,500
+867,OI011,CGHS rates for Fundus Photo Test /disc photo for glaucoma- Both Eyes,Ophthalmology Investigation,425,500,500
+868,OI012,Corneal endothelial cell count with specular microscopy- Both Eyes,Ophthalmology Investigation,510,600,600
+869,OI013,Corneal topography /pentacam- Both Eyes,Ophthalmology Investigation,1700,2000,2000
+870,OI014,Corneal pachymetry (corneal thickness)/ CCT - Both Eyes,Ophthalmology Investigation,451,530,530
+871,OI015,OCT (Optical Coherence Tomography) /Ocular OCT Angiography - Both Eyes,Ophthalmology Investigation,1785,2100,2100
+872,OI016,UBM- Ultrasound bio microscopy- Both Eyes,Ophthalmology Investigation,850,1000,1000
+873,OI017,Non Contact tonometry (NCT) - Both Eyes,Ophthalmology Investigation,128,150,150
+874,OI018,IOP measurement with Schiotz - Both Eyes,Ophthalmology Investigation,85,100,100
+875,OI019,IOP measurement with applanation tonometry - Both Eyes,Ophthalmology Investigation,170,200,200
+876,OI020,Diurnal variation of IOP - Both Eyes,Ophthalmology Investigation,1275,1500,1500
+877,OI021,90 D lens examination/Three mirror examination for retina - Both Eyes,Ophthalmology Investigation,128,150,150
+878,OI022,Gonioscopy- Both Eyes,Ophthalmology Investigation,255,300,300
+879,OI023,EOG- Electrooculogram - Both Eyes,Ophthalmology Investigation,1760,2070,2070
+880,OI024,ERG- Electroretinogram- Both Eyes,Ophthalmology Investigation,1530,1800,1800
+881,OI025,VEP- visually evoked potential - Both Eyes,Ophthalmology Investigation,1530,1800,1800
+882,OI026,X Ray orbit -Bilateral,Ophthalmology Investigation,298,350,350
+883,OI027,Dacryocystography - Bilateral,Ophthalmology Investigation,1700,2000,2000
+884,OI028,Orbital Angiographical Studies - Bilateral,Ophthalmology Investigation,4250,5000,5000
+885,OI029,Neostigmine test - Both Eyes,Ophthalmology Investigation,4250,5000,5000
+886,OI030,Lipi View One Eye,Ophthalmology Investigation,765,900,900
+887,OI031,Lipi View Both Eyes,Ophthalmology Investigation,1275,1500,1500
+888,OI032,Schirmer Test,Ophthalmology Investigation,255,300,300
+889,OI033,Vitreous biopsy per eye,Ophthalmology Biopsy,4250,5000,5000
+890,OP001,Subconjunctival/sub-tenon's injections in one eye,Ophthalmology Procedure,425,500,500
+891,OP002,Subconjunctival/sub-tenon's injections in both eyes,Ophthalmology Procedure,680,800,800
+892,OP003,Pterygium surgery with auto conjunctival graft per eye,Ophthalmology Procedure,11390,13400,13400
+893,OP004,Conjunctival Peritomy per eye,Ophthalmology Procedure,1275,1500,1500
+894,OP005,Conjunctival wound repair or exploration following blunt trauma per eye,Ophthalmology Procedure,7225,8500,8500
+895,OP006,Removal of corneal foreign body,Ophthalmology Procedure,340,400,400
+896,OP007,Cauterization of ulcer/subconjunctival injection in one eye,Ophthalmology Procedure,425,500,500
+897,OP008,Cauterization of ulcer/subconjunctival injection in both eyes,Ophthalmology Procedure,680,800,800
+898,OP009,Corneal grafting--Penetrating keratoplasty per eye,Ophthalmology Procedure,17000,20000,20000
+899,OP010,Bandage contact lenses for corneal perforation/PED per eye,Ophthalmology Procedure,1700,2000,2000
+900,OP011,Scleral grafting or conjunctival flap for corneal perforation per eye,Ophthalmology Procedure,7225,8500,8500
+901,OP012,Keratoconus correction with therapeutic contact lenses - Both Eyes,Ophthalmology Procedure,7225,8500,8500
+902,OP013,Ultraviolet (UV) radiation for cross-linking for keratoconus /C3R/KXL - Both Eyes,Ophthalmology Procedure,17000,20000,20000
+903,OP014,EDTA for band shaped keratopathy - Both Eyes,Ophthalmology Procedure,2550,3000,3000
+904,OP015,Arcuate keratotomy for astigmatism /Limbal Relaxing Incision - Both Eyes,Ophthalmology Procedure,5780,6800,6800
+905,OP016,Re-suturing (Primary suturing) of corneal wound per eye,Ophthalmology Procedure,4250,5000,5000
+906,OP017,Penetrating keratoplasty with glaucoma surgery per eye,Ophthalmology Procedure,29750,35000,35000
+907,OP018,Penetrating keratoplasty with vitrectomy per eye,Ophthalmology Procedure,29750,35000,35000
+908,OP019,Penetrating keratoplasty with IOL implantation per eye,Ophthalmology Procedure,29750,35000,35000
+909,OP020,DALK- Deep anterior lamellar keratoplasty per eye,Ophthalmology Procedure,36550,43000,43000
+910,OP021,Keratoprosthesis stage I and II per eye,Ophthalmology Procedure,36550,43000,43000
+911,OP022,DSAEK Descemet's stripping automated endothelial keratoplasty/DMEK- Descemet membrane endothelial keratoplasty per eye,Ophthalmology Procedure,36550,43000,43000
+912,OP023,ALTK- Automated lamellar therapeutic keratoplasty per eye,Ophthalmology Procedure,36550,43000,43000
+913,OP024,Bleb repair with conjunctival autograft per eye,Ophthalmology Procedure,12750,15000,15000
+914,OP025,Bleb compression sutures per eye,Ophthalmology Procedure,5950,7000,7000
+915,OP026,Bleb needling with MMC/5-FU per eye,Ophthalmology Procedure,6800,8000,8000
+916,OP027,Probing and Syringing of lacrimal sac- in one eye,Ophthalmology Procedure,850,1000,1000
+917,OP028,Probing and Syringing of lacrimal sac- in both eye,Ophthalmology Procedure,1275,1500,1500
+918,OP029,Dacryocystorhinostomy-Plain,Ophthalmology Procedure,11390,13400,13400
+919,OP030,Dacryocystorhinostomy-Plain with intubation and/or with lacrimal implants excluding the cost of implant per eye,Ophthalmology Procedure,17000,20000,20000
+920,OP031,Dacryocystorhinostomy-conjunctival with implant excluding the cost of implant per eye,Ophthalmology Procedure,17000,20000,20000
+921,OP032,Canaliculoplasty per eye,Ophthalmology Procedure,4497,5290,5290
+922,OP033,Dacryocystectomy per eye,Ophthalmology Procedure,7820,9200,9200
+923,OP034,Punctal plugs for dry eyes - Both Eyes,Ophthalmology Procedure,383,450,450
+924,OP035,Chalazion incision and curettage in one eye,Ophthalmology Procedure,1700,2000,2000
+925,OP036,Chalazion incision and curettage in both eyes,Ophthalmology Procedure,2550,3000,3000
+926,OP037,Ptosis surgery with Fasanella-Servat procedure /Ptosis surgery with LPS one lid Ptosis surgery with Sling surgery one lid,Ophthalmology Procedure,17000,20000,20000
+927,OP038,Ectropion surgery- one lid,Ophthalmology Procedure,7225,8500,8500
+928,OP039,Ectropion surgery- both lids,Ophthalmology Procedure,11390,13400,13400
+929,OP040,Epicanthus correction - Both Eyes,Ophthalmology Procedure,7225,8500,8500
+930,OP041,Cantholysis and canthotomy- Both Eyes,Ophthalmology Procedure,2975,3500,3500
+931,OP042,Entropion surgery- one lid,Ophthalmology Procedure,7225,8500,8500
+932,OP043,Entropion surgery- both lids,Ophthalmology Procedure,11390,13400,13400
+933,OP044,Tarsorrhaphy- Both Eyes,Ophthalmology Procedure,2550,3000,3000
+934,OP045,Suturing of lid lacerations- Both Eyes,Ophthalmology Procedure,4250,5000,5000
+935,OP046,Lid retraction repair per eye,Ophthalmology Procedure,7225,8500,8500
+936,OP047,Concretions removal- Both Eyes,Ophthalmology Procedure,425,500,500
+937,OP048,Bucket handle procedure for lid tumours per eye (for non-malignant conditions),Ophthalmology Procedure,11390,13400,13400
+938,OP049,Eyelid reconstruction with flap one eye,Ophthalmology Procedure,17000,20000,20000
+939,OP050,Eyelid reconstruction with flap both eyes,Ophthalmology Procedure,21250,25000,25000
+940,OP051,Cheek rotation flap for lid tumours per eye (for non-malignant conditions),Ophthalmology Procedure,17000,20000,20000
+941,OP052,Orbitotomy per eye,Ophthalmology Procedure,23375,27500,27500
+942,OP053,Enucleation per eye(for non-malignant conditions),Ophthalmology Procedure,11390,13400,13400
+943,OP054,Enucleation with orbital implants and artificial (Cost of implants included) per eye,Ophthalmology Procedure,17000,20000,20000
+944,OP055,Evisceration per eye,Ophthalmology Procedure,11390,13400,13400
+945,OP056,Evisceration with orbital implants and artificial (Cost of implants included) prosthesis per eye,Ophthalmology Procedure,17000,20000,20000
+946,OP057,Telecanthus correction- Both Eyes,Ophthalmology Procedure,11390,13400,13400
+947,OP058,Orbital decompression /with incision or excision biopsy per eye,Ophthalmology Procedure,29750,35000,35000
+948,OP059,Exenteration per eye,Ophthalmology Procedure,17000,20000,20000
+949,OP060,Exenteration with skin grafting per eye,Ophthalmology Procedure,29750,35000,35000
+950,OP061,Fracture orbital repair per eye,Ophthalmology Procedure,29750,35000,35000
+951,OP062,"Retinal laser procedures -green laser for PRP,retinal tears, ROP,endolaser per eye",Ophthalmology Procedure,2975,3500,3500
+952,OP063,Retinal detachment surgery (RDS) per eye,Ophthalmology Procedure,23375,27500,27500
+953,OP064,Retinal detachment surgery (RDS) with scleral buckling per eye,Ophthalmology Procedure,29750,35000,35000
+954,OP065,Buckle removal per eye,Ophthalmology Procedure,7225,8500,8500
+955,OP066,Silicone oil removal per eye,Ophthalmology Procedure,7820,9200,9200
+956,OP067,Anterior retinal cryopexy per eye,Ophthalmology Procedure,4250,5000,5000
+957,OP068,Squint correction for one eye,Ophthalmology Procedure,11390,13400,13400
+958,OP069,Squint correction for both eyes,Ophthalmology Procedure,17000,20000,20000
+959,OP070,Trabeculectomy per eye,Ophthalmology Procedure,17000,20000,20000
+960,OP071,Trabeculotomy /kahook dual blade goniotomy excluding blade cost per eye,Ophthalmology Procedure,17000,20000,20000
+961,OP072,Trabeculectomy with Trabeculotomy- Both Eyes,Ophthalmology Procedure,29750,35000,35000
+962,OP073,Microincisional trabeculectomy(MIT) per eye,Ophthalmology Procedure,21250,25000,25000
+963,OP074,Surgical posterior capsulotomy one eye,Ophthalmology Procedure,8500,10000,10000
+964,OP075,Goniotomy per eye,Ophthalmology Procedure,4250,5000,5000
+965,OP076,Glaucoma surgery with Glaucoma valves (Cost of Valve extra) per eye,Ophthalmology Procedure,17000,20000,20000
+966,OP077,Cost of the Glaucoma valve/Glaucoma Ahmed valve per eye,Ophthalmology Procedure,15000,15000,15000
+967,OP078,AC wash per eye,Ophthalmology Procedure,4250,5000,5000
+968,OP079,Endocyclophotocoagulation per eye,Ophthalmology Procedure,15300,18000,18000
+969,OP080,Cyclocryotherapy /Trans scleral cyclophotocoagulation TSCPC per eye,Ophthalmology Procedure,4250,5000,5000
+970,OP081,YAG Laser iridotomy / Hyaloidotomy/Laser suture lysis post trabeculectomy per eye,Ophthalmology Procedure,4250,5000,5000
+971,OP082,YAG Laser capsulotomy per eye,Ophthalmology Procedure,4250,5000,5000
+972,OP083,ALT-Argon laser trabeculoplasty per eye,Ophthalmology Procedure,4250,5000,5000
+973,OP084,TTT- Transpupillary thermal therapy per eye,Ophthalmology Procedure,7225,8500,8500
+974,OP085,PTK- Phototherapeutic keratectomy /PRK for keratoconus per eye,Ophthalmology Procedure,11390,13400,13400
+975,OP086,Argon/diode laser for retinal detachment per eye,Ophthalmology Procedure,7225,8500,8500
+976,OP087,Intralase application for keratoconus /CAIRS Corneal allogenic intrastromal ring segments per eye excluding the cost of the rings,Ophthalmology Procedure,17000,20000,20000
+977,OP088,Vitrectomy- pars plana including Fluid air exchange (per eye),Ophthalmology Procedure,29750,35000,35000
+978,OP089,Vitrectomy +membrane peeling +fluid air exchange+endolaser+ gas/silicon oil tamponade per eye,Ophthalmology Procedure,34000,40000,40000
+979,OP090,Macular hole surgery- Vitrectomy +membrane peeling + ILM peeling+ fluid air exchange+endolaser+ gas/silicon oil tamponade per eye,Ophthalmology Procedure,34850,41000,41000
+980,OP091,Vitrectomy +phaco fragmentation/ IOL drop +/- secondary IOL per eye,Ophthalmology Procedure,21250,25000,25000
+981,OP092,Anterior vitrectomy per eye,Ophthalmology Procedure,6800,8000,8000
+982,OP093,Membranectomy one eye,Ophthalmology Procedure,10200,12000,12000
+983,OP094,Membranectomy both eyes,Ophthalmology Procedure,12750,15000,15000
+984,OP095,Intravitreal injections of antibiotics excluding the cost of the antibiotic per eye,Ophthalmology Procedure,4250,5000,5000
+985,OP096,Intravitreal Injection of drugs (Ranibizumab/ Aflibercept etc) excluding the cost of the drug per eye,Ophthalmology Procedure,4250,5000,5000
+986,OP097,"Intravitreal Insertion of Drug Implant excluding cost of the Drug Implant (Ozurdex,...etc) per eye",Ophthalmology Procedure,5100,6000,6000
+987,OP098,Extracapsular cataract extraction (ECCE) with IOL excluding the cost of IOL per eye,Ophthalmology Procedure,11390,13400,13400
+988,OP099,Small Incision Cataract Surgery (SICS) with IOL excluding the cost of IOL per eye,Ophthalmology Procedure,11390,13400,13400
+989,OP100,Phaco with foldable IOL (silicone and acrylic)/PMMA IOL / MICS surgery excluding the cost of IOL per eye,Ophthalmology Procedure,14450,17000,17000
+990,OP101,Pars plana lensectomy with/without IOL excluding the cost of IOL per eye,Ophthalmology Procedure,14450,17000,17000
+991,OP102,Secondary IOL implantation- AC IOL PC IOL or scleral fixated IOL excluding the cost of IOL per eye,Ophthalmology Procedure,17000,20000,20000
+992,OP103,Cataract extraction with IOL with capsular tension rings (Cionni's ring)(cost of the ring included) excluding the cost of IOL per eye,Ophthalmology Procedure,29750,35000,35000
+993,OP104,Paediatric cataract surgery +parsplana capsulotomy + anterior vitrectomy excluding the cost of IOL - one eye,Ophthalmology Procedure,17000,20000,20000
+994,OP105,Paediatric cataract surgery +parsplana capsulotomy + anterior vitrectomy excluding the cost of IOL - Both Eyes,Ophthalmology Procedure,21250,25000,25000
+995,OP106,IOL exchange [excluding IOL cost] per eye,Ophthalmology Procedure,8500,10000,10000
+996,OP107,IOL reposition per eye,Ophthalmology Procedure,5100,6000,6000
+997,OP108,IOL explantation per eye,Ophthalmology Procedure,6800,8000,8000
+998,OP109,Iridodialysis repair or pupillary reconstruction /Cyclodialysis repair per eye,Ophthalmology Procedure,11390,13400,13400
+999,OP110,Iris cyst removal /synechiolysis/surgical iridectomy per eye,Ophthalmology Procedure,4250,5000,5000
+1000,OP111,Lid Abscess incision and Drainage per eye,Ophthalmology Procedure,4250,5000,5000
+1001,OP112,Orbital Abscess incision and Drainage per eye,Ophthalmology Procedure,7225,8500,8500
+1002,OP113,"Excision Biopsy of lid, conjunctiva, cornea per eye",Ophthalmology Procedure,7820,9200,9200
+1003,OP114,Paracentesis (eye) per eye,Ophthalmology Procedure,4250,5000,5000
+1004,OP115,Scleral graft for scleral melting or perforation per eye,Ophthalmology Procedure,11390,13400,13400
+1005,OP116,Amniotic membrane grafting /symblepharon release with AMG per eye,Ophthalmology Procedure,11390,13400,13400
+1006,OP117,Intraocular foreign body removal per eye,Ophthalmology Procedure,7225,8500,8500
+1007,OP118,Electrolysis (eye) - Both Eyes,Ophthalmology Procedure,850,1000,1000
+1008,OP119,Perforating injury repair (eye) per eye,Ophthalmology Procedure,11390,13400,13400
+1009,OP120,Botulinum injection for blepharospasm or squint /epiphora/entropion/lid retraction (excluding cost of drug) per eye,Ophthalmology Procedure,4250,5000,5000
+1010,OP121,C3F8 GAS Injection intravitreal for descemetopexy/retinopexy/pneumatopexy (per eye),Ophthalmology Procedure,4250,5000,5000
+1011,OP122,Silicone Oil injection (per eye),Ophthalmology Procedure,4250,5000,5000
+1012,OP123,Epiretinal Membrane (ERM) Peeling (per eye),Ophthalmology Procedure,5950,7000,7000
+1013,OP124,Epiretinal Membrane (ERM) Removal (per eye),Ophthalmology Procedure,2550,3000,3000
+1014,OP125,Internal limiting membrane (ILM) peeling (per eye),Ophthalmology Procedure,2550,3000,3000
+1015,OP126,Punctoplasty (per eye),Ophthalmology Procedure,5525,6500,6500
+1016,OP127,Punctal plug(Collagen/silicone) per eye,Ophthalmology Procedure,3400,4000,4000
+1017,OP128,Laser Trabeculoplasty Gonioplasty - Both Eyes,Ophthalmology Procedure,13600,16000,16000
+1018,OP129,Eye laser pulse therapy /Lipiflow/IPL [Intense pulse light] per eye,Ophthalmology Procedure,2975,3500,3500
+1019,OP130,Malyugin Ring /pupil dilator/iris expander per eye,Ophthalmology Procedure,8500,10000,10000
+1020,OP131,Globe exploration per eye,Ophthalmology Procedure,8500,10000,10000
+1021,OP132,Scleral Fixation Tissue glue /fibrin glue per eye,Ophthalmology Procedure,7140,8400,8400
+1022,OP133,PFCL Injection Per Eye Including Cost of The Drug,Ophthalmology Procedure,2321,2730,2730
+1023,OP134,Methylprednisolone Injection IV Infusion per day Excluding the cost of the drug,Ophthalmology Procedure,2125,2500,2500
+1024,OP135,Retinoblastoma[RB] EUA both eyes,Ophthalmology Procedure,2550,3000,3000
+1025,OP136,RB intravitreal/intravenous/subtenons chemotherapy affected eye excluding the cost of the chemotherapy drug,Ophthalmology Procedure,2975,3500,3500
+1026,OP137,RB TTT/ Cryotherapy affected eye,Ophthalmology Procedure,3825,4500,4500
+1027,OP138,Plaque brachytherapy-surface affected eye,Ophthalmology Procedure,12750,15000,15000
+1028,OP139,Plaque brachytherapy-intraocular affected eye,Ophthalmology Procedure,17000,20000,20000
+1029,OP140,Simple limbal stem cell transplant SLET per eye,Ophthalmology Procedure,17000,20000,20000
+1030,OP141,Mucous membrane grafting MMG one eyelid,Ophthalmology Procedure,17000,20000,20000
+1031,OP142,Mucous membrane grafting MMG two eyelids,Ophthalmology Procedure,21250,25000,25000
+1032,OP143,iStent Inject per eye including the cost of consumables and implant,Ophthalmology Procedure,68000,80000,80000
+1033,OP144,Orthoptic exercises per session,Ophthalmology Physiotherapy,213,250,250
+1034,OP145,Pleoptic exercises per session,Ophthalmology Physiotherapy,213,250,250
+1035,EI001,Impedance with stapedial reflex / Impedance Audiometry,ENT Investigation,510,600,600
+1036,EI002,Pure Tone Audiogram / Pure Tone Audiometry / PTA,ENT Investigation,383,450,450
+1037,EI003,Short Increment Sensitivity Index (SISI) Tone Decay,ENT Investigation,340,400,400
+1038,EI004,Speech Assessment,ENT Investigation,340,400,400
+1039,EI005,Speech Discrimination Score,ENT Investigation,340,400,400
+1040,EI006,Multiple hearing assessment test to Adults,ENT Investigation,340,400,400
+1041,EI007,BERA (Brain stem evoked response audiometry),ENT Investigation,2125,2500,2500
+1042,EI008,OAE (Otoacoustic Emission Test),ENT Investigation,1071,1260,1260
+1043,EI009,Hearing Aid Trail,ENT Investigation,170,200,200
+1044,EI010,Vestibular Evoked Myogenic Potential (VEMP),ENT Investigation,2338,2750,2750
+1045,EI011,Cold Calorie Test for Vestibular function,ENT Investigation,510,600,600
+1046,EI012,Electronystagmography (ENG),ENT Investigation,1275,1500,1500
+1047,EI013,Videonystagmography(VNG),ENT Investigation,2125,2500,2500
+1048,EI014,Video Laryngoscopy,ENT investigation,5100,6000,6000
+1049,EI015,Videostroboscopy,ENT Investigation,4675,5500,5500
+1050,EI016,Fibreoptic examination of Larynx (FOL) under LA,ENT Investigation,4250,5000,5000
+1051,EI017,Fibro optic Nasal Endoscopy,ENT Investigation,1955,2300,2300
+1052,EP001,Removal of foreign body From Nose,ENT Procedure,595,700,700
+1053,EP002,Removal of foreign body From Ear/otoscopy diagnostic or therapeutic,ENT Procedure,595,700,700
+1054,EP003,Syringing (Ear),ENT Procedure,425,500,500
+1055,EP004,Polyp removal under LA (Larynx),ENT Procedure,4250,5000,5000
+1056,EP005,Polyp removal under GA (Larynx),ENT Procedure,7820,9200,9200
+1057,EP006,Peritonsillar abscess Drainage under LA,ENT Procedure,7225,8500,8500
+1058,EP007,Myringoplasty,ENT Procedure,23375,27500,27500
+1059,EP008,Stapedectomy,ENT Procedure,23375,27500,27500
+1060,EP009,Myringotomy with Grommet Insertion,ENT Procedure,11390,13400,13400
+1061,EP010,Tympanotomy,ENT Procedure,23375,27500,27500
+1062,EP011,Tympanoplasty,ENT Procedure,29750,35000,35000
+1063,EP012,Mastoidectomy,ENT Procedure,29750,35000,35000
+1064,EP013,Otoplasty,ENT Procedure,29750,35000,35000
+1065,EP014,Labyrinthectomy,ENT Procedure,29750,35000,35000
+1066,EP015,Skull Base Surgery,ENT Procedure,45050,53000,53000
+1067,EP016,Facial Nerve Decompression,ENT Procedure,36550,43000,43000
+1068,EP017,Septoplasty,ENT Procedure,23375,27500,27500
+1069,EP018,Submucous Resection,ENT Procedure,11390,13400,13400
+1070,EP019,Septo-Rhinoplasty,ENT Procedure,36550,43000,43000
+1071,EP020,Rhinoplasty- Non-cosmetic,ENT Procedure,29750,35000,35000
+1072,EP021,Fracture Reduction of Nasal Bone,ENT Procedure,11390,13400,13400
+1073,EP022,Intra Nasal Diathermy,ENT Procedure,5100,6000,6000
+1074,EP023,Turbinectomy,ENT Procedure,11390,13400,13400
+1075,EP024,Endoscopic Dacryocystorhinostomy (DCR),ENT Procedure,29750,35000,35000
+1076,EP025,Endoscopic Surgery (ENT),ENT Procedure,29750,35000,35000
+1077,EP026,Septal Perforation Repair,ENT Procedure,23375,27500,27500
+1078,EP027,Antrum Puncture,ENT Procedure,2550,3000,3000
+1079,EP028,Lateral Rhinotomy,ENT Procedure,17000,20000,20000
+1080,EP029,Cranio-Facial resection,ENT Procedure,36550,43000,43000
+1081,EP030,Angiofibroma Excision,ENT Procedure,36550,43000,43000
+1082,EP031,Endoscopic Hypophysectomy,ENT Procedure,45050,53000,53000
+1083,EP032,Endoscopic Optic Nerve Decompression,ENT Procedure,45050,53000,53000
+1084,EP033,Tonsillectomy,ENT Procedure,23375,27500,27500
+1085,EP034,Uvulo-palatoplasty,ENT Procedure,29750,35000,35000
+1086,EP035,Functional Endoscopic Sinus Surgery (FESS) for Antrochoanal polyp,ENT Procedure,29750,35000,35000
+1087,EP036,Functional Endoscopic Sinus Surgery (FESS) for Ethmoidal polyp,ENT Procedure,29750,35000,35000
+1088,EP037,Polyp removal ear,ENT Procedure,4250,5000,5000
+1089,EP038,Polyp removal Nose (Septal polyp),ENT Procedure,7225,8500,8500
+1090,EP039,Mastoidectomy plus Ossiculoplasty including TORP (Total Ossicular Replacement Prosthesis) or PORP (Partial Ossicular Replacement Prosthesis),ENT Procedure,29750,35000,35000
+1091,EP040,Endolymphatic sac decompression,ENT Procedure,36550,43000,43000
+1092,EP041,Diagnostic endoscopy under GA,ENT Procedure,4250,5000,5000
+1093,EP042,Young's operation for Atrophic rhinitis,ENT Procedure,17000,20000,20000
+1094,EP043,Vidian neurectomy for vasomotor Rhinitis,ENT Procedure,23375,27500,27500
+1095,EP044,Nasal Packing-anterior,ENT Procedure,2125,2500,2500
+1096,EP045,Nasal Packing-Posterior,ENT Procedure,2550,3000,3000
+1097,EP046,Ranula Excision,ENT Procedure,17000,20000,20000
+1098,EP047,Tongue Tie excision,ENT Procedure,7225,8500,8500
+1099,EP048,Sub Mandibular Duct Lithotomy,ENT Procedure,5780,6800,6800
+1100,EP049,Adenoidectomy,ENT Procedure,17000,20000,20000
+1101,EP050,Palatopharyngoplasty,ENT Procedure,29750,35000,35000
+1102,EP051,Pharyngoplasty,ENT Procedure,36550,43000,43000
+1103,EP052,Styloidectomy,ENT Procedure,17000,20000,20000
+1104,EP053,Direct Laryngoscopy including Biopsy under GA,ENT Procedure,11390,13400,13400
+1105,EP054,Oesophagoscopy with foreign body removal from Oesophagus,ENT Procedure,11390,13400,13400
+1106,EP055,Bronchoscopy with foreign body (FB) removal,ENT Procedure,11390,13400,13400
+1107,EP056,Ear Lobe Repair one side,ENT Procedure,3400,4000,4000
+1108,EP057,Excision of Pinna for non-cancerous Growth/Injuries - Skin Only,ENT Procedure,7820,9200,9200
+1109,EP058,Excision of Pinna for non-cancerous/ Injuries - Skin and Cartilage,ENT Procedure,11390,13400,13400
+1110,EP059,Partial Amputation of Pinna,ENT Procedure,11390,13400,13400
+1111,EP060,Total Amputation of Pinna,ENT Procedure,17000,20000,20000
+1112,EP061,Total Amputation & Excision of External Auditory Meatus,ENT Procedure,17000,20000,20000
+1113,EP062,Excision of Cystic Hygroma,ENT Procedure,17000,20000,20000
+1114,EP063,Excision of Cystic Hygroma Extensive,ENT Procedure,23375,27500,27500
+1115,EP064,Excision of Branchial Cyst,ENT Procedure,23375,27500,27500
+1116,EP065,Excision of Branchial Sinus,ENT Procedure,23375,27500,27500
+1117,EP066,Excision of Pharyngeal Diverticulum,ENT Procedure,23375,27500,27500
+1118,EP067,Excision of Carotid Body / Carotid Body Tumours,ENT Procedure,36550,43000,43000
+1119,EP068,Operation for Cervical Rib,ENT Procedure,29750,35000,35000
+1120,EP069,Estlander Operation (Estlander flap in plastic surgery of lips),ENT Procedure,29750,35000,35000
+1121,EP070,Abbe Operation (Abbe flap in plastic surgery of lips),ENT Procedure,23375,27500,27500
+1122,EP071,Cheek Advancement,ENT Procedure,29750,35000,35000
+1123,EP072,Excision of the Maxilla,ENT Procedure,36550,43000,43000
+1124,EP073,Excision of mandible-segmental,ENT Procedure,29750,35000,35000
+1125,EP074,Parotidectomy - Superficial,ENT Procedure,29750,35000,35000
+1126,EP075,Parotidectomy - Total,ENT Procedure,36550,43000,43000
+1127,EP076,Repair of Parotid Duct,ENT Procedure,23375,27500,27500
+1128,EP077,Removal of Submandibular Salivary gland,ENT Procedure,23375,27500,27500
+1129,EP078,Hemithyroidectomy,ENT Procedure,29750,35000,35000
+1130,EP079,Partial Thyroidectomy (lobectomy),ENT Procedure,29750,35000,35000
+1131,EP080,Subtotal Thyroidectomy,ENT Procedure,36550,43000,43000
+1132,EP081,Total Thyroidectomy,ENT Procedure,45050,53000,53000
+1133,EP082,Resection Enucleation of thyroid Adenoma,ENT Procedure,23375,27500,27500
+1134,EP083,Excision of Lingual Thyroid,ENT Procedure,29750,35000,35000
+1135,EP084,Excision of Thyroglossal Cyst/Duct/Fistula,ENT Procedure,29750,35000,35000
+1136,EP085,Laryngectomy,ENT Procedure,45050,53000,53000
+1137,EP086,Hyoid Suspension,ENT Procedure,23375,27500,27500
+1138,EP087,Genioplasty,ENT Procedure,29750,35000,35000
+1139,EP088,Phonosurgery,ENT Procedure,23375,27500,27500
+1140,EP089,Microlaryngeal Surgery,ENT Procedure,23375,27500,27500
+1141,EP090,Laryngofissure,ENT Procedure,36550,43000,43000
+1142,EP091,Tracheal Stenosis Excision,ENT Procedure,36550,43000,43000
+1143,EP092,Tracheostomy,ENT Procedure,11390,13400,13400
+1144,CC001,"ICU/CCU/PICU/MICU/HDU (For all categories of ward entitlement, inclusive of Room Rent)",Critical Care,5400,5400,5400
+1145,CC002,Compressed Air / Piped Oxygen per hour,Critical Care,85,100,100
+1146,CC003,Ventilator charges (Per day) inclusive of associated disposables,Critical Care,2550,3000,3000
+1147,CC004,Non invasive Ventilator charges (Per day)( inclusive of associated disposables),Critical Care,510,600,600
+1148,CC005,Pneupac Ventilator in Nursery (Per day),Critical Care,2210,2600,2600
+1149,CC006,Incubator charges (Per day),Critical Care,1275,1500,1500
+1150,CC007,Neonatal ICU charges (Per day) inclusive of incubator,Critical Care,5400,5400,5400
+1151,CC008,Exchange Transfusion,Critical Care,2975,3500,3500
+1152,CC009,Phototherapy per session (up to 6 Hours),Critical Care,340,400,400
+1153,CC010,Resuscitation/CPR/Intubation,Critical Care,1275,1500,1500
+1154,CC011,PICC line (peripherally inserted Central Cannulisation),Critical Care,4250,5000,5000
+1155,CC012,Nebulization Per Session,Critical Care,43,50,50
+1156,CC013,PICC Line Removal,Critical Care,850,1000,1000
+1157,CC014,Ryles Tube Insertion,Critical Care,765,900,900
+1158,BC001,Blood Component Charges - Whole Blood per Unit,Blood Component Charges,1550,1550,1550
+1159,BC002,Blood Component Charges - Packed Red Cell per Unit,Blood Component Charges,1550,1550,1550
+1160,BC003,Blood Component Charges - Fresh Frozen Plasma,Blood Component Charges,400,400,400
+1161,BC004,Platelet Concentrate- Random Donor Platelet (RDP),Blood Component Charges,400,400,400
+1162,BC005,Blood Component Charges - Cryoprecipitate,Blood Component Charges,250,250,250
+1163,BC006,Platelet Concentrate - Single Donor Platelet (SDP)- Apheresis per unit,Blood Component Charges,11000,11000,11000
+1164,GP001,Dressings of wounds,General Procedure,255,300,300
+1165,GP002,Aspiration Pleural Effusion - Diagnostic,General Procedure,595,700,700
+1166,GP003,Aspiration Pleural Effusion - Therapeutic,General Procedure,595,700,700
+1167,GP004,Abdominal / Peritoneal Aspiration - Diagnostic/Ascitic tapping / Paracentesis - Diagnostic,General Procedure,595,700,700
+1168,GP005,Abdominal / Peritoneal Aspiration - Therapeutic/Ascitic tapping / Paracentesis - Therapeutic,General Procedure,638,750,750
+1169,GP006,Removal of Sutures (All),General Procedure,170,200,200
+1170,GP007,Venesection,General Procedure,595,700,700
+1171,GP008,Sternal puncture,General Procedure,1700,2000,2000
+1172,GP009,Urinary bladder Catheterisation,General Procedure,595,700,700
+1173,GP010,Incision & Drainage under local Anaesthesia (Large),General Procedure,1955,2300,2300
+1174,GP011,Intercostal Drainage,General Procedure,2975,3500,3500
+1175,GP012,Drainage of abscess with anaesthesia,General Procedure,11390,13400,13400
+1176,GP013,Excision of lumps under anaesthesia,General Procedure,11390,13400,13400
+1177,HN001,Temporal Bone Subtotal Resection,Head and Neck Surgery,36550,43000,49450
+1178,HN002,Benign Tumour Excisions of Head and Neck,Head and Neck Surgery,23375,27500,31625
+1179,SK001,Excision of Moles,Skin Procedure,850,1000,1000
+1180,SK002,Excision of Warts,Skin Procedure,850,1000,1000
+1181,SK003,Excision of Molluscum Contagiosum,Skin Procedure,850,1000,1000
+1182,SK004,Excision of Venereal Warts,Skin Procedure,850,1000,1000
+1183,SK005,Excision of Corns,Skin Procedure,850,1000,1000
+1184,SK006,Intradermal (ID) Injection Keloid (Intralesional Injection) including the cost of the drug,Skin Procedure,850,1000,1000
+1185,SK007,Chemical Cautery (s)/Cryotherapy,Skin Procedure,850,1000,1000
+1186,CI001,Electrocardiogram (ECG),Cardiology Investigation,149,175,175
+1187,CI002,Treadmill Test (TMT),Cardiology Investigation,952,1120,1120
+1188,CI003,Holter analysis per day,Cardiology Investigation,2125,2500,2500
+1189,CI004,Ambulatory BP monitoring per day,Cardiology Investigation,850,1000,1000
+1190,CI005,Head Up Tilt Test (HUTT),Cardiology Investigation,7820,9200,9200
+1191,CI006,External Loop/event recording -first day Rs.1500,Cardiology Investigation,1275,1500,1500
+1192,CI007,External Loop/event recording - subsequent Days 1000/day (Maximum up to 6 days),Cardiology Investigation,850,1000,1000
+1193,CI008,Diagnostic Electrophysiological studies conventional (Including catheter),Cardiology Investigation,61710,72600,72600
+1194,CI009,Stress Thallium / Myocardial Perfusion Scintigraphy,Cardiology Investigation,11390,13400,13400
+1195,CI010,Rest Thallium / Myocardial Perfusion Scintigraphy,Cardiology Investigation,8160,9600,9600
+1196,CI011,Venography,Cardiology Investigation,4250,5000,5000
+1197,CI012,Lymphangiography,Cardiology Investigation,4250,5000,5000
+1198,CI013,Sinogram,Cardiology Investigation,1700,2000,2000
+1199,CI014,Digital Subtraction Angiography-Peripheral artery,Cardiology Investigation,12419,14610,14610
+1200,CI015,Digital Subtraction Angiography- venogram,Cardiology Investigation,12419,14610,14610
+1201,CI016,Coronary Angiography,Cardiology Investigation,11390,13400,13400
+1202,CI017,Cardiac Catheterization (CATH),Cardiology Investigation,12665,14900,14900
+1203,CP001,Balloon Coronary Angioplasty / Percutaneous transluminal coronary angioplasty (PTCA) /Percutaneous coronary intervention (PCI) with Vascular closure device (VCD) excluding the cost of Stent. Cost of Drug Eluting Balloon allowed in lieu of Stent,Cardiology Procedure,82450,97000,111550
+1204,CP002,Balloon Coronary Angioplasty / Percutaneous transluminal coronary angioplasty (PTCA) / Percutaneous coronary intervention (PCI) without Vascular closure device (VCD) excluding the cost of Stent.Cost of Drug Eluting Balloon allowed in lieu of Stent,Cardiology Procedure,71166,83725,96284
+1205,CP003,Rotablation excluding the cost of Rotablator Burr/Advancer,Cardiology Procedure,52553,61827,71101
+1206,CP004,Balloon Mitral Valvotomy / Percutaneous Transvenous Mitral Commissurotomy (PTMC),Cardiology Procedure,82450,97000,111550
+1207,CP005,Temporary Pacemaker Implantation (TPI) (Temporary Cardiac Pacing) Single Chamber,Cardiology Procedure,17952,21120,24288
+1208,CP006,Permanent pacemaker implantation (PPI)- Single Chamber excluding the cost of Pacemaker,Cardiology Procedure,29920,35200,40480
+1209,CP007,Permanent pacemaker implantation- Dual Chamber excluding the cost of Pacemaker,Cardiology Procedure,40205,47300,54395
+1210,CP008,Permanent pacemaker implantation (PPI)- Biventricular excluding the cost of pacemaker,Cardiology Procedure,46400,54588,62776
+1211,CP009,Automatic implantable cardioverter defibrillator (AICD) Single Chamber - excluding the cost of Device,Cardiology Procedure,46750,55000,63250
+1212,CP010,Automatic implantable cardioverter defibrillator (AICD) Dual Chamber excluding the cost of Device,Cardiology Procedure,48947,57585,66223
+1213,CP011,Combo Device Implantation excluding the cost of Device,Cardiology Procedure,55165,64900,74635
+1214,CP012,Radiofrequency (RF) Ablation Conventional,Cardiology Procedure,82450,97000,111550
+1215,CP013,Radiofrequency (RF) Ablation Atrial Tachycardia/CARTO,Cardiology Procedure,153000,180000,207000
+1216,CP014,Intra-aortic balloon pump (IABP) excluding the cost of the balloon,Cardiology Procedure,29750,35000,40250
+1217,CP015,Intra vascular coiling excluding cost of the coils,Cardiology Procedure,64600,76000,87400
+1218,CP016,Balloon Septostomy,Cardiology Procedure,28050,33000,37950
+1219,CP017,Aortic Valve Balloon Dilatation (AVBD) / Pulmonary Valve Balloon Dilatation (PVBD),Cardiology Procedure,52734,62040,71346
+1220,CP018,Peripheral Angioplasty with Vascular Closure Device (VCD) excluding the cost of Stent,Cardiology Procedure,51893,61050,70208
+1221,CP019,Peripheral Angioplasty without Vascular Closure Device (VCD) excluding the cost of Stent,Cardiology Procedure,45050,53000,60950
+1222,CP020,Renal Angioplasty excluding the cost of Stent,Cardiology Procedure,51425,60500,69575
+1223,CP021,"Transcatheter Aortic Valve Implantation (TAVI) / Transcatheter Aortic Valve Replacement (TAVR) - Procedure Cost. (Approval of Director, CGHS in consultation with Special Technical Committee (STC) is required for this procedure)",Cardiology Procedure,85000,100000,115000
+1224,CP022,TAVI / TAVR Implant (cost of implant only),Cardiology Implant(Valve),1284000,1284000,1284000
+1225,CP023,Cost of Intravascular ultrasound (IVUS) Catheter excluding GST(Procedure Charge included in PTCA),Cardiology Add on Procedure,55000,55000,55000
+1226,CP024,Cost of Fractional flow reserve (FFR) Catheter excluding GST (Procedure Charge included in PTCA),Cardiology Add on Procedure,33000,33000,33000
+1227,CP025,Catheter cost of Intracoronary optical coherence tomography (OCT) / Intravascular optical coherence tomography (IVOCT) / Intravascular Ventricular Assist System excluding GST(Procedure cost is included in PTCA),Cardiology Add on Procedure,65000,65000,65000
+1228,CP026,"IVL (Coronary Intra vascular Lithotripsy / Shock wave Lithotripsy - Including GST (Approval of Director, CGHS in consultation with Special Technical Committee (STC) is required for this procedure)",Cardiology Add on Procedure,268000,268000,268000
+1229,CV001,Varicose vein Surgery-Trendelenburg Operation with Suturing or Ligation,Cardiovascular And Cardiac Surgery Procedure,21505,25300,29095
+1230,CV002,Radio Ablation of Varicose Veins (RFA Ablation) excluding the cost of RFA Catheter,Cardiovascular And Cardiac Surgery Procedure,7948,9350,10753
+1231,CV003,Laser Ablation of Varicose Veins,Cardiovascular And Cardiac Surgery Procedure,37400,44000,50600
+1232,CV004,Atrial Septal Defect (ASD) closure excluding the cost of the Device,Cardiovascular And Cardiac Surgery Procedure,93500,110000,126500
+1233,CV005,Ventricular Septal Defect (VSD) with Graft / VSD Device Closure excluding the cost of the Device,Cardiovascular And Cardiac Surgery Procedure,102000,120000,138000
+1234,CV006,Tetralogy of Fallot (TOF)/TAPVC/TCPC/REV/RSOV repair,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1235,CV007,BD Glenn/Left Atrium Myxoma,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1236,CV008,CGHS rates for Senning/Arterial Switch Operation (ASO) with graft,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1237,CV009,Double Switch Operation (DSO),Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1238,CV010,Atrioventricular(AV) Canal Repair,Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1239,CV011,Fontan Procedure,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1240,CV012,Conduit Repair,Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1241,CV013,Coronary Artery Bypass Graft surgery (CABG),Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1242,CV014,Coronary Artery Bypass Graft surgery (CABG) + Intra-Aortic Balloon Pump (IABP),Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1243,CV015,Coronary Artery Bypass Graft surgery (CABG) + Valve Replacement excluding the cost of the valve,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1244,CV016,CABG without bypass.,Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1245,CV017,Ascending Aorta Replacement,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1246,CV018,Double Valve Replacement (DVR),Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1247,CV019,Mitral valve Replacement(MVR)/ Aortic valve Replacement (AVR)/ Tricuspid Valve Replacement (TVR) / Pulmonary valve replacement (PVR),Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1248,CV020,Mitral valve (MV) Repair + Aortic valve (AV) Repair / Tricuspid Valve (TV) Repair + Pulmonary valve (PV) repair,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1249,CV021,Aorta Femoral Bypass,Cardiovascular And Cardiac Surgery Procedure,109650,129000,148350
+1250,CV022,Blalock-Taussig Shunt (BT Shunt) / Coarctation,Cardiovascular And Cardiac Surgery Procedure,129200,152000,174800
+1251,CV023,Pulmonary Artery Banding (PA Banding) Septostomy,Cardiovascular And Cardiac Surgery Procedure,129200,152000,174800
+1252,CV024,Pericardiocentesis,Cardiovascular And Cardiac Surgery Procedure,8500,10000,10000
+1253,CV025,Pericardiectomy,Cardiovascular And Cardiac Surgery Procedure,129200,152000,174800
+1254,CV026,Patent Ductus Arteriosus (PDA)-Device Closure,Cardiovascular And Cardiac Surgery Procedure,93500,110000,126500
+1255,CV027,"Heart Transplant Surgery (As per Guidelines mentioned in OM.No. Z- 42011/11/2021-MG/EHS Dated 1st December, 2023)",Cardiovascular And Cardiac Surgery Procedure,1500000,1500000,1500000
+1256,CV028,Aortic Arch Replacement,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1257,CV029,Aortic Dissection,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1258,CV030,Thoraco Abdominal Aneurysm Repair,Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1259,CV031,Embolectomy,Cardiovascular And Cardiac Surgery Procedure,64600,76000,87400
+1260,CV032,Vascular Repair,Cardiovascular And Cardiac Surgery Procedure,64600,76000,87400
+1261,CV033,Bentall Repair with Prosthetic Valve,Cardiovascular And Cardiac Surgery Procedure,232900,274000,315100
+1262,CV034,Bentall Repair with Biologic Valve,Cardiovascular And Cardiac Surgery Procedure,200600,236000,271400
+1263,CV035,Coarctation dilatation / Balloon dilatation of Aortic coarctation -Excluding the cost of Balloon,Cardiovascular And Cardiac Surgery Procedure,66946,78760,90574
+1264,CV036,Coarctation dilatation with Stenting,Cardiovascular And Cardiac Surgery Procedure,53550,63000,72450
+1265,CV037,Septostomy- Blade,Cardiovascular And Cardiac Surgery Procedure,53550,63000,72450
+1266,CV038,Aortic stent grafting for aortic aneurysm,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1267,CV039,Inferior Vena Cava (IVC) filter implantation- excluding the cost of filter,Cardiovascular And Cardiac Surgery Procedure,28050,33000,37950
+1268,CV040,Video Assisted Thoracoscopic Surgery (VATS) for Decortication of Lungs/Thymectomy/Other Major Surgeries,Cardiovascular And Cardiac Surgery Procedure,153000,180000,207000
+1269,GS001,Sclerotherapy Injection / Banding of Haemorrhoids (cost of drug/sclerotherapy agent/band extra),General Surgery,595,700,700
+1270,GS002,Injection for Varicose Veins (cost of drug/sclerotherapy agent extra),General Surgery,595,700,700
+1271,GS003,Suturing of small wounds,General Surgery,1169,1375,1375
+1272,GS004,Secondary suture of wounds,General Surgery,3740,4400,4400
+1273,GS005,Debridement of wounds - Small,General Surgery,1403,1650,1650
+1274,GS006,Phimosis Under LA,General Surgery,5100,6000,6000
+1275,GS007,Removal Of Foreign Bodies -without C-ARM,General Surgery,1275,1500,1500
+1276,GS008,Toe Nail Removal,General Surgery,850,1000,1000
+1277,GS009,Excision of Cervical Lymph Node under Local Anaesthesia,General Surgery,2635,3100,3100
+1278,GS010,Excision of Axillary Lymph Node under General Anaesthesia,General Surgery,7225,8500,8500
+1279,GS011,Excision of Inguinal Lymph Node under Local Anaesthesia,General Surgery,2550,3000,3000
+1280,GS012,Excision of Sebaceous Cysts,General Surgery,4250,5000,5000
+1281,GS013,Excision of Superficial Lipoma,General Surgery,4250,5000,5000
+1282,GS014,Excision of Superficial Neurofibroma,General Surgery,4250,5000,5000
+1283,GS015,Excision of Dermoid Cysts,General Surgery,4250,5000,5000
+1284,GS016,Excision of Keloid,General Surgery,7820,9200,9200
+1285,GS017,Excision of mammary fistula,General Surgery,23375,27500,27500
+1286,GS018,Haemorrhoidectomy,General Surgery,28050,33000,33000
+1287,GS019,Stapler haemorrhoidectomy excluding the cost of Stapler,General Surgery,29750,35000,35000
+1288,GS020,Debridement of Large wounds including Diabetic Wound under Anaesthesia,General Surgery,23375,27500,27500
+1289,GI001,Gastro Oesophageal Reflux Study (GER Study),Gastro and Hepatobiliary Investigation,2550,3000,3000
+1290,GI002,Meckel's Scan,Gastro and Hepatobiliary/Nuclear Medicine Investigation,2550,3000,3000
+1291,GI003,Hepatobiliary Scintigraphy.,Gastro and Hepatobiliary/Nuclear Medicine Investigation,3400,4000,4000
+1292,GI004,Gastrointestinal Bleed (GloB.) Study with Technetium 99m labeled RBCs.,Gastro and Hepatobiliary/Nuclear Medicine Investigation,5100,6000,6000
+1293,GI005,Gastric Emptying,Gastro and Hepatobiliary/Nuclear Medicine Investigation,2125,2500,2500
+1294,GI006,Hepatosplenic scintigraphy with Technetium-99m radiopharmaceuticals,Gastro and Hepatobiliary/Nuclear Medicine Investigation,4250,5000,5000
+1295,GI007,Diagnostic Angiography,Gastroenterology/Interventional Radiology Investigation,7820,9200,9200
+1296,GI008,Oesophageal pH metry,Gastroenterology / Endoscopic Procedures,7820,9200,9200
+1297,GI009,Oesophageal Manometry,Gastroenterology / Endoscopic Procedures,7820,9200,9200
+1298,GI010,Small Bowel Manometry,Gastroenterology / Endoscopic Procedures,8500,10000,10000
+1299,GI011,Anorectal manometry,Gastroenterology / Endoscopic Investigation,36550,43000,43000
+1300,GI012,Colonic manometry,Gastroenterology / Endoscopic Investigation,29750,35000,35000
+1301,GI013,Biliary Manometry,Gastroenterology / Endoscopic Investigation,36550,43000,43000
+1302,GI014,Breath Tests (Urea breath test/ H. pylori breath test)/RUT,Gastroenterology / Endoscopic Investigation,2457,2890,2890
+1303,MG001,Gastroscopy/Upper GI Endoscopy with or without Biopsy,Gastroenterology / Endoscopic Procedures,3400,4000,4000
+1304,MG002,Lower GI Endoscopy(Colonoscopy/Sigmoidoscopy) with or without Biopsy,Gastroenterology / Endoscopic Procedures,5100,6000,6000
+1305,MG003,Endoscopic mucosal resection,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1306,MG004,Endoscopic Polypectomy - GIT,Gastroenterology / Endoscopic Procedures,17000,20000,20000
+1307,MG005,Oesophageal Stricture dilatation,Gastroenterology / Endoscopic Procedures,7820,9200,9200
+1308,MG006,Balloon dilatation of achalasia cardia,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1309,MG007,Gastrointestinal (GIT) Foreign body removal,Gastroenterology / Endoscopic Procedures,17000,20000,20000
+1310,MG008,Oesophageal stenting excluding the cost of stent,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1311,MG009,Band ligation of oesophageal varices,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1312,MG010,Sclerotherapy of oesophageal varices,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1313,MG011,Glue injection of varices,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1314,MG012,Argon plasma coagulation,Gastroenterology / Endoscopic Procedures,7820,9200,9200
+1315,MG013,Pyloric balloon dilatation,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1316,MG014,Enteral stenting excluding cost of the stent,Gastroenterology / Endoscopic Procedures,17000,20000,20000
+1317,MG015,Duodenal stricture dilation,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1318,MG016,Single balloon enteroscopy,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1319,MG017,Double balloon enteroscopy,Gastroenterology / Endoscopic Procedures,17000,20000,20000
+1320,MG018,Capsule endoscopy excluding the cost of capsule,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1321,MG019,Piles banding,Gastroenterology / Endoscopic Procedures,4250,5000,5000
+1322,MG020,Colonic stricture dilatation,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1323,MG021,Hot biopsy forceps procedures,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1324,MG022,Colonic stenting excluding cost of the stent,Gastroenterology / Endoscopic Procedures,11390,13400,13400
+1325,MG023,Junction biopsy,Gastroenterology / Endoscopic Procedures,4250,5000,5000
+1326,MG024,Conjugal microscopy,Gastroenterology / Endoscopic Procedures,7225,8500,8500
+1327,MG025,ERCP (Endoscopic Retrograde Cholangio - Pancreatography) Diagnostic,Gastro and Hepatobiliary Investigation,11390,13400,13400
+1328,MG026,Endoscopic sphincterotomy by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1329,MG027,Common Bile Duct (CBD) stone extraction by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1330,MG028,Common Bile Duct (CBD) stricture dilatation by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1331,MG029,Biliary stenting (plastic and metallic) by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1332,MG030,Mechanical lithotripsy of CBD stones by ERCP,Gastroenterology / Endoscopic Procedures,29750,35000,40250
+1333,MG031,Pancreatic sphincterotomy by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1334,MG032,Pancreatic stricture dilatation by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1335,MG033,Pancreatic stone extraction by ERCP,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1336,MG034,Mechanical lithotripsy of pancreatic stones,Gastroenterology / Endoscopic Procedures,29750,35000,40250
+1337,MG035,Endoscopic cysto gastrostomy,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1338,MG036,Balloon dilatation of papilla,Gastroenterology / Endoscopic Procedures,17000,20000,23000
+1339,MG037,CGHS rates for Percutaneous Transhepatic Biliary Drainage (PTBD),Gastroenterology/Interventional Radiology Procedures,17000,20000,23000
+1340,MG038,Vascular Embolization,Gastroenterology/Interventional Radiology Procedures,36550,43000,49450
+1341,MG039,Transjugular Intrahepatic Portosystemic Shunt (TIPS),Gastroenterology/Interventional Radiology Procedures,45050,53000,60950
+1342,MG040,Inferior Vena Cava (IVC) Venography and Hepatic Vein (HV Venography),Gastroenterology/Interventional Radiology Procedures,36550,43000,49450
+1343,MG041,Muscular Stenting,Gastroenterology / Endoscopic Procedures,45050,53000,60950
+1344,MG042,Balloon-Occluded Retrograde Intravenous Obliteration (BRTO),Gastroenterology/Interventional Radiology Procedures,45050,53000,60950
+1345,MG043,Portal Haemodynamic Studies,Gastroenterology/Interventional Radiology Procedures,7225,8500,8500
+1346,MG044,Sengstaken Blakemore (SB) Tube Tamponade,Gastroenterology / Endoscopic Procedures,7820,9200,9200
+1347,MG045,Lintas Machles Tube Tempode,Gastroenterology / Endoscopic Procedures,5100,6000,6000
+1348,MG046,EUS (Endoscopic Ultrasound) guided FNAC Excluding the cost of the Needle,Gastroenterology / Endoscopic Procedures,14025,16500,16500
+1349,AG001,Atresia of Oesophagus and Tracheo Oesophageal Fistula,Abdomen/GI Surgery Procedure,45050,53000,60950
+1350,AG002,Operations for Replacement of Oesophagus by Colon / Colon-Inter position or Replacement of Oesophagus,Abdomen/GI Surgery Procedure,45050,53000,60950
+1351,AG003,Heller's Operation,Abdomen/GI Surgery Procedure,36550,43000,49450
+1352,AG004,Oesophageal Intubation (Mousseau Barbin Tube),Abdomen/GI Surgery Procedure,23375,27500,31625
+1353,AG005,Achalasia Cardia Transthoracic,Abdomen/GI Surgery Procedure,36550,43000,49450
+1354,AG006,Achalasia Cardia Abdominal,Abdomen/GI Surgery Procedure,36550,43000,49450
+1355,AG007,Pyloromyotomy,Abdomen/GI Surgery Procedure,23375,27500,31625
+1356,AG008,Gastrostomy,Abdomen/GI Surgery Procedure,23375,27500,31625
+1357,AG009,Simple Closure of Perforated peptic Ulcer,Abdomen/GI Surgery Procedure,29750,35000,40250
+1358,AG010,Vagotomy Pyloroplasty / Gastro Jejunostomy,Abdomen/GI Surgery Procedure,36550,43000,49450
+1359,AG011,Duodenojejunostomy,Abdomen/GI Surgery Procedure,45050,53000,60950
+1360,AG012,Partial/Subtotal Gastrectomy for Ulcer,Abdomen/GI Surgery Procedure,45050,53000,60950
+1361,AG013,Operation for Bleeding Peptic Ulcer,Abdomen/GI Surgery Procedure,36550,43000,49450
+1362,AG014,Operation for Gastrojejunal Ulcer,Abdomen/GI Surgery Procedure,36550,43000,49450
+1363,AG015,Highly Selective Vagotomy,Abdomen/GI Surgery Procedure,45050,53000,60950
+1364,AG016,Selective Vagotomy & Drainage,Abdomen/GI Surgery Procedure,45050,53000,60950
+1365,AG017,Exploratory Laparotomy (Open),Abdomen/GI Surgery Procedure,23375,27500,31625
+1366,AG018,Congenital Diaphragmatic Hernia,Abdomen/GI Surgery Procedure,36550,43000,49450
+1367,AG019,CGHS rates for Hiatus Hernia Repair- Abdominal (excluding cost of mesh and tacker if used),Abdomen/GI Surgery Procedure,30855,36300,41745
+1368,AG020,Hiatus Hernia Repair- Transthoracic (excluding cost of mesh and tacker if used),Abdomen/GI Surgery Procedure,30855,36300,41745
+1369,AG021,Epigastric Hernia Repair - excluding the cost of mesh and tacker,Abdomen/GI Surgery Procedure,23375,27500,31625
+1370,AG022,Umbilical Hernia Repair - excluding the cost of mesh and tacker,Abdomen/GI Surgery Procedure,29750,35000,40250
+1371,AG023,Ventral /incisional Hernia Repair - excluding the cost of mesh and tacker,Abdomen/GI Surgery Procedure,29750,35000,40250
+1372,AG024,Inguinal Hernia Herniorrhaphy,Abdomen/GI Surgery Procedure,24310,28600,32890
+1373,AG025,Inguinal Hernia - Hernioplasty excluding the cost of mesh and tacker,Abdomen/GI Surgery Procedure,29750,35000,40250
+1374,AG026,Femoral Hernia Repair - excluding the cost of mesh and tacker,Abdomen/GI Surgery Procedure,29750,35000,40250
+1375,AG027,"Rare Hernias Repair (Spigelian, Obturator, Lumbar, Sciatic) - excluding the cost of mesh and tacker",Abdomen/GI Surgery Procedure,36550,43000,49450
+1376,AG028,Splenectomy - For Trauma,Abdomen/GI Surgery Procedure,45050,53000,60950
+1377,AG029,Splenectomy - For Hypersplenism,Abdomen/GI Surgery Procedure,53550,63000,72450
+1378,AG030,Splenorenal Anastomosis,Abdomen/GI Surgery Procedure,45050,53000,60950
+1379,AG031,Portocaval Anastomosis,Abdomen/GI Surgery Procedure,53550,63000,72450
+1380,AG032,Direct Operation on Oesophagus for Portal Hypertension,Abdomen/GI Surgery Procedure,45050,53000,60950
+1381,AG033,Mesentericocaval Anastomosis,Abdomen/GI Surgery Procedure,36550,43000,49450
+1382,AG034,Warren Shunt (Distal Splenorenal Shunt),Abdomen/GI Surgery Procedure,45050,53000,60950
+1383,AG035,Pancreaticoduodenectomy (Whipple's procedure),Abdomen/GI Surgery Procedure,45050,53000,60950
+1384,AG036,Cystojejunostomy or Cystogastrostomy,Abdomen/GI Surgery Procedure,36550,43000,49450
+1385,AG037,Cholecystectomy,Abdomen/GI Surgery Procedure,29750,35000,40250
+1386,AG038,Cholecystectomy & Exploration of CBD,Abdomen/GI Surgery Procedure,30855,36300,41745
+1387,AG039,Repair of Common Bile Duct (CBD),Abdomen/GI Surgery Procedure,36550,43000,49450
+1388,AG040,Cholecystostomy,Abdomen/GI Surgery Procedure,22440,26400,30360
+1389,AG041,Operation for Hydatid Cyst of Liver,Abdomen/GI Surgery Procedure,25245,29700,34155
+1390,AG042,Hepatic Resections (Lobectomy /Hepatectomy),Abdomen/GI Surgery Procedure,30855,36300,41745
+1391,AG043,Operation on Adrenal Glands - Bilateral,Abdomen/GI Surgery Procedure,53550,63000,72450
+1392,AG044,Operation on Adrenal Glands - Unilateral,Abdomen/GI Surgery Procedure,36550,43000,49450
+1393,AG045,Appendicectomy,Abdomen/GI Surgery Procedure,17765,20900,24035
+1394,AG046,Appendicular Abscess - Drainage,Abdomen/GI Surgery Procedure,29750,35000,40250
+1395,AG047,Mesenteric Cyst- Excision,Abdomen/GI Surgery Procedure,29750,35000,40250
+1396,AG048,Diagnostic Peritonioscopy/Laparoscopy,Abdomen/GI Surgery Procedure,17000,20000,23000
+1397,AG049,Jejunostomy,Abdomen/GI Surgery Procedure,29750,35000,40250
+1398,AG050,Ileostomy,Abdomen/GI Surgery Procedure,29750,35000,40250
+1399,AG051,Resection & Anastomosis of Small Intestine,Abdomen/GI Surgery Procedure,44413,52250,60088
+1400,AG052,Duodenal Diverticulum,Abdomen/GI Surgery Procedure,45050,53000,60950
+1401,AG053,"Operation for Intestinal Obstruction including resection , anastomosis, Adhesiolysis",Abdomen/GI Surgery Procedure,45050,53000,60950
+1402,AG054,"Operation for Intestinal perforation including resection, anastomosis , Adhesiolysis",Abdomen/GI Surgery Procedure,45050,53000,60950
+1403,AG055,Operations for Benign Tumours of Small Intestine,Abdomen/GI Surgery Procedure,45050,53000,60950
+1404,AG056,Excision of Small Intestine Fistula,Abdomen/GI Surgery Procedure,42075,49500,56925
+1405,AG057,Operations for GI Bleed,Abdomen/GI Surgery Procedure,45050,53000,60950
+1406,AG058,Operations for Haemorrhage of Small Intestines,Abdomen/GI Surgery Procedure,45050,53000,60950
+1407,AG059,Operations of the Duplication of the Intestines - including Exploratory Laparotomy,Abdomen/GI Surgery Procedure,38335,45100,51865
+1408,AG060,Operations for Recurrent Intestinal Obstruction (Noble Plication & Other Operations for Adhesions),Abdomen/GI Surgery Procedure,45050,53000,60950
+1409,AG061,Ileosigmoidostomy and related resection,Abdomen/GI Surgery Procedure,45050,53000,60950
+1410,AG062,Ileotransverse Colostomy and related resection,Abdomen/GI Surgery Procedure,45050,53000,60950
+1411,AG063,Caecostomy,Abdomen/GI Surgery Procedure,29750,35000,40250
+1412,AG064,Loop Colostomy Transverse Sigmoid,Abdomen/GI Surgery Procedure,36550,43000,49450
+1413,AG065,Terminal Colostomy,Abdomen/GI Surgery Procedure,28050,33000,37950
+1414,AG066,Closure of Colostomy,Abdomen/GI Surgery Procedure,28050,33000,37950
+1415,AG067,Right Hemicolectomy,Abdomen/GI Surgery Procedure,29920,35200,40480
+1416,AG068,Left Hemicolectomy,Abdomen/GI Surgery Procedure,29920,35200,40480
+1417,AG069,Total Colectomy,Abdomen/GI Surgery Procedure,37400,44000,50600
+1418,AG070,Operations for Volvulus of Large Bowel,Abdomen/GI Surgery Procedure,45050,53000,60950
+1419,AG071,Operations for Sigmoid Diverticulitis,Abdomen/GI Surgery Procedure,36550,43000,49450
+1420,AG072,Fissure in Ano with Internal sphincterotomy with fissurectomy.,Abdomen/GI Surgery Procedure,29750,35000,40250
+1421,AG073,Fissure in Ano - Fissurectomy,Abdomen/GI Surgery Procedure,23375,27500,31625
+1422,AG074,Rectal Polyp-Excision,Abdomen/GI Surgery Procedure,12810,15070,17331
+1423,AG075,Fistula in Ano - High Fistulectomy,Abdomen/GI Surgery Procedure,29750,35000,40250
+1424,AG076,Fistula in Ano - Low Fistulectomy,Abdomen/GI Surgery Procedure,21505,25300,29095
+1425,AG077,Prolapse Rectum - Thiersch Wiring,Abdomen/GI Surgery Procedure,23375,27500,31625
+1426,AG078,Prolapse Rectum - Rectopexy,Abdomen/GI Surgery Procedure,13090,15400,17710
+1427,AG079,Excision of Pilonidal Sinus (open),Abdomen/GI Surgery Procedure,20570,24200,27830
+1428,AG080,Excision of Pilonidal Sinus with closure,Abdomen/GI Surgery Procedure,23375,27500,31625
+1429,AG081,Abdomino-Perineal Excision of Rectum,Abdomen/GI Surgery Procedure,45050,53000,60950
+1430,AG082,Anterior Resection of Rectum,Abdomen/GI Surgery Procedure,53550,63000,72450
+1431,AG083,Pull Through Abdominal Resection,Abdomen/GI Surgery Procedure,45050,53000,60950
+1432,AG084,Retro Peritoneal Tumour Removal,Abdomen/GI Surgery Procedure,45050,53000,60950
+1433,AG085,Laparoscopic Fundoplication,Abdomen/GI Surgery Procedure,53550,63000,72450
+1434,AG086,Laparoscopic Splenectomy,Abdomen/GI Surgery Procedure,53550,63000,72450
+1435,AG087,Laparoscopic Removal of hydatid cyst,Abdomen/GI Surgery Procedure,53550,63000,72450
+1436,AG088,Laparoscopic Treatment of Pseudo Pancreatic cyst,Abdomen/GI Surgery Procedure,53550,63000,72450
+1437,AG089,Laparoscopic Whipple's operation (Laparoscopic Pancreaticoduodenectomy,Abdomen/GI Surgery Procedure,45050,53000,60950
+1438,AG090,Laparoscopic GI bypass operation,Abdomen/GI Surgery Procedure,53550,63000,72450
+1439,AG091,Laparoscopic Total Colectomy,Abdomen/GI Surgery Procedure,53550,63000,72450
+1440,AG092,Laparoscopic Hemicolectomy,Abdomen/GI Surgery Procedure,45050,53000,60950
+1441,AG093,Laparoscopic Anterior Resection (of Intestine/ Rectum),Abdomen/GI Surgery Procedure,53550,63000,72450
+1442,AG094,Laparoscopic Cholecystectomy,Abdomen/GI Surgery Procedure,30855,36300,41745
+1443,AG095,Laparoscopic Appendectomy,Abdomen/GI Surgery Procedure,28050,33000,37950
+1444,AG096,Laparoscopic Hernia - Inguinoplasty (excluding the cost of Tacker and Mesh),Abdomen/GI Surgery Procedure,32725,38500,44275
+1445,AG097,Laparoscopic Ventral Hernia Repair (excluding the cost of Tacker and Mesh),Abdomen/GI Surgery Procedure,32725,38500,44275
+1446,AG098,Laparoscopic Paraumbilical Hernia Repair (excluding the cost of Tacker and Mesh),Abdomen/GI Surgery Procedure,32725,38500,44275
+1447,AG099,Laparoscopic Adrenalectomy,Abdomen/GI Surgery Procedure,53550,63000,72450
+1448,PS001,Diaphragmatic Hernia Repair (Thoracic or Abdominal Approach),Paediatric Surgery Procedure,45050,53000,60950
+1449,PS002,Tracheoesophageal Fistula (Correction Surgery),Paediatric Surgery Procedure,45050,53000,60950
+1450,PS003,Colon Replacement of Oesophagus,Paediatric Surgery Procedure,36550,43000,49450
+1451,PS004,Omphalomesenteric Cyst Excision,Paediatric Surgery Procedure,36550,43000,49450
+1452,PS005,Omphalomesenteric Duct- Excision,Paediatric Surgery Procedure,36550,43000,49450
+1453,PS006,Omphalocele 1st Stage (Hernia Repair),Paediatric Surgery Procedure,29750,35000,40250
+1454,PS007,Omphalocele 2nd Stage (Hernia Repair),Paediatric Surgery Procedure,29750,35000,40250
+1455,PS008,Gastroschisis Repair,Paediatric Surgery Procedure,36550,43000,49450
+1456,PS009,Inguinal Herniotomy,Paediatric Surgery Procedure,29750,35000,40250
+1457,PS010,Congenital Hydrocele,Paediatric Surgery Procedure,29750,35000,40250
+1458,PS011,Hydrocele of Cord,Paediatric Surgery Procedure,23375,27500,31625
+1459,PS012,Torsion Testis Operation,Paediatric Surgery Procedure,29750,35000,40250
+1460,PS013,Congenital Pyloric Stenosis- operation,Paediatric Surgery Procedure,29750,35000,40250
+1461,PS014,Duodenal Atresia Operation,Paediatric Surgery Procedure,36550,43000,49450
+1462,PS015,Pancreatic Ring Operation,Paediatric Surgery Procedure,45050,53000,60950
+1463,PS016,Meconium Ileus Operation,Paediatric Surgery Procedure,36550,43000,49450
+1464,PS017,Malrotation of Intestines Operation,Paediatric Surgery Procedure,36550,43000,49450
+1465,PS018,Rectal Biopsy (Megacolon),Paediatric Surgery Procedure,17000,20000,23000
+1466,PS019,Colostomy Transverse,Paediatric Surgery Procedure,36550,43000,49450
+1467,PS020,Colostomy Left Iliac,Paediatric Surgery Procedure,36550,43000,49450
+1468,PS021,Abdominal Perineal Pull Through (Hirschsprung's Disease),Paediatric Surgery Procedure,45050,53000,60950
+1469,PS022,Imperforate Anus Low Anomaly -Cut Back Operation,Paediatric Surgery Procedure,23375,27500,31625
+1470,PS023,Imperforate Anus Low Anomaly - Perineal Anoplasty,Paediatric Surgery Procedure,29750,35000,40250
+1471,PS024,Imperforate Anus High Anomaly -Sacroabdomino Perineal Pull Through,Paediatric Surgery Procedure,45050,53000,60950
+1472,PS025,Imperforate Anus High Anomaly - Closure of Colostomy,Paediatric Surgery Procedure,29750,35000,40250
+1473,PS026,Intussusception Operation,Paediatric Surgery Procedure,36550,43000,49450
+1474,PS027,Choledochoduodenostomy for Atresia of Extra Hepatic Biliary Duct,Paediatric Surgery Procedure,45050,53000,60950
+1475,PS028,Operation of Choledochal Cyst,Paediatric Surgery Procedure,45050,53000,60950
+1476,PS029,Nephrectomy for -Pyonephrosis,Paediatric Surgery Procedure,36550,43000,49450
+1477,PS030,Nephrectomy for - Hydronephrosis,Paediatric Surgery Procedure,36550,43000,49450
+1478,PS031,Sacro-Coccygeal Teratoma Excision,Paediatric Surgery Procedure,36550,43000,49450
+1479,PS032,Congenital Atresia & Stenosis of Small Intestine,Paediatric Surgery Procedure,45050,53000,60950
+1480,PS033,Malrotation & Volvulus of the Midgut,Paediatric Surgery Procedure,36550,43000,49450
+1481,PS034,Excision of Meckel's Diverticulum,Paediatric Surgery Procedure,36550,43000,49450
+1482,OG001,Non Stress Test,Obstetrics Investigation,1275,1500,1500
+1483,OG002,Normal delivery with or without Episiotomy & P. repair/ forceps delivery /Vacuum delivery/assisted breech delivery including Routine New Born Care,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1484,OG003,"Normal Delivery of High Risk Pregnancy(Preeclampsia/Eclapsia/GDM/Cardiac/Vascular/Renal/Pulmonary/Twin Pregnancy/RA/SLE/IVF Conception/Severe Anaemia,)",Obstetrics And Gynaecology Procedure,36550,43000,43000
+1485,OG004,Caesarean Section(CS) with or without Sterilization including Routine New Born Care,Obstetrics And Gynaecology Procedure,45050,53000,53000
+1486,OG005,Caesarian Delivery of High Risk Pregnancy(Preeclampsia/Eclapsia/GDM/Cardiac/Vascular/Renal/Pulmonary/Twin Pregnancy/RA/SLE/IVF Conception/Severe Anaemia),Obstetrics And Gynaecology Procedure,53550,63000,63000
+1487,OG006,Rupture Uterus Closure & Repair with Tubal Ligation,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1488,OG007,Perforation of Uterus after D/E Laparotomy & Closure,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1489,OG008,Laparotomy for Ectopic Pregnancy,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1490,OG009,Laparotomy peritonitis Lavage and Drainage,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1491,OG010,Ovarian Cystectomy - Laparoscopic.,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1492,OG011,Ovarian Cystectomy - Laparotomy.,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1493,OG012,Laparoscopic Broad Ligament Hematoma Drainage with repair,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1494,OG013,Exploration of perineal Haematoma & Repair,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1495,OG014,Exploration of abdominal Haematoma (after laparotomy/ LSCS),Obstetrics And Gynaecology Procedure,23375,27500,27500
+1496,OG015,Manual Removal of Placenta,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1497,OG016,Examination under anaesthesia (EUA),Obstetrics And Gynaecology Procedure,4250,5000,5000
+1498,OG017,Burst-Abdomen Repair,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1499,OG018,Gaping Perineal Wound Secondary Suturing,Obstetrics And Gynaecology Procedure,4250,5000,5000
+1500,OG019,Gaping Abdominal Wound Secondary Suturing,Obstetrics And Gynaecology Procedure,7225,8500,8500
+1501,OG020,Complete Perineal Tear-Repair,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1502,OG021,Pelvic Floor Repair(Rectocele +/- Cystocele +/- Enterocele),Obstetrics And Gynaecology Procedure,29750,35000,35000
+1503,OG022,Suction Evacuation Vesicular Mole,Obstetrics And Gynaecology Procedure,23375,27500,27500
+1504,OG023,Colpotomy/Post-Coital Tear Repair,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1505,OG024,Excision of urethral carbuncle,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1506,OG025,CGHS rates for Shirodkar/ McDonald stitch//Cervical Stitch(Cerclage),Obstetrics And Gynaecology Procedure,11390,13400,13400
+1507,OG026,Abdominal Hysterectomy with or without salpingo- oophorectomy,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1508,OG027,Non-descent Vaginal Hysterectomy (NDVH) with or without BSO,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1509,OG028,Vaginal Hysterectomy ( including of BSO) with or without repairs,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1510,OG029,Myomectomy -laparotomy,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1511,OG030,Myomectomy -laparoscopic,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1512,OG031,Vaginoplasty,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1513,OG032,Vulvectomy -Simple,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1514,OG033,Rectovaginal Fistula (RVF) Repair,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1515,OG034,Manchester/Fothergill's operation,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1516,OG035,Shirodkar's sling Operation or other sling operations for prolapse uterus,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1517,OG036,Laparoscopic sling operations for prolapse uterus,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1518,OG037,Dilatation and Curettage(diagnostic/therapeutic) with or without Polypectomy,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1519,OG038,Cervical Biopsy,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1520,OG039,CGHS rates for Transcervical/Hysteroscopic Polypectomy,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1521,OG040,Excision of Vaginal Cyst/Bartholin Cyst/Gartner Cyst,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1522,OG041,Excision of Vaginal/Uterus Septum,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1523,OG042,Diagnostic hysterolaparoscopy(DHL) with or without chromopertubation/Adhesiolysis/ovarian drilling,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1524,OG043,Laparoscopy Sterilization/Laproscopic tubal occlusion(LTO),Obstetrics And Gynaecology Procedure,23375,27500,27500
+1525,OG044,Laparoscopically Assisted Vaginal Hysterectomy (LAVH) with or without BSO,Obstetrics And Gynaecology Procedure,53550,63000,63000
+1526,OG045,Balloon Tamponade for Post Partum Haemorrhage/Conservative management of PPH(Atonic/traumatic PPH),Obstetrics And Gynaecology Procedure,7225,8500,8500
+1527,OG046,Total Laparoscopic Hysterectomy with or without BSO,Obstetrics And Gynaecology Procedure,53550,63000,63000
+1528,OG047,Laparoscopic Treatment of Ectopic Pregnancy- Milking/Salpingotomy/Salpingectomy,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1529,OG048,Conisation of cervix/Chemical Cautery of Cervical Ectopy/Erosion,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1530,OG049,Diagnostic hysteroscopy with or without polypectomy/endometrial curettage,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1531,OG050,Laparotomy recanalization of Fallopian tubes- (Tuboplasty),Obstetrics And Gynaecology Procedure,45050,53000,53000
+1532,OG051,Laparoscopic recanalization of Fallopian tubes- (Tuboplasty),Obstetrics And Gynaecology Procedure,45050,53000,53000
+1533,OG052,Colposcopy,Obstetrics And Gynaecology Procedure,4250,5000,5000
+1534,OG053,Inversion of Uterus - Vaginal Reposition,Obstetrics And Gynaecology Procedure,5100,6000,6000
+1535,OG054,Inversion of Uterus - Abdominal Reposition,Obstetrics And Gynaecology Procedure,5100,6000,6000
+1536,OG055,Vaginal Vesicovaginal Fistula (VVF) Repair,Obstetrics And Gynaecology Procedure,53550,63000,63000
+1537,OG056,Interventional Ultrasonography- Chorionic villus sampling (CVS),Obstetrics And Gynaecology Procedure,4250,5000,5000
+1538,OG057,Amniocentesis,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1539,OG058,Thermal balloon ablation.,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1540,OG059,Ultrasonographic myolysis,Obstetrics And Gynaecology Procedure,23375,27500,27500
+1541,OG060,Vaginal/Cervical Myomectomy,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1542,OG061,Intra Uterine Insemination,Obstetrics And Gynaecology Procedure,4250,5000,5000
+1543,OG062,Intracytoplasmic sperm injection (ICSI),Obstetrics And Gynaecology Procedure,17000,20000,20000
+1544,OG063,Laparotomy abdominal sacro-colpopexy,Obstetrics And Gynaecology Procedure,45050,53000,53000
+1545,OG064,Vaginal Colpopexy/colpopexy-abdominal,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1546,OG065,Laparoscopic abdominal colpopexy/sacro-colpopexy,Obstetrics And Gynaecology Procedure,45050,53000,53000
+1547,OG066,Endometrial aspiration cytology/biopsy (including Pipelle Charges),Obstetrics And Gynaecology Procedure,2550,3000,3000
+1548,OG067,CGHS rates for Laparoscopic treatment for stress incontinence,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1549,OG068,Transvaginal tapes for Stress incontinence,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1550,OG069,Trans-obturator tapes for Stress incontinence,Obstetrics And Gynaecology Procedure,36550,43000,43000
+1551,OG070,Interventional radiographic arterial embolization/Uterine artery embolization(UAE),Obstetrics And Gynaecology Procedure,29750,35000,35000
+1552,OG071,Internal Iliac Artery ligation,Obstetrics And Gynaecology Procedure,7225,8500,8500
+1553,OG072,Surgical management of PPH (Uterine compression stitches/stepwise devascularisation)/peripartum hysterectomy,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1554,OG073,Intra-uterine fetal blood transfusion,Obstetrics And Gynaecology Procedure,45050,53000,53000
+1555,OG074,Hysteroscopy Transcervical Resection of Endometrium (TCRE),Obstetrics And Gynaecology Procedure,29750,35000,35000
+1556,OG075,Hysteroscopy Removal of Intra-Uterine Contraceptive Device (IUCD),Obstetrics And Gynaecology Procedure,17000,20000,20000
+1557,OG076,hysteroscopic resection of uterine septum,Obstetrics And Gynaecology Procedure,29750,35000,35000
+1558,OG077,Diagnostic Hysteroscopy with or without endometrial Biopsy,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1559,OG078,Sterilization (minilap)-post partum/post abortion,Obstetrics And Gynaecology Procedure,7820,9200,9200
+1560,OG079,Interval Sterilization(minilap)-BAT / Male Sterilization(Vasectomy),Obstetrics And Gynaecology Procedure,17000,20000,20000
+1561,OG080,Medical Termination of Pregnancy (MTP)- 1st Trimester with Medicine /Manual Vacuum Aspiration /Check Curettage,Obstetrics And Gynaecology Procedure,11390,13400,13400
+1562,OG081,Medical Termination of Pregnancy (MTP) - 2nd Trimester /Suction and Evacuation/Dilatation and Curettage/Dilatation and expulsion,Obstetrics And Gynaecology Procedure,17000,20000,20000
+1563,OG082,Insertion of IUD/IUCD/Pessary,Obstetrics And Gynaecology Procedure,3400,4000,4000
+1564,OG083,Removal of IUD/IUCD/Pessary,Obstetrics And Gynaecology Procedure,850,1000,1000
+1565,NU001,Ultrasound guided kidney Biopsy,Nephrology And Urology - Biopsy,7820,9200,9200
+1566,NU002,Testicular Biopsy,Nephrology And Urology - Biopsy,11390,13400,13400
+1567,NU003,Transrectal Ultrasound (TRUS) guided prostate biopsy,Nephrology And Urology - Biopsy,7820,9200,9200
+1568,NU004,Uroflow Study (Uroflowmetry),Nephrology And Urology Investigation,850,1000,1000
+1569,NU005,Urodynamic Study (Cystometry),Nephrology And Urology Investigation,2550,3000,3000
+1570,NU006,Voiding-cysto-urethrogram and retrograde urethrogram (Nephrostogram),Nephrology And Urology Investigation,7225,8500,8500
+1571,NU007,Fistulogram for Arteriovenous Fistula,Nephrology And Urology Investigation,7820,9200,9200
+1572,NU008,Partial Nephrectomy -open,Nephrology And Urology Procedure,36550,43000,49450
+1573,NU009,Partial Nephrectomy-Laparoscopic/Endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1574,NU010,Nephrectomy Simple -Open,Nephrology And Urology Procedure,53550,63000,72450
+1575,NU011,Laparoscopic Nephrectomy,Nephrology And Urology Procedure,53550,63000,72450
+1576,NU012,Nephrolithotomy -open,Nephrology And Urology Procedure,36550,43000,49450
+1577,NU013,Nephrolithotomy -Laparoscopic/endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1578,NU014,Pyelolithotomy-open,Nephrology And Urology Procedure,53550,63000,72450
+1579,NU015,Pyelolithotomy -Laparoscopic/endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1580,NU016,Operations for Hydronephrosis -pyeloplasty open,Nephrology And Urology Procedure,45050,53000,60950
+1581,NU017,Operations for Hydronephrosis -pyeloplasty Lap/endoscopic,Nephrology And Urology Procedure,53550,63000,72450
+1582,NU018,Operations for Hydronephrosis Endopyelotomy antegrade,Nephrology And Urology Procedure,36550,43000,49450
+1583,NU019,Operations for Hydronephrosis Endopyelotomy retrograde,Nephrology And Urology Procedure,36550,43000,49450
+1584,NU020,Operations for Hydronephrosis ureterocalicostomy,Nephrology And Urology Procedure,36550,43000,49450
+1585,NU021,Operations for Hydronephrosis-Ileal ureter,Nephrology And Urology Procedure,45050,53000,60950
+1586,NU022,Open Drainage of Perinephric Abscess,Nephrology And Urology Procedure,29750,35000,40250
+1587,NU023,Percutaneous Drainage of Perinephric Abscess -Ultrasound guided,Nephrology And Urology Procedure,11390,13400,13400
+1588,NU024,Cavernostomy,Nephrology And Urology Procedure,23375,27500,31625
+1589,NU025,Operations for Cyst of the Kidney -open,Nephrology And Urology Procedure,36550,43000,49450
+1590,NU026,CGHS rates for Operations for Cyst of the Kidney Lap/endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1591,NU027,Ureterolithotomy -open,Nephrology And Urology Procedure,36550,43000,49450
+1592,NU028,Ureterolithotomy-Lap/Endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1593,NU029,Nephroureterectomy open,Nephrology And Urology Procedure,45050,53000,60950
+1594,NU030,Operations for Ureter for -Double Ureters,Nephrology And Urology Procedure,45050,53000,60950
+1595,NU031,Operations for Ureter -for Ectopia of Single Ureter,Nephrology And Urology Procedure,36550,43000,49450
+1596,NU032,Operations for Vesicoureteral Reflux (VUR) -Open,Nephrology And Urology Procedure,36550,43000,49450
+1597,NU033,Operations for Vesicoureteral Reflux (VUR)-Lap/Endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1598,NU034,Operations for Vesicoureteral Reflux (VUR)/ Urinary incontinence with bulking agents,Nephrology And Urology Procedure,36550,43000,49450
+1599,NU035,Ureterostomy - Cutaneous,Nephrology And Urology Procedure,29750,35000,40250
+1600,NU036,Uretero-Colic anastomosis,Nephrology And Urology Procedure,36550,43000,49450
+1601,NU037,Formation of an Ileal Conduit,Nephrology And Urology Procedure,45050,53000,60950
+1602,NU038,Ureteric Catheterisation/DJ Stenting,Nephrology And Urology Procedure,17000,20000,23000
+1603,NU039,DJ stent removal,Nephrology And Urology Procedure,8135,9570,9570
+1604,NU040,Biopsy of Bladder (Cystoscopic) including (Cold Cup Biopsy),Nephrology And Urology Procedure,11390,13400,13400
+1605,NU041,Cysto-Litholapaxy,Nephrology And Urology Procedure,29750,35000,40250
+1606,NU042,Operations for Injuries of the Bladder,Nephrology And Urology Procedure,36550,43000,49450
+1607,NU043,Suprapubic Drainage (Cystostomy/vesicostomy),Nephrology And Urology Procedure,17000,20000,23000
+1608,NU044,Simple Cystectomy,Nephrology And Urology Procedure,36550,43000,49450
+1609,NU045,Diverticulectomy -open,Nephrology And Urology Procedure,36550,43000,49450
+1610,NU046,Diverticulectomy- Lap/Endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1611,NU047,Diverticulectomy -Endoscopic incision of neck,Nephrology And Urology Procedure,29750,35000,40250
+1612,NU048,Augmentation Cystoplasty,Nephrology And Urology Procedure,45050,53000,60950
+1613,NU049,Operations for Exstrophy of the Bladder- Single stage repair,Nephrology And Urology Procedure,36550,43000,49450
+1614,NU050,Operations for Exstrophy of the Bladder- Multistage repair,Nephrology And Urology Procedure,36550,43000,49450
+1615,NU051,Operations for Exstrophy of the Bladder- simple cystectomy with urinary diversion,Nephrology And Urology Procedure,53550,63000,72450
+1616,NU052,Repair of Ureterocele -Open,Nephrology And Urology Procedure,36550,43000,49450
+1617,NU053,Repair of Ureterocele -Lap/Endoscopic,Nephrology And Urology Procedure,36550,43000,49450
+1618,NU054,CGHS rates for Repair of Ureterocele -Endoscopic incision,Nephrology And Urology Procedure,29750,35000,40250
+1619,NU055,Vesicovaginal Fistula (VVF) Repair (Open),Nephrology And Urology Procedure,36550,43000,49450
+1620,NU056,Vesicovaginal Fistula (VVF) Repair (Laparoscopic),Nephrology And Urology Procedure,45050,53000,60950
+1621,NU057,Open Suprapubic Prostatectomy,Nephrology And Urology Procedure,36550,43000,49450
+1622,NU058,Open Retropubic Prostatectomy,Nephrology And Urology Procedure,36550,43000,49450
+1623,NU059,Transurethral Resection of Prostate (TURP),Nephrology And Urology Procedure,53550,63000,72450
+1624,NU060,Urethroscopy/ Cystopanendoscopy,Nephrology And Urology Procedure,11390,13400,13400
+1625,NU061,Internal urethrotomy -optical,Nephrology And Urology Procedure,23375,27500,31625
+1626,NU062,Internal urethrotomy -Core through urethroplasty,Nephrology And Urology Procedure,36550,43000,49450
+1627,NU063,Urethral Reconstruction -End to end anastomosis,Nephrology And Urology Procedure,36550,43000,49450
+1628,NU064,Urethral Reconstruction - substitution urethroplasty (Transpubic urethroplasty),Nephrology And Urology Procedure,45050,53000,60950
+1629,NU065,Abdomino Perineal urethroplasty,Nephrology And Urology Procedure,45050,53000,60950
+1630,NU066,Posterior Urethral Valve fulguration.,Nephrology And Urology Procedure,29750,35000,40250
+1631,NU067,Operations for Incontinence of Urine - Male -Open,Nephrology And Urology Procedure,36550,43000,49450
+1632,NU068,Operations for Incontinence of Urine - Male -Sling,Nephrology And Urology Procedure,45050,53000,60950
+1633,NU069,Operations for Incontinence of Urine - Male-Bulking agent,Nephrology And Urology Procedure,36550,43000,49450
+1634,NU070,Operations for Incontinence of Urine - Female -Open,Nephrology And Urology Procedure,36550,43000,49450
+1635,NU071,Operations for Incontinence of Urine - Female-Sling,Nephrology And Urology Procedure,45050,53000,60950
+1636,NU072,Operations for Incontinence of Urine - Female-Bulking agent,Nephrology And Urology Procedure,36550,43000,49450
+1637,NU073,Reduction of Paraphimosis,Nephrology And Urology Procedure,5100,6000,6000
+1638,NU074,Circumcision,Nephrology And Urology Procedure,11390,13400,13400
+1639,NU075,Meatotomy,Nephrology And Urology Procedure,7225,8500,8500
+1640,NU076,Meatoplasty,Nephrology And Urology Procedure,11390,13400,13400
+1641,NU077,Operations for Hypospadias + Chordee Correction,Nephrology And Urology Procedure,29750,35000,40250
+1642,NU078,Operations for Hypospadias - Second Stage,Nephrology And Urology Procedure,36550,43000,49450
+1643,NU079,Operations for Hypospadias - One Stage Repair,Nephrology And Urology Procedure,36550,43000,49450
+1644,NU080,Operations for Crippled Hypospadias,Nephrology And Urology Procedure,36550,43000,49450
+1645,NU081,Operations for Epispadias -primary repair,Nephrology And Urology Procedure,36550,43000,49450
+1646,NU082,Operations for Epispadias-crippled epispadias,Nephrology And Urology Procedure,45050,53000,60950
+1647,NU083,Partial Amputation of the Penis,Nephrology And Urology Procedure,29750,35000,40250
+1648,NU084,Total amputation of the Penis,Nephrology And Urology Procedure,36550,43000,49450
+1649,NU085,Orchidectomy-Simple,Nephrology And Urology Procedure,23375,27500,31625
+1650,NU086,Epididymectomy,Nephrology And Urology Procedure,17000,20000,23000
+1651,NU087,Operations for Hydrocele - Unilateral,Nephrology And Urology Procedure,23375,27500,31625
+1652,NU088,Operations for Hydrocele - Bilateral,Nephrology And Urology Procedure,29750,35000,40250
+1653,NU089,Operation for Torsion of Testis,Nephrology And Urology Procedure,23375,27500,31625
+1654,NU090,Micro-surgical Vasovasostomy /Vaso epididymal anastomosis .,Nephrology And Urology Procedure,23375,27500,31625
+1655,NU091,Operations for Varicocele Unilateral Microsurgical,Nephrology And Urology Procedure,29750,35000,40250
+1656,NU092,Operations for Varicocele Palomo's Unilateral -Laparoscopic,Nephrology And Urology Procedure,29750,35000,40250
+1657,NU093,Operations for Varicocele Bilateral --Microsurgical,Nephrology And Urology Procedure,36550,43000,49450
+1658,NU094,Operations for Varicocele Palomo's Bilateral - Laparoscopic,Nephrology And Urology Procedure,36550,43000,49450
+1659,NU095,Excision of Filarial Scrotum,Nephrology And Urology Procedure,23375,27500,31625
+1660,NU096,Kidney Transplantation (related),Nephrology And Urology Procedure,317900,374000,430100
+1661,NU097,Kidney Transplantation (Spousal/ unrelated) Including immunosuppressant therapy,Nephrology And Urology Procedure,361250,425000,488750
+1662,NU098,Kidney Transplantation (Cadaver),Nephrology And Urology Procedure,297500,350000,402500
+1663,NU099,ABO incompatible Transplantation,Nephrology And Urology Procedure,510000,600000,690000
+1664,NU100,Kidney Transplant Graft Nephrectomy,Nephrology And Urology Procedure,69700,82000,94300
+1665,NU101,Donor Nephrectomy (Open),Nephrology And Urology Procedure,53550,63000,72450
+1666,NU102,Donor Nephrectomy (Laparoscopic),Nephrology And Urology Procedure,93500,110000,126500
+1667,NU103,Post-Transplant Collection drainage for Lymphocele (open),Nephrology And Urology Procedure,7820,9200,10580
+1668,NU104,Post-Transplant Collection drainage for Lymphocele (percutaneous),Nephrology And Urology Procedure,11390,13400,15410
+1669,NU105,Post-Transplant Collection drainage for Lymphocele (Laparoscopic),Nephrology And Urology Procedure,17000,20000,23000
+1670,NU106,Arteriovenous Fistula for Haemodialysis,Nephrology And Urology Procedure,17000,20000,20000
+1671,NU107,Arteriovenous Shunt for Haemodialysis,Nephrology And Urology Procedure,17000,20000,20000
+1672,NU108,Jugular Catheterization for Haemodialysis,Nephrology And Urology Procedure,5100,6000,6000
+1673,NU109,Subclavian Catheterization for Haemodialysis,Nephrology And Urology Procedure,5100,6000,6000
+1674,NU110,One Sided (single Lumen) Femoral Catheterization for Haemodialysis,Nephrology And Urology Procedure,3400,4000,4000
+1675,NU111,Bilateral (single Lumen) Femoral Catheterization for Haemodialysis,Nephrology And Urology Procedure,5100,6000,6000
+1676,NU112,Double Lumen Femoral Catheterization for Haemodialysis,Nephrology And Urology Procedure,11390,13400,13400
+1677,NU113,Permcath Insertion excluding the cost of the catheter,Nephrology And Urology Procedure,7225,8500,8500
+1678,NU114,Arterio Venous Prosthetic Graft,Nephrology And Urology Procedure,36550,43000,49450
+1679,NU115,Single lumen Jugular Catheterization,Nephrology And Urology Procedure,4250,5000,5000
+1680,NU116,Single lumen Subclavian Catheterization,Nephrology And Urology Procedure,4250,5000,5000
+1681,NU117,Plasma Exchange/ Plasmapheresis,Nephrology And Urology Procedure,17000,20000,20000
+1682,NU118,Continuous Ambulatory Peritoneal Dialysis (CAPD) catheter insertion- Open method,Nephrology And Urology Procedure,17000,20000,20000
+1683,NU119,Continuous Ambulatory Peritoneal Dialysis (CAPD) catheter insertion- Schlendinger/ Seldinger method,Nephrology And Urology Procedure,17000,20000,20000
+1684,NU120,Sustained low efficiency haemodialysis /haemodialysis,Nephrology And Urology Procedure,7820,9200,9200
+1685,NU121,Continuous Veno venous/Arteriovenous Haemofiltration /Haemofiltration/CRRT per day,Nephrology And Urology Procedure,14450,17000,17000
+1686,NU122,Haemodialysis / Haemodialysis for Sero negative cases including Dialyser and all other Consumables,Nephrology And Urology Procedure,2125,2500,2500
+1687,NU123,Haemodialysis / Haemodialysis for Sero Positive cases including Dialyser and all other Consumables,Nephrology And Urology Procedure,2550,3000,3000
+1688,NU124,Acute Peritoneal Dialysis,Nephrology And Urology Procedure,4505,5300,5300
+1689,NU125,Peritoneal Dialysis,Nephrology And Urology Procedure,3060,3600,3600
+1690,NU126,Fistula stenosis dilation,Nephrology And Urology Procedure,11390,13400,13400
+1691,NU127,Slow continuous Ultrafiltration,Nephrology And Urology Procedure,7225,8500,8500
+1692,NU128,Percutaneous Nephrolithotomy (PCNL) - Unilateral,Nephrology And Urology Procedure,45050,53000,60950
+1693,NU129,Percutaneous Nephrolithotomy (PCNL) - Bilateral,Nephrology And Urology Procedure,53550,63000,72450
+1694,NU130,Endoscopic Bulking agent Inject (including cost of bulking agent),Nephrology And Urology Procedure,29750,35000,40250
+1695,NU131,Nephrostomy -Open,Nephrology And Urology Procedure,29750,35000,40250
+1696,NU132,Nephrostomy -Lap/Endoscopic,Nephrology And Urology Procedure,29750,35000,40250
+1697,NU133,Ureteric Reimplant for Megaureter/ Vesicoureteric reflux/ureterocele (Open),Nephrology And Urology Procedure,36550,43000,49450
+1698,NU134,Ureteric Reimplant for Megaureter / Vesicoureteric reflux/ ureterocele (Laparoscopic),Nephrology And Urology Procedure,36550,43000,49450
+1699,NU135,Partial Cystectomy,Nephrology And Urology Procedure,45050,53000,60950
+1700,NU136,Transurethral Resection of Prostate (TURP) with Cystolithotripsy,Nephrology And Urology Procedure,53550,63000,72450
+1701,NU137,Closure of Urethral Fistula,Nephrology And Urology Procedure,29750,35000,40250
+1702,NU138,Orchidopexy - Unilateral -Open,Nephrology And Urology Procedure,29750,35000,40250
+1703,NU139,Orchidopexy - Unilateral- Lap/Endoscopic,Nephrology And Urology Procedure,36550,43000,49450
+1704,NU140,Orchidopexy - Bilateral -Open,Nephrology And Urology Procedure,36550,43000,49450
+1705,NU141,Orchidopexy - Bilateral -Lap/Endoscopic,Nephrology And Urology Procedure,45050,53000,60950
+1706,NU142,Cystolithotomy -Suprapubic,Nephrology And Urology Procedure,23375,27500,31625
+1707,NU143,Endoscopic Removal of Stone in Bladder,Nephrology And Urology Procedure,29750,35000,40250
+1708,NU144,Resection Bladder Neck Endoscopic / Bladder neck incision / transurethral incision on prostrate,Nephrology And Urology Procedure,36550,43000,49450
+1709,NU145,Ureteroscopic Surgery,Nephrology And Urology Procedure,29750,35000,40250
+1710,NU146,Urethroplasty 1st Stage,Nephrology And Urology Procedure,36550,43000,49450
+1711,NU147,Scrotal Exploration,Nephrology And Urology Procedure,23375,27500,31625
+1712,NU148,Perineal Urethrostomy,Nephrology And Urology Procedure,29750,35000,40250
+1713,NU149,Dilatation of Stricture Urethra under G.A.,Nephrology And Urology Procedure,4250,5000,5000
+1714,NU150,Laparoscopic pyelolithotomy,Nephrology And Urology Procedure,53550,63000,72450
+1715,NU151,Laparoscopic Pyeloplasty,Nephrology And Urology Procedure,53550,63000,72450
+1716,NU152,Laparoscopic surgery for Renal cyst,Nephrology And Urology Procedure,53550,63000,72450
+1717,NU153,Laparoscopic ureterolithotomy,Nephrology And Urology Procedure,53550,63000,72450
+1718,NU154,Laparoscopic Nephroureterectomy,Nephrology And Urology Procedure,45050,53000,60950
+1719,NU155,Extracorporeal Shock Wave Lithotripsy (ESWL),Nephrology And Urology Procedure,36550,43000,49450
+1720,NU156,Diagnostic Cystoscopy,Nephrology And Urology Procedure,7225,8500,8500
+1721,NU157,Cystoscopy with Retrograde Catheter -Unilateral/RGP,Nephrology And Urology Procedure,17000,20000,23000
+1722,NU158,Cystoscopy with Retrograde Catheter - Bilateral/RGP,Nephrology And Urology Procedure,23375,27500,31625
+1723,NU159,Retrograde Intrarenal Surgery (RIRS)/ Flexible Ureteroscopy,Nephrology And Urology Procedure,53550,63000,72450
+1724,NU160,Holmium YAG Prostate Surgery,Nephrology And Urology Procedure,64600,76000,87400
+1725,NU161,Holmium YAG Optical Internal Urethrotomy (OIU),Nephrology And Urology Procedure,36550,43000,49450
+1726,NU162,Holmium YAG Core through internal Urethrotomy,Nephrology And Urology Procedure,45050,53000,60950
+1727,NU163,Holmium YAG Stone Lithotripsy,Nephrology And Urology Procedure,64600,76000,87400
+1728,NU164,Green Light Laser for Prostate,Nephrology And Urology Procedure,64600,76000,87400
+1729,NU165,Cystoscopic Botulinum Toxin Injection ( Over active bladder/ Neurogenic bladder) -excluding cost of drug,Nephrology And Urology Procedure,11390,13400,13400
+1730,NU166,Peyronie's Disease - Plaque excision with grafting,Nephrology And Urology Procedure,29750,35000,40250
+1731,NU167,Prosthetic Surgery for urinary incontinence,Nephrology And Urology Procedure,36550,43000,49450
+1732,NU168,Ultrasound Guided Percutaneous Nephrostomy (PCN),Nephrology And Urology Procedure,17000,20000,20000
+1733,NI001,Electroencephalogram (EEG)/ Video EEG,Neurology Investigation,850,1000,1000
+1734,NI002,Electromyography (EMG),Neurology Investigation,1275,1500,1500
+1735,NI003,"Nerve conduction velocity (NCV), -two or more limbs",Neurology Investigation,1275,1500,1500
+1736,NI004,Repetitive nerve stimulation (RNS)-Decremental response (before and after neostigmine),Neurology Investigation,1275,1500,1500
+1737,NI005,Repetitive nerve stimulation (RNS)-Incremental response,Neurology Investigation,1275,1500,1500
+1738,NI006,Somatosensory evoked potentials (SSEP),Neurology Investigation,1275,1500,1500
+1739,NI007,Polysomnography (PSG) / Level I Sleep study including Room Rent and Titration,Neurology Investigation,7650,9000,9000
+1740,NI008,Brachial plexus study,Neurology Investigation,1275,1500,1500
+1741,NI009,RNS( Repetitive Nerve stimulation),Neurology Investigation,1360,1600,1600
+1742,NS001,Lumbar Pressure Monitoring,Neuro-Surgery Investigation,7820,9200,9200
+1743,NS002,Brain Mapping,Neuro-Surgery Investigation,23375,27500,27500
+1744,NS003,Nerve Biopsy,Neuro-Surgery Biopsy,17000,20000,20000
+1745,NS004,Brain Biopsy,Neuro-Surgery Biopsy,36550,43000,43000
+1746,NS005,Craniotomy and Evacuation of Haematoma -Subdural,Neuro-Surgery Procedure,69700,82000,94300
+1747,NS006,Craniotomy and Evacuation of Haematoma - Extradural,Neuro-Surgery Procedure,69700,82000,94300
+1748,NS007,Evacuation /Excision of Brain Abscess by craniotomy,Neuro-Surgery Procedure,69700,82000,94300
+1749,NS008,Excision of Lobe (Frontal Temporal Cerebellum etc.),Neuro-Surgery Procedure,69700,82000,94300
+1750,NS009,Twist Drill Craniostomy,Neuro-Surgery Procedure,36550,43000,49450
+1751,NS010,Subdural Tapping,Neuro-Surgery Procedure,11390,13400,15410
+1752,NS011,Ventricular Tapping,Neuro-Surgery Procedure,29750,35000,40250
+1753,NS012,Brain Abscess Tapping,Neuro-Surgery Procedure,23375,27500,31625
+1754,NS013,Placement of Intracranial pressure (ICP) Monitor,Neuro-Surgery Procedure,23375,27500,31625
+1755,NS014,Skull Traction Application,Neuro-Surgery Procedure,7820,9200,10580
+1756,NS015,Vascular Malformations,Neuro-Surgery Procedure,82450,97000,111550
+1757,NS016,Meningoencephalocele excision and repair,Neuro-Surgery Procedure,64600,76000,87400
+1758,NS017,Meningomyelocele Repair,Neuro-Surgery Procedure,53550,63000,72450
+1759,NS018,CSF Rhinorrhoea Repair,Neuro-Surgery Procedure,53550,63000,72450
+1760,NS019,Cranioplasty,Neuro-Surgery Procedure,53550,63000,72450
+1761,NS020,Anterior Cervical Discectomy,Neuro-Surgery Procedure,53550,63000,72450
+1762,NS021,Brachial Plexus Exploration and neurotization,Neuro-Surgery Procedure,53550,63000,72450
+1763,NS022,Median Nerve Decompression,Neuro-Surgery Procedure,36550,43000,49450
+1764,NS023,Peripheral Nerve Surgery - Major,Neuro-Surgery Procedure,53550,63000,72450
+1765,NS024,Peripheral Nerve Surgery Minor,Neuro-Surgery Procedure,45050,53000,60950
+1766,NS025,Ventriculoatrial /Ventriculoperitoneal Shunt,Neuro-Surgery Procedure,45050,53000,60950
+1767,NS026,Anterior Cervical Spine Surgery with fusion,Neuro-Surgery Procedure,64600,76000,87400
+1768,NS027,Anterio Lateral Decompression of spine,Neuro-Surgery Procedure,69700,82000,94300
+1769,NS028,Cervical or Dorsal or Lumbar Laminectomy,Neuro-Surgery Procedure,45050,53000,60950
+1770,NS029,Combined Trans-Oral Surgery & Craniovertebral (CV) Junction Fusion,Neuro-Surgery Procedure,53550,63000,72450
+1771,NS030,Craniovertebral Junction (CVJ) Fusion procedures,Neuro-Surgery Procedure,64600,76000,87400
+1772,NS031,Depressed Fracture Elevation,Neuro-Surgery Procedure,45050,53000,60950
+1773,NS032,Lumbar Discectomy,Neuro-Surgery Procedure,53550,63000,72450
+1774,NS033,Endarterectomy (Carotid),Neuro-Surgery Procedure,53550,63000,72450
+1775,NS034,Radiofrequency (RF) Lesion for Trigeminal Neuralgia,Neuro-Surgery Procedure,45050,53000,60950
+1776,NS035,Spasticity Surgery,Neuro-Surgery Procedure,45050,53000,60950
+1777,NS036,Spinal Fusion Procedure,Neuro-Surgery Procedure,64600,76000,87400
+1778,NS037,Spinal Bifida Surgery Major,Neuro-Surgery Procedure,53550,63000,72450
+1779,NS038,Spinal Bifida Surgery Minor,Neuro-Surgery Procedure,45050,53000,60950
+1780,NS039,Stereotaxic Procedures- biopsy/aspiration of cyst,Neuro-Surgery Procedure,36550,43000,49450
+1781,NS040,Trans Sphenoidal Surgery,Neuro-Surgery Procedure,45050,53000,60950
+1782,NS041,Trans Oral Surgery,Neuro-Surgery Procedure,45050,53000,60950
+1783,NS042,Implantation of Deep Brain Stimulation (DBS) -One electrode (as per guidelines mentioned in OM.No.Z15025/44/2023/DIR/CGHS/EHS Dated 09.09.2024),Neuro-Surgery Procedure,53550,63000,72450
+1784,NS043,Implantation of Deep Brain Stimulation (DBS) -two electrodes (as per guidelines mentioned in OM.No.Z15025/44/2023/DIR/CGHS/EHS Dated 09.09.2024),Neuro-Surgery Procedure,64600,76000,87400
+1785,NS044,Endoscopic aqueductoplasty,Neuro-Surgery Procedure,45050,53000,60950
+1786,NS045,Facial nerve reconstruction,Neuro-Surgery Procedure,64600,76000,87400
+1787,NS046,Carotid Stenting excluding the cost of Stent,Neuro-Surgery Procedure,53550,63000,72450
+1788,NS047,Cervical disc arthroplasty,Neuro-Surgery Procedure,53550,63000,72450
+1789,NS048,Lumbar disc arthroplasty,Neuro-Surgery Procedure,45050,53000,60950
+1790,NS049,Corpus callostomy for Epilepsy,Neuro-Surgery Procedure,69700,82000,94300
+1791,NS050,Hemispherotomy for Epilepsy,Neuro-Surgery Procedure,69700,82000,94300
+1792,NS051,Endoscopic CSF rhinorrhoea repair,Neuro-Surgery Procedure,45050,53000,60950
+1793,NS052,Burr hole evacuation of chronic subdural haematoma,Neuro-Surgery Procedure,53550,63000,72450
+1794,NS053,Epilepsy surgery other than at Code No. NS049 and NS050,Neuro-Surgery Procedure,82450,97000,111550
+1795,NS054,Radiofrequency (RF) lesion for facet joint pain syndrome,Neuro-Surgery Procedure,53550,63000,72450
+1796,NS055,Cervical Laminoplasty,Neuro-Surgery Procedure,64600,76000,87400
+1797,NS056,Lateral mass C1-C2 screw fixation,Neuro-Surgery Procedure,64600,76000,87400
+1798,NS057,Microsurgical decompression for Trigeminal nerve,Neuro-Surgery Procedure,53550,63000,72450
+1799,NS058,Microsurgical decompression for hemifacial spasm,Neuro-Surgery Procedure,53550,63000,72450
+1800,NS059,Extracranial-Intracranial Bypass Procedures (EC-IC) bypass procedures,Neuro-Surgery Procedure,53550,63000,72450
+1801,NS060,Image Guided Craniotomy,Neuro-Surgery Procedure,69700,82000,94300
+1802,NS061,Baclofen pump implantation lesioning for movement disorder including Parkinsonism/Spinal Cord Stimulator Implantation,Neuro-Surgery Procedure,64600,76000,87400
+1803,NS062,Programmable Ventriculo-Peritoneal (VP) shunt excluding the cost of the Device,Neuro-Surgery Procedure,53550,63000,72450
+1804,NS063,Endoscopic Sympathectomy,Neuro-Surgery Procedure,53550,63000,72450
+1805,NS064,Lumbar Puncture,Neuro-Surgery Procedure,2550,3000,3000
+1806,NS065,External Ventricular Drainage (EVD),Neuro-Surgery Procedure,23375,27500,31625
+1807,NS066,Endoscopic 3rd ventriculostomy,Neuro-Surgery Procedure,45050,53000,60950
+1808,NS067,Endoscopic cranial surgery/Biopsy/aspiration,Neuro-Surgery Procedure,53550,63000,72450
+1809,NS068,"Endoscopic discectomy (Lumbar, Cervical)",Neuro-Surgery Procedure,53550,63000,72450
+1810,NS069,Aneurysm coiling (Endovascular),Neuro-Surgery Procedure,53550,63000,72450
+1811,NS070,Surgery for Skull Fractures,Neuro-Surgery Procedure,64600,76000,87400
+1812,NS071,Carpel Tunnel decompression,Neuro-Surgery Procedure,36550,43000,49450
+1813,NS072,Clipping of intracranial aneurysm,Neuro-Surgery Procedure,69700,82000,94300
+1814,NS073,Surgery for intracranial Arteriovenous malformations (AVM),Neuro-Surgery Procedure,82450,97000,111550
+1815,NS074,Foramen magnum decompression for Chiari Malformation,Neuro-Surgery Procedure,109650,129000,148350
+1816,NS075,Dorsal column stimulation for backache in failed back syndrome,Neuro-Surgery Procedure,53550,63000,72450
+1817,NS076,Surgery for recurrent disc prolapse/epidural fibrosis,Neuro-Surgery Procedure,53550,63000,72450
+1818,NS077,Decompressive craniotomy for hemispherical acute subdural haematoma/ brain swelling/large infarct,Neuro-Surgery Procedure,69700,82000,94300
+1819,NS078,Intra-arterial thrombolysis with Tissue Plasminogen Activator (TPA) (for ischemic stroke ),Neuro-Surgery Procedure,29750,35000,40250
+1820,NS079,Stereotactic aspiration of intracerebral haematoma,Neuro-Surgery Procedure,64600,76000,87400
+1821,NS080,Endoscopic aspiration of intracerebellar haematoma,Neuro-Surgery Procedure,64600,76000,87400
+1822,NS081,Stereotactic Radiosurgery for brain pathology (X knife/Gamma) - ONE session,Neuro-Surgery Procedure,45050,53000,60950
+1823,NS082,Stereotactic Radiosurgery for brain pathology (X knife / Gamma knife -Two or more sessions),Neuro-Surgery Procedure,64600,76000,87400
+1824,NS083,Battery Placement for Deep Brain Stimulation (DBS),Neuro-Surgery Procedure,29750,35000,40250
+1825,NS084,Baclofen pump implantation for spasticity/Intra-thecal Pump Implantation,Neuro-Surgery Procedure,29750,35000,40250
+1826,NS085,Surgery for Scalp Arteriovenous Malformations (AVMs),Neuro-Surgery Procedure,53550,63000,72450
+1827,NS086,Kyphoplasty excluding the cost of implants,Neuro-Surgery Procedure,45050,53000,60950
+1828,NS087,Balloon Kyphoplasty,Neuro-Surgery Procedure,53550,63000,72450
+1829,NS088,"Lesioning procedures for Parkinson's disease,Dystonia etc.",Neuro-Surgery Procedure,45050,53000,60950
+1830,OR001,Joints Aspiration,Orthopaedics Procedure,1360,1600,1600
+1831,OR002,Plaster Work,Orthopaedics Procedure,4250,5000,5000
+1832,OR003,Fingers (post slab),Orthopaedics Procedure,850,1000,1000
+1833,OR004,Fingers full plaster,Orthopaedics Procedure,1275,1500,1500
+1834,OR005,Colles Fracture - Below elbow,Orthopaedics Procedure,5100,6000,6000
+1835,OR006,Colles Fracture - Full plaster,Orthopaedics Procedure,3825,4500,4500
+1836,OR007,Colles fracture Ant. Or post. slab,Orthopaedics Procedure,2550,3000,3000
+1837,OR008,Above elbow full plaster,Orthopaedics Procedure,3400,4000,4000
+1838,OR009,Above Knee post-slab,Orthopaedics Procedure,2550,3000,3000
+1839,OR010,Below Knee full plaster,Orthopaedics Procedure,3400,4000,4000
+1840,OR011,Below Knee post-slab,Orthopaedics Procedure,4250,5000,5000
+1841,OR012,Tube Plaster (or plaster cylinder),Orthopaedics Procedure,4250,5000,5000
+1842,OR013,Above knee full plaster,Orthopaedics Procedure,4250,5000,5000
+1843,OR014,Above knee full slab,Orthopaedics Procedure,2975,3500,3500
+1844,OR015,Minerva Jacket,Orthopaedics Procedure,7820,9200,9200
+1845,OR016,Plaster Jacket,Orthopaedics Procedure,5100,6000,6000
+1846,OR017,Shoulder spica,Orthopaedics Procedure,7225,8500,8500
+1847,OR018,Single Hip spica,Orthopaedics Procedure,5950,7000,7000
+1848,OR019,Double Hip spica,Orthopaedics Procedure,7225,8500,8500
+1849,OR020,Strapping of Finger,Orthopaedics Procedure,425,500,500
+1850,OR021,Strapping of Toes,Orthopaedics Procedure,510,600,600
+1851,OR022,Strapping of Wrist,Orthopaedics Procedure,638,750,750
+1852,OR023,Strapping of Elbow,Orthopaedics Procedure,1275,1500,1500
+1853,OR024,Strapping of Knee,Orthopaedics Procedure,850,1000,1000
+1854,OR025,Strapping of Ankle,Orthopaedics Procedure,680,800,800
+1855,OR026,Strapping of Chest,Orthopaedics Procedure,1275,1500,1500
+1856,OR027,Strapping of Shoulder,Orthopaedics Procedure,1275,1500,1500
+1857,OR028,Figure of 8 bandage,Orthopaedics Procedure,850,1000,1000
+1858,OR029,Collar and cuff sling,Orthopaedics Procedure,425,500,500
+1859,OR030,Ball bandage,Orthopaedics Procedure,680,800,800
+1860,OR031,Application of POP Casts for Upper & Lower Limbs,Orthopaedics Procedure,5100,6000,6000
+1861,OR032,Application of Functional Cast Brace,Orthopaedics Procedure,3400,4000,4000
+1862,OR033,Application of Skin Traction,Orthopaedics Procedure,2125,2500,2500
+1863,OR034,Application of Skeletal Tractions,Orthopaedics Procedure,5100,6000,6000
+1864,OR035,Bandage & Strappings for Fractures,Orthopaedics Procedure,1700,2000,2000
+1865,OR036,Aspiration & Intra Articular Injections,Orthopaedics Procedure,4250,5000,5000
+1866,OR037,Application of POP Spices & Jackets,Orthopaedics Procedure,5100,6000,6000
+1867,OR038,Close Reduction of Fractures of Limb & POP,Orthopaedics Procedure,11390,13400,13400
+1868,OR039,Open Reduction & Internal Fixation (ORIF) of Fingers & Toes,Orthopaedics Procedure,17000,20000,20000
+1869,OR040,Open Reduction of fracture of Long Bones of Upper / Lower Limb -Nailing & External Fixation,Orthopaedics Procedure,36550,43000,43000
+1870,OR041,Open Reduction of fracture of Long Bones of Upper /Lower Limb -AO Procedures,Orthopaedics Procedure,36550,43000,43000
+1871,OR042,Tension Band Wirings,Orthopaedics Procedure,23375,27500,27500
+1872,OR043,Bone Grafting,Orthopaedics Procedure,23375,27500,27500
+1873,OR044,Excision or other Operations for Scaphoid Fractures,Orthopaedics Procedure,29750,35000,35000
+1874,OR045,Sequestrectomy & Saucerisation,Orthopaedics Procedure,29750,35000,35000
+1875,OR046,Sequestrectomy & Saucerizations -Arthrotomy,Orthopaedics Procedure,29750,35000,35000
+1876,OR047,Multiple Pinning Fracture Neck Femur,Orthopaedics Procedure,45050,53000,53000
+1877,OR048,Plate Fixations for Fracture Neck Femur,Orthopaedics Procedure,45050,53000,53000
+1878,OR049,AO Compression Procedures for Fracture Neck Femur,Orthopaedics Procedure,45050,53000,53000
+1879,OR050,Open Reduction of Fracture Neck Femur Muscle Pedicle Graft and Internal Fixations,Orthopaedics Procedure,45050,53000,53000
+1880,OR051,Close Reduction of Dislocations,Orthopaedics Procedure,17000,20000,20000
+1881,OR052,Open Reduction of Dislocations,Orthopaedics Procedure,29750,35000,35000
+1882,OR053,Open Reduction & Internal Fixation (ORIF) of Fracture Dislocation,Orthopaedics Procedure,36550,43000,43000
+1883,OR054,Neurolysis/Nerve repair,Orthopaedics Procedure,36550,43000,43000
+1884,OR055,Nerve Repair with Grafting,Orthopaedics Procedure,53550,63000,63000
+1885,OR056,Tendon with Transplant or Graft,Orthopaedics Procedure,36550,43000,43000
+1886,OR057,Tendon Lengthening/Tendon repair,Orthopaedics Procedure,23375,27500,27500
+1887,OR058,Tendon Transfer,Orthopaedics Procedure,29750,35000,35000
+1888,OR059,Split Osteotomy and Internal Fixations,Orthopaedics Procedure,45050,53000,53000
+1889,OR060,Anterolateral decompression for tuberculosis/ Costo-Transversectomy,Orthopaedics Procedure,36550,43000,43000
+1890,OR061,Anterolateral Decompression and Spine Fusion,Orthopaedics Procedure,53550,63000,63000
+1891,OR062,Corrective Osteotomy & Internal Fixation- short bones,Orthopaedics Procedure,29750,35000,35000
+1892,OR063,Corrective Osteotomy & Internal Fixation- long bones,Orthopaedics Procedure,36550,43000,43000
+1893,OR064,Arthrodesis of - Minor Joints,Orthopaedics Procedure,29750,35000,35000
+1894,OR065,Arthrodesis of - Major Joints,Orthopaedics Procedure,36550,43000,43000
+1895,OR066,Soft Tissue Operations for Congenital Talipes Equinovarus (CTEV),Orthopaedics Procedure,29750,35000,35000
+1896,OR067,Hemiarthroplasty- Hip,Orthopaedics Procedure,53550,63000,63000
+1897,OR068,Hemiarthroplasty- Shoulder,Orthopaedics Procedure,45050,53000,53000
+1898,OR069,Operations for Brachial Plexus & Cervical Rib,Orthopaedics Procedure,64600,76000,76000
+1899,OR070,Amputations - Below Knee,Orthopaedics Procedure,36550,43000,43000
+1900,OR071,Amputations - Below Elbow,Orthopaedics Procedure,29750,35000,35000
+1901,OR072,Amputations - Above Knee,Orthopaedics Procedure,45050,53000,53000
+1902,OR073,Amputations - Above Elbow,Orthopaedics Procedure,36550,43000,43000
+1903,OR074,Amputations - Forequarter,Orthopaedics Procedure,53550,63000,63000
+1904,OR075,Amputations -Hind Quarter and Hemipelvectomy,Orthopaedics Procedure,64600,76000,76000
+1905,OR076,Disarticulations - Major joint,Orthopaedics Procedure,36550,43000,43000
+1906,OR077,Disarticulations - Minor joint,Orthopaedics Procedure,29750,35000,35000
+1907,OR078,Arthrography,Orthopaedics Investigation,17000,20000,20000
+1908,OR079,Arthroscopy - Diagnostic,Orthopaedics Procedure,29750,35000,35000
+1909,OR080,Arthroscopy-therapeutic: without implant,Orthopaedics Procedure,36550,43000,43000
+1910,OR081,Arthroscopy-therapeutic: with implant,Orthopaedics Procedure,45050,53000,53000
+1911,OR082,Soft Tissue Operation on Joints -Small,Orthopaedics Procedure,23375,27500,27500
+1912,OR083,Soft Tissue Operation on Joints -Large,Orthopaedics Procedure,36550,43000,43000
+1913,OR084,Myocutaneous and Fasciocutaneous Flap Procedures for Limbs,Orthopaedics Procedure,45050,53000,53000
+1914,OR085,Removal of Wires & Screw,Orthopaedics Procedure,11390,13400,13400
+1915,OR086,Removal of Plates,Orthopaedics Procedure,23375,27500,27500
+1916,OR087,Total Hip Replacement (THR),Orthopaedics Procedure,109650,129000,148350
+1917,OR088,Total Ankle Joint Replacement (TAR) - Unilateral,Orthopaedics Procedure,109650,129000,148350
+1918,OR089,Total Knee Joint Replacement (TKR) - Unilateral,Orthopaedics Procedure,129200,152000,174800
+1919,OR090,Total Shoulder Joint Replacement - Unilateral,Orthopaedics Procedure,109650,129000,148350
+1920,OR091,Total Elbow Joint Replacement - Unilateral,Orthopaedics Procedure,93500,110000,126500
+1921,OR092,Total Wrist Joint Replacement - Unilateral,Orthopaedics Procedure,109650,129000,148350
+1922,OR093,Total Finger Joint Replacement,Orthopaedics Procedure,53550,63000,72450
+1923,OR094,Tubular external fixator,Orthopaedics Procedure,29750,35000,35000
+1924,OR095,Ilizarov's External Fixator,Orthopaedics Procedure,45050,53000,53000
+1925,OR096,Pelvi-acetabular fracture -Internal fixation,Orthopaedics Procedure,53550,63000,63000
+1926,OR097,Meniscectomy,Orthopaedics Procedure,45050,53000,53000
+1927,OR098,Meniscus Repair,Orthopaedics Procedure,53550,63000,63000
+1928,OR099,Anterior Cruciate Ligament (ACL) Reconstruction,Orthopaedics Procedure,53550,63000,63000
+1929,OR100,Posterior Cruciate Ligament (PCL) Reconstruction,Orthopaedics Procedure,64600,76000,76000
+1930,OR101,Knee Collateral Ligament Reconstruction,Orthopaedics Procedure,64600,76000,76000
+1931,OR102,Bankart Repair Shoulder,Orthopaedics Procedure,53550,63000,63000
+1932,OR103,Rotator cuff repair / RC repair,Orthopaedics Procedure,53550,63000,63000
+1933,OR104,Biceps Tenodesis,Orthopaedics Procedure,45050,53000,53000
+1934,OR105,Distal biceps tendon repair,Orthopaedics Procedure,45050,53000,53000
+1935,OR106,Arthrolysis of knee,Orthopaedics Procedure,45050,53000,53000
+1936,OR107,Capsulotomy of Shoulder,Orthopaedics Procedure,45050,53000,53000
+1937,OR108,Conservative Plaster of Paris (POP),Orthopaedics Procedure,3400,4000,4000
+1938,OR109,Application for CTEV per sitting,Orthopaedics Procedure,7225,8500,8500
+1939,OR110,Total Hip Replacement (THR) Revision Stage-I,Orthopaedics Procedure,82450,97000,111550
+1940,OR111,Total Hip Replacement (THR) Revision Stage-II,Orthopaedics Procedure,109650,129000,148350
+1941,OR112,Total Knee Replacement (TKR) Revision Stage-I,Orthopaedics Procedure,82450,97000,111550
+1942,OR113,Total Knee Replacement (TKR) Revision Stage-II,Orthopaedics Procedure,109650,129000,148350
+1943,OR114,Illizarov/ external fixation for limb lengthening/deformity correction,Orthopaedics Procedure,53550,63000,63000
+1944,OR115,Discectomy/ Micro Discectomy,Orthopaedics Procedure,69700,82000,82000
+1945,OR116,Spinal Fixation Cervical/dorsolumbar/ lumbosacral,Orthopaedics Procedure,129200,152000,152000
+1946,OR117,Fusion Surgery Cervical/ Lumbar Spine up to 2 Level,Orthopaedics Procedure,53550,63000,63000
+1947,OR118,Spinal Fusion Surgery Cervical/ Lumbar Spine -More than 2 Level,Orthopaedics Procedure,69700,82000,82000
+1948,OR119,Scoliosis Surgery/ Deformity Correction of Spine,Orthopaedics Procedure,82450,97000,97000
+1949,OR120,Vertebroplasty,Orthopaedics Procedure,64600,76000,76000
+1950,OR121,Spinal Injections,Orthopaedics Procedure,4250,5000,5000
+1951,OR122,Dynamic Hip Screw (DHS) for Fracture Neck Femur,Orthopaedics Procedure,45050,53000,53000
+1952,OR123,Proximal Femur Nail (PFN) for IT fracture (Intertrochanteric Fractures),Orthopaedics Procedure,45050,53000,53000
+1953,OR124,Spinal Osteotomy,Orthopaedics Procedure,45050,53000,53000
+1954,OR125,Illizarov's / External Fixation for Trauma,Orthopaedics Procedure,45050,53000,53000
+1955,OR126,Soft Tissue Operations for Polio/ Cerebral Palsy,Orthopaedics Procedure,29750,35000,35000
+1956,OR127,Mini Fixator for Hand/Foot,Orthopaedics Procedure,29750,35000,35000
+1957,BP001,Injection of Keloids - Ganglion,Burns And Plastic Surgery Procedure,3400,4000,4000
+1958,BP002,Injection of Keloids - Haemangioma,Burns And Plastic Surgery Procedure,3400,4000,4000
+1959,BP003,Free Grafts - Wolfe Grafts,Burns And Plastic Surgery Procedure,17000,20000,23000
+1960,BP004,Free Grafts - Thiersch- Small Area 5%,Burns And Plastic Surgery Procedure,17000,20000,23000
+1961,BP005,Free Grafts - Large Area 10%,Burns And Plastic Surgery Procedure,29750,35000,40250
+1962,BP006,Free Grafts - Very Large Area 20% and above.,Burns And Plastic Surgery Procedure,36550,43000,49450
+1963,BP007,Skin Flaps - Rotation Flaps,Burns And Plastic Surgery Procedure,23375,27500,31625
+1964,BP008,Skin Flaps - Advancement Flaps,Burns And Plastic Surgery Procedure,29750,35000,40250
+1965,BP009,Skin Flaps - Direct- cross Leg Flaps- Cross Arm Flap,Burns And Plastic Surgery Procedure,36550,43000,49450
+1966,BP010,Skin Flaps - Cross Finger,Burns And Plastic Surgery Procedure,29750,35000,40250
+1967,BP011,Skin Flaps - Abdominal,Burns And Plastic Surgery Procedure,29750,35000,40250
+1968,BP012,Skin Flaps - Thoracic,Burns And Plastic Surgery Procedure,23375,27500,31625
+1969,BP013,Skin Flaps - Arm Etc.,Burns And Plastic Surgery Procedure,23375,27500,31625
+1970,BP014,Subcutaneous Pedicle Flaps Raising,Burns And Plastic Surgery Procedure,23375,27500,31625
+1971,BP015,Subcutaneous Pedicle Flaps Delay,Burns And Plastic Surgery Procedure,23375,27500,31625
+1972,BP016,Subcutaneous Pedicle Flaps Transfer,Burns And Plastic Surgery Procedure,23375,27500,31625
+1973,BP017,Cartilage Grafting,Burns And Plastic Surgery Procedure,36550,43000,49450
+1974,BP018,Cleft Lip - Repair.,Burns And Plastic Surgery Procedure,29750,35000,40250
+1975,BP019,Cleft Palate Repair,Burns And Plastic Surgery Procedure,36550,43000,49450
+1976,BP020,Primary Bone Grafting for Alveolar Cleft in Cleft Lip,Burns And Plastic Surgery Procedure,36550,43000,49450
+1977,BP021,Secondary Surgery for Cleft Lip Deformity,Burns And Plastic Surgery Procedure,36550,43000,49450
+1978,BP022,Secondary Surgery for Cleft Palate,Burns And Plastic Surgery Procedure,36550,43000,49450
+1979,BP023,Reconstruction of Eyelid Defects - Minor,Burns And Plastic Surgery Procedure,23375,27500,31625
+1980,BP024,Reconstruction of Eyelid Defects - Major,Burns And Plastic Surgery Procedure,29750,35000,40250
+1981,BP025,Plastic Surgery of Different Regions of the Ear -Minor,Burns And Plastic Surgery Procedure,29750,35000,40250
+1982,BP026,Plastic Surgery of Different Regions of the Ear -Major,Burns And Plastic Surgery Procedure,36550,43000,49450
+1983,BP027,Plastic Surgery of the Nose - Minor,Burns And Plastic Surgery Procedure,23375,27500,31625
+1984,BP028,Plastic Surgery of the Nose - Major,Burns And Plastic Surgery Procedure,36550,43000,49450
+1985,BP029,Plastic Surgery for Facial Paralysis (Support with Reanimation),Burns And Plastic Surgery Procedure,36550,43000,49450
+1986,BP030,After Mastectomy (Reconstruction) Mammoplasty,Burns And Plastic Surgery Procedure,36550,43000,49450
+1987,BP031,Syndactyly Repair,Burns And Plastic Surgery Procedure,29750,35000,40250
+1988,BP032,Dermabrasion Face,Burns And Plastic Surgery Procedure,36550,43000,49450
+1989,BP033,Flap Reconstructive Surgery - Head and Neck,Burns and Plastic Surgery,53550,63000,72450
+1990,BP034,up to 30% Burns 1st Dressing,Burns And Plastic Surgery Procedure,2550,3000,3000
+1991,BP035,up to 30% Burns Subsequent Dressing,Burns And Plastic Surgery Procedure,2125,2500,2500
+1992,BP036,30% to 50% Burns 1st Dressing,Burns And Plastic Surgery Procedure,4250,5000,5000
+1993,BP037,30% to 50% Burns Subsequent Dressing,Burns And Plastic Surgery Procedure,2975,3500,3500
+1994,BP038,Extensive Burn -above 50% Frist Dressing,Burns And Plastic Surgery Procedure,5100,6000,6000
+1995,BP039,Extensive Burn -above 50% Subsequent dressing,Burns And Plastic Surgery Procedure,2975,3500,3500
+1996,BP040,VAC Therapy/Dressing including all Consumables,Burns And Plastic Surgery Procedure,8500,10000,10000
+1997,HC001,"Annual Health Check-up - CCS Group A Officer of above 40 years of age / Pensioner primary card holder 75 years of age and above-Male,",Annual Health Check-up,2000,2000,2000
+1998,HC002,Annual Health Check-up - CCS Group A Officer of above 40 years of age / Pensioner primary card holder 75 years of age and above - Female,Annual Health Check-up,2200,2200,2200

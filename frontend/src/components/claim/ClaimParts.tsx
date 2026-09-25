@@ -169,6 +169,7 @@ export function ClaimDetails({ claim, documentBase }: { claim: Claim; documentBa
                     </div>
                   )}
                   {i.hosRemarks && <div className="muted" style={{ fontSize: 'var(--text-xs)', marginTop: 4 }}>School: {i.hosRemarks}</div>}
+                  {i.rateReference && <div className="muted mono" style={{ fontSize: 'var(--text-xs)', marginTop: 4 }}>Rate: {i.rateReference}</div>}
                   {i.disallowReason && <div style={{ fontSize: 'var(--text-xs)', marginTop: 4 }}>PAO: {i.disallowReason}</div>}
                 </div>
               ),

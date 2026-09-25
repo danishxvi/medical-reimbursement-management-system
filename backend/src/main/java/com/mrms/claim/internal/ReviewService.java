@@ -11,6 +11,9 @@ import com.mrms.claim.internal.ClaimDtos.Restriction;
 import com.mrms.claim.internal.ClaimDtos.ReturnRequest;
 import com.mrms.claim.internal.ClaimEnums.Recommendation;
 import com.mrms.identity.Accounts;
+import com.mrms.organisation.OrganisationDirectory;
+import com.mrms.rates.RateBasis;
+import com.mrms.rates.RateLookup;
 import com.mrms.shared.domain.Role;
 import com.mrms.shared.security.CurrentUser;
 import com.mrms.shared.security.MrmsPrincipal;
@@ -41,11 +44,14 @@ class ReviewService {
     private final ClaimRepository claims;
     private final ClaimSupport support;
     private final Accounts accounts;
+    private final OrganisationDirectory organisation;
 
-    ReviewService(ClaimRepository claims, ClaimSupport support, Accounts accounts) {
+    ReviewService(ClaimRepository claims, ClaimSupport support, Accounts accounts,
+                  OrganisationDirectory organisation) {
         this.claims = claims;
         this.support = support;
         this.accounts = accounts;
+        this.organisation = organisation;
     }
 
     // ==================================================================
@@ -120,12 +126,19 @@ class ReviewService {
         accounts.confirmPassword(body.password());
         Claim claim = scopedClaim(id, me);
 
+        RateBasis basis = body.rateBasis() != null ? body.rateBasis() : claim.suggestedRateBasis();
+        String ward = organisation.profileOf(claim.getEmployeeUserId())
+                .map(p -> p.wardEntitlement()).orElse(null);
+        boolean indoor = claim.getTreatmentType() == ClaimEnums.TreatmentType.INDOOR;
+
         Map<Long, ClaimItem> items = itemsById(claim);
         for (Restriction r : body.items()) {
             ClaimItem item = items.get(r.itemId());
             if (item == null) {
                 throw new BusinessRuleException("UNKNOWN_ITEM", "An item does not belong to this claim");
             }
+            String reference = support.quote(item, basis, ward, indoor)
+                    .map(RateLookup.RateQuote::reference).orElse(null);
             if (r.amountRestricted().compareTo(item.getAmountClaimed()) > 0) {
                 throw new BusinessRuleException("OVER_CLAIM",
                         "Restricted amount cannot exceed the amount claimed for \"" + item.getDescription() + "\"");
@@ -134,9 +147,9 @@ class ReviewService {
                 throw new BusinessRuleException("REMARKS_REQUIRED",
                         "Give a remark for every item restricted below the claimed amount");
             }
-            item.restrict(r.dgehsRate(), r.amountRestricted(), ClaimSupport.blankToNull(r.remarks()));
+            item.restrict(r.dgehsRate(), r.amountRestricted(), ClaimSupport.blankToNull(r.remarks()), reference);
         }
-        ClaimStatus from = claim.forwardToPao(me.userId(), support.now());
+        ClaimStatus from = claim.forwardToPao(me.userId(), basis, support.now());
         claims.saveAndFlush(claim);
         support.recordTransition(claim, "FORWARDED_BY_HOS", from, body.remarks(), null);
         return support.view(claim, ClaimService.allowedActions(me, claim));

@@ -27,6 +27,7 @@ const OrganisationPage = lazy(() => import('./pages/admin/AdminPages').then((m) 
 const AuditPage = lazy(() => import('./pages/admin/AdminPages').then((m) => ({ default: m.AuditPage })))
 const ProfilePage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.ProfilePage })))
 const NotificationsPage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.NotificationsPage })))
+const RatesPage = lazy(() => import('./pages/admin/RatesPage'))
 const GuidePage = lazy(() => import('./pages/help/GuidePage'))
 const PrivacyNoticePage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PrivacyNoticePage })))
 const PublicPrivacyPage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PublicPrivacyPage })))
@@ -102,6 +103,7 @@ export const router = createBrowserRouter([
           { path: 'admin/employees', element: only(['ADMIN'], <EmployeesPage />) },
           { path: 'admin/organisation', element: only(['ADMIN'], <OrganisationPage />) },
           { path: 'admin/audit', element: only(['ADMIN'], <AuditPage />) },
+          { path: 'admin/rates', element: only(['ADMIN'], <RatesPage />) },
           { path: '*', element: <S><NotFoundPage /></S> },
         ],
       },

@@ -4,6 +4,7 @@ import com.mrms.claim.ClaimStatus;
 import com.mrms.claim.internal.ClaimEnums.HospitalType;
 import com.mrms.claim.internal.ClaimEnums.Recommendation;
 import com.mrms.claim.internal.ClaimEnums.TreatmentType;
+import com.mrms.rates.RateBasis;
 import com.mrms.shared.domain.Relation;
 import com.mrms.shared.web.BusinessRuleException;
 import jakarta.persistence.CascadeType;
@@ -158,6 +159,11 @@ class Claim {
     @Column(name = "hos_certified_at")
     private Instant hosCertifiedAt;
 
+    /** Rate column chosen by the Head of School for this claim's hospital. */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rate_basis")
+    private RateBasis rateBasis;
+
     @Column(name = "audited_by")
     private Long auditedBy;
 
@@ -311,12 +317,13 @@ class Claim {
     // ------------------------------------------------------------------
 
     /** Calculation sheet filled and certificate signed: forward to the PAO. */
-    ClaimStatus forwardToPao(Long hosUserId, Instant now) {
+    ClaimStatus forwardToPao(Long hosUserId, RateBasis basis, Instant now) {
         require(status == ClaimStatus.PENDING_HOS, "This claim is not with the Head of School");
         requireAssignee(hosUserId);
         require(items.stream().allMatch(i -> i.getAmountRestricted() != null),
                 "Fill the restricted amount for every item");
         this.restrictedAmount = sum(ClaimItem::getAmountRestricted);
+        this.rateBasis = basis;
         this.hosCertifiedBy = hosUserId;
         this.hosCertifiedAt = now;
         ClaimStatus from = status;
@@ -474,6 +481,23 @@ class Claim {
     int getReturnCount() { return returnCount; }
     Long getHosCertifiedBy() { return hosCertifiedBy; }
     Instant getHosCertifiedAt() { return hosCertifiedAt; }
+    RateBasis getRateBasis() { return rateBasis; }
+
+    /**
+     * The basis to suggest before the school has chosen one: government
+     * hospitals as billed, non empanelled private hospitals at Non-NABH
+     * rates (CGHS memorandum of 03.10.2025), empanelled hospitals at NABH.
+     */
+    RateBasis suggestedRateBasis() {
+        if (rateBasis != null) {
+            return rateBasis;
+        }
+        return switch (hospitalType) {
+            case GOVERNMENT -> RateBasis.AS_BILLED;
+            case PRIVATE -> RateBasis.NON_NABH;
+            case EMPANELLED -> RateBasis.NABH;
+        };
+    }
     Long getAuditedBy() { return auditedBy; }
     Instant getAuditedAt() { return auditedAt; }
     Recommendation getAuditRecommendation() { return auditRecommendation; }

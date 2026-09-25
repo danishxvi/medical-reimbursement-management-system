@@ -86,6 +86,7 @@ function navFor(role: Role): NavGroup[] {
             { to: '/admin/users', label: 'Official accounts', icon: <Icon.Users /> },
             { to: '/admin/employees', label: 'Employees', icon: <Icon.User /> },
             { to: '/admin/organisation', label: 'Offices and schools', icon: <Icon.Building /> },
+            { to: '/admin/rates', label: 'DGEHS rate lists', icon: <Icon.Rupee /> },
             { to: '/admin/audit', label: 'Audit trail', icon: <Icon.Audit /> },
           ],
         },

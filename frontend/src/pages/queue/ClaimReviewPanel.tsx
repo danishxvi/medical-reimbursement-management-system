@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { api } from '../../api/client'
-import type { Claim, ClaimMeta } from '../../api/types'
+import type { Claim, ClaimMeta, RateBasis } from '../../api/types'
 import { useMe } from '../../auth/AuthContext'
 import { Button } from '../../components/ui/Button'
 import { Badge, Callout, ErrorCallout } from '../../components/ui/Feedback'
-import { Checkbox, Segmented, TextAreaField } from '../../components/ui/Form'
+import { Checkbox, Segmented, SelectField, TextAreaField } from '../../components/ui/Form'
 import { Panel } from '../../components/ui/Layout'
 import { Modal } from '../../components/ui/Modal'
 import { PasswordConfirm } from '../../components/ui/PasswordConfirm'
@@ -60,6 +60,24 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
   const [rows, setRows] = useState(() =>
     claim.items.map((i) => ({ itemId: i.id, dgehsRate: '', amountRestricted: String(i.amountClaimed), remarks: '' })),
   )
+  const [basis, setBasis] = useState<RateBasis>(claim.suggestedRateBasis)
+  const quoteOf = (i: number) => (basis === 'AS_BILLED' ? undefined : claim.items[i].rates[basis])
+  const quoted = claim.items.filter((_, i) => quoteOf(i)).length
+
+  /** Fills rate and restricted amount from the rate list; the HoS can still change any value. */
+  function applySuggested() {
+    setRows((rs) =>
+      rs.map((r, i) => {
+        const it = claim.items[i]
+        if (basis === 'AS_BILLED') return { ...r, dgehsRate: '', amountRestricted: String(it.amountClaimed) }
+        const q = quoteOf(i)
+        if (!q) return r
+        const restricted = Math.min(q.applicableRate, it.amountClaimed)
+        const note = restricted < it.amountClaimed && !r.remarks.trim() ? `Restricted to DGEHS rate (${q.reference})` : r.remarks
+        return { ...r, dgehsRate: String(q.applicableRate), amountRestricted: String(restricted), remarks: note }
+      }),
+    )
+  }
   const [accepted, setAccepted] = useState(false)
   const [signing, setSigning] = useState(false)
   const [remarks, setRemarks] = useState('')
@@ -67,6 +85,7 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
   const forward = useMutation({
     mutationFn: (password: string) =>
       api.post<Claim>(`/api/claims/${claim.id}/forward`, {
+        rateBasis: basis,
         items: rows.map((r) => ({
           itemId: r.itemId,
           dgehsRate: r.dgehsRate ? Number(r.dgehsRate) : null,
@@ -101,6 +120,23 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
       </>
     }>
       <div className="stack-lg">
+        <div className="grid grid-2" style={{ alignItems: 'end' }}>
+          <SelectField
+            label="Hospital basis for DGEHS rates"
+            hint={basis === 'AS_BILLED' ? 'Government hospital: bills are admissible as billed' : 'Non empanelled private hospitals are restricted to Non-NABH rates'}
+            value={basis}
+            onChange={(e) => setBasis(e.target.value as RateBasis)}
+            options={claim.rateBases}
+          />
+          <div className="row" style={{ justifyContent: 'flex-end' }}>
+            <span className="muted" style={{ fontSize: 'var(--text-sm)' }}>
+              {basis === 'AS_BILLED' ? 'No rate restriction applies' : `${quoted} of ${claim.items.length} bills have an approved rate`}
+            </span>
+            <Button icon={<Icon.Rupee />} onClick={applySuggested} disabled={basis !== 'AS_BILLED' && quoted === 0}>
+              Apply suggested rates
+            </Button>
+          </div>
+        </div>
         <div className="table-wrap">
           <table className="table">
             <thead>
@@ -119,7 +155,16 @@ function HosSheet({ claim, meta, onDone, extra }: { claim: Claim; meta: ClaimMet
                     <strong>{it.description}</strong>
                     <div className="muted" style={{ fontSize: 'var(--text-xs)' }}>
                       {it.billNumber} · {it.vendorName}
+                      {it.dgehsCode ? ' · ' + it.dgehsCode : ''}
                     </div>
+                    {basis !== 'AS_BILLED' &&
+                      (quoteOf(i) ? (
+                        <span className="rate-hint" title={quoteOf(i)!.explanation}>
+                          Approved rate {formatMoney(quoteOf(i)!.applicableRate)} ({quoteOf(i)!.code})
+                        </span>
+                      ) : (
+                        <span className="rate-hint none">{it.dgehsCode ? 'Code not in the rate list for this date' : 'No DGEHS code on this bill'}</span>
+                      ))}
                   </td>
                   <td className="right num">{formatMoney(it.amountClaimed)}</td>
                   <td style={{ width: 130 }}>

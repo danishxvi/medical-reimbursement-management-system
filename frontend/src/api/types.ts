@@ -266,12 +266,69 @@ export interface ClaimItem {
   dgehsRate: number | null
   amountRestricted: number | null
   hosRemarks: string | null
+  /** Rate list entry the school applied, for example CGHS-2025-T1/LB012/NABH */
+  rateReference: string | null
   amountAdmitted: number | null
   disallowReason: string | null
   nacItemId: number | null
   legacyNac: boolean
   nac: NacLink | null
   billDocument: DocumentMeta | null
+  /** Applicable rate under each hospital basis (empty when there is no code or no rate) */
+  rates: Partial<Record<RateBasis, RateQuote>>
+}
+
+// ---------------- Rates ----------------
+
+export type RateBasis = 'NABH' | 'NON_NABH' | 'SUPER_SPECIALITY' | 'AS_BILLED'
+
+export interface RateQuote {
+  code: string
+  name: string
+  speciality: string
+  listCode: string
+  listTitle: string
+  basis: RateBasis
+  baseRate: number
+  applicableRate: number
+  reference: string
+  explanation: string
+}
+
+export interface RateSearchHit {
+  code: string
+  name: string
+  speciality: string
+  nonNabh: number
+  nabh: number
+  superSpeciality: number
+  listCode: string
+}
+
+export interface RateList {
+  id: number
+  code: string
+  title: string
+  orderReference: string
+  sourceUrl: string | null
+  sourceSha256: string | null
+  cityTier: string
+  effectiveFrom: string
+  effectiveTo: string | null
+  notes: string | null
+  active: boolean
+  itemCount: number
+  importedAt: string
+}
+
+export interface RateItemRow {
+  serialNo: number | null
+  code: string
+  name: string
+  speciality: string
+  nonNabh: number
+  nabh: number
+  superSpeciality: number
 }
 
 export interface ChecklistEntry {
@@ -355,6 +412,9 @@ export interface Claim {
   paidAt: string | null
   paymentBatchRef: string | null
   rejectionReason: string | null
+  rateBasis: RateBasis | null
+  suggestedRateBasis: RateBasis
+  rateBases: Option[]
   /** Standard name of each document inside this claim, by document id */
   documentNames: Record<string, string>
   allowedActions: ClaimAction[]

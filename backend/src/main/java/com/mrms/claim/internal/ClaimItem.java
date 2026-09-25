@@ -61,6 +61,10 @@ class ClaimItem {
     @Column(name = "hos_remarks")
     private String hosRemarks;
 
+    /** Rate list entry applied by the school, for example CGHS-2025-T1/LB012/NABH. */
+    @Column(name = "rate_reference")
+    private String rateReference;
+
     @Column(name = "amount_admitted", precision = 12, scale = 2)
     private BigDecimal amountAdmitted;
 
@@ -95,10 +99,11 @@ class ClaimItem {
         this.billDocumentId = billDocumentId;
     }
 
-    void restrict(BigDecimal dgehsRate, BigDecimal amountRestricted, String hosRemarks) {
+    void restrict(BigDecimal dgehsRate, BigDecimal amountRestricted, String hosRemarks, String rateReference) {
         this.dgehsRate = dgehsRate;
         this.amountRestricted = amountRestricted;
         this.hosRemarks = hosRemarks;
+        this.rateReference = rateReference;
     }
 
     void admit(BigDecimal amountAdmitted, String disallowReason) {
@@ -118,6 +123,7 @@ class ClaimItem {
     BigDecimal getDgehsRate() { return dgehsRate; }
     BigDecimal getAmountRestricted() { return amountRestricted; }
     String getHosRemarks() { return hosRemarks; }
+    String getRateReference() { return rateReference; }
     BigDecimal getAmountAdmitted() { return amountAdmitted; }
     String getDisallowReason() { return disallowReason; }
     Long getNacItemId() { return nacItemId; }

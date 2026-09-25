@@ -1315,3 +1315,72 @@ select.control {
   background: var(--accent-soft);
   color: var(--invert);
 }
+
+/* ---------- Combobox (rate code search) ---------- */
+.combo .control-wrap {
+  position: relative;
+}
+
+.combo-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  left: 0;
+  width: min(520px, 90vw);
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--s-1);
+  list-style: none;
+  background: var(--surface);
+  border: var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.combo-list li {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease);
+}
+
+.combo-list li.active {
+  background: var(--accent-soft);
+}
+
+.combo-list .combo-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.combo-list .combo-empty {
+  display: block;
+  color: var(--muted);
+  cursor: default;
+}
+
+/* ---------- Rate suggestion on the calculation sheet ---------- */
+.rate-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--invert-hover);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+.rate-hint.none {
+  background: var(--surface-2);
+  color: var(--muted);
+}
