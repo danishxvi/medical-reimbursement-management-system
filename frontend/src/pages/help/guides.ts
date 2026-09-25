@@ -235,8 +235,14 @@ const ADMIN: Guide = {
     {
       title: 'Offices and rates',
       icon: 'grid',
-      body: ['Maintain PAOs, schools and dispensaries, and load new DGEHS rate lists when an order revises them.'],
-      where: 'Menu: Administration',
+      body: ['Maintain PAOs, schools and dispensaries, and load new DGEHS rate lists when an order revises them. A new list is imported inactive and takes effect only when you activate it.'],
+      where: 'Menu: Administration, Offices and schools and DGEHS rate lists',
+    },
+    {
+      title: 'Time limits',
+      icon: 'clock',
+      body: ['See every record past its time limit in every zone, who holds it, and each office\'s record of delays. Create Zonal Oversight accounts for each zone so delays are followed up locally.'],
+      where: 'Menu: Administration, Time limits',
     },
     {
       title: 'Audit trail',

@@ -33,19 +33,23 @@ The `dev` profile seeds fictional offices and one account for every role. All de
 | `AUD01`, `AUD02` | PAO Auditor | PAO No. 13 (Demo) |
 | `PAO01` | PAO Officer | PAO No. 13 (Demo) |
 | `ADMIN` | Administrator | Directorate |
+| `DDE06` | Zonal Oversight Officer | Zone 6 |
 
 To start again from an empty database, stop the API and delete `backend/data`.
+
+Every account is asked to acknowledge the privacy notice and is shown its guide at first sign in. The development profile signs with the built in **Aadhaar eSign simulator**: in the provider window use any 12 digit number with a valid check digit (for example `999900001231`), any name, and OTP `123456`. Set `MRMS_SIGNING_MODE=password` to sign with passwords instead. E-mail and SMS are written to the API log, and uploads are not virus scanned (marked NOT_SCANNED) unless `MRMS_AV_MODE=clamd` points at a ClamAV daemon.
 
 ### A complete walk through
 
 1. `EMP1001`: **Request e-NAC**, upload any PDF as the prescription, list a medicine.
 2. `PHARM01`: **Prescription queue**, take next, mark the item *Not available*, send.
-3. `MO01`: take next, **Countersign and issue** (password).
-4. `EMP1001`: **New claim**, add the medicine from the e-NAC, upload a bill, attach a DGEHS card copy, accept the undertaking, submit.
-5. `HOS9900001`: **Verification queue**, take next, fill the calculation sheet, certify (password).
+3. `MO01`: take next, **Countersign and issue** (Aadhaar eSign in the simulator).
+4. `EMP1001`: **New claim**, add the medicine from the e-NAC, upload a bill (for tests or consultations, pick the DGEHS code), attach a DGEHS card copy, accept the undertaking, submit.
+5. `HOS9900001`: **Verification queue**, take next, choose the hospital basis, **Apply suggested rates**, certify (eSign).
 6. `AUD01`: take next, admit amounts, send to officer.
 7. `PAO01`: take next, **Sanction**; then **Budgets and payments**, open the school, record an allocation and **Pay**.
-8. `EMP1001`: the claim shows *Paid* with the full history.
+8. `EMP1001`: the claim shows *Paid* with the full history; **Download PDF** gives the complete paper set.
+9. `DDE06`: **Time limits** shows anything late in Zone 6.
 
 ## 12.2 Tests
 
