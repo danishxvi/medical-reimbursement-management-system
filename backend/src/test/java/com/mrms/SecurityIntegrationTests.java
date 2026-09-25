@@ -105,4 +105,12 @@ class SecurityIntegrationTests {
                 .andExpect(status().isUnprocessableContent())
                 .andExpect(jsonPath("$.code").value("UNSUPPORTED_FILE"));
     }
+
+    @Test
+    void unsafeTextInJsonIsRefused() throws Exception {
+        mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"username\":\"EMP\u202E1001\",\"password\":\"x\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("UNSAFE_TEXT"));
+    }
 }

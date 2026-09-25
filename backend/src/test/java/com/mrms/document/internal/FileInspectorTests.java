@@ -80,5 +80,7 @@ class FileInspectorTests {
         assertThat(FileInspector.safeName("..\\..\\windows\\evil<script>.pdf")).isEqualTo("evil_script_.pdf");
         assertThat(FileInspector.safeName("/etc/passwd")).isEqualTo("passwd");
         assertThat(FileInspector.safeName(".hidden.pdf")).isEqualTo("document.hidden.pdf");
+        // A right to left override would display "bill_fdp.exe" as "bill_exe.pdf"
+        assertThat(FileInspector.safeName("bill_‮fdp.exe")).isEqualTo("bill__fdp.exe");
     }
 }

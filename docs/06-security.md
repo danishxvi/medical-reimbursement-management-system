@@ -2,7 +2,7 @@
 
 **Author:** Danish Husain
 
-MRMS handles health information and government money. Security is designed in at every layer and verified by automated tests (`SecurityIntegrationTests`, `AuditChainTests`, `FileInspectorTests`, `PasswordPolicyTests`, `ModularityTests`).
+MRMS handles health information and government money. Security is designed in at every layer and verified by automated tests (`SecurityIntegrationTests`, `AuditChainTests`, `FileInspectorTests`, `SafeTextTests`, `PasswordPolicyTests`, `ModularityTests`).
 
 ## 6.1 Threat model (summary)
 
@@ -14,7 +14,7 @@ MRMS handles health information and government money. Security is designed in at
 | Insider manipulation | Favouring a claim, editing a decision, disowning a decision | Strict FIFO queues, attributed decisions, password confirmation for signatures, maker checker at PAO, hash chained append only audit trail |
 | Malicious uploads | Script inside a PDF, disguised executable | Type detected from content, extension must match, active PDF content rejected, size limit, served as attachment with nosniff and a sandbox CSP |
 | Data theft at rest | Stolen disk or backup | AES-256-GCM encryption of every stored file, only masked bank account stored |
-| Injection | SQL injection, XSS | JPA parameter binding only, React output escaping, strict Content Security Policy without inline scripts |
+| Injection | SQL injection, XSS, disguised text | JPA parameter binding only, validation and a global text filter on every input, React output escaping, strict Content Security Policy without inline scripts |
 | Information leakage | Stack traces, user enumeration | Problem responses with reference ids, identical login failure messages and timing |
 | Duplicate claims | Same bill claimed twice | File fingerprint, bill number, vendor and date checks across active claims |
 | Supply chain | Vulnerable dependency | Dependabot, `npm audit`, CodeQL, pinned lock file |
@@ -49,7 +49,15 @@ Three layers, each sufficient on its own for the rule it enforces:
 
 Reviewers can act only on the record assigned to them through the queue.
 
-## 6.5 Documents
+## 6.5 Input validation and sanitisation
+
+1. **Every string read from JSON passes a global filter** (`SafeText`, registered as a JSON module so no endpoint can forget it). Text is normalised to Unicode NFC, and a value containing control characters (other than tab and line breaks), bidirectional override or isolate characters, unpaired surrogates or noncharacters is refused with `400 UNSAFE_TEXT`. Refusing instead of silently removing keeps stored text identical to what the user saw.
+2. **Every request body is validated** with Bean Validation (lengths, formats such as IFSC, MICR, account and phone numbers, ranges for amounts and dates) before it reaches a service; all field problems are returned together.
+3. **Business rules are validated in the aggregate**, so an invalid state cannot be reached through any endpoint.
+4. **Uploaded file names** are reduced to a safe display name: directories, control, direction and reserved characters removed, length bounded. The stored file never uses the supplied name.
+5. **Output encoding happens at the edge:** React escapes everything it renders, the API only returns JSON, and SQL is always parameter bound. Text is not HTML escaped in the database, which would corrupt it for the printable forms.
+
+## 6.6 Documents
 
 1. Size limit 5 MB (enforced by the servlet container and again by the service).
 2. Type is detected from the first bytes (PDF, JPEG, PNG); anything else is rejected, and the file name extension must agree.
@@ -58,7 +66,7 @@ Reviewers can act only on the record assigned to them through the queue.
 5. Downloads are always `Content-Disposition: attachment` with `X-Content-Type-Options: nosniff` and `Content-Security-Policy: default-src 'none'; sandbox`.
 6. Every view of a document is recorded in the audit trail.
 
-## 6.6 Audit trail
+## 6.7 Audit trail
 
 - Every login, logout, failed login, account change, upload, document view, e-NAC decision and claim transition is written to `audit_entry`.
 - Each entry stores `hash = SHA-256(previous hash | canonical fields)`. Appending locks a single head row, so concurrent writers (also on several servers) cannot fork the chain.
@@ -66,30 +74,30 @@ Reviewers can act only on the record assigned to them through the queue.
 - Administrators can run **Verify chain**; any edited or deleted row is reported with its id.
 - Entries are written in the same transaction as the action, so the log never records something that did not happen and never misses something that did.
 
-## 6.7 Transport and browser
+## 6.8 Transport and browser
 
 API responses carry: `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`, `Strict-Transport-Security` (on HTTPS), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, a restrictive `Permissions-Policy`, and cross origin opener and resource policies.
 
 The web server (nginx) sends a strict CSP for the application: scripts, styles, fonts and connections from the same origin only, no inline scripts, no frames, no plugins. Fonts are bundled, so the app makes no request to any third party.
 
-## 6.8 Abuse protection
+## 6.9 Abuse protection
 
 - Per IP fixed window rate limits: 10 login attempts and 300 API requests per minute (configurable). Behind the gateway the real client address comes from the trusted proxy headers only.
 - Queues cannot be bypassed: there is no endpoint that assigns an arbitrary record to a reviewer.
 
-## 6.9 Secrets and configuration
+## 6.10 Secrets and configuration
 
 - The base configuration contains no secrets; database credentials, the storage key and the first administrator come from environment variables. Startup fails if the storage key is missing or not 32 bytes.
 - The `dev` profile is the only one with fixed values (public demo password and a public development storage key). It must never run on a server.
 - `.env`, keys, local databases and uploads are ignored by git; CI fails if such files are committed.
 
-## 6.10 Privacy
+## 6.11 Privacy
 
 - Only the last four digits of the salary account are stored.
 - Health data is shown only to the people who need it for a claim (see 6.4).
 - Retention and deletion policy, consent notices and a data protection impact assessment are required before go live under the DPDP Act, 2023 (roadmap item).
 
-## 6.11 Operational recommendations
+## 6.12 Operational recommendations
 
 - Terminate TLS 1.2+ at the gateway with HSTS preload; enable a WAF with OWASP core rules.
 - Give the application database role only `SELECT, INSERT, UPDATE` on business tables and `SELECT, INSERT` on `audit_entry`.
@@ -97,6 +105,6 @@ The web server (nginx) sends a strict CSP for the application: scripts, styles, 
 - Ship application logs and audit events to a SIEM; alert on `LOGIN_BLOCKED`, `STEP_UP_FAILED` and chain verification failures.
 - Conduct a CERT-In empanelled security audit before production use, as required for government applications.
 
-## 6.12 Reporting
+## 6.13 Reporting
 
 See [SECURITY.md](../SECURITY.md).

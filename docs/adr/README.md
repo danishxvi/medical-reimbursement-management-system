@@ -12,5 +12,6 @@ Each record explains one significant decision: the context, the choice, and what
 | [0006](0006-hash-chained-audit-trail.md) | Hash chained audit trail written in the business transaction | Accepted |
 | [0007](0007-encrypted-document-storage.md) | Encrypted file storage with content based validation | Accepted |
 | [0008](0008-portable-schema.md) | One portable schema for PostgreSQL and H2 | Accepted |
+| [0009](0009-input-sanitisation.md) | Refuse unsafe text at the input boundary, escape at the output | Accepted |
 
 Author: Danish Husain

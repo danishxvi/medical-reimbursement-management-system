@@ -61,6 +61,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
     ProblemDetail handleUnreadable(Exception ex) {
+        // The JSON reader wraps errors raised while reading a field, such as refused text.
+        for (Throwable cause = ex.getCause(); cause != null; cause = cause.getCause()) {
+            if (cause instanceof ApiException api) {
+                return handleApi(api);
+            }
+        }
         return problem(HttpStatus.BAD_REQUEST, "MALFORMED_REQUEST", "The request could not be read");
     }
 

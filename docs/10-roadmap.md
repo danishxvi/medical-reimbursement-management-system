@@ -16,6 +16,7 @@
 - [x] Return for correction with reason codes; resubmission keeps seniority
 - [x] Budget demand from real claims, allocations, oldest first payment runs
 - [x] Hash chained, append only audit trail with verification
+- [x] Global input sanitisation of every JSON string (control and direction characters refused, NFC normalisation)
 - [x] Role dashboards, in app notifications
 - [x] Monochrome, animated, responsive React UI with dark mode
 - [x] CI (tests, lint, build, dependency audit, CodeQL), Dependabot, Docker Compose deployment

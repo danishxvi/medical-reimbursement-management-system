@@ -1,6 +1,7 @@
 package com.mrms.document.internal;
 
 import com.mrms.shared.web.BusinessRuleException;
+import com.mrms.shared.web.SafeText;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
@@ -134,7 +135,7 @@ final class FileInspector {
      * reserved characters, bounded length.
      */
     static String safeName(String original) {
-        String name = original == null ? "document" : original;
+        String name = original == null ? "document" : SafeText.strip(original, '_');
         name = name.replace('\\', '/');
         name = name.substring(name.lastIndexOf('/') + 1);
         name = name.replaceAll("[\\p{Cntrl}<>:\"|?*]", "_").trim();
