@@ -4,7 +4,7 @@ A secure, transparent and accountable web portal that digitises the outpatient m
 
 **Author:** Danish Husain
 
-> Status: release 0.1, functional end to end. See the [roadmap](docs/10-roadmap.md) for what comes next.
+> Status: release 0.1, functional end to end. Start with the **[design document](DESIGN.md)**, the single entry point to the project; see the [roadmap](docs/10-roadmap.md) for what comes next.
 
 ---
 
@@ -30,7 +30,7 @@ Details: [proposed solution](docs/02-proposed-solution.md) and [workflow](docs/0
 - **Returned is not restarted.** A corrected claim keeps its original submission time and goes to the front of every queue.
 - **Money does not block checking.** Claims are verified and sanctioned any time; only payment waits for funds.
 - **Every decision is signed and recorded** in a hash chained, append only audit trail.
-- **Security by default:** Argon2id, lockout, single session, CSRF protection, strict CSP and headers, content based upload validation, AES-256-GCM encryption at rest, object level access checks. See [security design](docs/06-security.md).
+- **Security by default:** Argon2id, lockout, single session, CSRF protection, global input sanitisation, strict CSP and headers, content based upload validation, AES-256-GCM encryption at rest, object level access checks. See [security design](docs/06-security.md).
 
 ## Architecture at a glance
 
@@ -57,6 +57,7 @@ Demo accounts and a guided walk through are in the [setup guide](docs/12-setup.m
 
 | # | Document |
 |---|----------|
+| 0 | [Design document (start here)](DESIGN.md) |
 | 1 | [Problem statement](docs/01-problem-statement.md) |
 | 2 | [Proposed solution](docs/02-proposed-solution.md) |
 | 3 | [Requirements specification](docs/03-requirements.md) |

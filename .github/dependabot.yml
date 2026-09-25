@@ -24,8 +24,16 @@ updates:
     directory: /backend
     schedule:
       interval: monthly
+    # Base images stay on the LTS lines (Java 21, Node 24); major moves are planned, not automatic.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: docker
     directory: /frontend
     schedule:
       interval: monthly
+    # Base images stay on the LTS lines (Java 21, Node 24); major moves are planned, not automatic.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
