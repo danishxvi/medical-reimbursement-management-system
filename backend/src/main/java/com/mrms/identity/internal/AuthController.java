@@ -77,12 +77,27 @@ class AuthController {
         contextRepository.saveContext(context, request, response);
 
         audit.record("LOGIN_SUCCESS", "USER", principal.userId(), null);
-        return MeResponse.of(principal);
+        return MeResponse.of(principal, accounts.onboarding(principal.userId()));
     }
 
     @GetMapping("/me")
     MeResponse me() {
-        return MeResponse.of(CurrentUser.get());
+        MrmsPrincipal me = CurrentUser.get();
+        return MeResponse.of(me, accounts.onboarding(me.userId()));
+    }
+
+    /** Records that the user read the current privacy notice. */
+    @PostMapping("/privacy/accept")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void acceptPrivacy(@Valid @RequestBody AcceptNoticeRequest body) {
+        accounts.acceptPrivacyNotice(body.version());
+    }
+
+    /** Records that the user finished the first login guide (it stays available in the menu). */
+    @PostMapping("/guide/seen")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void guideSeen() {
+        accounts.markGuideSeen();
     }
 
     @PostMapping("/change-password")
@@ -126,12 +141,17 @@ class AuthController {
             @Pattern(regexp = "^$|^[6-9][0-9]{9}$", message = "Enter a 10 digit mobile number") String mobile) {
     }
 
-    record MeResponse(Long id, String username, String fullName, String role, String roleLabel,
-                      Long schoolId, Long dispensaryId, Long paoId, boolean mustChangePassword) {
+    record AcceptNoticeRequest(@NotBlank @Size(max = 20) String version) {
+    }
 
-        static MeResponse of(MrmsPrincipal p) {
+    record MeResponse(Long id, String username, String fullName, String role, String roleLabel,
+                      Long schoolId, Long dispensaryId, Long paoId, boolean mustChangePassword,
+                      boolean privacyAccepted, String privacyNoticeVersion, boolean guideSeen) {
+
+        static MeResponse of(MrmsPrincipal p, AccountService.Onboarding onboarding) {
             return new MeResponse(p.userId(), p.username(), p.fullName(), p.role().name(), p.role().label(),
-                    p.schoolId(), p.dispensaryId(), p.paoId(), p.mustChangePassword());
+                    p.schoolId(), p.dispensaryId(), p.paoId(), p.mustChangePassword(),
+                    onboarding.privacyAccepted(), PrivacyNotice.VERSION, onboarding.guideSeen());
         }
     }
 }

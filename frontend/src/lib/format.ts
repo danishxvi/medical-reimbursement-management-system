@@ -75,6 +75,7 @@ export const ROLE_LABELS: Record<Role, string> = {
   PAO_AUDITOR: 'PAO Auditor',
   PAO_OFFICER: 'PAO Officer',
   ADMIN: 'Administrator',
+  OVERSIGHT: 'Zonal Oversight Officer',
 }
 
 export const RELATION_LABELS: Record<Relation, string> = {

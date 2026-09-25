@@ -90,7 +90,22 @@ function navFor(role: Role): NavGroup[] {
           ],
         },
       ]
+    case 'OVERSIGHT':
+      return [
+        { title: 'Overview', items: [home] },
+        { title: 'Oversight', items: [{ to: '/oversight', label: 'Escalations', icon: <Icon.Clock /> }] },
+        { title: 'Account', items: [alerts] },
+      ]
   }
+}
+
+/** Help is the same for everyone and always the last group. */
+const HELP: NavGroup = {
+  title: 'Help',
+  items: [
+    { to: '/guide', label: 'User guide', icon: <Icon.Book /> },
+    { to: '/privacy-notice', label: 'Privacy notice', icon: <Icon.Shield /> },
+  ],
 }
 
 export function AppShell() {
@@ -165,7 +180,7 @@ export function AppShell() {
       </header>
 
       <nav className="nav" aria-label="Main">
-        {navFor(me.role).map((group) => (
+        {[...navFor(me.role), HELP].map((group) => (
           <div key={group.title}>
             <div className="nav-section caps">{group.title}</div>
             {group.items.map((it) => (

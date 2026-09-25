@@ -27,6 +27,10 @@ const OrganisationPage = lazy(() => import('./pages/admin/AdminPages').then((m) 
 const AuditPage = lazy(() => import('./pages/admin/AdminPages').then((m) => ({ default: m.AuditPage })))
 const ProfilePage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.ProfilePage })))
 const NotificationsPage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.NotificationsPage })))
+const GuidePage = lazy(() => import('./pages/help/GuidePage'))
+const PrivacyNoticePage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PrivacyNoticePage })))
+const PublicPrivacyPage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.PublicPrivacyPage })))
+const AcceptPrivacyPage = lazy(() => import('./pages/help/PrivacyPages').then((m) => ({ default: m.AcceptPrivacyPage })))
 const NotFoundPage = lazy(() => import('./pages/AccountPages').then((m) => ({ default: m.NotFoundPage })))
 
 function Loading() {
@@ -66,7 +70,9 @@ export const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: '/login', element: <S><LoginPage /></S> },
+      { path: '/privacy', element: <S><PublicPrivacyPage /></S> },
       { path: '/change-password', element: <RequireAuth><S><ChangePasswordPage /></S></RequireAuth> },
+      { path: '/welcome/privacy', element: <RequireAuth><S><AcceptPrivacyPage /></S></RequireAuth> },
       {
         path: '/',
         element: (
@@ -90,6 +96,8 @@ export const router = createBrowserRouter([
           { path: 'budget/schools/:schoolId', element: only(['PAO_AUDITOR', 'PAO_OFFICER'], <PaoSchoolBudgetPage />) },
           { path: 'profile', element: only(['EMPLOYEE'], <ProfilePage />) },
           { path: 'notifications', element: <S><NotificationsPage /></S> },
+          { path: 'guide', element: <S><GuidePage /></S> },
+          { path: 'privacy-notice', element: <S><PrivacyNoticePage /></S> },
           { path: 'admin/users', element: only(['ADMIN'], <UsersPage />) },
           { path: 'admin/employees', element: only(['ADMIN'], <EmployeesPage />) },
           { path: 'admin/organisation', element: only(['ADMIN'], <OrganisationPage />) },

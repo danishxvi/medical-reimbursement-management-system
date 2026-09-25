@@ -153,6 +153,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/auth/csrf").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/legal/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         // Role rules by URL as a second line of defence (methods are also annotated).
                         // They also stop request body validation from running for the wrong role.

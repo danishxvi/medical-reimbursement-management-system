@@ -8,6 +8,7 @@ export type Role =
   | 'PAO_AUDITOR'
   | 'PAO_OFFICER'
   | 'ADMIN'
+  | 'OVERSIGHT'
 
 export interface Me {
   id: number
@@ -19,6 +20,17 @@ export interface Me {
   dispensaryId: number | null
   paoId: number | null
   mustChangePassword: boolean
+  privacyAccepted: boolean
+  privacyNoticeVersion: string
+  guideSeen: boolean
+}
+
+export interface PrivacyNotice {
+  version: string
+  effectiveFrom: string
+  title: string
+  draft: boolean
+  sections: { heading: string; paragraphs: string[] }[]
 }
 
 export interface Office {

@@ -71,6 +71,15 @@ class UserAccount {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
+    @Column(name = "privacy_notice_version")
+    private String privacyNoticeVersion;
+
+    @Column(name = "privacy_accepted_at")
+    private Instant privacyAcceptedAt;
+
+    @Column(name = "guide_seen_at")
+    private Instant guideSeenAt;
+
     @Version
     private long version;
 
@@ -131,6 +140,23 @@ class UserAccount {
     void updateContact(String email, String mobile) {
         this.email = email;
         this.mobile = mobile;
+    }
+
+    void acceptPrivacyNotice(String version, Instant now) {
+        this.privacyNoticeVersion = version;
+        this.privacyAcceptedAt = now;
+    }
+
+    void markGuideSeen(Instant now) {
+        this.guideSeenAt = now;
+    }
+
+    boolean hasAccepted(String currentNoticeVersion) {
+        return currentNoticeVersion.equals(privacyNoticeVersion);
+    }
+
+    boolean hasSeenGuide() {
+        return guideSeenAt != null;
     }
 
     MrmsPrincipal toPrincipal() {

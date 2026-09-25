@@ -21,7 +21,7 @@ final class PasswordChangeEnforcementFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         boolean mustChange = CurrentUser.find().map(MrmsPrincipal::mustChangePassword).orElse(false);
         String uri = request.getRequestURI();
-        if (mustChange && uri.startsWith("/api/") && !uri.startsWith("/api/auth/")) {
+        if (mustChange && uri.startsWith("/api/") && !uri.startsWith("/api/auth/") && !uri.startsWith("/api/legal/")) {
             response.setStatus(HttpStatus.FORBIDDEN.value());
             response.setContentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE);
             response.getWriter().write("{\"status\":403,\"code\":\"PASSWORD_CHANGE_REQUIRED\","

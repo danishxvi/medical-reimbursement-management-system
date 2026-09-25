@@ -16,8 +16,15 @@ export function RequireAuth({ children }: { children: ReactNode }) {
     )
   }
   if (!me) return <Navigate to="/login" replace state={{ from: location.pathname }} />
-  if (me.mustChangePassword && location.pathname !== '/change-password') {
-    return <Navigate to="/change-password" replace />
+  // First sign in, in order: own password, privacy notice, role guide
+  if (me.mustChangePassword) {
+    return location.pathname === '/change-password' ? <>{children}</> : <Navigate to="/change-password" replace />
+  }
+  if (!me.privacyAccepted) {
+    return location.pathname === '/welcome/privacy' ? <>{children}</> : <Navigate to="/welcome/privacy" replace />
+  }
+  if (!me.guideSeen && location.pathname !== '/guide' && location.pathname !== '/privacy-notice') {
+    return <Navigate to="/guide" replace />
   }
   return <>{children}</>
 }

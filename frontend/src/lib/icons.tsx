@@ -19,6 +19,12 @@ function Svg(props: IconProps & { children: ReactNode }) {
 }
 
 export const Icon = {
+  Book: (p: IconProps) => (
+    <Svg {...p}>
+      <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z" />
+      <path d="M4 19a2 2 0 0 1 2-2h13M9 7h6M9 11h4" />
+    </Svg>
+  ),
   Cross: (p: IconProps) => (
     <Svg {...p}>
       <path d="M12 4v16M4 12h16" />

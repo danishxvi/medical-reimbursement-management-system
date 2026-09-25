@@ -281,6 +281,40 @@ class AccountService implements Accounts {
         audit.record("CONTACT_UPDATED", "USER", account.getId(), null);
     }
 
+    // ------------------------------------------------------------------
+    // Onboarding: privacy notice and first login guide
+    // ------------------------------------------------------------------
+
+    record Onboarding(boolean privacyAccepted, boolean guideSeen) {
+    }
+
+    @Transactional(readOnly = true)
+    Onboarding onboarding(Long userId) {
+        return accounts.findById(userId)
+                .map(a -> new Onboarding(a.hasAccepted(PrivacyNotice.VERSION), a.hasSeenGuide()))
+                .orElse(new Onboarding(false, false));
+    }
+
+    @Transactional
+    void acceptPrivacyNotice(String version) {
+        if (!PrivacyNotice.VERSION.equals(version)) {
+            throw new BusinessRuleException("NOTICE_CHANGED",
+                    "The privacy notice has changed. Please reload the page and read the current version");
+        }
+        UserAccount account = accounts.findById(CurrentUser.id()).orElseThrow(() -> new NotFoundException("Account"));
+        account.acceptPrivacyNotice(version, clock.instant());
+        audit.record("PRIVACY_NOTICE_ACCEPTED", "USER", account.getId(), "Version " + version);
+    }
+
+    @Transactional
+    void markGuideSeen() {
+        UserAccount account = accounts.findById(CurrentUser.id()).orElseThrow(() -> new NotFoundException("Account"));
+        if (!account.hasSeenGuide()) {
+            account.markGuideSeen(clock.instant());
+            audit.record("GUIDE_COMPLETED", "USER", account.getId(), null);
+        }
+    }
+
     boolean adminExists() {
         return accounts.existsByRole(Role.ADMIN);
     }

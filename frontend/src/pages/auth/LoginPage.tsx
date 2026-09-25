@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router'
 import { useAuth } from '../../auth/AuthContext'
 import { Button } from '../../components/ui/Button'
 import { Callout } from '../../components/ui/Feedback'
@@ -131,6 +131,11 @@ export default function LoginPage() {
           <motion.p variants={item} className="muted" style={{ fontSize: 'var(--text-xs)' }}>
             Forgot your password? Ask your Head of School or the Directorate administrator to issue a temporary one.
             Never share your password; officials will never ask for it.
+          </motion.p>
+          <motion.p variants={item} className="legal-links">
+            <Link to="/privacy">Privacy notice</Link>
+            <span aria-hidden="true">·</span>
+            <span>Noncommercial use only. Not an official Government of NCT of Delhi system.</span>
           </motion.p>
         </motion.form>
       </main>
